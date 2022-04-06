@@ -458,12 +458,14 @@ class Softim_Banner_Two_Widget extends Widget_Base
                     }else if ($y == 4){
                         $group = 'nineteen';
                     }else if ($y == 5) {
-                        $group = 'twenty-one';
+                        $group = 'twenty';
                     }else if ($y == 6) {
-                        $group = 'twenty-two';
+                        $group = 'twenty-one';
                     }else if ($y == 7) {
-                        $group = 'twenty-three';
+                        $group = 'twenty-two';
                     }else if ($y == 8) {
+                        $group = 'twenty-three';
+                    }else if ($y == 9) {
                         $group = 'twenty-four';
                     }else {
                         $group = 'twenty-six';
