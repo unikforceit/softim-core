@@ -6,7 +6,7 @@
  */
 
 namespace Elementor;
-class Softim_Banner_One_Widget extends Widget_Base
+class Softim_Banner_Two_Widget extends Widget_Base
 {
 
     /**
@@ -21,7 +21,7 @@ class Softim_Banner_One_Widget extends Widget_Base
      */
     public function get_name()
     {
-        return 'softim-banner-one-widget';
+        return 'softim-banner-two-widget';
     }
 
     /**
@@ -36,7 +36,7 @@ class Softim_Banner_One_Widget extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Banner : 01', 'softim-core');
+        return esc_html__('Banner : 02', 'softim-core');
     }
 
     /**
@@ -88,19 +88,27 @@ class Softim_Banner_One_Widget extends Widget_Base
             ]
         );
         $this->add_control(
+            'title', [
+                'label' => esc_html__('Title 1', 'softim-core'),
+                'type' => Controls_Manager::TEXTAREA,
+                'default' => esc_html__("Soft i'm Developers", 'softim-core'),
+                'description' => esc_html__('enter title', 'softim-core')
+            ]
+        );
+        $this->add_control(
+            'title2', [
+                'label' => esc_html__('Title 2', 'softim-core'),
+                'type' => Controls_Manager::TEXTAREA,
+                'default' => esc_html__("Impressive Experience", 'softim-core'),
+                'description' => esc_html__('enter title', 'softim-core')
+            ]
+        );
+        $this->add_control(
             'banner_text', [
                 'label' => esc_html__('Banner Text', 'softim-core'),
                 'type' => Controls_Manager::TEXTAREA,
                 'default' => esc_html__('TECH', 'softim-core'),
                 'description' => esc_html__('enter banner text', 'softim-core'),
-            ]
-        );
-        $this->add_control(
-            'title', [
-                'label' => esc_html__('Title', 'softim-core'),
-                'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__('Smarter Way to Serve Digital Product Marketing', 'softim-core'),
-                'description' => esc_html__('enter title', 'softim-core')
             ]
         );
         $this->add_control(
@@ -131,22 +139,30 @@ class Softim_Banner_One_Widget extends Widget_Base
             ]
         );
         $this->add_control(
-            'client_image', [
-                'label' => esc_html__('Client Image', 'softim-core'),
+            'play_text', [
+                'label' => esc_html__('Play Text', 'softim-core'),
+                'type' => Controls_Manager::TEXTAREA,
+                'default' => esc_html__('Play Intro', 'softim-core'),
+                'description' => esc_html__('enter play text', 'softim-core'),
+            ]
+        );
+//        $this->add_control(
+//            'clients_no', [
+//                'label' => esc_html__('Clients Number', 'softim-core'),
+//                'type' => Controls_Manager::TEXTAREA,
+//                'default' => esc_html__('<span>4,000+</span> Satisfied Clients', 'softim-core'),
+//                'description' => esc_html__('enter clients number', 'softim-core'),
+//            ]
+//        );
+        $this->add_control(
+            'banner_thumb', [
+                'label' => esc_html__('Banner Thumb Image', 'softim-core'),
                 'type' => Controls_Manager::MEDIA,
                 'show_label' => false,
-                'description' => esc_html__('upload client image', 'softim-core'),
+                'description' => esc_html__('banner thumb image', 'softim-core'),
                 'default' => [
                     'src' => Utils::get_placeholder_image_src()
                 ],
-            ]
-        );
-        $this->add_control(
-            'clients_no', [
-                'label' => esc_html__('Clients Number', 'softim-core'),
-                'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__('<span>4,000+</span> Satisfied Clients', 'softim-core'),
-                'description' => esc_html__('enter clients number', 'softim-core'),
             ]
         );
         $this->add_control(
@@ -161,7 +177,7 @@ class Softim_Banner_One_Widget extends Widget_Base
             'btn_text', [
                 'label' => esc_html__('Button Text', 'softim-core'),
                 'type' => Controls_Manager::TEXT,
-                'default' => esc_html__("Let's Talk", 'softim-core'),
+                'default' => esc_html__('Contact Us', 'softim-core'),
                 'description' => esc_html__('enter button text', 'softim-core'),
                 'condition' => ['btn_status' => 'yes']
             ]
@@ -180,34 +196,6 @@ class Softim_Banner_One_Widget extends Widget_Base
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'banner_element_section',
-            [
-                'label' => esc_html__('Banner Element Settings', 'softim-core'),
-                'tab' => Controls_Manager::TAB_CONTENT,
-            ]
-        );
-
-        $repeater = new Repeater();
-        $repeater->add_control(
-            'element_image', [
-                'label' => esc_html__('Element Image', 'softim-core'),
-                'type' => Controls_Manager::MEDIA,
-                'show_label' => false,
-                'description' => esc_html__('upload element image', 'softim-core'),
-                'default' => [
-                    'src' => Utils::get_placeholder_image_src()
-                ],
-            ]
-        );
-
-        $this->add_control('banner_element_list', [
-            'label' => esc_html__('Take 5 Banner Element Item', 'softim-core'),
-            'type' => Controls_Manager::REPEATER,
-            'fields' => $repeater->get_controls()
-        ]);
-        $this->end_controls_section();
-
-        $this->start_controls_section(
             'banner_group_section',
             [
                 'label' => esc_html__('Banner Group Settings', 'softim-core'),
@@ -215,8 +203,8 @@ class Softim_Banner_One_Widget extends Widget_Base
             ]
         );
 
-        $repeater2 = new Repeater();
-        $repeater2->add_control(
+        $repeater = new Repeater();
+        $repeater->add_control(
             'element_group_image', [
                 'label' => esc_html__('Element Group Image', 'softim-core'),
                 'type' => Controls_Manager::MEDIA,
@@ -229,9 +217,9 @@ class Softim_Banner_One_Widget extends Widget_Base
         );
 
         $this->add_control('banner_group_list', [
-            'label' => esc_html__('Take 17 Banner Group Element Item', 'softim-core'),
+            'label' => esc_html__('Take 10 Banner Group Element Item', 'softim-core'),
             'type' => Controls_Manager::REPEATER,
-            'fields' => $repeater2->get_controls(),
+            'fields' => $repeater->get_controls(),
         ]);
         $this->end_controls_section();
 
@@ -455,108 +443,97 @@ class Softim_Banner_One_Widget extends Widget_Base
 
         ?>
 
-        <section class="banner-section">
-            <div class="banner-text">
-                <span><?php echo esc_html($settings['banner_text']) ?></span>
-            </div>
+        <section class="banner-section two">
             <?php
-            if ($settings['banner_element_list']){
-                $x = 0;
-                foreach ($settings['banner_element_list'] as $item){
-                    $x++;
-                    if ($x == 1){
-                        $no = 'one';
-                    }else if ($x == 2){
-                        $no = 'two';
-                    }else if ($x == 3){
-                        $no = 'three';
-                    }else if ($x == 4){
-                        $no = 'four';
+            if ($settings['banner_group_list']){
+                $y = 0;
+                foreach ($settings['banner_group_list'] as $items){
+                    $y++;
+                    if ($y == 1){
+                        $group = 'four';
+                    }else if ($y == 2){
+                        $group = 'five';
+                    }else if ($y == 3){
+                        $group = 'eightteen';
+                    }else if ($y == 4){
+                        $group = 'nineteen';
+                    }else if ($y == 5) {
+                        $group = 'twenty-one';
+                    }else if ($y == 6) {
+                        $group = 'twenty-two';
+                    }else if ($y == 7) {
+                        $group = 'twenty-three';
+                    }else if ($y == 8) {
+                        $group = 'twenty-four';
                     }else {
-                        $no = 'five';
+                        $group = 'twenty-six';
                     }
-            ?>
-                <div class="banner-element-<?php echo esc_attr($no)?>">
-                    <img src="<?php echo esc_url($item['element_image']['url']);?>" alt="element">
-                </div>
-            <?php } } ?>
-            <div class="banner-group-shape">
-                <?php
-                if ($settings['banner_group_list']){
-                    $y = 0;
-                    foreach ($settings['banner_group_list'] as $items){
-                        $y++;
-                        if ($y == 1){
-                            $group = 'one';
-                        }else if ($y == 2){
-                            $group = 'two';
-                        }else if ($y == 3){
-                            $group = 'three';
-                        }else if ($y == 4){
-                            $group = 'four';
-                        }else if ($y == 5) {
-                            $group = 'five';
-                        }else if ($y == 6) {
-                            $group = 'six';
-                        }else if ($y == 7) {
-                            $group = 'seven';
-                        }else if ($y == 8) {
-                            $group = 'eight';
-                        }else if ($y == 9) {
-                            $group = 'nine';
-                        }else if ($y == 10) {
-                            $group = 'ten';
-                        }else if ($y == 11) {
-                            $group = 'eleven';
-                        }else if ($y == 12) {
-                            $group = 'twelve';
-                        }else if ($y == 13) {
-                            $group = 'thirteen';
-                        }else if ($y == 14) {
-                            $group = 'fourteen';
-                        }else if ($y == 15) {
-                            $group = 'fifteen';
-                        }else if ($y == 16) {
-                            $group = 'sixteen';
-                        }else {
-                            $group = 'seventeen';
-                        }
-                        ?>
-                        <div class="banner-group-element-<?php echo esc_attr($group)?>">
-                            <img src="<?php echo esc_url($items['element_group_image']['url']);?>" alt="element">
-                        </div>
-                    <?php } } ?>
-            </div>
-            <div class="container custom-container">
-                <div class="row align-items-end mb-30-none">
-                    <div class="col-xl-7 col-lg-7 mb-30">
-                        <div class="banner-content" data-aos="fade-right" data-aos-duration="1800">
-                            <h1 class="title"><?php echo esc_html($settings['title']) ?></h1>
-                            <span class="sub-title"><?php echo esc_html($settings['subtitle']) ?></span>
-                            <p><?php echo esc_html($settings['info']) ?></p>
-                            <div class="banner-arrow">
-                                <img src="<?php echo esc_url($settings['banner_arrow']['url'])?>" alt="element">
+                    ?>
+                    <div class="banner-element-<?php echo esc_attr($group)?>">
+                        <img src="<?php echo esc_url($items['element_group_image']['url']);?>" alt="element">
+                    </div>
+                <?php } } ?>
+
+            <div class="container">
+                <div class="row justify-content-center align-items-center mb-30-none">
+                    <div class="col-xl-12 mb-30">
+                        <div class="banner-content two">
+                            <div class="banner-content-header" data-aos="fade-up" data-aos-duration="1200">
+                                <h1 class="title"><?php echo esc_html($settings['title']) ?></h1>
+                                <h1 class="title"><?php echo esc_html($settings['title2']) ?></h1>
                             </div>
-                            <div class="banner-widget">
-                                <div class="banner-widget-wrapper">
-                                    <div class="banner-widget-left">
-                                        <div class="banner-widget-thumb">
-                                            <img src="<?php echo esc_url($settings['client_image']['url'])?>" alt="element">
+                            <div class="banner-area">
+                                <div class="banner-text">
+                                    <span><?php echo esc_html($settings['banner_text']); ?></span>
+                                </div>
+                                <div class="banner-left-content">
+                                    <div class="banner-left-video">
+                                        <div class="circle">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
+                                        <defs>
+                                            <path id="circlePath" d=" M 150, 150 m -60, 0 a 60,60 0 0,1 120,0 a 60,60 0 0,1 -120,0 "/>
+                                        </defs>
+                                                <circle cx="150" cy="100" r="75" fill="none"/>
+                                                <g>
+                                                    <use xlink:href="#circlePath" fill="none"/>
+                                                    <text fill="#3249b3">
+                                                        <textPath xlink:href="#circlePath">Softim it solution Softim it solution Softim it solution Softim it solution</textPath>
+                                                    </text>
+                                                </g>
+                                    </svg>
+                                        </div>
+                                        <div class="video-main">
+                                            <div class="promo-video">
+                                                <div class="waves-block">
+                                                    <div class="waves wave-1"></div>
+                                                    <div class="waves wave-2"></div>
+                                                    <div class="waves wave-3"></div>
+                                                </div>
+                                            </div>
+                                            <a class="video-icon video" data-rel="lightcase:myCollection" href="https://www.youtube.com/embed/LRhrNC-OC0Y">
+                                                <i class="fas fa-play"></i>
+                                            </a>
                                         </div>
                                     </div>
-                                    <div class="banner-widget-middle">
-                                        <div class="banner-widget-content">
-                                            <p><?php echo wp_kses($settings['clients_no'], softim_core()->kses_allowed_html('span'));?></p>
-                                        </div>
+                                    <div class="banner-left-arrow">
+                                        <img src="<?php echo esc_url($settings['banner_arrow']['url']);?>" alt="element">
                                     </div>
-                                    <div class="banner-widget-right">
-                                        <div class="banner-widget-btn">
+                                    <div class="banner-left-intro">
+                                        <span><?php echo esc_html($settings['play_text']);?></span>
+                                    </div>
+                                    <div class="banner-left-footer">
+                                        <h3 class="title"><?php echo esc_html($settings['subtitle']) ?></h3>
+                                        <p><?php echo esc_html($settings['info']) ?></p>
+                                        <div class="banner-left-btn">
                                             <?php if ($settings['btn_status'] == 'yes'): ?>
-                                                <a href="<?php echo esc_url($settings['btn_link']['url']) ?>"
-                                                   class="btn--base"><?php echo esc_html($settings['btn_text']) ?></a>
+                                                <a href="<?php echo esc_url($settings['btn_link']['url']); ?>"
+                                                   class="btn--base active"><?php echo esc_html($settings['btn_text']); ?></a>
                                             <?php endif; ?>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="banner-thumb">
+                                    <img src="<?php echo esc_url($settings['banner_thumb']['url']);?>" alt="element">
                                 </div>
                             </div>
                         </div>
@@ -568,4 +545,4 @@ class Softim_Banner_One_Widget extends Widget_Base
     }
 }
 
-Plugin::instance()->widgets_manager->register(new Softim_Banner_One_Widget());
+Plugin::instance()->widgets_manager->register(new Softim_Banner_Two_Widget());

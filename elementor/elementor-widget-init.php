@@ -70,6 +70,7 @@ if ( ! class_exists( 'Softim_Elementor_Widget_Init' ) ) {
 			}
 			$elementor_widgets = array(
 				'banner-one',
+				'banner-two',
 			);
 
 			$elementor_widgets = apply_filters( 'softim_elementor_widget', $elementor_widgets );

@@ -173,34 +173,6 @@ if (!class_exists('Softim_Core_Init')) {
 			$plugin_version = SOFTIM_CORE_VERSION;
 			$all_css_files = array(
 				array(
-					'handle' => 'flaticon',
-					'src' => SOFTIM_CORE_CSS . '/flaticon.css',
-					'deps' => array(),
-					'ver' => $plugin_version,
-					'media' => 'all'
-				),
-                array(
-                    'handle' => 'nice-select',
-                    'src' => SOFTIM_CORE_CSS . '/nice-select.css',
-                    'deps' => array(),
-                    'ver' => $plugin_version,
-                    'media' => 'all'
-                ),
-                array(
-                    'handle' => 'slick',
-                    'src' => SOFTIM_CORE_CSS . '/slick.css',
-                    'deps' => array(),
-                    'ver' => $plugin_version,
-                    'media' => 'all'
-                ),
-				array(
-					'handle' => 'fontawesome',
-					'src' => SOFTIM_CORE_CSS . '/font-awesome.min.css',
-					'deps' => array(),
-					'ver' => '5.12.0',
-					'media' => 'all'
-				),
-				array(
 					'handle' => 'softim-core-main-style',
 					'src' => SOFTIM_CORE_CSS . '/main-style.css',
 					'deps' => array(),
@@ -210,27 +182,6 @@ if (!class_exists('Softim_Core_Init')) {
 			);
 			
 			if (!softim_core()->is_softim_active()) {
-				$all_css_files[] = array(
-					'handle' => 'animate',
-					'src' => SOFTIM_CORE_CSS . '/animate.css',
-					'deps' => array(),
-					'ver' => $plugin_version,
-					'media' => 'all'
-				);
-				$all_css_files[] = array(
-					'handle' => 'bootstrap',
-					'src' => SOFTIM_CORE_CSS . '/bootstrap.min.css',
-					'deps' => array(),
-					'ver' => $plugin_version,
-					'media' => 'all'
-				);
-				$all_css_files[] = array(
-					'handle' => 'magnific-popup',
-					'src' => SOFTIM_CORE_CSS . '/magnific-popup.css',
-					'deps' => array(),
-					'ver' => $plugin_version,
-					'media' => 'all'
-				);
 				$all_css_files[] = array(
 					'handle' => 'softim-main-style',
 					'src' => SOFTIM_CORE_CSS . '/theme-style.css',
@@ -263,41 +214,6 @@ if (!class_exists('Softim_Core_Init')) {
 		{
 			$plugin_version = SOFTIM_CORE_VERSION;
 			$all_js_files = array(
-                array(
-                    'handle' => 'wow',
-                    'src' => SOFTIM_CORE_JS . '/wow.min.js',
-                    'deps' => array('jquery'),
-                    'ver' => $plugin_version,
-                    'in_footer' => true
-                ),
-                array(
-                    'handle' => 'nice-select',
-                    'src' => SOFTIM_CORE_JS . '/jquery.nice-select.min.js',
-                    'deps' => array('jquery'),
-                    'ver' => $plugin_version,
-                    'in_footer' => true
-                ),
-				array(
-					'handle' => 'waypoints',
-					'src' => SOFTIM_CORE_JS . '/waypoints.min.js',
-					'deps' => array('jquery'),
-					'ver' => $plugin_version,
-					'in_footer' => true
-				),
-				array(
-					'handle' => 'counterup',
-					'src' => SOFTIM_CORE_JS . '/jquery.counterup.min.js',
-					'deps' => array('jquery'),
-					'ver' => $plugin_version,
-					'in_footer' => true
-				),
-                array(
-                    'handle' => 'slick',
-                    'src' => SOFTIM_CORE_JS . '/slick.min.js',
-                    'deps' => array('jquery'),
-                    'ver' => $plugin_version,
-                    'in_footer' => true
-                ),
 				array(
 					'handle' => 'softim-core-main-script',
 					'src' => SOFTIM_CORE_JS . '/main.js',
@@ -306,30 +222,6 @@ if (!class_exists('Softim_Core_Init')) {
 					'in_footer' => true
 				),
 			);
-
-			if (!softim_core()->is_softim_active()) {
-				$all_js_files[] = array(
-					'handle' => 'popper',
-					'src' => SOFTIM_CORE_JS . '/popper.min.js',
-					'deps' => array('jquery'),
-					'ver' => $plugin_version,
-					'in_footer' => true
-				);
-				$all_js_files[] = array(
-					'handle' => 'bootstrap',
-					'src' => SOFTIM_CORE_JS . '/bootstrap.min.js',
-					'deps' => array('jquery'),
-					'ver' => $plugin_version,
-					'in_footer' => true
-				);
-				$all_js_files[] = array(
-					'handle' => 'magnific-popup',
-					'src' => SOFTIM_CORE_JS . '/jquery.magnific-popup.js',
-					'deps' => array('jquery'),
-					'ver' => $plugin_version,
-					'in_footer' => true
-				);
-			}
 
 			$all_js_files = apply_filters('softim_core_frontend_script_enqueue', $all_js_files);
 			if (is_array($all_js_files) && !empty($all_js_files)) {
