@@ -146,14 +146,18 @@ class Softim_Banner_Two_Widget extends Widget_Base
                 'description' => esc_html__('enter play text', 'softim-core'),
             ]
         );
-//        $this->add_control(
-//            'clients_no', [
-//                'label' => esc_html__('Clients Number', 'softim-core'),
-//                'type' => Controls_Manager::TEXTAREA,
-//                'default' => esc_html__('<span>4,000+</span> Satisfied Clients', 'softim-core'),
-//                'description' => esc_html__('enter clients number', 'softim-core'),
-//            ]
-//        );
+        $this->add_control(
+            'svg_icon',
+            [
+                'label' => esc_html__('Svg Icon', 'softim-core'),
+                'type' => Controls_Manager::ICONS,
+                'description' => esc_html__('select SVG Icon.', 'softim-core'),
+                'default' => [
+                    'value' => 'fas fa-phone-alt',
+                    'library' => 'solid',
+                ],
+            ]
+        );
         $this->add_control(
             'banner_thumb', [
                 'label' => esc_html__('Banner Thumb Image', 'softim-core'),
@@ -184,6 +188,38 @@ class Softim_Banner_Two_Widget extends Widget_Base
         );
         $this->add_control(
             'btn_link', [
+                'label' => esc_html__('Button URL', 'softim-core'),
+                'type' => Controls_Manager::URL,
+                'default' => [
+                    'url' => '#'
+                ],
+                'description' => esc_html__('enter button url', 'softim-core'),
+                'condition' => ['btn_status' => 'yes']
+            ]
+        );
+
+        $this->add_control(
+            'play_icon',
+            [
+                'label' => esc_html__('Play Icon', 'softim-core'),
+                'type' => Controls_Manager::ICONS,
+                'description' => esc_html__('select Play Icon.', 'softim-core'),
+                'default' => [
+                    'value' => 'fas fa-phone-alt',
+                    'library' => 'solid',
+                ],
+            ]
+        );
+        $this->add_control(
+            'btn_status2', [
+                'label' => esc_html__('Button Show/Hide', 'softim-core'),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => 'yes',
+                'description' => esc_html__('show/hide button', 'softim-core')
+            ]
+        );
+        $this->add_control(
+            'btn_link2', [
                 'label' => esc_html__('Button URL', 'softim-core'),
                 'type' => Controls_Manager::URL,
                 'default' => [
@@ -491,18 +527,7 @@ class Softim_Banner_Two_Widget extends Widget_Base
                                 <div class="banner-left-content">
                                     <div class="banner-left-video">
                                         <div class="circle">
-                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
-                                        <defs>
-                                            <path id="circlePath" d=" M 150, 150 m -60, 0 a 60,60 0 0,1 120,0 a 60,60 0 0,1 -120,0 "/>
-                                        </defs>
-                                                <circle cx="150" cy="100" r="75" fill="none"/>
-                                                <g>
-                                                    <use xlink:href="#circlePath" fill="none"/>
-                                                    <text fill="#3249b3">
-                                                        <textPath xlink:href="#circlePath">Softim it solution Softim it solution Softim it solution Softim it solution</textPath>
-                                                    </text>
-                                                </g>
-                                    </svg>
+                                            <?php \Elementor\Icons_Manager::render_icon( $settings['svg_icon'], [ 'aria-hidden' => 'true' ] ); ?>
                                         </div>
                                         <div class="video-main">
                                             <div class="promo-video">
@@ -512,9 +537,12 @@ class Softim_Banner_Two_Widget extends Widget_Base
                                                     <div class="waves wave-3"></div>
                                                 </div>
                                             </div>
-                                            <a class="video-icon video" data-rel="lightcase:myCollection" href="https://www.youtube.com/embed/LRhrNC-OC0Y">
-                                                <i class="fas fa-play"></i>
-                                            </a>
+                                            <?php if ($settings['btn_status2'] == 'yes'): ?>
+                                                <a href="<?php echo esc_url($settings['btn_link2']['url']); ?>"
+                                                   class="video-icon video">
+                                                    <?php \Elementor\Icons_Manager::render_icon( $settings['play_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                                                </a>
+                                            <?php endif; ?>
                                         </div>
                                     </div>
                                     <div class="banner-left-arrow">
