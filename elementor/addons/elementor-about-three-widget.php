@@ -252,13 +252,6 @@ class Softim_About_Three_Widget extends Widget_Base
                 "{{WRAPPER}} .about-content .title" => "color: {{VALUE}}"
             ]
         ]);
-        $this->add_control('about_title_2_color', [
-            'label' => esc_html__('About Title 2 Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .about-content .title span.text--base" => "color: {{VALUE}} !important"
-            ]
-        ]);
         $this->add_control('about_subtitle_color', [
             'label' => esc_html__('About Sub Title Color', 'softim-core'),
             'type' => Controls_Manager::COLOR,
@@ -271,6 +264,20 @@ class Softim_About_Three_Widget extends Widget_Base
             'type' => Controls_Manager::COLOR,
             'selectors' => [
                 "{{WRAPPER}} .about-content p.info" => "color: {{VALUE}}"
+            ]
+        ]);
+        $this->add_control('call_text_color', [
+            'label' => esc_html__('Call text Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .about-btn.two span" => "color: {{VALUE}}"
+            ]
+        ]);
+        $this->add_control('call_no_color', [
+            'label' => esc_html__('Call number Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .about-btn.two span a" => "color: {{VALUE}}"
             ]
         ]);
         $this->end_controls_section();
@@ -329,7 +336,7 @@ class Softim_About_Three_Widget extends Widget_Base
         $this->add_group_control(Group_Control_Background::get_type(), [
             'name' => 'button_hover_background',
             'label' => esc_html__('Button Background ', 'softim-core'),
-            'selector' => "{{WRAPPER}} .btn--base:hover"
+            'selector' => "{{WRAPPER}} .btn--base::before"
         ]);
         $this->add_control('divider_04', [
             'type' => Controls_Manager::DIVIDER
@@ -371,11 +378,6 @@ class Softim_About_Three_Widget extends Widget_Base
             'selector' => "{{WRAPPER}} .about-content .title"
         ]);
         $this->add_group_control(Group_Control_Typography::get_type(), [
-            'name' => 'title_2_typography',
-            'label' => esc_html__('Title 2 Typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .about-content .title span.text--base"
-        ]);
-        $this->add_group_control(Group_Control_Typography::get_type(), [
             'name' => 'subtitle_typography',
             'label' => esc_html__('Sub Title Typography', 'softim-core'),
             'selector' => "{{WRAPPER}} .about-content p.para"
@@ -386,9 +388,19 @@ class Softim_About_Three_Widget extends Widget_Base
             'selector' => "{{WRAPPER}} .about-content p.info"
         ]);
         $this->add_group_control(Group_Control_Typography::get_type(), [
-            'name' => 'button_typography',
-            'label' => esc_html__('Button Typography', 'softim-core'),
+            'name' => 'button_1_typography',
+            'label' => esc_html__('Button 1 Typography', 'softim-core'),
             'selector' => "{{WRAPPER}} .btn--base"
+        ]);
+        $this->add_group_control(Group_Control_Typography::get_type(), [
+            'name' => 'button_2_text_typography',
+            'label' => esc_html__('Button 2 Text Typography', 'softim-core'),
+            'selector' => "{{WRAPPER}} .about-btn.two span"
+        ]);
+        $this->add_group_control(Group_Control_Typography::get_type(), [
+            'name' => 'button_2_typography',
+            'label' => esc_html__('Button 2 Typography', 'softim-core'),
+            'selector' => "{{WRAPPER}} .about-btn.two span a"
         ]);
         $this->end_controls_section();
         /* typography settings end */
@@ -425,7 +437,11 @@ class Softim_About_Three_Widget extends Widget_Base
                                     <a href="<?php echo esc_url($settings['btn_link']['url']); ?>" class="btn--base"><?php echo esc_html($settings['btn_text']); ?></a>
                                 <?php endif; ?>
                                 <?php if ($settings['btn_status2'] == 'yes'): ?>
-                                <span><?php echo esc_html('or Call')?> <a href="tel:<?php echo esc_url($settings['btn_link2']['url']); ?>"><?php echo esc_html($settings['btn_text2']); ?></a></span>
+                                    <span><?php echo esc_html('or Call')?>
+                                        <a href="tel:<?php echo esc_url($settings['btn_link2']['url']); ?>">
+                                            <?php echo esc_html($settings['btn_text2']); ?>
+                                        </a>
+                                    </span>
                                 <?php endif; ?>
                             </div>
                         </div>
