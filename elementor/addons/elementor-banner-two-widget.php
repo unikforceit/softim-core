@@ -197,7 +197,6 @@ class Softim_Banner_Two_Widget extends Widget_Base
                 'condition' => ['btn_status' => 'yes']
             ]
         );
-
         $this->add_control(
             'play_icon',
             [
@@ -538,7 +537,7 @@ class Softim_Banner_Two_Widget extends Widget_Base
                                                 </div>
                                             </div>
                                             <?php if ($settings['btn_status2'] == 'yes'): ?>
-                                                <a href="<?php echo esc_url($settings['btn_link2']['url']); ?>"
+                                                <a href="<?php echo esc_url($settings['btn_link2']['url']); ?>" data-rel="lightcase:myCollection"
                                                    class="video-icon video">
                                                     <?php \Elementor\Icons_Manager::render_icon( $settings['play_icon'], [ 'aria-hidden' => 'true' ] ); ?>
                                                 </a>
