@@ -517,8 +517,8 @@ class Softim_Banner_Two_Widget extends Widget_Base
                     <div class="col-xl-12 mb-30">
                         <div class="banner-content two">
                             <div class="banner-content-header" data-aos="fade-up" data-aos-duration="1200">
-                                <h1 class="title"><?php echo esc_html($settings['title']) ?></h1>
-                                <h1 class="title"><?php echo esc_html($settings['title2']) ?></h1>
+                                <h1 class="title"><?php echo esc_html($settings['title']); ?></h1>
+                                <h1 class="title"><?php echo esc_html($settings['title2']); ?></h1>
                             </div>
                             <div class="banner-area">
                                 <div class="banner-text">
