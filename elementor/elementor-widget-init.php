@@ -75,6 +75,7 @@ if ( ! class_exists( 'Softim_Elementor_Widget_Init' ) ) {
 				'about-one',
 				'about-two',
 				'about-three',
+				'call-to-action-one',
 			);
 
 			$elementor_widgets = apply_filters( 'softim_elementor_widget', $elementor_widgets );
