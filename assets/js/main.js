@@ -86,13 +86,13 @@
             console.log('Elementor editor mod loaded');
             elementorFrontend.hooks.addAction('frontend/element_ready/global', AgelandGlobal);
             elementorFrontend.hooks.addAction('frontend/element_ready/ageland-banner.default', Agelandvideo);
-            elementorFrontend.hooks.addAction('frontend/element_ready/ageland-banner.default', Bannerslider);
+            elementorFrontend.hooks.addAction('frontend/element_ready/softim-brand-widget.default', Bannerslider);
 
         } else {
             console.log('Elementor frontend mod loaded');
             elementorFrontend.hooks.addAction('frontend/element_ready/global', AgelandGlobal);
             elementorFrontend.hooks.addAction('frontend/element_ready/ageland-banner.default', Agelandvideo);
-            elementorFrontend.hooks.addAction('frontend/element_ready/ageland-banner.default', Bannerslider);
+            elementorFrontend.hooks.addAction('frontend/element_ready/softim-brand-widget.default', Bannerslider);
         }
     });
     console.log('addon js loaded');
