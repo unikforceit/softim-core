@@ -76,6 +76,12 @@ if ( ! class_exists( 'Softim_Elementor_Widget_Init' ) ) {
 				'about-two',
 				'about-three',
 				'call-to-action-one',
+				'blog-one',
+				'blog-two',
+				'our-history-item',
+				'service-list-item',
+				'statistics',
+				'overview-one',
 			);
 
 			$elementor_widgets = apply_filters( 'softim_elementor_widget', $elementor_widgets );
