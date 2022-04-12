@@ -189,13 +189,6 @@ if (!class_exists('Softim_Core_Init')) {
 					'ver' => $plugin_version,
 					'media' => 'all'
 				);
-				$all_css_files[] = array(
-					'handle' => 'softim-responsive',
-					'src' => SOFTIM_CORE_CSS . '/theme-responsive.css',
-					'deps' => array(),
-					'ver' => $plugin_version,
-					'media' => 'all'
-				);
 			}
 			$all_css_files = apply_filters('softim_core_css', $all_css_files);
 
