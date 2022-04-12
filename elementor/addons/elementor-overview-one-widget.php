@@ -174,6 +174,13 @@ class Softim_Overview_One_Widget extends Widget_Base
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
+        $this->add_control('overview_thumb_color', [
+            'label' => esc_html__('Thumb Background Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .overview-thumb" => "background-color: {{VALUE}}"
+            ]
+        ]);
         $this->add_control('title_color', [
             'label' => esc_html__('Title Color', 'softim-core'),
             'type' => Controls_Manager::COLOR,

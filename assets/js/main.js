@@ -79,6 +79,40 @@
         });
 
     };
+    var StatisticsOdo = function ($scope, $) {
+
+        $scope.find('.brand-slider-area').each(function () {
+            var settings = $(this).data('ageland');
+
+            // Js Start
+            var swiper = new Swiper('.brand-slider', {
+                slidesPerView: 4,
+                spaceBetween: 30,
+                loop: true,
+                autoplay: {
+                    speeds: 2000,
+                    delay: 4000,
+                },
+                speed: 1000,
+                breakpoints: {
+                    991: {
+                        slidesPerView: 3,
+                    },
+                    767: {
+                        slidesPerView: 2,
+                    },
+                    575: {
+                        slidesPerView: 1,
+                    },
+                    420: {
+                        slidesPerView: 1,
+                    },
+                }
+            });
+            // Js End
+        });
+
+    };
 
 
     $(window).on('elementor/frontend/init', function () {

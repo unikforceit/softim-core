@@ -144,33 +144,69 @@ class Softim_Statistics_Widget extends Widget_Base
         );
         $this->end_controls_section();
 
-//      Graphic Loop
+//      Odometer Loop
         $this->start_controls_section(
-            'graphic_section',
+            'odo_section',
             [
-                'label' => esc_html__('Graphic Seciton', 'softim-core'),
+                'label' => esc_html__('Odometer Section', 'softim-core'),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
 
-        $repeater = new Repeater();
+        $repeater = new \Elementor\Repeater();
         $repeater->add_control(
-            'graphic_image', [
-                'label' => esc_html__('Graphic Image', 'softim-core'),
+            'count_image', [
+                'label' => esc_html__('Count BG Graphic Image', 'softim-core'),
                 'type' => Controls_Manager::MEDIA,
                 'show_label' => false,
-                'description' => esc_html__('upload about graphic image', 'softim-core'),
+                'description' => esc_html__('upload count bg graphic image', 'softim-core'),
                 'default' => [
                     'src' => Utils::get_placeholder_image_src()
                 ],
             ]
         );
-
-        $this->add_control('graphic_list', [
-            'label' => esc_html__('Take 3 Graphic Item', 'softim-core'),
-            'type' => Controls_Manager::REPEATER,
-            'fields' => $repeater->get_controls(),
-        ]);
+        $repeater->add_control(
+            'count_to',
+            [
+                'label' => __( 'Counter Number', 'softim-core' ),
+                'type' => \Elementor\Controls_Manager::TEXTAREA,
+                'default' => __( '10', 'softim-core' ),
+            ]
+        );
+        $repeater->add_control(
+            'count_no',
+            [
+                'label' => __( 'Title', 'softim-core' ),
+                'type' => \Elementor\Controls_Manager::TEXTAREA,
+                'default' => __( '+', 'softim-core' ),
+            ]
+        );
+        $repeater->add_control(
+            'count_title',
+            [
+                'label' => __( 'Title', 'softim-core' ),
+                'type' => \Elementor\Controls_Manager::TEXTAREA,
+                'default' => __( 'Years of Experience', 'softim-core' ),
+            ]
+        );
+        $this->add_control(
+            'odo_list',
+            [
+                'label' => __( 'Odometer List', 'softim-core' ),
+                'type' => \Elementor\Controls_Manager::REPEATER,
+                'fields' => $repeater->get_controls(),
+                'default' => [
+                    [
+                        'count_title' => __( 'Odometer Item', 'softim-core' ),
+                    ],
+                    [
+                        'count_title' => __( 'Odometer Item', 'softim-core' ),
+                    ],
+                ],
+                'title_field' => '{{{ count_title }}}',
+            ]
+        );
+        $this->end_controls_section();
         $this->end_controls_section();
 
 
@@ -356,34 +392,24 @@ class Softim_Statistics_Widget extends Widget_Base
                     <div class="col-xl-6 col-lg-6 mb-30">
                         <div class="statistics-item-area">
                             <div class="row mb-30-none">
-                                <div class="col-xl-6 col-lg-6 col-md-6 mb-30">
-                                    <div class="statistics-item">
-                                        <div class="statistics-icon">
-                                            <img src="assets/images/icon/icon-8.png" alt="icon">
-                                        </div>
-                                        <div class="statistics-content">
-                                            <div class="odo-area">
-                                                <h3 class="odo-title odometer" data-odometer-final="10">0</h3>
-                                                <h3 class="title">+</h3>
+                                <?php if($settings['odo_list']){
+                                    foreach ($settings['odo_list'] as $odo) { var_dump($odo);?>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 mb-30">
+                                            <div class="statistics-item">
+
+                                                <div class="statistics-icon">
+                                                    <img src="<?php echo esc_url($odo['count_image']['url'])?>" alt="icon">
+                                                </div>
+                                                <div class="statistics-content">
+                                                    <div class="odo-area">
+                                                        <h3 class="odo-title odometer" data-odometer-final="<?php echo esc_attr($odo['count_to']);?>">0</h3>
+                                                        <h3 class="title"><?php echo esc_html($odo['count_no']);?></h3>
+                                                    </div>
+                                                    <p><?php echo esc_html($odo['count_title']);?></p>
+                                                </div>
                                             </div>
-                                            <p>Years of Experience</p>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-6 col-lg-6 col-md-6 mb-30">
-                                    <div class="statistics-item">
-                                        <div class="statistics-icon">
-                                            <img src="assets/images/icon/icon-9.png" alt="icon">
-                                        </div>
-                                        <div class="statistics-content">
-                                            <div class="odo-area">
-                                                <h3 class="odo-title odometer" data-odometer-final="120">0</h3>
-                                                <h3 class="title">+</h3>
-                                            </div>
-                                            <p>Experienced Employees</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php } }?>
                             </div>
                         </div>
                     </div>
