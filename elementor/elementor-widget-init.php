@@ -83,6 +83,7 @@ if ( ! class_exists( 'Softim_Elementor_Widget_Init' ) ) {
 				'statistics',
 				'overview-one',
 				'counter-one',
+				'plan-process-one',
 			);
 
 			$elementor_widgets = apply_filters( 'softim_elementor_widget', $elementor_widgets );
