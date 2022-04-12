@@ -104,17 +104,6 @@ class Softim_Statistics_Widget extends Widget_Base
             ]
         );
         $this->add_control(
-            'about_thumb', [
-                'label' => esc_html__('About Thumb Image', 'softim-core'),
-                'type' => Controls_Manager::MEDIA,
-                'show_label' => false,
-                'description' => esc_html__('about thumb image', 'softim-core'),
-                'default' => [
-                    'src' => Utils::get_placeholder_image_src()
-                ],
-            ]
-        );
-        $this->add_control(
             'btn_status', [
                 'label' => esc_html__('Button Show/Hide', 'softim-core'),
                 'type' => Controls_Manager::SWITCHER,
@@ -144,7 +133,36 @@ class Softim_Statistics_Widget extends Widget_Base
         );
         $this->end_controls_section();
 
-//      Odometer Loop
+//      Graphic Loop
+        $this->start_controls_section(
+            'graphic_section',
+            [
+                'label' => esc_html__('Graphic Seciton', 'softim-core'),
+                'tab' => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $repeater = new Repeater();
+        $repeater->add_control(
+            'graphic_image', [
+                'label' => esc_html__('Graphic Image', 'softim-core'),
+                'type' => Controls_Manager::MEDIA,
+                'show_label' => false,
+                'description' => esc_html__('upload about graphic image', 'softim-core'),
+                'default' => [
+                    'src' => Utils::get_placeholder_image_src()
+                ],
+            ]
+        );
+
+        $this->add_control('graphic_list', [
+            'label' => esc_html__('Take 3 Graphic Item', 'softim-core'),
+            'type' => Controls_Manager::REPEATER,
+            'fields' => $repeater->get_controls(),
+        ]);
+        $this->end_controls_section();
+
+        //      Odometer Loop
         $this->start_controls_section(
             'odo_section',
             [
@@ -206,7 +224,6 @@ class Softim_Statistics_Widget extends Widget_Base
                 'title_field' => '{{{ count_title }}}',
             ]
         );
-        $this->end_controls_section();
         $this->end_controls_section();
 
 
@@ -393,10 +410,9 @@ class Softim_Statistics_Widget extends Widget_Base
                         <div class="statistics-item-area">
                             <div class="row mb-30-none">
                                 <?php if($settings['odo_list']){
-                                    foreach ($settings['odo_list'] as $odo) { var_dump($odo);?>
+                                    foreach ($settings['odo_list'] as $odo) { ?>
                                         <div class="col-xl-6 col-lg-6 col-md-6 mb-30">
                                             <div class="statistics-item">
-
                                                 <div class="statistics-icon">
                                                     <img src="<?php echo esc_url($odo['count_image']['url'])?>" alt="icon">
                                                 </div>
@@ -409,7 +425,7 @@ class Softim_Statistics_Widget extends Widget_Base
                                                 </div>
                                             </div>
                                         </div>
-                                <?php } }?>
+                                    <?php } }?>
                             </div>
                         </div>
                     </div>
