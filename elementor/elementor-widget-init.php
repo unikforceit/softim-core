@@ -89,6 +89,7 @@ if ( ! class_exists( 'Softim_Elementor_Widget_Init' ) ) {
 				'team-one',
 				'team-two',
 				'project-one',
+				'project-two',
 			);
 
 			$elementor_widgets = apply_filters( 'softim_elementor_widget', $elementor_widgets );
