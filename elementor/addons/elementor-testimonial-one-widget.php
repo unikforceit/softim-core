@@ -418,11 +418,11 @@ class Softim_Testimonial_One_Widget extends Widget_Base
                                                 <div class="client-header">
                                                     <div class="client-ratings">
                                                         <span class="ratings">
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
                                                         </span>
                                                     </div>
                                                     <div class="client-quote">
