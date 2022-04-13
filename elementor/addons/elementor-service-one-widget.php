@@ -91,7 +91,7 @@ class Softim_Service_One_Widget extends Widget_Base
             'title', [
                 'label' => esc_html__('Title', 'softim-core'),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__('Softim Latest Posts', 'softim-core'),
+                'default' => esc_html__('Our Awesome Services', 'softim-core'),
                 'description' => esc_html__('enter title', 'softim-core'),
             ]
         );
@@ -101,17 +101,6 @@ class Softim_Service_One_Widget extends Widget_Base
                 'type' => Controls_Manager::TEXTAREA,
                 'default' => esc_html__('Credibly grow premier ideas rather than bricks-and-clicks strategic theme areas distributed for stand-alone web-readiness.', 'softim-core'),
                 'description' => esc_html__('enter info', 'softim-core'),
-            ]
-        );
-        $this->add_control(
-            'blog_graphic', [
-                'label' => esc_html__('Blog Graphic Image', 'softim-core'),
-                'type' => Controls_Manager::MEDIA,
-                'show_label' => false,
-                'description' => esc_html__('blog graphic image', 'softim-core'),
-                'default' => [
-                    'src' => Utils::get_placeholder_image_src()
-                ],
             ]
         );
         $this->add_control(
@@ -184,6 +173,37 @@ class Softim_Service_One_Widget extends Widget_Base
             ),
             'default' => 18,
             'description' => esc_html__('select excerpt length', 'softim-core')
+        ]);
+        $this->end_controls_section();
+
+
+
+//      Service Graphic Loop
+        $this->start_controls_section(
+            'about_graphic_section',
+            [
+                'label' => esc_html__('Service Graphic', 'softim-core'),
+                'tab' => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $repeater = new Repeater();
+        $repeater->add_control(
+            'about_graphic_image', [
+                'label' => esc_html__('Graphic Image', 'softim-core'),
+                'type' => Controls_Manager::MEDIA,
+                'show_label' => false,
+                'description' => esc_html__('upload graphic image', 'softim-core'),
+                'default' => [
+                    'src' => Utils::get_placeholder_image_src()
+                ],
+            ]
+        );
+
+        $this->add_control('about_graphic_list', [
+            'label' => esc_html__('Take 5 About Graphic Item', 'softim-core'),
+            'type' => Controls_Manager::REPEATER,
+            'fields' => $repeater->get_controls(),
         ]);
         $this->end_controls_section();
 
@@ -375,7 +395,7 @@ class Softim_Service_One_Widget extends Widget_Base
         $orderby = $settings['orderby'];
         //setup query
         $args = array(
-            'post_type' => 'post',
+            'post_type' => 'service',
             'posts_per_page' => $total_posts,
             'order' => $order,
             'orderby' => $orderby,
@@ -386,7 +406,7 @@ class Softim_Service_One_Widget extends Widget_Base
         if (!empty($category)) {
             $args['tax_query'] = array(
                 array(
-                    'taxonomy' => 'category',
+                    'taxonomy' => 'service',
                     'field' => 'term_id',
                     'terms' => $category
                 )
@@ -394,40 +414,82 @@ class Softim_Service_One_Widget extends Widget_Base
         }
         $post_data = new \WP_Query($args);
         ?>
-        <section class="blog-section pb-120">
-            <div class="blog-element">
-                <img src="<?php echo esc_url($settings['blog_graphic']['url']);?>" alt="element">
+        <section class="service-section ptb-120">
+            <?php
+            if ($settings['about_graphic_list']){
+                $y = 0;
+                foreach ($settings['about_graphic_list'] as $items){
+                    $y++;
+                    if ($y == 1){
+                        $group = 'one';
+                    }else if ($y == 2){
+                        $group = 'two';
+                    }else if ($y == 3){
+                        $group = 'three';
+                    }else if ($y == 4){
+                        $group = 'four';
+                    }else {
+                        $group = 'five';
+                    }
+                    ?>
+                    <div class="service-element-<?php echo esc_attr($group)?>">
+                        <img src="<?php echo esc_url($items['about_graphic_image']['url']);?>" alt="element">
+                    </div>
+                <?php } } ?>
+            <div class="service-element-one">
+                <img src="assets/images/element/element-34.png" alt="element">
             </div>
+            <div class="service-element-two">
+                <img src="assets/images/element/element-35.png" alt="element">
+            </div>
+            <div class="service-element-three">
+                <img src="assets/images/element/element-36.png" alt="element">
+            </div>
+            <div class="service-element-four">
+                <img src="assets/images/element/element-36.png" alt="element">
+            </div>
+            <div class="service-element-five">
+                <img src="assets/images/element/element-37.png" alt="element">
+            </div>
+            <div class="service-shape shape-1"></div>
+            <div class="service-shape shape-2"></div>
+            <div class="service-shape shape-3"></div>
+            <div class="service-shape shape-4"></div>
+            <div class="service-shape shape-5"></div>
+            <div class="service-shape shape-6"></div>
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-7 col-lg-8 text-center">
-                        <div class="section-header">
-                            <h2 class="section-title"><?php echo esc_html($settings['title']);?></h2>
-                            <p><?php echo esc_html($settings['info']);?></p>
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="section-header-wrapper">
+                            <div class="section-header white">
+                                <h2 class="section-title"><?php echo esc_html($settings['title']);?></h2>
+                                <p><?php echo esc_html($settings['info']);?></p>
+                            </div>
+                            <div class="section-header-btn">
+                                <a href="service.html" class="custom-btn two">View All Services <i class="icon-Group-2361 ml-2"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-center mb-40-none">
+                <div class="row justify-content-center mb-30-none">
                     <?php if ($post_data->have_posts()) {
                         while ($post_data->have_posts()) {
                             $post_data->the_post();
                             ?>
 
-                            <div class="col-xl-<?php echo esc_attr($settings['column']);?> col-lg-<?php echo esc_attr($settings['column']);?> col-md-<?php echo esc_attr($settings['column']);?> col-sm-<?php echo esc_attr($settings['column']);?> mb-30">
-                                <div class="blog-item">
-
+                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-30">
+                                <div class="service-item">
                                     <?php if (has_post_thumbnail()){?>
-                                        <div class="blog-thumb">
+                                        <div class="service-icon">
                                             <?php the_post_thumbnail('full');?>
                                         </div>
                                     <?php } ?>
-
-                                    <div class="blog-content">
-                                        <div class="blog-post-meta">
-                                            <span class="user"><?php echo esc_html('By :')?> <?php the_author();?></span>
-                                            <span class="date"><?php get_the_time('F j, Y');?></span>
-                                        </div>
+                                    <div class="service-content">
                                         <h3 class="title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h3>
+                                        <p><?php echo wp_trim_words(get_the_excerpt(), $settings['excerpt_length'], '.');?></p>
+                                        <div class="service-btn">
+                                            <a href="<?php the_permalink();?>" class="custom-btn"><?php echo esc_html('Learn More')?> <i class="icon-Group-2361 ml-2"></i></a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -439,6 +501,7 @@ class Softim_Service_One_Widget extends Widget_Base
                 </div>
             </div>
         </section>
+
         <?php
     }
 }
