@@ -176,8 +176,6 @@ class Softim_Service_One_Widget extends Widget_Base
         ]);
         $this->end_controls_section();
 
-
-
 //      Service Graphic Loop
         $this->start_controls_section(
             'about_graphic_section',
@@ -436,21 +434,6 @@ class Softim_Service_One_Widget extends Widget_Base
                         <img src="<?php echo esc_url($items['about_graphic_image']['url']);?>" alt="element">
                     </div>
                 <?php } } ?>
-            <div class="service-element-one">
-                <img src="assets/images/element/element-34.png" alt="element">
-            </div>
-            <div class="service-element-two">
-                <img src="assets/images/element/element-35.png" alt="element">
-            </div>
-            <div class="service-element-three">
-                <img src="assets/images/element/element-36.png" alt="element">
-            </div>
-            <div class="service-element-four">
-                <img src="assets/images/element/element-36.png" alt="element">
-            </div>
-            <div class="service-element-five">
-                <img src="assets/images/element/element-37.png" alt="element">
-            </div>
             <div class="service-shape shape-1"></div>
             <div class="service-shape shape-2"></div>
             <div class="service-shape shape-3"></div>
