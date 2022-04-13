@@ -6,7 +6,7 @@
  */
 
 namespace Elementor;
-class Softim_About_Two_Widget extends Widget_Base
+class Softim_Team_Two_Widget extends Widget_Base
 {
 
     /**
@@ -21,7 +21,7 @@ class Softim_About_Two_Widget extends Widget_Base
      */
     public function get_name()
     {
-        return 'softim-about-two-widget';
+        return 'softim-team-two-widget';
     }
 
     /**
@@ -36,7 +36,7 @@ class Softim_About_Two_Widget extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('About : 02', 'softim-core');
+        return esc_html__('Team : 02', 'softim-core');
     }
 
     /**
@@ -471,4 +471,4 @@ class Softim_About_Two_Widget extends Widget_Base
     }
 }
 
-Plugin::instance()->widgets_manager->register(new Softim_About_Two_Widget());
+Plugin::instance()->widgets_manager->register(new Softim_Team_Two_Widget());

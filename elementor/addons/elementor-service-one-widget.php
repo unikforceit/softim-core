@@ -6,7 +6,7 @@
  */
 
 namespace Elementor;
-class Softim_Blog_Post_One_Widget extends Widget_Base
+class Softim_Service_One_Widget extends Widget_Base
 {
 
     /**
@@ -21,7 +21,7 @@ class Softim_Blog_Post_One_Widget extends Widget_Base
      */
     public function get_name()
     {
-        return 'softim-blog-one-widget';
+        return 'softim-service-one-widget';
     }
 
     /**
@@ -36,7 +36,7 @@ class Softim_Blog_Post_One_Widget extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Blog: 01', 'softim-core');
+        return esc_html__('Service: 01', 'softim-core');
     }
 
     /**
@@ -443,4 +443,4 @@ class Softim_Blog_Post_One_Widget extends Widget_Base
     }
 }
 
-Plugin::instance()->widgets_manager->register(new Softim_Blog_Post_One_Widget());
+Plugin::instance()->widgets_manager->register(new Softim_Service_One_Widget());

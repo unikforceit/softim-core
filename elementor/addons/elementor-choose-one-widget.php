@@ -6,7 +6,7 @@
  */
 
 namespace Elementor;
-class Softim_About_One_Widget extends Widget_Base
+class Softim_Choose_One_Widget extends Widget_Base
 {
 
     /**
@@ -21,7 +21,7 @@ class Softim_About_One_Widget extends Widget_Base
      */
     public function get_name()
     {
-        return 'softim-about-one-widget';
+        return 'softim-choose-one-widget';
     }
 
     /**
@@ -36,7 +36,7 @@ class Softim_About_One_Widget extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('About : 01', 'softim-core');
+        return esc_html__('Choose : 01', 'softim-core');
     }
 
     /**
@@ -511,4 +511,4 @@ class Softim_About_One_Widget extends Widget_Base
     }
 }
 
-Plugin::instance()->widgets_manager->register(new Softim_About_One_Widget());
+Plugin::instance()->widgets_manager->register(new Softim_Choose_One_Widget());
