@@ -115,6 +115,15 @@ class Softim_Team_One_Widget extends Widget_Base
             ]
         );
         $this->add_control(
+            'arrow_switch',
+            [
+                'label' => esc_html__('Arrow Switch', 'softim-core'),
+                'type' => Controls_Manager::SWITCHER,
+                'description' => esc_html__('you can set yes to show arrow.', 'softim-core'),
+                'default' => 'yes'
+            ]
+        );
+        $this->add_control(
             'column',
             [
                 'label' => esc_html__('Column', 'softim-core'),
@@ -406,14 +415,16 @@ class Softim_Team_One_Widget extends Widget_Base
                                 <h2 class="section-title"><?php echo esc_html($settings['title'])?></h2>
                                 <p><?php echo esc_html($settings['info'])?></p>
                             </div>
+                            <?php if ($settings['arrow_switch'] == 'yes'){?>
                             <div class="slider-nav-area">
                                 <div class="slider-prev">
-                                    <i class="fas fa-chevron-left"></i>
+                                    <i class="fa fa-chevron-left"></i>
                                 </div>
                                 <div class="slider-next">
-                                    <i class="fas fa-chevron-right"></i>
+                                    <i class="fa fa-chevron-right"></i>
                                 </div>
                             </div>
+        <?php }?>
                         </div>
                     </div>
                 </div>
