@@ -442,7 +442,7 @@ class Softim_Project_One_Widget extends Widget_Base
                                 <p><?php echo esc_html($settings['info']);?></p>
                             </div>
                             <div class="section-header-btn">
-                                <a href="<?php echo get_post_type_archive_link('project')?>" class="custom-btn"><?php echo esc_html('View All Projects')?> <i class="icon-Group-2361 ml-2"></i></a>
+                                <a href="<?php echo get_post_type_archive_link('project');?>" class="custom-btn"><?php echo esc_html('View All Projects');?> <i class="icon-Group-2361 ml-2"></i></a>
                             </div>
                         </div>
                     </div>
