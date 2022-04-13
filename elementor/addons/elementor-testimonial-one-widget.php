@@ -6,7 +6,7 @@
  */
 
 namespace Elementor;
-class Softim_About_One_Widget extends Widget_Base
+class Softim_Testimonial_One_Widget extends Widget_Base
 {
 
     /**
@@ -21,7 +21,7 @@ class Softim_About_One_Widget extends Widget_Base
      */
     public function get_name()
     {
-        return 'softim-about-one-widget';
+        return 'softim-testimonial-one-widget';
     }
 
     /**
@@ -36,7 +36,7 @@ class Softim_About_One_Widget extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('About : 01', 'softim-core');
+        return esc_html__('Testimonial : 01', 'softim-core');
     }
 
     /**
@@ -88,165 +88,118 @@ class Softim_About_One_Widget extends Widget_Base
             ]
         );
         $this->add_control(
+            'bg_image', [
+                'label' => esc_html__('Testimonial Backaground Image', 'softim-core'),
+                'type' => Controls_Manager::MEDIA,
+                'show_label' => false,
+                'description' => esc_html__('Background image', 'softim-core'),
+                'default' => [
+                    'src' => Utils::get_placeholder_image_src()
+                ],
+            ]
+        );
+        $this->add_control(
             'title', [
-                'label' => esc_html__('Title 1', 'softim-core'),
+                'label' => esc_html__('Title', 'softim-core'),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__("Have a project in mind?", 'softim-core'),
+                'default' => esc_html__("Hear from happy customers", 'softim-core'),
                 'description' => esc_html__('enter title 1', 'softim-core')
-            ]
-        );
-        $this->add_control(
-            'title2', [
-                'label' => esc_html__('Title 2', 'softim-core'),
-                'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__("Let's connect", 'softim-core'),
-                'description' => esc_html__('enter title 2', 'softim-core')
-            ]
-        );
-        $this->add_control(
-            'subtitle', [
-                'label' => esc_html__('Sub Title', 'softim-core'),
-                'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__('We rank among the best in the US, Argentina, and Ukraine. Our apps get featured as best in class, & our clients love our work.', 'softim-core'),
-                'description' => esc_html__('enter sub title', 'softim-core'),
             ]
         );
         $this->add_control(
             'info', [
                 'label' => esc_html__('Info', 'softim-core'),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__('Welcome To Softim, a software development company, helps to digitize businesses by focusing on client’s business challenges, needs, pain points and providing business-goals-oriented software solutions.', 'softim-core'),
+                'default' => esc_html__('Credibly grow premier ideas rather than bricks-and-clicks strategic theme areas distributed for stand-alone web-readiness.', 'softim-core'),
                 'description' => esc_html__('enter info', 'softim-core'),
-            ]
-        );
-        $this->add_control(
-            'about_thumb', [
-                'label' => esc_html__('About Thumb Image', 'softim-core'),
-                'type' => Controls_Manager::MEDIA,
-                'show_label' => false,
-                'description' => esc_html__('about thumb image', 'softim-core'),
-                'default' => [
-                    'src' => Utils::get_placeholder_image_src()
-                ],
-            ]
-        );
-        $this->add_control(
-            'btn_status', [
-                'label' => esc_html__('Button Show/Hide', 'softim-core'),
-                'type' => Controls_Manager::SWITCHER,
-                'default' => 'yes',
-                'description' => esc_html__('show/hide button', 'softim-core')
-            ]
-        );
-        $this->add_control(
-            'btn_text', [
-                'label' => esc_html__('Button Text', 'softim-core'),
-                'type' => Controls_Manager::TEXT,
-                'default' => esc_html__('Send Message', 'softim-core'),
-                'description' => esc_html__('enter button text', 'softim-core'),
-                'condition' => ['btn_status' => 'yes']
-            ]
-        );
-        $this->add_control(
-            'btn_link', [
-                'label' => esc_html__('Button URL', 'softim-core'),
-                'type' => Controls_Manager::URL,
-                'default' => [
-                    'url' => '#'
-                ],
-                'description' => esc_html__('enter button url', 'softim-core'),
-                'condition' => ['btn_status' => 'yes']
             ]
         );
         $this->end_controls_section();
 
-//      About Graphic Loop
+//      Graphic Loop
         $this->start_controls_section(
-            'about_graphic_section',
+            'graphic_section',
             [
-                'label' => esc_html__('About Right Graphic', 'softim-core'),
+                'label' => esc_html__('Testimonial Graphic', 'softim-core'),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
 
         $repeater = new Repeater();
         $repeater->add_control(
-            'about_graphic_image', [
-                'label' => esc_html__('About Graphic Image', 'softim-core'),
+            'testi_graphic_image', [
+                'label' => esc_html__('Testimonial Graphic Image', 'softim-core'),
                 'type' => Controls_Manager::MEDIA,
                 'show_label' => false,
-                'description' => esc_html__('upload about graphic image', 'softim-core'),
+                'description' => esc_html__('upload testimonial graphic image', 'softim-core'),
                 'default' => [
                     'src' => Utils::get_placeholder_image_src()
                 ],
             ]
         );
 
-        $this->add_control('about_graphic_list', [
-            'label' => esc_html__('Take 5 About Graphic Item', 'softim-core'),
+        $this->add_control('testi_graphic_list', [
+            'label' => esc_html__('Take 3 About Graphic Item', 'softim-core'),
             'type' => Controls_Manager::REPEATER,
             'fields' => $repeater->get_controls(),
         ]);
         $this->end_controls_section();
 
-//      Box 1 Loop
+//      Slider Loop
         $this->start_controls_section(
-            'about_box_1_section',
+            'testi_slider_section',
             [
-                'label' => esc_html__('About Left Circle Graphic 1', 'softim-core'),
+                'label' => esc_html__('Testimonial Slider', 'softim-core'),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
 
         $repeater2 = new Repeater();
         $repeater2->add_control(
-            'about_circle_image_1', [
-                'label' => esc_html__('About Circle Image', 'softim-core'),
+            'testi_quote_image', [
+                'label' => esc_html__('Testimonial Quote Image', 'softim-core'),
                 'type' => Controls_Manager::MEDIA,
                 'show_label' => false,
-                'description' => esc_html__('upload about circle image', 'softim-core'),
+                'description' => esc_html__('upload testimonial quote image', 'softim-core'),
                 'default' => [
                     'src' => Utils::get_placeholder_image_src()
                 ],
             ]
         );
-
-        $this->add_control('about_circle_list_1', [
-            'label' => esc_html__('Take 4 Circle Item', 'softim-core'),
-            'type' => Controls_Manager::REPEATER,
-            'fields' => $repeater2->get_controls(),
-        ]);
-        $this->end_controls_section();
-
-//      Box 2 Loop
-        $this->start_controls_section(
-            'about_box_2_section',
-            [
-                'label' => esc_html__('About Left Circle Graphic 2', 'softim-core'),
-                'tab' => Controls_Manager::TAB_CONTENT,
-            ]
-        );
-
-        $repeater2 = new Repeater();
         $repeater2->add_control(
-            'about_circle_image_2', [
-                'label' => esc_html__('About Circle Image', 'softim-core'),
+            'testi_text', [
+                'label' => esc_html__('Testimonial Text', 'softim-core'),
+                'type' => Controls_Manager::TEXTAREA,
+                'default' => esc_html__('A testimonial is effectively a review or recommendation from a client, letting other people know how your products.', 'softim-core'),
+                'description' => esc_html__('enter info', 'softim-core'),
+            ]
+        );
+        $repeater2->add_control(
+            'testi_author_image', [
+                'label' => esc_html__('Testimonial Author Image', 'softim-core'),
                 'type' => Controls_Manager::MEDIA,
                 'show_label' => false,
-                'description' => esc_html__('upload about circle image', 'softim-core'),
+                'description' => esc_html__('upload testimonial author image', 'softim-core'),
                 'default' => [
                     'src' => Utils::get_placeholder_image_src()
                 ],
             ]
         );
+        $repeater2->add_control(
+            'testi_author_name', [
+                'label' => esc_html__('Testimonial Author Name', 'softim-core'),
+                'type' => Controls_Manager::TEXTAREA,
+                'default' => esc_html__('MOGAN SMITH', 'softim-core'),
+                'description' => esc_html__('enter info', 'softim-core'),
+            ]
+        );
 
-        $this->add_control('about_circle_list_2', [
-            'label' => esc_html__('Take 2 Circle Item', 'softim-core'),
+        $this->add_control('testi_slider_list', [
+            'label' => esc_html__('Take Testimonial Item', 'softim-core'),
             'type' => Controls_Manager::REPEATER,
             'fields' => $repeater2->get_controls(),
         ]);
         $this->end_controls_section();
-
 
         $this->start_controls_section(
             'css_styles',
@@ -417,89 +370,87 @@ class Softim_About_One_Widget extends Widget_Base
     {
         $settings = $this->get_settings_for_display();
 
+        $title = $settings['title'];
+        $info = $settings['info'];
+
         ?>
 
-        <section class="about-section pt-120">
+        <section class="client-section ptb-120">
             <?php
-            if ($settings['about_graphic_list']){
+            if ($settings['testi_graphic_list']){
                 $y = 0;
-                foreach ($settings['about_graphic_list'] as $items){
+                foreach ($settings['testi_graphic_list'] as $items){
                     $y++;
                     if ($y == 1){
                         $group = 'one';
-                    }else if ($y == 2){
+                    }else{
                         $group = 'two';
-                    }else if ($y == 3){
-                        $group = 'three';
-                    }else if ($y == 4){
-                        $group = 'four';
-                    }else {
-                        $group = 'five';
                     }
                     ?>
-                    <div class="about-element-<?php echo esc_attr($group)?>">
-                        <img src="<?php echo esc_url($items['about_graphic_image']['url']);?>" alt="element">
+                    <div class="client-element-<?php echo esc_attr($group)?>">
+                        <img src="<?php echo esc_url($items['testi_graphic_image']['url']);?>" alt="element">
                     </div>
-            <?php } } ?>
+                <?php } } ?>
+            <div class="client-element-three">
+                <img src="<?php echo esc_url($settings['bg_image']['url']);?>" alt="element">
+            </div>
             <div class="container">
-                <div class="about-area three">
-                    <div class="row justify-content-center align-items-center mb-30-none">
-                        <div class="col-xl-6 col-lg-6 mb-30">
-                            <div class="box-wrapper">
-                                <div class="box3"></div>
-                                <div class="box1">
-                                    <?php
-                                    if ($settings['about_circle_list_1']){
-                                        $x = 0;
-                                        foreach ($settings['about_circle_list_1'] as $items1){
-                                            $x++;
-                                            if ($x == 1){
-                                                $group1 = 'one';
-                                            }else if ($x == 2){
-                                                $group1 = 'two';
-                                            }else if ($x == 3){
-                                                $group1 = 'three';
-                                            }else {
-                                                $group1 = 'four';
-                                            }
-                                            ?>
-                                            <div class="box-element-<?php echo esc_attr($group1)?>">
-                                                <img src="<?php echo esc_url($items1['about_circle_image_1']['url']);?>" alt="element">
-                                            </div>
-                                    <?php } } ?>
-                                </div>
-                                <div class="box2">
-                                    <?php
-                                    if ($settings['about_circle_list_2']){
-                                        $z = 0;
-                                        foreach ($settings['about_circle_list_2'] as $items2){
-                                            $z++;
-                                            if ($z == 1){
-                                                $group2 = 'five';
-                                            }else {
-                                                $group2 = 'six';
-                                            }
-                                            ?>
-                                            <div class="box-element-<?php echo esc_attr($group2)?>">
-                                                <img src="<?php echo esc_url($items2['about_circle_image_2']['url']);?>" alt="element">
-                                            </div>
-                                        <?php } } ?>
-                                </div>
-                            </div>
-                            <div class="about-thumb">
-                                <img src="<?php echo esc_url($settings['about_thumb']['url']);?>" alt="element">
-                            </div>
+                <div class="row justify-content-center">
+                    <div class="col-xl-7 col-lg-8 text-center">
+                        <div class="section-header">
+                            <h2 class="section-title"><?php echo esc_html($title);?></h2>
+                            <p><?php echo esc_html($info);?></p>
                         </div>
-                        <div class="col-xl-6 col-lg-6 mb-30">
-                            <div class="about-content">
-                                <h2 class="title"><?php echo esc_html($settings['title']); ?> <span class="text--base"><?php echo esc_html($settings['title2']); ?></span></h2>
-                                <p class="para"><?php echo esc_html($settings['subtitle']); ?></p>
-                                <p class="info"><?php echo esc_html($settings['info']); ?></p>
-                                <div class="about-btn">
-                                    <?php if ($settings['btn_status'] == 'yes'): ?>
-                                        <a href="<?php echo esc_url($settings['btn_link']['url']); ?>"
-                                           class="btn--base"><?php echo esc_html($settings['btn_text']); ?></a>
-                                    <?php endif; ?>
+                    </div>
+                </div>
+                <div class="client-area">
+                    <div class="row justify-content-center mb-10-none">
+                        <div class="col-xl-12">
+                            <div class="client-slider-area">
+                                <div class="client-slider">
+                                    <div class="swiper-wrapper">
+                                        <?php
+                                        if ($settings['testi_slider_list']){
+                                            foreach ($settings['testi_slider_list'] as $slide){
+                                                ?>
+                                        <div class="swiper-slide">
+                                            <div class="client-item">
+                                                <div class="client-header">
+                                                    <div class="client-ratings">
+                                                        <span class="ratings">
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                        </span>
+                                                    </div>
+                                                    <div class="client-quote">
+                                                        <img src="<?php echo esc_url($slide['testi_quote_image']['url']);?>" alt="quote">
+                                                    </div>
+                                                </div>
+                                                <div class="client-content">
+                                                    <p><?php echo esc_html($slide['testi_text']);?></p>
+                                                </div>
+                                                <div class="client-footer">
+                                                    <div class="client-footer-user-thumb">
+                                                        <img src="<?php echo esc_url($slide['testi_author_image']['url']);?>" alt="client">
+                                                    </div>
+                                                    <div class="client-footer-user-content">
+                                                        <h6 class="title"><?php echo esc_html($slide['testi_author_name']);?></h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                            <?php } } ?>
+                                    </div>
+                                    <div class="client-pagination"></div>
+                                    <div class="slider-prev">
+                                        <i class="las la-long-arrow-alt-left"></i>
+                                    </div>
+                                    <div class="slider-next">
+                                        <i class="las la-long-arrow-alt-right"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -511,4 +462,4 @@ class Softim_About_One_Widget extends Widget_Base
     }
 }
 
-Plugin::instance()->widgets_manager->register(new Softim_About_One_Widget());
+Plugin::instance()->widgets_manager->register(new Softim_Testimonial_One_Widget());
