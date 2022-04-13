@@ -75,9 +75,7 @@ class Softim_Tags_Widget extends WP_Widget
         $orderby = !empty($instance) && $instance['orderby'] ? $instance['orderby'] : 'ID';
         $taxonomy = array(
             'tags' => esc_html__('Blog Tags', 'softim-core'),
-            'packages-cat' => esc_html__('Packages Tags', 'softim-core'),
-            'deals-cat' => esc_html__('Deals Tags', 'softim-core'),
-            'course-tags' => esc_html__('Courses Tags', 'softim-core'),
+            'project-cat' => esc_html__('Packages Tags', 'softim-core'),
             'service-cat' => esc_html__('Service Tags', 'softim-core')
         );
         $order_arr = array(

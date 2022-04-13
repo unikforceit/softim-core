@@ -22,17 +22,11 @@ if (!class_exists('softim_Post_Column_Customize')){
             add_filter("manage_edit-service-cat_columns", array($this, "edit_service_cat_columns") );
             add_filter('manage_service-cat_custom_column', array($this, 'add_service_category_columns'), 13, 3);
             //packages admin add table value hook
-            add_filter("manage_edit-packages_columns", array($this, "edit_packages_columns") );
-            add_action('manage_packages_posts_custom_column', array($this, 'add_packages_thumbnail_columns'), 10,2);
+            add_filter("manage_edit-project_columns", array($this, "edit_project_columns") );
+            add_action('manage_project_posts_custom_column', array($this, 'add_project_thumbnail_columns'), 10,2);
             //packages category icon
-            add_filter("manage_edit-packages-cat_columns", array($this, "edit_packages_cat_columns") );
-            add_filter('manage_packages-cat_custom_column', array($this, 'add_packages_category_columns'), 13, 3);
-            //deals admin add table value hook
-            add_filter("manage_edit-deals_columns", array($this, "edit_deals_columns") );
-            add_action('manage_deals_posts_custom_column', array($this, 'add_deals_thumbnail_columns'), 20,4);
-            //deals category icon
-            add_filter("manage_edit-deals-cat_columns", array($this, "edit_deals_cat_columns") );
-            add_filter('manage_deals-cat_custom_column', array($this, 'add_deals_category_columns'), 23, 4);
+            add_filter("manage_edit-project-cat_columns", array($this, "edit_project_cat_columns") );
+            add_filter('manage_project-cat_custom_column', array($this, 'add_project_category_columns'), 13, 3);
             //team admin add table value hook
             add_filter("manage_edit-team_columns", array($this, "edit_team_columns") );
             add_action('manage_team_posts_custom_column', array($this, 'add_team_thumbnail_columns'), 20,4);
@@ -119,15 +113,15 @@ if (!class_exists('softim_Post_Column_Customize')){
          * Edit packages
          * @since 1.0.0
          */
-        public function edit_packages_columns($columns){
+        public function edit_project_columns($columns){
 
             $order = ( 'asc' == $_GET['order'] ) ? 'desc' : 'asc';
-            $cat_title = $columns['taxonomy-packages-cat'];
+            $cat_title = $columns['taxonomy-project-cat'];
             unset($columns);
             $columns['cb'] = '<input type="checkbox" />';
             $columns['title'] = esc_html__('Title','softim-core');
-            $columns['thumbnail'] = '<a href="edit.php?post_type=packages&orderby=title&order='.urlencode($order).'">'.esc_html__('Thumbnail','softim-core').'</a>';
-            $columns['taxonomy-packages-cat'] = '<a href="edit.php?post_type=packages&orderby=taxonomy&order='.urlencode($order).'">'.$cat_title.'<span class="sorting-indicator"></span></a>';
+            $columns['thumbnail'] = '<a href="edit.php?post_type=project&orderby=title&order='.urlencode($order).'">'.esc_html__('Thumbnail','softim-core').'</a>';
+            $columns['taxonomy-packages-cat'] = '<a href="edit.php?post_type=project&orderby=taxonomy&order='.urlencode($order).'">'.$cat_title.'<span class="sorting-indicator"></span></a>';
             $columns['icon'] = esc_html__('Icon','softim-core');
             $columns['date'] = esc_html__('Date','softim-core');
             return $columns;
@@ -137,15 +131,15 @@ if (!class_exists('softim_Post_Column_Customize')){
          * Add packages thumbnail
          * @since 1.0.0
          */
-        public function add_packages_thumbnail_columns($column,$post_id) {
+        public function add_project_thumbnail_columns($column,$post_id) {
             switch ( $column ) {
                 case 'thumbnail' :
                     echo '<a class="row-thumbnail" href="' . esc_url( admin_url( 'post.php?post=' . $post_id . '&amp;action=edit' ) ) . '">' . get_the_post_thumbnail( $post_id, 'thumbnail' ) . '</a>';
                     break;
                 case 'icon' :
-                    $packages_meta_option = get_post_meta($post_id ,'softim_packages_options', true);
-                    $packages_icon = $packages_meta_option['packages_icon'];
-                    printf('<i class="neaterller-font-size50 %s"></i>',esc_attr($packages_icon));
+                    $project_meta_option = get_post_meta($post_id ,'softim_project_options', true);
+                    $project_icon = $project_meta_option['project_icon'];
+                    printf('<i class="neaterller-font-size50 %s"></i>',esc_attr($project_icon));
                     break;
                 default:
                     break;
@@ -156,7 +150,7 @@ if (!class_exists('softim_Post_Column_Customize')){
          * Packages category column customize
          * @since 1.0.0
          */
-        public function edit_packages_cat_columns($columns){
+        public function edit_project_cat_columns($columns){
             $columns['icon'] = esc_html__('Icon','softim-core');
             return $columns;
         }
@@ -165,70 +159,8 @@ if (!class_exists('softim_Post_Column_Customize')){
          * Packages Category column add
          * @since 1.0.0
          */
-        public function add_packages_category_columns($string,$columns,$post_id){
-            $post_term_meta = get_term_meta($post_id,'softim_packages_category',true);
-            $icon = isset($post_term_meta['icon']) ? $post_term_meta['icon'] : '';
-            switch ( $columns ) {
-                case 'icon' :
-                    echo '<i class="neaterller-font-size50 '.$icon.'"></i>';
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        /**
-         * Edit deals
-         * @since 1.0.0
-         */
-        public function edit_deals_columns($columns){
-
-            $order = ( 'asc' == $_GET['order'] ) ? 'desc' : 'asc';
-            $cat_title = $columns['taxonomy-deals-cat'];
-            unset($columns);
-            $columns['cb'] = '<input type="checkbox" />';
-            $columns['title'] = esc_html__('Title','softim-core');
-            $columns['thumbnail'] = '<a href="edit.php?post_type=deals&orderby=title&order='.urlencode($order).'">'.esc_html__('Thumbnail','softim-core').'</a>';
-            $columns['taxonomy-deals-cat'] = '<a href="edit.php?post_type=deals&orderby=taxonomy&order='.urlencode($order).'">'.$cat_title.'<span class="sorting-indicator"></span></a>';
-            $columns['icon'] = esc_html__('Icon','softim-core');
-            $columns['date'] = esc_html__('Date','softim-core');
-            return $columns;
-        }
-
-        /**
-         * Add deals thumbnail
-         * @since 1.0.0
-         */
-        public function add_deals_thumbnail_columns($column,$post_id) {
-            switch ( $column ) {
-                case 'thumbnail' :
-                    echo '<a class="row-thumbnail" href="' . esc_url( admin_url( 'post.php?post=' . $post_id . '&amp;action=edit' ) ) . '">' . get_the_post_thumbnail( $post_id, 'thumbnail' ) . '</a>';
-                    break;
-                case 'icon' :
-                    $deals_meta_option = get_post_meta($post_id ,'softim_deals_options', true);
-                    $deals_icon = $deals_meta_option['deals_icon'];
-                    printf('<i class="neaterller-font-size50 %s"></i>',esc_attr($deals_icon));
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        /**
-         * Deals category column customize
-         * @since 1.0.0
-         */
-        public function edit_deals_cat_columns($columns){
-            $columns['icon'] = esc_html__('Icon','softim-core');
-            return $columns;
-        }
-
-        /**
-         * Deals Category column add
-         * @since 1.0.0
-         */
-        public function add_deals_category_columns($string,$columns,$post_id){
-            $post_term_meta = get_term_meta($post_id,'softim_deals_category',true);
+        public function add_project_category_columns($string,$columns,$post_id){
+            $post_term_meta = get_term_meta($post_id,'softim_project_category',true);
             $icon = isset($post_term_meta['icon']) ? $post_term_meta['icon'] : '';
             switch ( $columns ) {
                 case 'icon' :

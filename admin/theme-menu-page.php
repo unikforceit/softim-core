@@ -95,28 +95,16 @@ if (!class_exists('Softim_Core_Admin_Menu')) {
                         'id' => 'edit-service-cat'
                     )
                 ),
-                'packages' => array(
+                'project' => array(
                     array(
-                        'link' => 'edit.php?post_type=packages',
+                        'link' => 'edit.php?post_type=project',
                         'name' => sprintf(esc_html__('%s', 'softim-core'), 'Packages'),
-                        'id' => 'edit-packages'
+                        'id' => 'edit-project'
                     ),
                     array(
-                        'link' => 'edit-tags.php?taxonomy=packages-cat&post_type=packages',
+                        'link' => 'edit-tags.php?taxonomy=project-cat&post_type=project',
                         'name' => sprintf(esc_html__('%s Categories', 'softim-core'), 'Packages'),
-                        'id' => 'edit-packages-cat'
-                    )
-                ),
-                'deals' => array(
-                    array(
-                        'link' => 'edit.php?post_type=deals',
-                        'name' => sprintf(esc_html__('%s', 'softim-core'), 'Deals'),
-                        'id' => 'edit-deals'
-                    ),
-                    array(
-                        'link' => 'edit-tags.php?taxonomy=deals-cat&post_type=deals',
-                        'name' => sprintf(esc_html__('%s Categories', 'softim-core'), 'Deals'),
-                        'id' => 'edit-deals-cat'
+                        'id' => 'edit-project-cat'
                     )
                 ),
                 'team' => array(
