@@ -76,6 +76,7 @@ if ( ! class_exists( 'Softim_Elementor_Widget_Init' ) ) {
 				'about-two',
 				'about-three',
 				'call-to-action-one',
+				'call-to-action-two',
 				'blog-one',
 				'blog-two',
 				'service-one',

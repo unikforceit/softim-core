@@ -167,6 +167,12 @@ class Softim_Plan_Process_One_Widget extends Widget_Base
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
+        $this->add_group_control(Group_Control_Background::get_type(), [
+            'name' => 'item_after',
+            'label' => esc_html__('Item After', 'softim-core'),
+            'types' => [ 'classic' ],
+            'selector' => "{{WRAPPER}} .process-item::after"
+        ]);
         $this->add_control('banner_bg_color', [
             'label' => esc_html__('Banner Background', 'softim-core'),
             'type' => Controls_Manager::COLOR,
