@@ -15,32 +15,47 @@
     };
 
 
-    var Agelandvideo = function ($scope, $) {
+    var Softimslider = function ($scope, $) {
 
-        $scope.find('.hero_banner').each(function () {
-            var settings = $(this).data('ageland');
+        $scope.find('.client-area').each(function () {
+            var settings = $(this).data('softim');
 
             // Js Start
-            var $videoSrc;
-            $('.video-btn').on('click', function () {
-                $videoSrc = $(this).data("src");
+            var swiper = new Swiper('.client-slider', {
+                slidesPerView: 3,
+                spaceBetween: 30,
+                loop: true,
+                pagination: {
+                    el: '.client-pagination',
+                    clickable: true,
+                    renderBullet: function (index, className) {
+                        return '<span class="' + className + '">' + (index + 1) + '</span>';
+                    },
+                },
+                navigation: {
+                    nextEl: '.slider-next',
+                    prevEl: '.slider-prev',
+                },
+                autoplay: {
+                    speeds: 2000,
+                    delay: 4000,
+                },
+                speed: 1000,
+                breakpoints: {
+                    1199: {
+                        slidesPerView: 2,
+                    },
+                    991: {
+                        slidesPerView: 2,
+                    },
+                    767: {
+                        slidesPerView: 1,
+                    },
+                    575: {
+                        slidesPerView: 1,
+                    },
+                }
             });
-            //console.log($videoSrc);
-
-
-            // when the modal is opened autoplay it
-            $('#myModal').on('shown.bs.modal', function (e) {
-
-                // set the video src to autoplay and not to show related video. Youtube related video is like a box of chocolates... you never know what you're gonna get
-                $("#video").attr('src', $videoSrc + "?rel=0&amp;showinfo=0&amp;modestbranding=1&amp;autoplay=1");
-            })
-
-
-            // stop playing the youtube video when I close the modal
-            $('#myModal').on('hide.bs.modal', function (e) {
-                // a poor man's stop video
-                $("#video").attr('src', $videoSrc);
-            })
             // Js End
         });
 
@@ -48,7 +63,7 @@
     var Bannerslider = function ($scope, $) {
 
         $scope.find('.brand-slider-area').each(function () {
-            var settings = $(this).data('ageland');
+            var settings = $(this).data('softim');
 
             // Js Start
             var swiper = new Swiper('.brand-slider', {
@@ -85,13 +100,13 @@
         if (elementorFrontend.isEditMode()) {
             console.log('Elementor editor mod loaded');
             elementorFrontend.hooks.addAction('frontend/element_ready/global', AgelandGlobal);
-            elementorFrontend.hooks.addAction('frontend/element_ready/ageland-banner.default', Agelandvideo);
+            elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-one-widget.default', Softimslider);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-brand-widget.default', Bannerslider);
 
         } else {
             console.log('Elementor frontend mod loaded');
             elementorFrontend.hooks.addAction('frontend/element_ready/global', AgelandGlobal);
-            elementorFrontend.hooks.addAction('frontend/element_ready/ageland-banner.default', Agelandvideo);
+            elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-one-widget', Softimslider);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-brand-widget.default', Bannerslider);
         }
     });
