@@ -94,6 +94,41 @@
         });
 
     };
+    var Teamslider = function ($scope, $) {
+
+        $scope.find('.team-slider-area').each(function () {
+            var settings = $(this).data('softim');
+
+            // Js Start
+            var swiper = new Swiper('.team-slider', {
+                slidesPerView: 3,
+                spaceBetween: 30,
+                loop: true,
+                navigation: {
+                    nextEl: '.slider-next',
+                    prevEl: '.slider-prev',
+                },
+                autoplay: {
+                    speeds: 2000,
+                    delay: 4000,
+                },
+                speed: 1000,
+                breakpoints: {
+                    991: {
+                        slidesPerView: 2,
+                    },
+                    767: {
+                        slidesPerView: 2,
+                    },
+                    575: {
+                        slidesPerView: 1,
+                    },
+                }
+            });
+            // Js End
+        });
+
+    };
 
 
     $(window).on('elementor/frontend/init', function () {
@@ -102,12 +137,14 @@
             elementorFrontend.hooks.addAction('frontend/element_ready/global', AgelandGlobal);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-one-widget.default', Softimslider);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-brand-widget.default', Bannerslider);
+            elementorFrontend.hooks.addAction('frontend/element_ready/softim-team-one-widget.default', Teamslider);
 
         } else {
             console.log('Elementor frontend mod loaded');
             elementorFrontend.hooks.addAction('frontend/element_ready/global', AgelandGlobal);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-one-widget', Softimslider);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-brand-widget.default', Bannerslider);
+            elementorFrontend.hooks.addAction('frontend/element_ready/softim-team-one-widget.default', Teamslider);
         }
     });
     console.log('addon js loaded');

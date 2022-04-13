@@ -60,7 +60,6 @@ if (!class_exists('softim_Post_Column_Customize')){
 			$columns['title'] = esc_html__('Title','softim-core');
 			$columns['thumbnail'] = '<a href="edit.php?post_type=service&orderby=title&order='.urlencode($order).'">'.esc_html__('Thumbnail','softim-core').'</a>';
 			$columns['taxonomy-service-cat'] = '<a href="edit.php?post_type=service&orderby=taxonomy&order='.urlencode($order).'">'.$cat_title.'<span class="sorting-indicator"></span></a>';
-			$columns['icon'] = esc_html__('Icon','softim-core');
 			$columns['date'] = esc_html__('Date','softim-core');
 			return $columns;
 		}
@@ -74,11 +73,6 @@ if (!class_exists('softim_Post_Column_Customize')){
 				case 'thumbnail' :
 					echo '<a class="row-thumbnail" href="' . esc_url( admin_url( 'post.php?post=' . $post_id . '&amp;action=edit' ) ) . '">' . get_the_post_thumbnail( $post_id, 'thumbnail' ) . '</a>';
 					break;
-                case 'icon' :
-                    $service_meta_option = get_post_meta($post_id ,'softim_service_options', true);
-                    $service_icon = $service_meta_option['service_icon'];
-                    printf('<i class="neaterller-font-size50 %s"></i>',esc_attr($service_icon));
-                    break;
 				default:
 					break;
 			}
@@ -122,7 +116,6 @@ if (!class_exists('softim_Post_Column_Customize')){
             $columns['title'] = esc_html__('Title','softim-core');
             $columns['thumbnail'] = '<a href="edit.php?post_type=project&orderby=title&order='.urlencode($order).'">'.esc_html__('Thumbnail','softim-core').'</a>';
             $columns['taxonomy-packages-cat'] = '<a href="edit.php?post_type=project&orderby=taxonomy&order='.urlencode($order).'">'.$cat_title.'<span class="sorting-indicator"></span></a>';
-            $columns['icon'] = esc_html__('Icon','softim-core');
             $columns['date'] = esc_html__('Date','softim-core');
             return $columns;
         }
@@ -135,11 +128,6 @@ if (!class_exists('softim_Post_Column_Customize')){
             switch ( $column ) {
                 case 'thumbnail' :
                     echo '<a class="row-thumbnail" href="' . esc_url( admin_url( 'post.php?post=' . $post_id . '&amp;action=edit' ) ) . '">' . get_the_post_thumbnail( $post_id, 'thumbnail' ) . '</a>';
-                    break;
-                case 'icon' :
-                    $project_meta_option = get_post_meta($post_id ,'softim_project_options', true);
-                    $project_icon = $project_meta_option['project_icon'];
-                    printf('<i class="neaterller-font-size50 %s"></i>',esc_attr($project_icon));
                     break;
                 default:
                     break;
@@ -184,7 +172,6 @@ if (!class_exists('softim_Post_Column_Customize')){
             $columns['title'] = esc_html__('Title','softim-core');
             $columns['thumbnail'] = '<a href="edit.php?post_type=team&orderby=title&order='.urlencode($order).'">'.esc_html__('Thumbnail','softim-core').'</a>';
             $columns['taxonomy-team-cat'] = '<a href="edit.php?post_type=team&orderby=taxonomy&order='.urlencode($order).'">'.$cat_title.'<span class="sorting-indicator"></span></a>';
-            $columns['icon'] = esc_html__('Icon','softim-core');
             $columns['date'] = esc_html__('Date','softim-core');
             return $columns;
         }
@@ -197,11 +184,6 @@ if (!class_exists('softim_Post_Column_Customize')){
             switch ( $column ) {
                 case 'thumbnail' :
                     echo '<a class="row-thumbnail" href="' . esc_url( admin_url( 'post.php?post=' . $post_id . '&amp;action=edit' ) ) . '">' . get_the_post_thumbnail( $post_id, 'thumbnail' ) . '</a>';
-                    break;
-                case 'icon' :
-                    $team_meta_option = get_post_meta($post_id ,'softim_team_options', true);
-                    $team_icon = $team_meta_option['team_icon'];
-                    printf('<i class="neaterller-font-size50 %s"></i>',esc_attr($team_icon));
                     break;
                 default:
                     break;
