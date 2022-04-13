@@ -442,7 +442,7 @@ class Softim_Project_One_Widget extends Widget_Base
                                 <p><?php echo esc_html($settings['info']);?></p>
                             </div>
                             <div class="section-header-btn">
-                                <a href="project.html" class="custom-btn">View All Projects <i class="icon-Group-2361 ml-2"></i></a>
+                                <a href="<?php echo get_post_type_archive_link('project')?>" class="custom-btn"><?php echo esc_html('View All Projects')?> <i class="icon-Group-2361 ml-2"></i></a>
                             </div>
                         </div>
                     </div>
@@ -463,7 +463,7 @@ class Softim_Project_One_Widget extends Widget_Base
                                     <?php } ?>
                                     <div class="project-overlay">
                                         <div class="overlay-content">
-                                            <h4 class="title"><a href="<?php the_permalink();?>">Brand redesign meanwhile <br> focusing product</a></h4>
+                                            <h4 class="title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h4>
                                         </div>
                                     </div>
                                 </div>
