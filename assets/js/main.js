@@ -182,6 +182,32 @@
         });
 
     };
+    var Faq = function ($scope, $) {
+
+        $scope.find('.faq-wrapper').each(function () {
+            var settings = $(this).data('softim');
+
+            // Js Start
+            // faq
+            $('.faq-wrapper .faq-title').on('click', function (e) {
+                var element = $(this).parent('.faq-item');
+                if (element.hasClass('open')) {
+                    element.removeClass('open');
+                    element.find('.faq-content').removeClass('open');
+                    element.find('.faq-content').slideUp(300, "swing");
+                } else {
+                    element.addClass('open');
+                    element.children('.faq-content').slideDown(300, "swing");
+                    element.siblings('.faq-item').children('.faq-content').slideUp(300, "swing");
+                    element.siblings('.faq-item').removeClass('open');
+                    element.siblings('.faq-item').find('.faq-title').removeClass('open');
+                    element.siblings('.taq-item').find('.faq-content').slideUp(300, "swing");
+                }
+            });
+            // Js End
+        });
+
+    };
 
 
     $(window).on('elementor/frontend/init', function () {
@@ -192,6 +218,7 @@
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-team-one-widget.default', Teamslider);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-one-widget.default', Testislider1);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-two-widget.default', Testislider2);
+            elementorFrontend.hooks.addAction('frontend/element_ready/softim-faq-one-widget.default', Faq);
 
         } else {
             console.log('Elementor frontend mod loaded');
@@ -200,6 +227,7 @@
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-team-one-widget.default', Teamslider);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-one-widget.default', Testislider1);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-two-widget.default', Testislider2);
+            elementorFrontend.hooks.addAction('frontend/element_ready/softim-faq-one-widget.default', Faq);
         }
     });
     console.log('addon js loaded');
