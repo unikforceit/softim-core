@@ -86,6 +86,7 @@ if ( ! class_exists( 'Softim_Elementor_Widget_Init' ) ) {
 				'counter-one',
 				'plan-process-one',
 				'testimonial-one',
+				'testimonial-two',
 				'team-one',
 				'team-two',
 				'project-one',
