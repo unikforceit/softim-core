@@ -6,7 +6,7 @@
  */
 
 namespace Elementor;
-class Softim_Call_To_Action_Two_Widget extends Widget_Base
+class Softim_Call_To_Action_One_Widget extends Widget_Base
 {
 
     /**
@@ -21,7 +21,7 @@ class Softim_Call_To_Action_Two_Widget extends Widget_Base
      */
     public function get_name()
     {
-        return 'softim-call-to-action-two-widget';
+        return 'softim-call-to-action-one-widget';
     }
 
     /**
@@ -36,7 +36,7 @@ class Softim_Call_To_Action_Two_Widget extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Call To Action : 02', 'softim-core');
+        return esc_html__('Call To Action : 01', 'softim-core');
     }
 
     /**
@@ -89,25 +89,17 @@ class Softim_Call_To_Action_Two_Widget extends Widget_Base
         );
         $this->add_control(
             'title', [
-                'label' => esc_html__('Right to Left Text', 'softim-core'),
+                'label' => esc_html__('Title', 'softim-core'),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__("STARTUP SOLUTIONS", 'softim-core'),
-                'description' => esc_html__('enter text', 'softim-core')
-            ]
-        );
-        $this->add_control(
-            'info_1', [
-                'label' => esc_html__('Text 1', 'softim-core'),
-                'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__("We have three projects with this template & that is because we love the design,", 'softim-core'),
+                'default' => esc_html__("Get Newsletter From Softim", 'softim-core'),
                 'description' => esc_html__('enter title', 'softim-core')
             ]
         );
         $this->add_control(
-            'info_2', [
-                'label' => esc_html__('Text 2', 'softim-core'),
+            'info', [
+                'label' => esc_html__('Info', 'softim-core'),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__('the large number of possibilities.', 'softim-core'),
+                'default' => esc_html__('Credibly grow premier ideas rather than bricks-and-clicks strategic theme areas distributed for stand-alone web-readiness.', 'softim-core'),
                 'description' => esc_html__('enter description', 'softim-core'),
             ]
         );
@@ -123,6 +115,48 @@ class Softim_Call_To_Action_Two_Widget extends Widget_Base
             ]
         );
         $this->add_control(
+            'thumb_image2', [
+                'label' => esc_html__('Thumb Image Left', 'softim-core'),
+                'type' => Controls_Manager::MEDIA,
+                'show_label' => false,
+                'description' => esc_html__('thumb image left', 'softim-core'),
+                'default' => [
+                    'src' => Utils::get_placeholder_image_src()
+                ],
+            ]
+        );
+        $this->add_control(
+            'thumb_image3', [
+                'label' => esc_html__('Thumb Image Right', 'softim-core'),
+                'type' => Controls_Manager::MEDIA,
+                'show_label' => false,
+                'description' => esc_html__('thumb image right', 'softim-core'),
+                'default' => [
+                    'src' => Utils::get_placeholder_image_src()
+                ],
+            ]
+        );
+        $this->add_control(
+            'subscribe_field_icon',
+            [
+                'label' => esc_html__('Subscribe Field Icon', 'softim-core'),
+                'type' => Controls_Manager::ICONS,
+                'description' => esc_html__('select Icon.', 'softim-core'),
+                'default' => [
+                    'value' => 'fas fa-phone-alt',
+                    'library' => 'solid',
+                ],
+            ]
+        );
+        $this->add_control(
+            'subscribe_field_placeholder', [
+                'label' => esc_html__('Subscribe Placeholder', 'softim-core'),
+                'type' => Controls_Manager::TEXTAREA,
+                'default' => esc_html__('Email Address', 'softim-core'),
+                'description' => esc_html__('enter placeholder', 'softim-core'),
+            ]
+        );
+        $this->add_control(
             'btn_status', [
                 'label' => esc_html__('Button Show/Hide', 'softim-core'),
                 'type' => Controls_Manager::SWITCHER,
@@ -134,9 +168,21 @@ class Softim_Call_To_Action_Two_Widget extends Widget_Base
             'btn_text', [
                 'label' => esc_html__('Button Text', 'softim-core'),
                 'type' => Controls_Manager::TEXT,
-                'default' => esc_html__('Read More', 'softim-core'),
+                'default' => esc_html__('SUBSCRIBE', 'softim-core'),
                 'description' => esc_html__('enter button text', 'softim-core'),
                 'condition' => ['btn_status' => 'yes']
+            ]
+        );
+        $this->add_control(
+            'subscribe_icon',
+            [
+                'label' => esc_html__('Subscribe Button Icon', 'softim-core'),
+                'type' => Controls_Manager::ICONS,
+                'description' => esc_html__('select Icon.', 'softim-core'),
+                'default' => [
+                    'value' => 'fab fa-telegram-plane',
+                    'library' => 'solid',
+                ],
             ]
         );
         $this->end_controls_section();
@@ -149,25 +195,39 @@ class Softim_Call_To_Action_Two_Widget extends Widget_Base
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
-        $this->add_control('title_color', [
-            'label' => esc_html__('Right to Left Text', 'softim-core'),
+        $this->add_control('call_bg_color', [
+            'label' => esc_html__('Background color', 'softim-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
-                "{{WRAPPER}} .wrapper.demo-text .marquee span" => "color: {{VALUE}}"
+                "{{WRAPPER}} .subscribe-area" => "background: {{VALUE}}"
             ]
         ]);
-        $this->add_control('info_1_color', [
-            'label' => esc_html__('Info 1 Color', 'softim-core'),
+        $this->add_control('call_before_bg_color', [
+            'label' => esc_html__('Thumb Background color', 'softim-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
-                "{{WRAPPER}} .call-to-action-content .title" => "color: {{VALUE}}"
+                "{{WRAPPER}} .subscribe-area::before" => "background: {{VALUE}}"
             ]
         ]);
-        $this->add_control('info_2_color', [
-            'label' => esc_html__('Info 2 Color', 'softim-core'),
+        $this->add_control('banner_title_color', [
+            'label' => esc_html__('Title Color', 'softim-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
-                "{{WRAPPER}} .call-to-action-content .inner-title" => "color: {{VALUE}}"
+                "{{WRAPPER}} .subscribe-area .subscribe-content .title" => "color: {{VALUE}}"
+            ]
+        ]);
+        $this->add_control('banner_info_color', [
+            'label' => esc_html__('Info Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .subscribe-area .subscribe-content p" => "color: {{VALUE}}"
+            ]
+        ]);
+        $this->add_control('placeholder_color', [
+            'label' => esc_html__('Placeholder Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .subscribe-area .subscribe-form input::placeholder" => "color: {{VALUE}}"
             ]
         ]);
         $this->end_controls_section();
@@ -268,22 +328,22 @@ class Softim_Call_To_Action_Two_Widget extends Widget_Base
         $this->add_group_control(Group_Control_Typography::get_type(), [
             'name' => 'title_typography',
             'label' => esc_html__('Title Typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .wrapper.demo-text .marquee span"
+            'selector' => "{{WRAPPER}} .subscribe-area .subscribe-content .title"
         ]);
         $this->add_group_control(Group_Control_Typography::get_type(), [
-            'name' => 'info_1_typography',
-            'label' => esc_html__('Info 1 Typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .call-to-action-content .title"
-        ]);
-        $this->add_group_control(Group_Control_Typography::get_type(), [
-            'name' => 'info_2_typography',
-            'label' => esc_html__('Info 2 Typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .call-to-action-content .inner-title"
+            'name' => 'info_typography',
+            'label' => esc_html__('Info Typography', 'softim-core'),
+            'selector' => "{{WRAPPER}} .subscribe-area .subscribe-content p"
         ]);
         $this->add_group_control(Group_Control_Typography::get_type(), [
             'name' => 'button_typography',
             'label' => esc_html__('Button Typography', 'softim-core'),
             'selector' => "{{WRAPPER}} .btn--base"
+        ]);
+        $this->add_group_control(Group_Control_Typography::get_type(), [
+            'name' => 'placeholder_typography',
+            'label' => esc_html__('Placeholder Typography', 'softim-core'),
+            'selector' => "{{WRAPPER}} .subscribe-area .subscribe-form input::placeholder"
         ]);
         $this->end_controls_section();
         /* typography settings end */
@@ -304,30 +364,36 @@ class Softim_Call_To_Action_Two_Widget extends Widget_Base
 
         ?>
 
-        <section class="call-to-action-section pb-120">
-            <div class="call-to-action-element" data-aos="fade-left" data-aos-duration="1200">
+        <section class="subscribe-section ptb-120">
+            <div class="subscribe-element-one">
                 <img src="<?php echo esc_url($settings['thumb_image']['url']);?>" alt="element">
             </div>
-            <div class="wrapper demo-text">
-                <div class="marquee">
-            <span>
-                <?php echo esc_html($settings['title']);?>
-            </span>
-                </div>
-            </div>
             <div class="container">
-                <div class="row justify-content-center mb-10-none">
-                    <div class="col-xl-9">
-                        <div class="call-to-action-wrapper">
-                            <div class="call-to-action-content">
-                                <h3 class="title"><?php echo esc_html($settings['info_1']);?></h3>
-                                <h3 class="inner-title"><?php echo esc_html($settings['info_2']);?></h3>
-                            </div>
-                            <div class="call-to-action-btn">
-                                <?php if ($settings['btn_status'] == 'yes'): ?>
-                                    <a href="<?php echo esc_url($settings['btn_link']['url']); ?>"
-                                       class="btn--base"><?php echo esc_html($settings['btn_text']); ?></a>
-                                <?php endif; ?>
+                <div class="subscribe-area">
+                    <div class="subscribe-element-two">
+                        <img src="<?php echo esc_url($settings['thumb_image2']['url']);?>" alt="element">
+                    </div>
+                    <div class="subscribe-element-three">
+                        <img src="<?php echo esc_url($settings['thumb_image3']['url']);?>" alt="element">
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-xl-7 offset-xl-5">
+                            <div class="subscribe-content">
+                                <h2 class="title"><?php echo esc_html($settings['title']);?></h2>
+                                <p><?php echo esc_html($settings['info']);?></p>
+                                <form class="subscribe-form">
+                                    <label class="subscribe-icon">
+                                        <?php \Elementor\Icons_Manager::render_icon( $settings['subscribe_field_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                                    </label>
+                                    <input type="text" class="form--control" placeholder="<?php echo esc_html($settings['subscribe_field_placeholder']);?>">
+<!--                                    <button type="submit" class="btn--base">SUBSCRIBE <i class="fab fa-telegram-plane"></i></button>-->
+                                    <?php if ($settings['btn_status'] == 'yes'): ?>
+                                        <button type="submit" class="btn--base">
+                                            <?php echo esc_html($settings['btn_text']); ?>
+                                            <?php \Elementor\Icons_Manager::render_icon( $settings['subscribe_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                                        </button>
+                                    <?php endif; ?>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -338,4 +404,4 @@ class Softim_Call_To_Action_Two_Widget extends Widget_Base
     }
 }
 
-Plugin::instance()->widgets_manager->register(new Softim_Call_To_Action_Two_Widget());
+Plugin::instance()->widgets_manager->register(new Softim_Call_To_Action_One_Widget());
