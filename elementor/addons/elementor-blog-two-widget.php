@@ -77,7 +77,7 @@ class Softim_Blog_Post_Two_Widget extends Widget_Base
      * @since 1.0.0
      * @access protected
      */
-    protected function register_controls ()
+    protected function register_controls()
     {
 
         $this->start_controls_section(
@@ -88,14 +88,29 @@ class Softim_Blog_Post_Two_Widget extends Widget_Base
             ]
         );
         $this->add_control(
-            'blog_system',
-            [
-                'label' => esc_html__('Blog Style System', 'softim-core'),
-                'type' => Controls_Manager::SELECT,
-                'default' => 'for-slider',
-                'options' => [
-                    'for-grid' => esc_html__('Grid System', 'softim-core'),
-                    'for-slider' => esc_html__('Slider System', 'softim-core'),
+            'title', [
+                'label' => esc_html__('Title', 'softim-core'),
+                'type' => Controls_Manager::TEXTAREA,
+                'default' => esc_html__('Softim Latest Posts', 'softim-core'),
+                'description' => esc_html__('enter title', 'softim-core'),
+            ]
+        );
+        $this->add_control(
+            'info', [
+                'label' => esc_html__('Info', 'softim-core'),
+                'type' => Controls_Manager::TEXTAREA,
+                'default' => esc_html__('Credibly grow premier ideas rather than bricks-and-clicks strategic theme areas distributed for stand-alone web-readiness.', 'softim-core'),
+                'description' => esc_html__('enter info', 'softim-core'),
+            ]
+        );
+        $this->add_control(
+            'blog_graphic', [
+                'label' => esc_html__('Blog Graphic Image', 'softim-core'),
+                'type' => Controls_Manager::MEDIA,
+                'show_label' => false,
+                'description' => esc_html__('blog graphic image', 'softim-core'),
+                'default' => [
+                    'src' => Utils::get_placeholder_image_src()
                 ],
             ]
         );
@@ -114,36 +129,6 @@ class Softim_Blog_Post_Two_Widget extends Widget_Base
                 'default' => '6'
             ]
         );
-        $this->add_control(
-            'pagination',
-            [
-                'label' => esc_html__('Pagination', 'softim-core'),
-                'type' => Controls_Manager::SWITCHER,
-                'description' => esc_html__('you can set yes to show pagination.', 'softim-core'),
-                'default' => 'yes'
-            ]
-        );
-        $this->add_control(
-            'pagination_alignment',
-            [
-                'label' => esc_html__('Pagination Alignment', 'softim-core'),
-                'type' => Controls_Manager::SELECT,
-                'options' => array(
-                    'left' => esc_html__('Left Align', 'softim-core'),
-                    'center' => esc_html__('Center Align', 'softim-core'),
-                    'right' => esc_html__('Right Align', 'softim-core'),
-                ),
-                'description' => esc_html__('you can set pagination alignment.', 'softim-core'),
-                'default' => 'left',
-                'condition' => array('pagination' => 'yes')
-            ]
-        );
-        $this->add_control('read-btn', [
-            'label' => esc_html__('Read More', 'softim-core'),
-            'type' => Controls_Manager::TEXT,
-            'description' => esc_html__('enter read button text', 'softim-core'),
-            'default' => esc_html__('Read More', 'softim-core')
-        ]);
         $this->add_control('total', [
             'label' => esc_html__('Total Posts', 'softim-core'),
             'type' => Controls_Manager::TEXT,
@@ -193,129 +178,13 @@ class Softim_Blog_Post_Two_Widget extends Widget_Base
             'label' => esc_html__('Excerpt Length', 'softim-core'),
             'type' => Controls_Manager::SELECT,
             'options' => array(
-                18 => esc_html__('Short', 'softim-core'),
+                14 => esc_html__('Short', 'softim-core'),
                 55 => esc_html__('Regular', 'softim-core'),
                 100 => esc_html__('Long', 'softim-core'),
             ),
             'default' => 18,
             'description' => esc_html__('select excerpt length', 'softim-core')
         ]);
-        $this->end_controls_section();
-
-        $this->start_controls_section(
-            'slider_settings_section',
-            [
-                'label' => esc_html__('Slider Settings', 'softim-core'),
-                'tab' => Controls_Manager::TAB_CONTENT,
-            ]
-        );
-        $this->add_control(
-            'items',
-            [
-                'label' => esc_html__('Items', 'softim-core'),
-                'type' => Controls_Manager::TEXT,
-                'description' => esc_html__('you can set how many item show in slider', 'softim-core'),
-                'default' => '3'
-            ]
-        );
-        $this->add_control(
-            'loop',
-            [
-                'label' => esc_html__('Loop', 'softim-core'),
-                'type' => Controls_Manager::SWITCHER,
-                'description' => esc_html__('you can set yes/no to enable/disable', 'softim-core'),
-            ]
-        );
-        $this->add_control(
-            'autoplay',
-            [
-                'label' => esc_html__('Autoplay', 'softim-core'),
-                'type' => Controls_Manager::SWITCHER,
-                'description' => esc_html__('you can set yes/no to enable/disable', 'softim-core'),
-                'default' => 'yes'
-            ]
-        );
-        $this->add_control(
-            'nav_slider_position',
-            [
-                'label' => esc_html__('Slider Nav Position', 'softim-core'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px', '%'],
-                'range' => [
-                    'px' => [
-                        'min' => -200,
-                        'max' => 500,
-                        'step' => 5,
-                    ],
-                    '%' => [
-                        'min' => 0,
-                        'max' => 100,
-                    ],
-                ],
-                'default' => [
-                    'unit' => 'px',
-                    'size' => -120,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .blog-slider-controls .slider-nav' => 'bottom: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-        $this->add_control(
-            'nav',
-            [
-                'label' => esc_html__('Nav', 'softim-core'),
-                'type' => Controls_Manager::SWITCHER,
-                'description' => esc_html__('you can set yes/no to enable/disable', 'softim-core'),
-            ]
-        );
-        $this->add_control(
-            'nav_right_arrow',
-            [
-                'label' => esc_html__('Nav Right Icon', 'softim-core'),
-                'type' => Controls_Manager::ICONS,
-                'description' => esc_html__('you can set yes/no to enable/disable', 'softim-core'),
-                'default' => [
-                    'value' => 'fas fa-angle-right',
-                    'library' => 'solid',
-                ],
-            ]
-        );
-        $this->add_control(
-            'nav_left_arrow',
-            [
-                'label' => esc_html__('Nav Left Icon', 'softim-core'),
-                'type' => Controls_Manager::ICONS,
-                'description' => esc_html__('you can set yes/no to enable/disable', 'softim-core'),
-                'default' => [
-                    'value' => 'fas fa-angle-left',
-                    'library' => 'solid',
-                ],
-            ]
-        );
-        $this->add_control(
-            'autoplaytimeout',
-            [
-                'label' => esc_html__('Autoplay Timeout', 'softim-core'),
-                'type' => Controls_Manager::SLIDER,
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 10000,
-                        'step' => 2,
-                    ]
-                ],
-                'default' => [
-                    'unit' => 'px',
-                    'size' => 5000,
-                ],
-                'size_units' => ['px'],
-                'condition' => array(
-                    'autoplay' => 'yes'
-                )
-            ]
-
-        );
         $this->end_controls_section();
 
         $this->start_controls_section(
@@ -499,26 +368,11 @@ class Softim_Blog_Post_Two_Widget extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
-        $rand_numb = rand(333, 999999999);
         //query settings
         $total_posts = $settings['total'];
         $category = $settings['category'];
         $order = $settings['order'];
         $orderby = $settings['orderby'];
-        //other settings
-        $pagination = $settings['pagination'] ? false : true;
-        $pagination_alignment = $settings['pagination_alignment'];
-        //slider settings
-        $slider_settings = [
-            "loop" => esc_attr($settings['loop']),
-            "margin" => esc_attr($settings['margin']['size'] ?? 0),
-            "items" => esc_attr($settings['items'] ?? 1),
-            "autoplay" => esc_attr($settings['autoplay']),
-            "autoplaytimeout" => esc_attr($settings['autoplaytimeout']['size'] ?? 0),
-            "nav" => esc_attr($settings['nav']),
-            "navleft" => softim_core()->render_elementor_icons($settings['nav_left_arrow']),
-            "navright" => softim_core()->render_elementor_icons($settings['nav_right_arrow'])
-        ];
         //setup query
         $args = array(
             'post_type' => 'post',
@@ -540,121 +394,53 @@ class Softim_Blog_Post_Two_Widget extends Widget_Base
         }
         $post_data = new \WP_Query($args);
         ?>
-        <?php if ($settings['blog_system'] === 'for-slider') : ?>
-        <div class="blog-grid-carousel-wrapper">
-            <div class="blog-grid-carousel" id="blog-grid-one-carousel-<?php echo esc_attr($rand_numb); ?>"
-                 data-settings='<?php echo json_encode($slider_settings) ?>'
-            >
-                <?php
-                while ($post_data->have_posts()):$post_data->the_post();
-                    $img_id = get_post_thumbnail_id(get_the_ID()) ? get_post_thumbnail_id(get_the_ID()) : false;
-                    $img_url_val = $img_id ? wp_get_attachment_image_src($img_id, 'softim_grid', false) : '';
-                    $img_url = is_array($img_url_val) && !empty($img_url_val) ? $img_url_val[0] : '';
-                    $img_alt = get_post_meta($img_id, '_wp_attachment_image_alt', true);
-                    $comments_count = get_comments_number(get_the_ID());
-                    $comment_text = ($comments_count > 1) ? $comments_count . ' Comments' . '' : $comments_count . ' Comment' . '';
-                    ?>
-                    <div class="blog-outer-wrap">
-                        <div class="blog-grid-item-01">
-                            <?php if (!empty($img_url)) : ?>
-                                <div class="thumb">
-                                    <img src="<?php echo esc_url($img_url); ?>"
-                                         alt="<?php echo esc_attr($img_alt); ?>">
-                                </div>
-                            <?php endif; ?>
-                            <div class="content">
-                                <ul class="post-meta">
-                                    <li>
-                                        <?php
-                                        softim()->posted_on();
-                                        ?>
-                                    </li>
-                                    <li>
-                                        <a href="<?php the_permalink(); ?>">
-                                            <?php echo esc_html($comment_text); ?></a>
-                                    </li>
-                                </ul>
-                                <h4 class="title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
-                                <?php if ($settings['excerpt_switch'] == 'yes') {
-                                    Softim_Excerpt($settings['excerpt_length']);
-                                } ?>
-                                <a class="read-btn"
-                                   href="<?php the_permalink(); ?>"><?php echo esc_html($settings['read-btn']) ?>
-                                    <i class="flaticon-right-arrow-2"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                <?php
-                endwhile;
-                wp_reset_query();
-                ?>
-            </div>
-            <?php if (!empty($settings['nav'])) : ?>
-                <div class="blog-slider-controls">
-                    <div class="slider-nav"></div>
-                </div>
-            <?php endif; ?>
-        </div>
-    <?php endif; ?>
-        <?php if ($settings['blog_system'] === 'for-grid') : ?>
-        <div class="blog-grid-wrapper">
-            <div class="row">
-                <?php
-                while ($post_data->have_posts()):$post_data->the_post();
-                    $img_id = get_post_thumbnail_id(get_the_ID()) ? get_post_thumbnail_id(get_the_ID()) : false;
-                    $img_url_val = $img_id ? wp_get_attachment_image_src($img_id, 'softim_grid', false) : '';
-                    $img_url = is_array($img_url_val) && !empty($img_url_val) ? $img_url_val[0] : '';
-                    $img_alt = get_post_meta($img_id, '_wp_attachment_image_alt', true);
 
-                    $comments_count = get_comments_number(get_the_ID());
-                    $comment_text = ($comments_count > 1) ? 'Comments (' . $comments_count . ')' : 'Comment (' . $comments_count . ')';
-                    ?>
-                    <div class="col-lg-<?php echo esc_attr($settings['column']); ?> col-md-6">
-                        <div class="blog-grid-item-01 margin-bottom-30">
-                            <div class="thumb">
-                                <img src="<?php echo esc_url($img_url); ?>"
-                                     alt="<?php echo esc_attr($img_alt); ?>">
-                            </div>
-                            <div class="content">
-                                <ul class="post-meta">
-                                    <li>
-                                        <?php
-                                        softim()->posted_on();
-                                        ?>
-                                    </li>
-                                    <li>
-                                        <a href="<?php the_permalink(); ?>">
-                                            <?php echo esc_html($comment_text); ?></a>
-                                    </li>
-                                </ul>
-                                <h4 class="title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
-                                <?php if ($settings['excerpt_switch'] == 'yes') {
-                                    Softim_Excerpt($settings['excerpt_length']);
-                                } ?>
-                                <a class="read-btn"
-                                   href="<?php the_permalink(); ?>"><?php echo esc_html($settings['read-btn']) ?>
-                                    <i class="flaticon-right-arrow-2"></i>
-                                </a>
+        <section class="blog-section pb-120">
+            <div class="blog-element">
+                <img src="<?php echo esc_url($settings['blog_graphic']['url']);?>" alt="element">
+            </div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-7 col-lg-8 text-center">
+                        <div class="section-header">
+                            <h2 class="section-title"><?php echo esc_html($settings['title']);?></h2>
+                            <p><?php echo esc_html($settings['info']);?></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center mb-30-none">
+        <?php if ($post_data->have_posts()) {
+        while ($post_data->have_posts()) {
+            $post_data->the_post();
+            ?>
+                    <div class="col-xl-<?php echo esc_attr($settings['column']);?> col-lg-<?php echo esc_attr($settings['column']);?> col-md-<?php echo esc_attr($settings['column']);?> col-sm-<?php echo esc_attr($settings['column']);?> mb-30">
+                        <div class="blog-item">
+                            <?php if (has_post_thumbnail()){?>
+                                <div class="blog-thumb">
+                                    <?php the_post_thumbnail('full');?>
+                                </div>
+                            <?php } ?>
+
+                            <div class="blog-content">
+                                <div class="blog-category">
+                                    <span>Business</span>
+                                </div>
+                                <h3 class="title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h3>
+                                <p><?php echo wp_trim_words(get_the_excerpt(), $settings['excerpt_length'], '.');?></p>
+                                <div class="blog-post-meta two">
+                                    <span class="user"><?php echo esc_html('By :')?> <?php the_author();?></span>
+                                    <span class="date"><?php get_the_time('F j, Y');?></span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                <?php
-                endwhile;
-                wp_reset_query();
-                ?>
-                <div class="col-lg-12">
-                    <div class="blog-pagination text-<?php echo esc_attr($pagination_alignment) ?> margin-top-20">
-                        <?php
-                        if (!$pagination) {
-                            softim()->post_pagination($post_data);
-                        }
-                        ?>
-                    </div>
+            <?php
+        }
+        }
+        ?>
                 </div>
             </div>
-        </div>
-    <?php endif; ?>
+        </section>
         <?php
     }
 }
