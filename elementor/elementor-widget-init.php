@@ -80,6 +80,7 @@ if ( ! class_exists( 'Softim_Elementor_Widget_Init' ) ) {
 				'call-to-action-one',
 				'call-to-action-two',
 				'choose-one',
+				'contact-form',
 				'contact-one',
 				'contact-two',
                 'counter-one',

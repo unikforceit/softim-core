@@ -386,7 +386,6 @@ class Softim_Call_To_Action_One_Widget extends Widget_Base
                                         <?php \Elementor\Icons_Manager::render_icon( $settings['subscribe_field_icon'], [ 'aria-hidden' => 'true' ] ); ?>
                                     </label>
                                     <input type="text" class="form--control" placeholder="<?php echo esc_html($settings['subscribe_field_placeholder']);?>">
-<!--                                    <button type="submit" class="btn--base">SUBSCRIBE <i class="fab fa-telegram-plane"></i></button>-->
                                     <?php if ($settings['btn_status'] == 'yes'): ?>
                                         <button type="submit" class="btn--base">
                                             <?php echo esc_html($settings['btn_text']); ?>
