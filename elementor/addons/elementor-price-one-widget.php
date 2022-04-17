@@ -111,7 +111,7 @@ class Softim_Price_One_Widget extends Widget_Base
             'mPrice_title', [
                 'label' => esc_html__('Monthly Price Title', 'softim-core'),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__("Standard Plan", 'softim-core'),
+                'default' => esc_html__("Ultra Plan", 'softim-core'),
                 'description' => esc_html__('enter price title', 'softim-core')
             ]
         );
@@ -143,11 +143,19 @@ class Softim_Price_One_Widget extends Widget_Base
             'mPackage_btn_text', [
                 'label' => esc_html__('Package Price Duration', 'softim-core'),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__("$39", 'softim-core'),
+                'default' => esc_html__("Most Popular", 'softim-core'),
                 'description' => esc_html__('enter package price duration', 'softim-core')
             ]
         );
-        $this->add_control(
+        $repeater2->add_control(
+            'mPackage_offer', [
+                'label' => esc_html__('Package Offer', 'softim-core'),
+                'type' => Controls_Manager::TEXTAREA,
+                'default' => esc_html__("Up to 100 keyphrases optimized", 'softim-core'),
+                'description' => esc_html__('enter package price duration', 'softim-core')
+            ]
+        );
+        $repeater2->add_control(
             'mbtn_status', [
                 'label' => esc_html__('Button Show/Hide', 'softim-core'),
                 'type' => Controls_Manager::SWITCHER,
@@ -155,31 +163,42 @@ class Softim_Price_One_Widget extends Widget_Base
                 'description' => esc_html__('show/hide button', 'softim-core')
             ]
         );
-        $this->add_control(
+        $repeater2->add_control(
             'mbtn_text', [
                 'label' => esc_html__('Button Text', 'softim-core'),
-                'type' => Controls_Manager::TEXT,
-                'default' => esc_html__('Send Message', 'softim-core'),
-                'description' => esc_html__('enter button text', 'softim-core'),
-                'condition' => ['btn_status' => 'yes']
+                'type' => Controls_Manager::TEXTAREA,
+                'default' => esc_html__("Choose Plan", 'softim-core'),
+                'description' => esc_html__('enter button text', 'softim-core')
             ]
         );
-        $this->add_control(
-            'mbtn_link', [
-                'label' => esc_html__('Button URL', 'softim-core'),
-                'type' => Controls_Manager::URL,
-                'default' => [
-                    'url' => '#'
-                ],
-                'description' => esc_html__('enter button url', 'softim-core'),
-                'condition' => ['btn_status' => 'yes']
-            ]
-        );
+        $repeater2->add_control(
+        'mbtn_link', [
+            'label' => esc_html__('Button URL', 'softim-core'),
+            'type' => Controls_Manager::URL,
+            'default' => [
+                'url' => '#'
+            ],
+            'description' => esc_html__('enter button url', 'softim-core'),
+            'condition' => ['mbtn_status' => 'yes']
+        ]
+    );
 
         $this->add_control('mPrice_list', [
             'label' => esc_html__('Take 3 Price Item', 'softim-core'),
             'type' => Controls_Manager::REPEATER,
             'fields' => $repeater2->get_controls(),
+            'default' => [
+                [
+                    'mPrice_title' => esc_html__( 'Title #1', 'plugin-name' ),
+                ],
+                [
+                    'mPrice_title' => esc_html__( 'Title #1', 'plugin-name' ),
+                ],
+                [
+                    'mPrice_title' => esc_html__( 'Title #1', 'plugin-name' ),
+                ],
+            ],
+            'title_field' => '{{{ mPrice_title }}}',
         ]);
         $this->end_controls_section();
 
@@ -197,7 +216,7 @@ class Softim_Price_One_Widget extends Widget_Base
             'yPrice_title', [
                 'label' => esc_html__('Yearly Price Title', 'softim-core'),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__("Standard Plan", 'softim-core'),
+                'default' => esc_html__("Ultra Plan", 'softim-core'),
                 'description' => esc_html__('enter price title', 'softim-core')
             ]
         );
@@ -213,7 +232,7 @@ class Softim_Price_One_Widget extends Widget_Base
             'yPackage_price_duration', [
                 'label' => esc_html__('Package Price Duration', 'softim-core'),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__("$39", 'softim-core'),
+                'default' => esc_html__("Yearly", 'softim-core'),
                 'description' => esc_html__('enter package price duration', 'softim-core')
             ]
         );
@@ -229,7 +248,15 @@ class Softim_Price_One_Widget extends Widget_Base
             'yPackage_btn_text', [
                 'label' => esc_html__('Package Price Duration', 'softim-core'),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__("$39", 'softim-core'),
+                'default' => esc_html__("Most Popular", 'softim-core'),
+                'description' => esc_html__('enter package price duration', 'softim-core')
+            ]
+        );
+        $repeater2->add_control(
+            'yPackage_offer', [
+                'label' => esc_html__('Package Offer', 'softim-core'),
+                'type' => Controls_Manager::TEXTAREA,
+                'default' => esc_html__("Up to 100 keyphrases optimized", 'softim-core'),
                 'description' => esc_html__('enter package price duration', 'softim-core')
             ]
         );
@@ -244,28 +271,38 @@ class Softim_Price_One_Widget extends Widget_Base
         $repeater2->add_control(
             'ybtn_text', [
                 'label' => esc_html__('Button Text', 'softim-core'),
-                'type' => Controls_Manager::TEXT,
-                'default' => esc_html__('Choose Plan', 'softim-core'),
-                'description' => esc_html__('enter button text', 'softim-core'),
-                'condition' => ['btn_status' => 'yes']
+                'type' => Controls_Manager::TEXTAREA,
+                'default' => esc_html__("Choose Plan", 'softim-core'),
+                'description' => esc_html__('enter button text', 'softim-core')
             ]
         );
         $repeater2->add_control(
-            'ybtn_link', [
-                'label' => esc_html__('Button URL', 'softim-core'),
-                'type' => Controls_Manager::URL,
-                'default' => [
-                    'url' => '#'
-                ],
-                'description' => esc_html__('enter button url', 'softim-core'),
-                'condition' => ['btn_status' => 'yes']
-            ]
-        );
+        'ybtn_link', [
+            'label' => esc_html__('Button URL', 'softim-core'),
+            'type' => Controls_Manager::URL,
+            'default' => [
+                'url' => '#'
+            ],
+            'description' => esc_html__('enter button url', 'softim-core'),
+            'condition' => ['ybtn_status' => 'yes']
+        ]);
 
         $this->add_control('yPrice_list', [
             'label' => esc_html__('Take 3 Price Item', 'softim-core'),
             'type' => Controls_Manager::REPEATER,
             'fields' => $repeater2->get_controls(),
+            'default' => [
+                [
+                    'yPrice_title' => esc_html__( 'Title #1', 'plugin-name' ),
+                ],
+                [
+                    'yPrice_title' => esc_html__( 'Title #1', 'plugin-name' ),
+                ],
+                [
+                    'yPrice_title' => esc_html__( 'Title #1', 'plugin-name' ),
+                ],
+            ],
+            'title_field' => '{{{ yPrice_title }}}',
         ]);
         $this->end_controls_section();
 
@@ -523,12 +560,9 @@ class Softim_Price_One_Widget extends Widget_Base
                                     <div class="plan-item">
                                         <div class="plan-header">
                                             <h3 class="title"><?php echo esc_html($mList['mPrice_title'])?></h3>
-                                            <div class="plan-badge-area">
-                                                <span class="plan-badge">Most Popular</span>
-                                            </div>
-                                            <?php if ($settings['mPackage_btn_status'] == 'yes'): ?>
+                                            <?php if ($mList['mPackage_btn_status'] == 'yes'): ?>
                                                 <div class="plan-badge-area">
-                                                    <span class="plan-badge"><?php echo esc_html($settings['mPackage_btn_text']); ?></span>
+                                                    <span class="plan-badge"><?php echo esc_html($mList['mPackage_btn_text']); ?></span>
                                                 </div>
                                             <?php endif; ?>
                                         </div>
@@ -537,18 +571,14 @@ class Softim_Price_One_Widget extends Widget_Base
                                                 <h2 class="price-title"><?php echo esc_html($mList['mPackage_price'])?><sub><?php echo esc_html($mList['mPackage_price_duration'])?></sub></h2>
                                             </div>
                                             <ul class="plan-list">
-                                                <li>Up to 100 keyphrases optimized</li>
-                                                <li>Custom dashboards: 4</li>
-                                                <li>Content, and link monitoring</li>
-                                                <li>Digital marketing expert</li>
-                                                <li>Content marketing assets</li>
+                                                <?php echo wp_kses_post($mList['mPackage_offer']);?>
                                             </ul>
                                         </div>
                                         <div class="plan-footer">
                                             <div class="plan-btn">
-                                                <?php if ($settings['mbtn_status'] == 'yes'): ?>
-                                                    <a href="<?php echo esc_url($settings['mbtn_link']['url']); ?>"
-                                                       class="btn--base active w-100"><?php echo esc_html($settings['mbtn_text']); ?></a>
+                                                <?php if ($mList['mbtn_status'] == 'yes'): ?>
+                                                    <a href="<?php echo esc_url($mList['mbtn_link']['url']); ?>"
+                                                       class="btn--base active w-100"><?php echo esc_html($mList['mbtn_text']); ?></a>
                                                 <?php endif; ?>
                                             </div>
                                         </div>
@@ -559,81 +589,39 @@ class Softim_Price_One_Widget extends Widget_Base
                         </div>
                         <div class="tab-pane fade" id="yearly" role="tabpanel" aria-labelledby="yearly-tab">
                             <div class="row justify-content-center mb-30-none">
+                                <?php
+                                    if ($settings['yPrice_list']){
+                                        foreach ($settings['yPrice_list'] as $yList){
+                                ?>
                                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-10 mb-30">
                                     <div class="plan-item">
                                         <div class="plan-header">
-                                            <h3 class="title">Standard Plan</h3>
+                                            <h3 class="title"><?php echo esc_html($yList['yPrice_title'])?></h3>
+                                            <?php if ($yList['yPackage_btn_status'] == 'yes'): ?>
+                                                <div class="plan-badge-area">
+                                                    <span class="plan-badge"><?php echo esc_html($yList['yPackage_btn_text']); ?></span>
+                                                </div>
+                                            <?php endif; ?>
                                         </div>
                                         <div class="plan-body">
                                             <div class="plan-price-area">
-                                                <h2 class="price-title">$79<sub>Yearly</sub></h2>
+                                                <h2 class="price-title"><?php echo esc_html($yList['yPackage_price'])?><sub><?php echo esc_html($yList['yPackage_price_duration'])?></sub></h2>
                                             </div>
                                             <ul class="plan-list">
-                                                <li>Up to 100 keyphrases optimized</li>
-                                                <li>Custom dashboards: 4</li>
-                                                <li>Content, and link monitoring</li>
-                                                <li>Digital marketing expert</li>
-                                                <li>Content marketing assets</li>
+                                                <?php echo wp_kses_post($yList['yPackage_offer']);?>
                                             </ul>
                                         </div>
                                         <div class="plan-footer">
                                             <div class="plan-btn">
-                                                <a href="plan.html" class="btn--base active w-100">Choose Plan</a>
+                                                <?php if ($mList['ybtn_status'] == 'yes'): ?>
+                                                    <a href="<?php echo esc_url($mList['ybtn_link']['url']); ?>"
+                                                       class="btn--base active w-100"><?php echo esc_html($mList['ybtn_text']); ?></a>
+                                                <?php endif; ?>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-10 mb-30">
-                                    <div class="plan-item">
-                                        <div class="plan-header">
-                                            <h3 class="title">Ultra Plan</h3>
-                                            <div class="plan-badge-area">
-                                                <span class="plan-badge">Most Popular</span>
-                                            </div>
-                                        </div>
-                                        <div class="plan-body">
-                                            <div class="plan-price-area">
-                                                <h2 class="price-title">$99<sub>Yearly</sub></h2>
-                                            </div>
-                                            <ul class="plan-list">
-                                                <li>Up to 100 keyphrases optimized</li>
-                                                <li>Custom dashboards: 4</li>
-                                                <li>Content, and link monitoring</li>
-                                                <li>Digital marketing expert</li>
-                                                <li>Content marketing assets</li>
-                                            </ul>
-                                        </div>
-                                        <div class="plan-footer">
-                                            <div class="plan-btn">
-                                                <a href="plan.html" class="btn--base active w-100">Choose Plan</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-10 mb-30">
-                                    <div class="plan-item">
-                                        <div class="plan-header">
-                                            <h3 class="title">Premium Plan</h3>
-                                        </div>
-                                        <div class="plan-body">
-                                            <div class="plan-price-area">
-                                                <h2 class="price-title">$59<sub>Yearly</sub></h2>
-                                            </div>
-                                            <ul class="plan-list">
-                                                <li>Up to 100 keyphrases optimized</li>
-                                                <li>Custom dashboards: 4</li>
-                                                <li>Content, and link monitoring</li>
-                                                <li>Digital marketing expert</li>
-                                                <li>Content marketing assets</li>
-                                            </ul>
-                                        </div>
-                                        <div class="plan-footer">
-                                            <div class="plan-btn">
-                                                <a href="plan.html" class="btn--base active w-100">Choose Plan</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                        <?php } }?>
                             </div>
                         </div>
                     </div>
