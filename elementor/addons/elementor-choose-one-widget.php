@@ -533,9 +533,9 @@ class Softim_Choose_One_Widget extends Widget_Base
 
         <section class="choose-section pb-120">
             <?php
-            if ($settings['about_graphic_list']){
+            if ($settings['graphic_list']){
                 $y = 0;
-                foreach ($settings['about_graphic_list'] as $items){
+                foreach ($settings['graphic_list'] as $items){
                     $y++;
                     if ($y == 1){
                         $group = 'one';
@@ -550,8 +550,8 @@ class Softim_Choose_One_Widget extends Widget_Base
                         $group = 'five';
                     }
                     ?>
-                    <div class="choose-element-<?php echo esc_attr($group)?>" <?php echo esc_attr($attr);?>>
-                        <img src="<?php echo esc_url($items['about_graphic_image']['url']);?>" alt="element">
+                    <div class="choose-element-<?php echo esc_attr($group);?>" <?php echo esc_attr($attr);?>>
+                        <img src="<?php echo esc_url($items['graphic_image']['url']);?>" alt="element">
                     </div>
                 <?php } } ?>
             <div class="container">

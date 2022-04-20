@@ -448,7 +448,7 @@ class Softim_Team_One_Widget extends Widget_Base
                                             <ul class="team-social">
                                                 <li><a href="#0"><i class="fa fa-facebook-f"></i></a></li>
                                                 <li><a href="#0"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="#0"><i class="fa fa-google-plus-g"></i></a></li>
+                                                <li><a href="#0"><i class="fa fa-google-plus"></i></a></li>
                                                 <li><a href="#0"><i class="fa fa-instagram"></i></a></li>
                                             </ul>
                                         </div>
