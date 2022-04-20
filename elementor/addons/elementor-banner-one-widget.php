@@ -522,7 +522,7 @@ class Softim_Banner_One_Widget extends Widget_Base
                             $group = 'seventeen';
                         }
                         ?>
-                        <div class="banner-group-element-<?php echo esc_attr($group)?>">
+                        <div class="banner-group-element-<?php echo esc_attr($group);?>">
                             <img src="<?php echo esc_url($items['element_group_image']['url']);?>" alt="element">
                         </div>
                     <?php } } ?>
