@@ -6,7 +6,7 @@
  */
 
 namespace Elementor;
-class Softim_Team_Two_Widget extends Widget_Base
+class Softim_Team_One_Widget extends Widget_Base
 {
 
     /**
@@ -21,7 +21,7 @@ class Softim_Team_Two_Widget extends Widget_Base
      */
     public function get_name()
     {
-        return 'softim-team-two-widget';
+        return 'softim-team-one-widget';
     }
 
     /**
@@ -36,7 +36,7 @@ class Softim_Team_Two_Widget extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Team : 02', 'softim-core');
+        return esc_html__('Team: 01', 'softim-core');
     }
 
     /**
@@ -51,7 +51,7 @@ class Softim_Team_Two_Widget extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-archive-title';
+        return 'eicon-slider-album';
     }
 
     /**
@@ -83,313 +83,301 @@ class Softim_Team_Two_Widget extends Widget_Base
         $this->start_controls_section(
             'settings_section',
             [
-                'label' => esc_html__('Section Contents', 'softim-core'),
+                'label' => esc_html__('General Settings', 'softim-core'),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
         $this->add_control(
             'title', [
-                'label' => esc_html__('Title 1', 'softim-core'),
+                'label' => esc_html__('Title', 'softim-core'),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__("Have a project in mind?", 'softim-core'),
-                'description' => esc_html__('enter title 1', 'softim-core')
-            ]
-        );
-        $this->add_control(
-            'title2', [
-                'label' => esc_html__('Title 2', 'softim-core'),
-                'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__("Let's connect", 'softim-core'),
-                'description' => esc_html__('enter title 2', 'softim-core')
-            ]
-        );
-        $this->add_control(
-            'subtitle', [
-                'label' => esc_html__('Sub Title', 'softim-core'),
-                'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__('We rank among the best in the US, Argentina, and Ukraine. Our apps get featured as best in class, & our clients love our work.', 'softim-core'),
-                'description' => esc_html__('enter sub title', 'softim-core'),
+                'default' => esc_html__('Softim Expert Team', 'softim-core'),
+                'description' => esc_html__('enter title', 'softim-core'),
             ]
         );
         $this->add_control(
             'info', [
                 'label' => esc_html__('Info', 'softim-core'),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__('Welcome To Softim, a software development company, helps to digitize businesses by focusing on client’s business challenges, needs, pain points and providing business-goals-oriented software solutions.', 'softim-core'),
+                'default' => esc_html__('We rank among the best in the US, Argentina, and Ukraine. Our apps get featured as best in class, and our clients love our work.', 'softim-core'),
                 'description' => esc_html__('enter info', 'softim-core'),
             ]
         );
         $this->add_control(
-            'about_thumb', [
-                'label' => esc_html__('About Thumb Image', 'softim-core'),
-                'type' => Controls_Manager::MEDIA,
-                'show_label' => false,
-                'description' => esc_html__('about thumb image', 'softim-core'),
-                'default' => [
-                    'src' => Utils::get_placeholder_image_src()
-                ],
-            ]
-        );
-        $this->add_control(
-            'btn_status', [
-                'label' => esc_html__('Button Show/Hide', 'softim-core'),
+            'graphic_image_switch',
+            [
+                'label' => esc_html__('Image On/Off', 'softim-core'),
                 'type' => Controls_Manager::SWITCHER,
-                'default' => 'yes',
-                'description' => esc_html__('show/hide button', 'softim-core')
+                'description' => esc_html__('you can set yes to show image.', 'softim-core'),
+                'default' => 'yes'
             ]
         );
         $this->add_control(
-            'btn_text', [
-                'label' => esc_html__('Button Text', 'softim-core'),
-                'type' => Controls_Manager::TEXT,
-                'default' => esc_html__('Send Message', 'softim-core'),
-                'description' => esc_html__('enter button text', 'softim-core'),
-                'condition' => ['btn_status' => 'yes']
-            ]
-        );
-        $this->add_control(
-            'btn_link', [
-                'label' => esc_html__('Button URL', 'softim-core'),
-                'type' => Controls_Manager::URL,
-                'default' => [
-                    'url' => '#'
-                ],
-                'description' => esc_html__('enter button url', 'softim-core'),
-                'condition' => ['btn_status' => 'yes']
-            ]
-        );
-        $this->add_control(
-            'about_graphic_image', [
-                'label' => esc_html__('About Right Graphic Image', 'softim-core'),
+            'graphic_image', [
+                'label' => esc_html__('Left Graphic Image', 'softim-core'),
                 'type' => Controls_Manager::MEDIA,
                 'show_label' => false,
-                'description' => esc_html__('upload about right graphic image', 'softim-core'),
+                'description' => esc_html__('Left graphic image', 'softim-core'),
                 'default' => [
                     'src' => Utils::get_placeholder_image_src()
                 ],
             ]
         );
-        $this->end_controls_section();
-
-//      Box 1 Loop
-        $this->start_controls_section(
-            'about_box_1_section',
+        $this->add_control(
+            'arrow_switch',
             [
-                'label' => esc_html__('About Left Circle Graphic 1', 'softim-core'),
-                'tab' => Controls_Manager::TAB_CONTENT,
+                'label' => esc_html__('Arrow Switch', 'softim-core'),
+                'type' => Controls_Manager::SWITCHER,
+                'description' => esc_html__('you can set yes to show arrow.', 'softim-core'),
+                'default' => 'yes'
             ]
         );
-
-        $repeater = new Repeater();
-        $repeater->add_control(
-            'about_circle_image_1', [
-                'label' => esc_html__('About Circle Image', 'softim-core'),
-                'type' => Controls_Manager::MEDIA,
-                'show_label' => false,
-                'description' => esc_html__('upload about circle image', 'softim-core'),
-                'default' => [
-                    'src' => Utils::get_placeholder_image_src()
-                ],
+        $this->add_control(
+            'column',
+            [
+                'label' => esc_html__('Column', 'softim-core'),
+                'type' => Controls_Manager::SELECT,
+                'options' => array(
+                    '6' => esc_html__('02 Column', 'softim-core'),
+                    '3' => esc_html__('04 Column', 'softim-core'),
+                    '4' => esc_html__('03 Column', 'softim-core'),
+                    '2' => esc_html__('06 Column', 'softim-core')
+                ),
+                'description' => esc_html__('select grid column', 'softim-core'),
+                'default' => '6'
             ]
         );
-
-        $this->add_control('about_circle_list_1', [
-            'label' => esc_html__('Take 2 Circle Item', 'softim-core'),
-            'type' => Controls_Manager::REPEATER,
-            'fields' => $repeater->get_controls(),
+        $this->add_control('total', [
+            'label' => esc_html__('Total Posts', 'softim-core'),
+            'type' => Controls_Manager::TEXT,
+            'default' => '-1',
+            'description' => esc_html__('enter how many post you want in masonry , enter -1 for unlimited post.')
+        ]);
+        $this->add_control('category', [
+            'label' => esc_html__('Category', 'softim-core'),
+            'type' => Controls_Manager::SELECT2,
+            'multiple' => true,
+            'options' => softim_core()->get_terms_names('category', 'id'),
+            'description' => esc_html__('select category as you want, leave it blank for all category', 'softim-core'),
+        ]);
+        $this->add_control('order', [
+            'label' => esc_html__('Order', 'softim-core'),
+            'type' => Controls_Manager::SELECT,
+            'options' => array(
+                'ASC' => esc_html__('Ascending', 'softim-core'),
+                'DESC' => esc_html__('Descending', 'softim-core'),
+            ),
+            'default' => 'ASC',
+            'description' => esc_html__('select order', 'softim-core')
+        ]);
+        $this->add_control('orderby', [
+            'label' => esc_html__('OrderBy', 'softim-core'),
+            'type' => Controls_Manager::SELECT,
+            'options' => array(
+                'ID' => esc_html__('ID', 'softim-core'),
+                'title' => esc_html__('Title', 'softim-core'),
+                'date' => esc_html__('Date', 'softim-core'),
+                'rand' => esc_html__('Random', 'softim-core'),
+                'comment_count' => esc_html__('Most Comments', 'softim-core'),
+            ),
+            'default' => 'ID',
+            'description' => esc_html__('select order', 'softim-core')
+        ]);
+        $this->add_control(
+            'excerpt_switch',
+            [
+                'label' => esc_html__('Excerpt Switch', 'softim-core'),
+                'type' => Controls_Manager::SWITCHER,
+                'description' => esc_html__('you can set yes to show excerpt.', 'softim-core'),
+                'default' => 'no'
+            ]
+        );
+        $this->add_control('excerpt_length', [
+            'label' => esc_html__('Excerpt Length', 'softim-core'),
+            'type' => Controls_Manager::SELECT,
+            'options' => array(
+                18 => esc_html__('Short', 'softim-core'),
+                55 => esc_html__('Regular', 'softim-core'),
+                100 => esc_html__('Long', 'softim-core'),
+            ),
+            'default' => 18,
+            'description' => esc_html__('select excerpt length', 'softim-core')
         ]);
         $this->end_controls_section();
 
-//      Box 2 Loop
         $this->start_controls_section(
-            'about_box_2_section',
+            'title_styling_settings_section',
             [
-                'label' => esc_html__('About Left Circle Graphic 2', 'softim-core'),
-                'tab' => Controls_Manager::TAB_CONTENT,
-            ]
-        );
-
-        $repeater1 = new Repeater();
-        $repeater1->add_control(
-            'about_circle_image_2', [
-                'label' => esc_html__('About Circle Image', 'softim-core'),
-                'type' => Controls_Manager::MEDIA,
-                'show_label' => false,
-                'description' => esc_html__('upload about circle image', 'softim-core'),
-                'default' => [
-                    'src' => Utils::get_placeholder_image_src()
-                ],
-            ]
-        );
-
-        $this->add_control('about_circle_list_2', [
-            'label' => esc_html__('Take 2 Circle Item', 'softim-core'),
-            'type' => Controls_Manager::REPEATER,
-            'fields' => $repeater1->get_controls(),
-        ]);
-        $this->end_controls_section();
-
-
-        $this->start_controls_section(
-            'css_styles',
-            [
-                'label' => esc_html__('Styling Banner Content', 'softim-core'),
+                'label' => esc_html__('Styling Settings', 'softim-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
-        $this->add_control('about_title_1_color', [
-            'label' => esc_html__('About Title 1 Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .about-content .title" => "color: {{VALUE}}"
-            ]
-        ]);
-        $this->add_control('about_title_2_color', [
-            'label' => esc_html__('About Title 2 Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .about-content .title span.text--base" => "color: {{VALUE}} !important"
-            ]
-        ]);
-        $this->add_control('about_subtitle_color', [
-            'label' => esc_html__('About Sub Title Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .about-content p.para" => "color: {{VALUE}}"
-            ]
-        ]);
-        $this->add_control('about_info_color', [
-            'label' => esc_html__('About Info Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .about-content p.info" => "color: {{VALUE}}"
-            ]
-        ]);
-        $this->end_controls_section();
-
-        /* button styling */
-        $this->start_controls_section(
-            'banner_button_section',
-            [
-                'label' => esc_html__('Button Settings', 'softim-core'),
-                'tab' => Controls_Manager::TAB_STYLE
-            ]
+        $this->start_controls_tabs(
+            'title_style_tabs'
         );
 
-        $this->start_controls_tabs('button_styling');
-        $this->start_controls_tab('normal_style', [
-            'label' => esc_html__('Button Normal', "softim-core")
-        ]);
-        $this->add_control('button_normal_color', [
-            'label' => esc_html__('Button Text Color', 'softim-core'),
+        $this->start_controls_tab(
+            'title_style_normal_tab',
+            [
+                'label' => esc_html__('Normal', 'softim-core'),
+            ]
+        );
+        $this->add_control('normal_post_title_color', [
+            'label' => esc_html__('Title Color', 'softim-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
-                "{{WRAPPER}} .btn--base" => "color: {{VALUE}}"
+                "{{WRAPPER}} .blog-grid-item-01 .content .title" => "color: {{VALUE}}"
             ]
         ]);
-        $this->add_control('divider_01', [
-            'type' => Controls_Manager::DIVIDER
+        $this->add_control('normal_post_meta_color', [
+            'label' => esc_html__('Category Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .blog-grid-item-01 .content .post-meta li" => "color: {{VALUE}}"
+            ]
         ]);
-        $this->add_group_control(Group_Control_Background::get_type(), [
-            'name' => 'button_background',
-            'label' => esc_html__('Button Background ', 'softim-core'),
-            'selector' => "{{WRAPPER}} .btn--base"
+        $this->add_control('normal_post_paragraph_color', [
+            'label' => esc_html__('Paragraph Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .blog-grid-item-01 .content p" => "color: {{VALUE}}"
+            ]
         ]);
-        $this->add_control('divider_02', [
-            'type' => Controls_Manager::DIVIDER
+        $this->add_control('normal_background_color', [
+            'label' => esc_html__('Background Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .blog-grid-item-01" => "background-color: {{VALUE}}"
+            ]
         ]);
-        $this->add_group_control(Group_Control_Border::get_type(), [
-            'name' => 'header_button_border',
-            'label' => esc_html__('Border', 'softim-core'),
-            'selector' => "{{WRAPPER}} .btn--base"
-        ]);
-        $this->end_controls_tab();
-
-        $this->start_controls_tab('hover_style', [
-            'label' => esc_html__('Button Hover', "softim-core")
-        ]);
-        $this->add_control('button_hover_normal_color', [
+        $this->add_control('normal_post_button_color', [
             'label' => esc_html__('Button Color', 'softim-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
-                "{{WRAPPER}} .btn--base:hover" => "color: {{VALUE}}"
+                "{{WRAPPER}} .blog-grid-item-01 .content .read-btn" => "color: {{VALUE}}"
             ]
         ]);
-        $this->add_control('divider_03', [
-            'type' => Controls_Manager::DIVIDER
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'title_style_hover_tab',
+            [
+                'label' => esc_html__('Hover', 'softim-core'),
+            ]
+        );
+
+        $this->add_control('hover_post_title_color', [
+            'label' => esc_html__('Title Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .blog-grid-item-01 .content .title:hover" => "color: {{VALUE}}"
+            ]
         ]);
-        $this->add_group_control(Group_Control_Background::get_type(), [
-            'name' => 'button_hover_background',
-            'label' => esc_html__('Button Background ', 'softim-core'),
-            'selector' => "{{WRAPPER}} .btn--base:hover"
+        $this->add_control('normal_hover_background_color', [
+            'label' => esc_html__('Background Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .blog-grid-item-01:hover" => "background-color: {{VALUE}}"
+            ]
         ]);
-        $this->add_control('divider_04', [
-            'type' => Controls_Manager::DIVIDER
-        ]);
-        $this->add_group_control(Group_Control_Border::get_type(), [
-            'name' => 'header_hover_button_border',
-            'label' => esc_html__('Border', 'softim-core'),
-            'selector' => "{{WRAPPER}} .btn--base:hover"
+        $this->add_control('normal_post_hover_border_color', [
+            'label' => esc_html__('Button Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .blog-grid-item-01 .content .read-btn:hover" => "color: {{VALUE}}"
+            ]
         ]);
         $this->end_controls_tab();
 
         $this->end_controls_tabs();
 
-        $this->add_control('divider_05', [
-            'type' => Controls_Manager::DIVIDER
-        ]);
-        $this->add_control(
-            'button_border_radius',
+        $this->end_controls_section();
+
+
+        $this->start_controls_section(
+            'slider_navigation_styling_settings_section',
             [
-                'label' => esc_html__('Border Radius', 'softim-core'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%'],
-                'selectors' => [
-                    '{{WRAPPER}} .btn--base' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
+                'label' => esc_html__('Slider Nav Styling Settings', 'softim-core'),
+                'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
-        $this->end_controls_section();
-        /* button styling end */
+        $this->start_controls_tabs(
+            'slider_nav_style_tabs'
+        );
 
-        /* typography settings start */
-        $this->start_controls_section('typography_settings', [
-            'label' => esc_html__('Typography Settings', 'softim-core'),
-            'tab' => Controls_Manager::TAB_STYLE
+        $this->start_controls_tab(
+            'slider_navigation_style_normal_tab',
+            [
+                'label' => esc_html__('Normal', 'softim-core'),
+            ]
+        );
+        $this->add_control('normal_nav_color', [
+            'label' => esc_html__('Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .blog-slider-controls .slider-nav div" => "color: {{VALUE}}"
+            ]
         ]);
-        $this->add_group_control(Group_Control_Typography::get_type(), [
-            'name' => 'title_1_typography',
-            'label' => esc_html__('Title 1 Typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .about-content .title"
+        $this->add_group_control(Group_Control_Background::get_type(), [
+            'label' => esc_html__('Background', 'softim-core'),
+            'name' => 'nav_background',
+            'selector' => "{{WRAPPER}} .blog-slider-controls .slider-nav div"
         ]);
-        $this->add_group_control(Group_Control_Typography::get_type(), [
-            'name' => 'title_2_typography',
-            'label' => esc_html__('Title 2 Typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .about-content .title span.text--base"
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'slider_navigation_style_hover_tab',
+            [
+                'label' => esc_html__('Hover', 'softim-core'),
+            ]
+        );
+        $this->add_control('hover_nav_color', [
+            'label' => esc_html__('Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .blog-slider-controls .slider-nav div:hover" => "color: {{VALUE}}"
+            ]
         ]);
-        $this->add_group_control(Group_Control_Typography::get_type(), [
-            'name' => 'subtitle_typography',
-            'label' => esc_html__('Sub Title Typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .about-content p.para"
+        $this->add_group_control(Group_Control_Background::get_type(), [
+            'label' => esc_html__('Background', 'softim-core'),
+            'name' => 'nav_hover_background',
+            'selector' => "{{WRAPPER}} .blog-slider-controls .slider-nav div:hover"
         ]);
+
+        $this->end_controls_tab();
+
+        $this->end_controls_tabs();
+
+        $this->end_controls_section();
+
+
+        $this->start_controls_section(
+            'typography_settings_section',
+            [
+                'label' => esc_html__('Typography Settings', 'softim-core'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
         $this->add_group_control(Group_Control_Typography::get_type(), [
-            'name' => 'info_typography',
-            'label' => esc_html__('Info Typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .about-content p.info"
+            'label' => esc_html__('Title Typography', 'softim-core'),
+            'name' => 'post_meta_typography',
+            'description' => esc_html__('select title typography', 'softim-core'),
+            'selector' => "{{WRAPPER}} .blog-grid-item-01 .content .title"
         ]);
+
         $this->add_group_control(Group_Control_Typography::get_type(), [
-            'name' => 'button_typography',
-            'label' => esc_html__('Button Typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .btn--base"
+            'label' => esc_html__('Category Typography', 'softim-core'),
+            'name' => 'category_typography',
+            'description' => esc_html__('select category typography', 'softim-core'),
+            'selector' => "{{WRAPPER}} .blog-grid-item-01 .content .post-categories li"
         ]);
         $this->end_controls_section();
-        /* typography settings end */
 
     }
 
     /**
      * Render Elementor widget output on the frontend.
-     *
      * Written in PHP and used to generate the final HTML.
      *
      * @since 1.0.0
@@ -398,68 +386,100 @@ class Softim_Team_Two_Widget extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
+        //query settings
+        $total_posts = $settings['total'];
+        $category = $settings['category'];
+        $order = $settings['order'];
+        $orderby = $settings['orderby'];
+        //setup query
+        $args = array(
+            'post_type' => 'team',
+            'posts_per_page' => $total_posts,
+            'order' => $order,
+            'orderby' => $orderby,
+            'post_status' => 'publish',
+            'ignore_sticky_posts' => 1,
+        );
 
+        if (!empty($category)) {
+            $args['tax_query'] = array(
+                array(
+                    'taxonomy' => 'team-cat',
+                    'field' => 'term_id',
+                    'terms' => $category
+                )
+            );
+        }
+        $post_data = new \WP_Query($args);
         ?>
-
-        <section class="about-section pt-120">
-            <div class="about-element-one two">
-                <img src="<?php echo esc_url($settings['about_graphic_image']['url']);?>" alt="element">
-            </div>
+        <section class="team-section ptb-120">
+            <?php if ($settings['graphic_image_switch'] == 'yes') { ?>
+                <div class="team-element">
+                    <img src="<?php echo esc_url($settings['graphic_image']['url']); ?>" alt="element">
+                </div>
+            <?php } ?>
             <div class="container">
-                <div class="about-area">
-                    <div class="row justify-content-center align-items-center mb-30-none">
-                        <div class="col-xl-6 col-lg-6 mb-30">
-                            <div class="box-wrapper two">
-                                <div class="box3"></div>
-                                <div class="box1">
-                                    <?php
-                                    if ($settings['about_circle_list_1']){
-                                        $x = 0;
-                                        foreach ($settings['about_circle_list_1'] as $items1){
-                                            $x++;
-                                            if ($x == 1){
-                                                $group1 = 'one';
-                                            }else {
-                                                $group1 = 'two';
-                                            }
-                                            ?>
-                                            <div class="box-element-<?php echo esc_attr($group1)?>">
-                                                <img src="<?php echo esc_url($items1['about_circle_image_1']['url']);?>" alt="element">
-                                            </div>
-                                        <?php } } ?>
-                                </div>
-                                <div class="box2">
-                                    <?php
-                                    if ($settings['about_circle_list_2']){
-                                        $z = 0;
-                                        foreach ($settings['about_circle_list_2'] as $items2){
-                                            $z++;
-                                            if ($z == 1){
-                                                $group2 = 'five';
-                                            }else {
-                                                $group2 = 'six';
-                                            }
-                                            ?>
-                                            <div class="box-element-<?php echo esc_attr($group2)?>">
-                                                <img src="<?php echo esc_url($items2['about_circle_image_2']['url']);?>" alt="element">
-                                            </div>
-                                        <?php } } ?>
-                                </div>
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="section-header-wrapper">
+                            <div class="section-header">
+                                <h2 class="section-title"><?php echo esc_html($settings['title']) ?></h2>
+                                <p><?php echo esc_html($settings['info']) ?></p>
                             </div>
-                            <div class="about-thumb">
-                                <img src="<?php echo esc_url($settings['about_thumb']['url']);?>" alt="element">
-                            </div>
+                            <?php if ($settings['arrow_switch'] == 'yes') { ?>
+                                <div class="slider-nav-area">
+                                    <div class="slider-prev">
+                                        <i class="fa fa-chevron-left"></i>
+                                    </div>
+                                    <div class="slider-next">
+                                        <i class="fa fa-chevron-right"></i>
+                                    </div>
+                                </div>
+                            <?php } ?>
                         </div>
-                        <div class="col-xl-6 col-lg-6 mb-30">
-                            <div class="about-content">
-                                <h2 class="title"><?php echo esc_html($settings['title']); ?> <span class="text--base"><?php echo esc_html($settings['title2']); ?></span></h2>
-                                <p class="para"><?php echo esc_html($settings['subtitle']); ?></p>
-                                <p class="info"><?php echo esc_html($settings['info']); ?></p>
-                                <div class="about-btn">
-                                    <?php if ($settings['btn_status'] == 'yes'): ?>
-                                        <a href="<?php echo esc_url($settings['btn_link']['url']); ?>"
-                                           class="btn--base"><?php echo esc_html($settings['btn_text']); ?></a>
-                                    <?php endif; ?>
+                    </div>
+                </div>
+                <div class="row justify-content-center mb-10-none">
+                    <div class="col-xl-12">
+                        <div class="team-slider-area">
+                            <div class="team-slider">
+                                <div class="swiper-wrapper">
+                                    <?php if ($post_data->have_posts()) {
+                                        while ($post_data->have_posts()) {
+                                            $post_data->the_post();
+                                            ?>
+
+                                            <div class="swiper-slide">
+                                                <div class="team-item">
+                                                    <div class="team-thumb">
+                                                        <?php if (has_post_thumbnail()) { ?>
+                                                            <?php the_post_thumbnail('full'); ?>
+                                                        <?php } ?>
+                                                        <div class="team-social-area">
+                                                            <ul class="team-social">
+                                                                <li><a href="#0"><i class="fa fa-facebook-f"></i></a>
+                                                                </li>
+                                                                <li><a href="#0"><i class="fa fa-twitter"></i></a></li>
+                                                                <li><a href="#0"><i class="fa fa-google-plus"></i></a>
+                                                                </li>
+                                                                <li><a href="#0"><i class="fa fa-instagram"></i></a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="team-content">
+                                                        <h3 class="title"><a
+                                                                    href="<?php the_permalink(); ?>"><?php the_author(); ?></a>
+                                                        </h3>
+                                                        <span class="sub-title">Sr. Marketer</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <?php
+                                        }
+                                    }
+                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -471,4 +491,4 @@ class Softim_Team_Two_Widget extends Widget_Base
     }
 }
 
-Plugin::instance()->widgets_manager->register(new Softim_Team_Two_Widget());
+Plugin::instance()->widgets_manager->register(new Softim_Team_One_Widget());

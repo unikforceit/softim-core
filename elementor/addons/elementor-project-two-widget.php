@@ -92,7 +92,7 @@ class Softim_Project_Two_Widget extends Widget_Base
                 'label' => esc_html__('Image', 'softim-core'),
                 'type' => Controls_Manager::MEDIA,
                 'show_label' => false,
-                'description' => esc_html__('upload service image', 'softim-core'),
+                'description' => esc_html__('upload logo image', 'softim-core'),
                 'default' => [
                     'src' => Utils::get_placeholder_image_src()
                 ],
@@ -211,7 +211,7 @@ class Softim_Project_Two_Widget extends Widget_Base
         );
 
         $this->add_control('about_graphic_list', [
-            'label' => esc_html__('Take 4 Graphic Item', 'softim-core'),
+            'label' => esc_html__('Take 2 Graphic Item', 'softim-core'),
             'type' => Controls_Manager::REPEATER,
             'fields' => $repeater->get_controls(),
         ]);

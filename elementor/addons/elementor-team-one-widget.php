@@ -104,6 +104,15 @@ class Softim_Team_One_Widget extends Widget_Base
             ]
         );
         $this->add_control(
+            'graphic_image_switch',
+            [
+                'label' => esc_html__('Image On/Off', 'softim-core'),
+                'type' => Controls_Manager::SWITCHER,
+                'description' => esc_html__('you can set yes to show image.', 'softim-core'),
+                'default' => 'no'
+            ]
+        );
+        $this->add_control(
             'graphic_image', [
                 'label' => esc_html__('Left Graphic Image', 'softim-core'),
                 'type' => Controls_Manager::MEDIA,
@@ -120,7 +129,7 @@ class Softim_Team_One_Widget extends Widget_Base
                 'label' => esc_html__('Arrow Switch', 'softim-core'),
                 'type' => Controls_Manager::SWITCHER,
                 'description' => esc_html__('you can set yes to show arrow.', 'softim-core'),
-                'default' => 'yes'
+                'default' => 'no'
             ]
         );
         $this->add_control(
@@ -403,28 +412,30 @@ class Softim_Team_One_Widget extends Widget_Base
         }
         $post_data = new \WP_Query($args);
         ?>
-        <section class="team-section ptb-120">
-            <div class="team-element">
-                <img src="<?php echo esc_url($settings['graphic_image']['url']);?>" alt="element">
-            </div>
+        <section class="team-section two ptb-120">
+            <?php if ($settings['graphic_image_switch'] == 'yes') { ?>
+                <div class="team-element">
+                    <img src="<?php echo esc_url($settings['graphic_image']['url']); ?>" alt="element">
+                </div>
+            <?php } ?>
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="section-header-wrapper">
                             <div class="section-header">
-                                <h2 class="section-title"><?php echo esc_html($settings['title'])?></h2>
-                                <p><?php echo esc_html($settings['info'])?></p>
+                                <h2 class="section-title"><?php echo esc_html($settings['title']) ?></h2>
+                                <p><?php echo esc_html($settings['info']) ?></p>
                             </div>
-                            <?php if ($settings['arrow_switch'] == 'yes'){?>
-                            <div class="slider-nav-area">
-                                <div class="slider-prev">
-                                    <i class="fa fa-chevron-left"></i>
+                            <?php if ($settings['arrow_switch'] == 'yes') { ?>
+                                <div class="slider-nav-area">
+                                    <div class="slider-prev">
+                                        <i class="fa fa-chevron-left"></i>
+                                    </div>
+                                    <div class="slider-next">
+                                        <i class="fa fa-chevron-right"></i>
+                                    </div>
                                 </div>
-                                <div class="slider-next">
-                                    <i class="fa fa-chevron-right"></i>
-                                </div>
-                            </div>
-        <?php }?>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -433,37 +444,42 @@ class Softim_Team_One_Widget extends Widget_Base
                         <div class="team-slider-area">
                             <div class="team-slider">
                                 <div class="swiper-wrapper">
-                    <?php if ($post_data->have_posts()) {
-                        while ($post_data->have_posts()) {
-                            $post_data->the_post();
-                            ?>
+                                    <?php if ($post_data->have_posts()) {
+                                        while ($post_data->have_posts()) {
+                                            $post_data->the_post();
+                                            ?>
 
-                            <div class="swiper-slide">
-                                <div class="team-item">
-                                    <div class="team-thumb">
-                                        <?php if (has_post_thumbnail()){?>
-                                                <?php the_post_thumbnail('full');?>
-                                        <?php } ?>
-                                        <div class="team-social-area">
-                                            <ul class="team-social">
-                                                <li><a href="#0"><i class="fa fa-facebook-f"></i></a></li>
-                                                <li><a href="#0"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="#0"><i class="fa fa-google-plus"></i></a></li>
-                                                <li><a href="#0"><i class="fa fa-instagram"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="team-content">
-                                        <h3 class="title"><a href="<?php the_permalink();?>"><?php the_author();?></a></h3>
-                                        <span class="sub-title">Sr. Marketer</span>
-                                    </div>
-                                </div>
-                            </div>
+                                            <div class="swiper-slide">
+                                                <div class="team-item">
+                                                    <div class="team-thumb">
+                                                        <?php if (has_post_thumbnail()) { ?>
+                                                            <?php the_post_thumbnail('full'); ?>
+                                                        <?php } ?>
+                                                        <div class="team-social-area">
+                                                            <ul class="team-social">
+                                                                <li><a href="#0"><i class="fa fa-facebook-f"></i></a>
+                                                                </li>
+                                                                <li><a href="#0"><i class="fa fa-twitter"></i></a></li>
+                                                                <li><a href="#0"><i class="fa fa-google-plus"></i></a>
+                                                                </li>
+                                                                <li><a href="#0"><i class="fa fa-instagram"></i></a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="team-content">
+                                                        <h3 class="title"><a
+                                                                    href="<?php the_permalink(); ?>"><?php the_author(); ?></a>
+                                                        </h3>
+                                                        <span class="sub-title">Sr. Marketer</span>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                            <?php
-                        }
-                    }
-                    ?>
+                                            <?php
+                                        }
+                                    }
+                                    ?>
                                 </div>
                             </div>
                         </div>
