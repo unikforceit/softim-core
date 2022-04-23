@@ -109,7 +109,7 @@ class Softim_Team_One_Widget extends Widget_Base
                 'label' => esc_html__('Image On/Off', 'softim-core'),
                 'type' => Controls_Manager::SWITCHER,
                 'description' => esc_html__('you can set yes to show image.', 'softim-core'),
-                'default' => 'no'
+                'default' => 'yes'
             ]
         );
         $this->add_control(
@@ -129,7 +129,7 @@ class Softim_Team_One_Widget extends Widget_Base
                 'label' => esc_html__('Arrow Switch', 'softim-core'),
                 'type' => Controls_Manager::SWITCHER,
                 'description' => esc_html__('you can set yes to show arrow.', 'softim-core'),
-                'default' => 'no'
+                'default' => 'yes'
             ]
         );
         $this->add_control(
@@ -412,7 +412,7 @@ class Softim_Team_One_Widget extends Widget_Base
         }
         $post_data = new \WP_Query($args);
         ?>
-        <section class="team-section two ptb-120">
+        <section class="team-section ptb-120">
             <?php if ($settings['graphic_image_switch'] == 'yes') { ?>
                 <div class="team-element">
                     <img src="<?php echo esc_url($settings['graphic_image']['url']); ?>" alt="element">

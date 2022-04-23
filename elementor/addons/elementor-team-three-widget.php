@@ -6,7 +6,7 @@
  */
 
 namespace Elementor;
-class Softim_Team_Two_Widget extends Widget_Base
+class Softim_Team_Three_Widget extends Widget_Base
 {
 
     /**
@@ -21,7 +21,7 @@ class Softim_Team_Two_Widget extends Widget_Base
      */
     public function get_name()
     {
-        return 'softim-team-two-widget';
+        return 'softim-team-three-widget';
     }
 
     /**
@@ -36,7 +36,7 @@ class Softim_Team_Two_Widget extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Team: 02', 'softim-core');
+        return esc_html__('Team: 03', 'softim-core');
     }
 
     /**
@@ -204,6 +204,36 @@ class Softim_Team_Two_Widget extends Widget_Base
             'description' => esc_html__('select excerpt length', 'softim-core')
         ]);
         $this->end_controls_section();
+
+//      Graphic Loop
+        $this->start_controls_section(
+            'about_graphic_section',
+            [
+                'label' => esc_html__('Graphic Image', 'softim-core'),
+                'tab' => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $repeater = new Repeater();
+        $repeater->add_control(
+            'about_graphic_image', [
+                'label' => esc_html__('Graphic Image', 'softim-core'),
+                'type' => Controls_Manager::MEDIA,
+                'show_label' => false,
+                'description' => esc_html__('upload graphic image', 'softim-core'),
+                'default' => [
+                    'src' => Utils::get_placeholder_image_src()
+                ],
+            ]
+        );
+
+        $this->add_control('about_graphic_list', [
+            'label' => esc_html__('Take 4 Graphic Item', 'softim-core'),
+            'type' => Controls_Manager::REPEATER,
+            'fields' => $repeater->get_controls(),
+        ]);
+        $this->end_controls_section();
+
 
         $this->start_controls_section(
             'title_styling_settings_section',
@@ -413,11 +443,27 @@ class Softim_Team_Two_Widget extends Widget_Base
         $post_data = new \WP_Query($args);
         ?>
         <section class="team-section two ptb-120">
-            <?php if ($settings['graphic_image_switch'] == 'yes') { ?>
-                <div class="team-element">
-                    <img src="<?php echo esc_url($settings['graphic_image']['url']); ?>" alt="element">
-                </div>
-            <?php } ?>
+            <?php
+            if ($settings['about_graphic_list']){
+                $y = 0;
+                foreach ($settings['about_graphic_list'] as $items){
+                    $y++;
+                    if ($y == 1){
+                        $group = 'one';
+                    }else if ($y == 2){
+                        $group = 'two';
+                    }else if ($y == 3){
+                        $group = 'three';
+                    }else if ($y == 4){
+                        $group = 'four';
+                    }else {
+                        $group = 'five';
+                    }
+                    ?>
+                    <div class="team-element-<?php echo esc_attr($group)?>">
+                        <img src="<?php echo esc_url($items['about_graphic_image']['url']);?>" alt="element">
+                    </div>
+                <?php } } ?>
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
@@ -491,4 +537,4 @@ class Softim_Team_Two_Widget extends Widget_Base
     }
 }
 
-Plugin::instance()->widgets_manager->register(new Softim_Team_Two_Widget());
+Plugin::instance()->widgets_manager->register(new Softim_Team_Three_Widget());

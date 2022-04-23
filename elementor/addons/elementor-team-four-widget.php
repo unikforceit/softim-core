@@ -6,7 +6,7 @@
  */
 
 namespace Elementor;
-class Softim_Team_Two_Widget extends Widget_Base
+class Softim_Team_Four_Widget extends Widget_Base
 {
 
     /**
@@ -21,7 +21,7 @@ class Softim_Team_Two_Widget extends Widget_Base
      */
     public function get_name()
     {
-        return 'softim-team-two-widget';
+        return 'softim-team-four-widget';
     }
 
     /**
@@ -36,7 +36,7 @@ class Softim_Team_Two_Widget extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Team: 02', 'softim-core');
+        return esc_html__('Team: 04', 'softim-core');
     }
 
     /**
@@ -85,51 +85,6 @@ class Softim_Team_Two_Widget extends Widget_Base
             [
                 'label' => esc_html__('General Settings', 'softim-core'),
                 'tab' => Controls_Manager::TAB_CONTENT,
-            ]
-        );
-        $this->add_control(
-            'title', [
-                'label' => esc_html__('Title', 'softim-core'),
-                'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__('Softim Expert Team', 'softim-core'),
-                'description' => esc_html__('enter title', 'softim-core'),
-            ]
-        );
-        $this->add_control(
-            'info', [
-                'label' => esc_html__('Info', 'softim-core'),
-                'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__('We rank among the best in the US, Argentina, and Ukraine. Our apps get featured as best in class, and our clients love our work.', 'softim-core'),
-                'description' => esc_html__('enter info', 'softim-core'),
-            ]
-        );
-        $this->add_control(
-            'graphic_image_switch',
-            [
-                'label' => esc_html__('Image On/Off', 'softim-core'),
-                'type' => Controls_Manager::SWITCHER,
-                'description' => esc_html__('you can set yes to show image.', 'softim-core'),
-                'default' => 'no'
-            ]
-        );
-        $this->add_control(
-            'graphic_image', [
-                'label' => esc_html__('Left Graphic Image', 'softim-core'),
-                'type' => Controls_Manager::MEDIA,
-                'show_label' => false,
-                'description' => esc_html__('Left graphic image', 'softim-core'),
-                'default' => [
-                    'src' => Utils::get_placeholder_image_src()
-                ],
-            ]
-        );
-        $this->add_control(
-            'arrow_switch',
-            [
-                'label' => esc_html__('Arrow Switch', 'softim-core'),
-                'type' => Controls_Manager::SWITCHER,
-                'description' => esc_html__('you can set yes to show arrow.', 'softim-core'),
-                'default' => 'no'
             ]
         );
         $this->add_control(
@@ -412,78 +367,36 @@ class Softim_Team_Two_Widget extends Widget_Base
         }
         $post_data = new \WP_Query($args);
         ?>
-        <section class="team-section two ptb-120">
-            <?php if ($settings['graphic_image_switch'] == 'yes') { ?>
-                <div class="team-element">
-                    <img src="<?php echo esc_url($settings['graphic_image']['url']); ?>" alt="element">
-                </div>
-            <?php } ?>
+        <section class="team-section three ptb-120">
             <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="section-header-wrapper">
-                            <div class="section-header">
-                                <h2 class="section-title"><?php echo esc_html($settings['title']) ?></h2>
-                                <p><?php echo esc_html($settings['info']) ?></p>
+                <div class="row justify-content-center mb-65-none">
+        <?php if ($post_data->have_posts()) {
+        while ($post_data->have_posts()) {
+            $post_data->the_post();
+            ?>
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-60">
+                        <div class="team-item">
+                            <div class="team-thumb">
+                                <?php if (has_post_thumbnail()) { ?>
+                                    <?php the_post_thumbnail('full'); ?>
+                                <?php } ?>
+                                <div class="team-social-area">
+                                    <ul class="team-social">
+                                        <li><a href="#0"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="#0"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#0"><i class="fa fa-google-plus"></i></a></li>
+                                        <li><a href="#0"><i class="fa fa-instagram"></i></a></li>
+                                    </ul>
+                                </div>
                             </div>
-                            <?php if ($settings['arrow_switch'] == 'yes') { ?>
-                                <div class="slider-nav-area">
-                                    <div class="slider-prev">
-                                        <i class="fa fa-chevron-left"></i>
-                                    </div>
-                                    <div class="slider-next">
-                                        <i class="fa fa-chevron-right"></i>
-                                    </div>
-                                </div>
-                            <?php } ?>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center mb-10-none">
-                    <div class="col-xl-12">
-                        <div class="team-slider-area two">
-                            <div class="team-slider two">
-                                <div class="swiper-wrapper">
-                                    <?php if ($post_data->have_posts()) {
-                                        while ($post_data->have_posts()) {
-                                            $post_data->the_post();
-                                            ?>
-
-                                            <div class="swiper-slide">
-                                                <div class="team-item">
-                                                    <div class="team-thumb">
-                                                        <?php if (has_post_thumbnail()) { ?>
-                                                            <?php the_post_thumbnail('full'); ?>
-                                                        <?php } ?>
-                                                        <div class="team-social-area">
-                                                            <ul class="team-social">
-                                                                <li><a href="#0"><i class="fa fa-facebook-f"></i></a>
-                                                                </li>
-                                                                <li><a href="#0"><i class="fa fa-twitter"></i></a></li>
-                                                                <li><a href="#0"><i class="fa fa-google-plus"></i></a>
-                                                                </li>
-                                                                <li><a href="#0"><i class="fa fa-instagram"></i></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="team-content">
-                                                        <h3 class="title"><a
-                                                                    href="<?php the_permalink(); ?>"><?php the_author(); ?></a>
-                                                        </h3>
-                                                        <span class="sub-title">Sr. Marketer</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <?php
-                                        }
-                                    }
-                                    ?>
-                                </div>
+                            <div class="team-content">
+                                <h3 class="title"><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h3>
+                                <span class="sub-title">Sr. Marketer</span>
                             </div>
                         </div>
                     </div>
+        <?php }
+        } ?>
                 </div>
             </div>
         </section>
@@ -491,4 +404,4 @@ class Softim_Team_Two_Widget extends Widget_Base
     }
 }
 
-Plugin::instance()->widgets_manager->register(new Softim_Team_Two_Widget());
+Plugin::instance()->widgets_manager->register(new Softim_Team_Four_Widget());
