@@ -134,17 +134,6 @@ class Softim_Contact_Two_Widget extends Widget_Base
             ]
         );
         $repeater->add_control(
-            'about_graphic_image', [
-                'label' => esc_html__('About Graphic Image', 'softim-core'),
-                'type' => Controls_Manager::MEDIA,
-                'show_label' => false,
-                'description' => esc_html__('upload about graphic image', 'softim-core'),
-                'default' => [
-                    'src' => Utils::get_placeholder_image_src()
-                ],
-            ]
-        );
-        $repeater->add_control(
             'title', [
                 'label' => esc_html__('Title', 'softim-core'),
                 'type' => Controls_Manager::TEXTAREA,

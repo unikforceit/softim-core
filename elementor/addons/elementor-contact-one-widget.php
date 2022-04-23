@@ -184,7 +184,7 @@ class Softim_Contact_One_Widget extends Widget_Base
         );
 
         $this->add_control('about_graphic_list', [
-            'label' => esc_html__('Take 5 About Graphic Item', 'softim-core'),
+            'label' => esc_html__('Take 4 About Graphic Item', 'softim-core'),
             'type' => Controls_Manager::REPEATER,
             'fields' => $repeater->get_controls(),
         ]);

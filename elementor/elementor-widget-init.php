@@ -92,9 +92,13 @@ if ( ! class_exists( 'Softim_Elementor_Widget_Init' ) ) {
                 'project-two',
                 'service-one',
                 'service-two',
+                'service-three',
+                'service-four',
                 'statistics',
                 'team-one',
                 'team-two',
+                'team-three',
+                'team-four',
 				'testimonial-one',
 				'testimonial-two',
 			);
