@@ -68,13 +68,11 @@ if (!class_exists('Softim_Custom_Post_Type')) {
                             'set_featured_image' => esc_html__('Set Service Image', 'softim-core'),
                         ),
                         'supports' => array('title', 'thumbnail', 'excerpt', 'editor', 'comments'),
-                        'taxonomies' => array( 'post_tag'), // this is IMPORTANT
                         'hierarchical' => false,
                         'public' => true,
                         "publicly_queryable" => true,
                         'show_ui' => true,
                         'show_in_menu' => 'softim_theme_options',
-                        "rewrite" => array('slug' => 'all-services', 'with_front' => true),
                         'can_export' => true,
                         'capability_type' => 'post',
                         "show_in_rest" => true,
@@ -104,7 +102,6 @@ if (!class_exists('Softim_Custom_Post_Type')) {
                             'set_featured_image' => esc_html__('Set Project Image', 'softim-core'),
                         ),
                         'supports' => array('title', 'thumbnail', 'excerpt', 'editor', 'comments'),
-                        'taxonomies' => array( 'post_tag'), // this is IMPORTANT
                         'hierarchical' => false,
                         'public' => true,
                         "publicly_queryable" => true,
@@ -240,7 +237,7 @@ if (!class_exists('Softim_Custom_Post_Type')) {
                 }
             }
 
-            flush_rewrite_rules();
+            //flush_rewrite_rules();
         }
 
     }//end class
