@@ -429,7 +429,7 @@ class Softim_Blog_Post_Two_Widget extends Widget_Base
                                 <p><?php echo wp_trim_words(get_the_excerpt(), $settings['excerpt_length'], '.');?></p>
                                 <div class="blog-post-meta two">
                                     <span class="user"><?php echo esc_html('By :')?> <?php the_author();?></span>
-                                    <span class="date"><?php get_the_time('F j, Y');?></span>
+                                    <span class="date"><?php echo get_the_time('F j, Y');?></span>
                                 </div>
                             </div>
                         </div>
