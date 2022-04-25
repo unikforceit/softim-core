@@ -28,7 +28,7 @@ if (!class_exists('Softim_Core_Init')) {
 			//load plugin text domain
 			add_action('init', array($this, 'load_textdomain'));
 			//add custom icon to codester framework
-			add_filter('csf_field_icon_add_icons', array($this, 'csf_custom_icon'));
+			//add_filter('csf_field_icon_add_icons', array($this, 'csf_custom_icon'));
 			//load plugin dependency files()
             add_action('plugin_loaded', array($this, 'load_plugin_dependency_files'));
 		}
@@ -245,13 +245,6 @@ if (!class_exists('Softim_Core_Init')) {
 				array(
 					'handle' => 'softim-core-admin-style',
 					'src' => SOFTIM_CORE_ADMIN_ASSETS . '/css/admin.css',
-					'deps' => array(),
-					'ver' => $plugin_version,
-					'media' => 'all'
-				),
-				array(
-					'handle' => 'flaticon',
-					'src' => SOFTIM_CORE_CSS . '/flaticon.css',
 					'deps' => array(),
 					'ver' => $plugin_version,
 					'media' => 'all'
