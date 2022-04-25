@@ -161,7 +161,7 @@ class Softim_Contact_Two_Widget extends Widget_Base
         $this->start_controls_section(
             'css_styles',
             [
-                'label' => esc_html__('Styling Banner Content', 'softim-core'),
+                'label' => esc_html__('Styling Content', 'softim-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );

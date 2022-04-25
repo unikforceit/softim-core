@@ -139,7 +139,7 @@ class Softim_Project_Two_Widget extends Widget_Base
             'label' => esc_html__('Category', 'softim-core'),
             'type' => Controls_Manager::SELECT2,
             'multiple' => true,
-            'options' => softim_core()->get_terms_names('category', 'id'),
+            'options' => softim_core()->get_terms_names('project-cat', 'id'),
             'description' => esc_html__('select category as you want, leave it blank for all category', 'softim-core'),
         ]);
         $this->add_control('order', [
