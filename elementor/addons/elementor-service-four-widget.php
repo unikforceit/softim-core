@@ -422,12 +422,13 @@ class Softim_Service_Four_Widget extends Widget_Base
                     <?php if ($post_data->have_posts()) {
                         while ($post_data->have_posts()) {
                             $post_data->the_post();
+                            $service_meta = get_post_meta(get_the_ID(), 'softim_service_options', true);
                             ?>
                             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-30">
                                 <div class="service-item three">
-                                    <?php if (has_post_thumbnail()) { ?>
+                                    <?php if (!empty($service_meta['image']['id'])){?>
                                         <div class="service-icon">
-                                            <?php the_post_thumbnail('full'); ?>
+                                            <?php echo wp_get_attachment_image($service_meta['image']['id'], 'full'); ?>
                                         </div>
                                     <?php } ?>
                                     <div class="service-content">
