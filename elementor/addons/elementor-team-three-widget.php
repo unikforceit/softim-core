@@ -444,26 +444,27 @@ class Softim_Team_Three_Widget extends Widget_Base
         ?>
         <section class="team-section two ptb-120">
             <?php
-            if ($settings['about_graphic_list']){
+            if ($settings['about_graphic_list']) {
                 $y = 0;
-                foreach ($settings['about_graphic_list'] as $items){
+                foreach ($settings['about_graphic_list'] as $items) {
                     $y++;
-                    if ($y == 1){
+                    if ($y == 1) {
                         $group = 'one';
-                    }else if ($y == 2){
+                    } else if ($y == 2) {
                         $group = 'two';
-                    }else if ($y == 3){
+                    } else if ($y == 3) {
                         $group = 'three';
-                    }else if ($y == 4){
+                    } else if ($y == 4) {
                         $group = 'four';
-                    }else {
+                    } else {
                         $group = 'five';
                     }
                     ?>
-                    <div class="team-element-<?php echo esc_attr($group)?>">
-                        <img src="<?php echo esc_url($items['about_graphic_image']['url']);?>" alt="element">
+                    <div class="team-element-<?php echo esc_attr($group) ?>">
+                        <img src="<?php echo esc_url($items['about_graphic_image']['url']); ?>" alt="element">
                     </div>
-                <?php } } ?>
+                <?php }
+            } ?>
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
@@ -493,6 +494,7 @@ class Softim_Team_Three_Widget extends Widget_Base
                                     <?php if ($post_data->have_posts()) {
                                         while ($post_data->have_posts()) {
                                             $post_data->the_post();
+                                            $team_meta = get_post_meta(get_the_ID(), 'softim_team_options', true);
                                             ?>
 
                                             <div class="swiper-slide">
@@ -503,13 +505,17 @@ class Softim_Team_Three_Widget extends Widget_Base
                                                         <?php } ?>
                                                         <div class="team-social-area">
                                                             <ul class="team-social">
-                                                                <li><a href="#0"><i class="fa fa-facebook-f"></i></a>
-                                                                </li>
-                                                                <li><a href="#0"><i class="fa fa-twitter"></i></a></li>
-                                                                <li><a href="#0"><i class="fa fa-google-plus"></i></a>
-                                                                </li>
-                                                                <li><a href="#0"><i class="fa fa-instagram"></i></a>
-                                                                </li>
+                                                                <?php
+
+                                                                if ($team_meta['social-icons']) {
+                                                                    foreach ($team_meta['social-icons'] as $team_icon) {
+                                                                        ?>
+                                                                        <li>
+                                                                            <a href="<?php echo esc_url($team_icon['url']); ?>"><i
+                                                                                        class="<?php echo esc_attr($team_icon['icon']); ?>"></i></a>
+                                                                        </li>
+                                                                    <?php }
+                                                                } ?>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -517,7 +523,7 @@ class Softim_Team_Three_Widget extends Widget_Base
                                                         <h3 class="title"><a
                                                                     href="<?php the_permalink(); ?>"><?php the_author(); ?></a>
                                                         </h3>
-                                                        <span class="sub-title">Sr. Marketer</span>
+                                                        <span class="sub-title"><?php echo esc_html($team_meta['designation']);?></span>
                                                     </div>
                                                 </div>
                                             </div>
