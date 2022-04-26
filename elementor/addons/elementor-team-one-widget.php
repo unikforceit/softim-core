@@ -472,8 +472,8 @@ class Softim_Team_One_Widget extends Widget_Base
                                                         </div>
                                                     </div>
                                                     <div class="team-content">
-                                                        <h3 class="title"><a
-                                                                    href="<?php the_permalink(); ?>"><?php the_author(); ?></a>
+                                                        <h3 class="title">
+                                                            <a href="<?php the_permalink(); ?>"><?php the_author(); ?></a>
                                                         </h3>
                                                         <span class="sub-title"><?php echo esc_html($team_meta['designation']);?></span>
                                                     </div>
