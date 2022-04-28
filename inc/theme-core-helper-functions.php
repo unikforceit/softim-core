@@ -23,6 +23,36 @@ if (!class_exists('Softim_Core_Helper_Functions')) {
         {
             add_filter('upload_mimes', array($this, 'theme_mime_types'));
             add_filter('wp_check_filetype_and_ext', array($this, 'theme_fix_mime_type_svg'));
+            add_shortcode('RENDER_ELEMENTOR', [$this, 'softim_elementor_template_render']);
+        }
+
+        public function softim_elementor_template($type='') {
+
+            $type = $type ? $type : 'elementor_library';
+            global $post;
+            $args = array('numberposts' => -1,'post_type' => $type,);
+            $posts = get_posts($args);
+            $categories = array(
+                ''  => __( 'Select', 'charitro' ),
+            );
+            foreach ($posts as $pn_cat) {
+                $categories[$pn_cat->ID] = get_the_title($pn_cat->ID);
+            }
+            return $categories;
+        }
+
+        public function softim_elementor_template_render($atts){
+            if(!class_exists('Elementor\Plugin')){
+                return '';
+            }
+            if(!isset($atts['id']) || empty($atts['id'])){
+                return '';
+            }
+
+            $post_id = $atts['id'];
+
+            $response = \Elementor\Plugin::instance()->frontend->get_builder_content_for_display($post_id);
+            return $response;
         }
 
         /**
