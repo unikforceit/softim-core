@@ -38,52 +38,6 @@ if ( class_exists('CSF') ){
 		)
 	) );
 
-
-    /**
-     * Packages Category Options
-     * @package softim
-     * @since 1.0.0
-     */
-    CSF::createTaxonomyOptions( $prefix .'_packages_category', array(
-        'taxonomy'  => 'packages-cat',
-        'data_type' => 'serialize', // The type of the database save options. `serialize` or `unserialize`
-    ) );
-
-    // Create a section
-    CSF::createSection( $prefix .'_packages_category', array(
-        'fields' => array(
-            array(
-                'id'    => 'icon',
-                'type'  => 'icon',
-                'title' => esc_html__('Icon','softim'),
-                'default' => 'flaticon-statistics'
-            ),
-        )
-    ) );
-
-
-    /**
-     * Deals Category Options
-     * @package softim
-     * @since 1.0.0
-     */
-    CSF::createTaxonomyOptions( $prefix .'_deals_category', array(
-        'taxonomy'  => 'deals-cat',
-        'data_type' => 'serialize', // The type of the database save options. `serialize` or `unserialize`
-    ) );
-
-    // Create a section
-    CSF::createSection( $prefix .'_deals_category', array(
-        'fields' => array(
-            array(
-                'id'    => 'icon',
-                'type'  => 'icon',
-                'title' => esc_html__('Icon','softim'),
-                'default' => 'flaticon-suitcase'
-            ),
-        )
-    ) );
-
     /**
      * Team Category Options
      * @package softim

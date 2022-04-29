@@ -19,7 +19,10 @@ if (!class_exists('Softim_Custom_Post_Type')) {
         public function __construct()
         {
             //register post type
-            add_action('init', array($this, 'register_custom_post_type'));
+            add_action( 'init', [$this, 'create_service_cpt'], 0 );
+            add_action( 'init', [$this, 'create_service_taxonomy'], 0 );
+            add_action( 'init', [$this, 'create_project_cpt'], 0 );
+            add_action( 'init', [$this, 'create_project_taxonomy'], 0 );
         }
 
         /**
@@ -35,211 +38,166 @@ if (!class_exists('Softim_Custom_Post_Type')) {
             return self::$instance;
         }
 
-        /**
-         * Register Custom Post Type
-         * @since  2.0.0
-         */
-        public function register_custom_post_type()
-        {
-            if (!defined('ELEMENTOR_VERSION')) {
-                return;
-            }
-            $all_post_type = array(
-                [
-                    'post_type' => 'service',
-                    'args' => array(
-                        'label' => esc_html__('Service', 'softim-core'),
-                        'description' => esc_html__('Service', 'softim-core'),
-                        'labels' => array(
-                            'name' => esc_html_x('Service', 'Post Type General Name', 'softim-core'),
-                            'singular_name' => esc_html_x('Service', 'Post Type Singular Name', 'softim-core'),
-                            'menu_name' => esc_html__('Service', 'softim-core'),
-                            'all_items' => esc_html__('Services', 'softim-core'),
-                            'view_item' => esc_html__('View Service', 'softim-core'),
-                            'add_new_item' => esc_html__('Add New Service', 'softim-core'),
-                            'add_new' => esc_html__('Add New Service', 'softim-core'),
-                            'edit_item' => esc_html__('Edit Service', 'softim-core'),
-                            'update_item' => esc_html__('Update Service', 'softim-core'),
-                            'search_items' => esc_html__('Search Service', 'softim-core'),
-                            'not_found' => esc_html__('Not Found', 'softim-core'),
-                            'not_found_in_trash' => esc_html__('Not found in Trash', 'softim-core'),
-                            'featured_image' => esc_html__('Service Image', 'softim-core'),
-                            'remove_featured_image' => esc_html__('Remove Service Image', 'softim-core'),
-                            'set_featured_image' => esc_html__('Set Service Image', 'softim-core'),
-                        ),
-                        'supports' => array('title', 'thumbnail', 'excerpt', 'editor', 'comments'),
-                        'hierarchical' => false,
-                        'public' => true,
-                        "publicly_queryable" => true,
-                        'show_ui' => true,
-                        'show_in_menu' => 'softim_theme_options',
-                        'can_export' => true,
-                        'capability_type' => 'post',
-                        "show_in_rest" => true,
-                        'query_var' => true
-                    )
-                ],
-                [
-                    'post_type' => 'project',
-                    'args' => array(
-                        'label' => esc_html__('Project', 'softim-core'),
-                        'description' => esc_html__('Project', 'softim-core'),
-                        'labels' => array(
-                            'name' => esc_html_x('Project', 'Post Type General Name', 'softim-core'),
-                            'singular_name' => esc_html_x('Project', 'Post Type Singular Name', 'softim-core'),
-                            'menu_name' => esc_html__('Project', 'softim-core'),
-                            'all_items' => esc_html__('Projects', 'softim-core'),
-                            'view_item' => esc_html__('View Project', 'softim-core'),
-                            'add_new_item' => esc_html__('Add New Project', 'softim-core'),
-                            'add_new' => esc_html__('Add New Project', 'softim-core'),
-                            'edit_item' => esc_html__('Edit Project', 'softim-core'),
-                            'update_item' => esc_html__('Update Project', 'softim-core'),
-                            'search_items' => esc_html__('Search Project', 'softim-core'),
-                            'not_found' => esc_html__('Not Found', 'softim-core'),
-                            'not_found_in_trash' => esc_html__('Not found in Trash', 'softim-core'),
-                            'featured_image' => esc_html__('Project Image', 'softim-core'),
-                            'remove_featured_image' => esc_html__('Remove Project Image', 'softim-core'),
-                            'set_featured_image' => esc_html__('Set Project Image', 'softim-core'),
-                        ),
-                        'supports' => array('title', 'thumbnail', 'excerpt', 'editor', 'comments'),
-                        'hierarchical' => false,
-                        'public' => true,
-                        "publicly_queryable" => true,
-                        'show_ui' => true,
-                        'show_in_menu' => 'softim_theme_options',
-                        'can_export' => true,
-                        'capability_type' => 'post',
-                        "show_in_rest" => true,
-                        'query_var' => true
-                    )
-                ],
-                [
-                    'post_type' => 'team',
-                    'args' => array(
-                        'label' => esc_html__('team', 'softim-core'),
-                        'description' => esc_html__('team', 'softim-core'),
-                        'labels' => array(
-                            'name' => esc_html_x('Team', 'Post Type General Name', 'softim-core'),
-                            'singular_name' => esc_html_x('Team', 'Post Type Singular Name', 'softim-core'),
-                            'menu_name' => esc_html__('Teams', 'softim-core'),
-                            'all_items' => esc_html__('Teams', 'softim-core'),
-                            'view_item' => esc_html__('View Teams', 'softim-core'),
-                            'add_new_item' => esc_html__('Add New Team Member', 'softim-core'),
-                            'add_new' => esc_html__('Add New Team Member', 'softim-core'),
-                            'edit_item' => esc_html__('Edit Team', 'softim-core'),
-                            'update_item' => esc_html__('Update Team', 'softim-core'),
-                            'search_items' => esc_html__('Search Team', 'softim-core'),
-                            'not_found' => esc_html__('Not Found', 'softim-core'),
-                            'not_found_in_trash' => esc_html__('Not found in Trash', 'softim-core'),
-                            'featured_image' => esc_html__('Team Image', 'softim-core'),
-                            'remove_featured_image' => esc_html__('Remove Team Image', 'softim-core'),
-                            'set_featured_image' => esc_html__('Set Team Image', 'softim-core'),
-                        ),
-                        'supports' => array('title', 'thumbnail', 'excerpt', 'editor', 'comments'),
-                        'hierarchical' => false,
-                        'public' => true,
-                        "publicly_queryable" => true,
-                        'show_ui' => true,
-                        'show_in_menu' => 'softim_theme_options',
-                        'can_export' => true,
-                        'capability_type' => 'post',
-                        "show_in_rest" => true,
-                        'query_var' => true
-                    )
-                ]
+        // Register Custom Post Type service
+        public function create_service_cpt() {
+
+            $labels = array(
+                'name' => _x( 'Services', 'Post Type General Name', 'softim' ),
+                'singular_name' => _x( 'service', 'Post Type Singular Name', 'softim' ),
+                'menu_name' => _x( 'Services', 'Admin Menu text', 'softim' ),
+                'name_admin_bar' => _x( 'service', 'Add New on Toolbar', 'softim' ),
+                'archives' => __( 'service Archives', 'softim' ),
+                'attributes' => __( 'service Attributes', 'softim' ),
+                'parent_item_colon' => __( 'Parent service:', 'softim' ),
+                'all_items' => __( 'All Services', 'softim' ),
+                'add_new_item' => __( 'Add New service', 'softim' ),
+                'add_new' => __( 'Add New', 'softim' ),
+                'new_item' => __( 'New service', 'softim' ),
+                'edit_item' => __( 'Edit service', 'softim' ),
+                'update_item' => __( 'Update service', 'softim' ),
+                'view_item' => __( 'View service', 'softim' ),
+                'view_items' => __( 'View Services', 'softim' ),
+                'search_items' => __( 'Search service', 'softim' ),
+                'not_found' => __( 'Not found', 'softim' ),
+                'not_found_in_trash' => __( 'Not found in Trash', 'softim' ),
+                'featured_image' => __( 'Featured Image', 'softim' ),
+                'set_featured_image' => __( 'Set featured image', 'softim' ),
+                'remove_featured_image' => __( 'Remove featured image', 'softim' ),
+                'use_featured_image' => __( 'Use as featured image', 'softim' ),
+                'insert_into_item' => __( 'Insert into service', 'softim' ),
+                'uploaded_to_this_item' => __( 'Uploaded to this service', 'softim' ),
+                'items_list' => __( 'Services list', 'softim' ),
+                'items_list_navigation' => __( 'Services list navigation', 'softim' ),
+                'filter_items_list' => __( 'Filter Services list', 'softim' ),
             );
-
-            if (!empty($all_post_type) && is_array($all_post_type)) {
-
-                foreach ($all_post_type as $post_type) {
-                    call_user_func_array('register_post_type', $post_type);
-                }
-            }
-
-
-            /**
-             * Custom Taxonomy Register
-             * @since 1.0.0
-            */
-
-            $all_custom_taxonmy = array(
-                array(
-                    'taxonomy' => 'service-cat',
-                    'object_type' => 'service',
-                    'args' => array(
-                        "labels" => array(
-                            "name" => esc_html__("Service Category", 'softim-core'),
-                            "singular_name" => esc_html__("Service Category", 'softim-core'),
-                            "menu_name" => esc_html__("Service Category", 'softim-core'),
-                            "all_items" => esc_html__("All Service Category", 'softim-core'),
-                            "add_new_item" => esc_html__("Add New Service Category", 'softim-core')
-                        ),
-                        "public" => true,
-                        "hierarchical" => true,
-                        "show_ui" => true,
-                        "show_in_menu" => true,
-                        "show_in_nav_menus" => true,
-                        "query_var" => true,
-                        "show_admin_column" => true,
-                        "show_in_rest" => true,
-                        "show_in_quick_edit" => true,
-                    )
-                ),
-                array(
-                    'taxonomy' => 'project-cat',
-                    'object_type' => 'project',
-                    'args' => array(
-                        "labels" => array(
-                            "name" => esc_html__("Project Category", 'softim-core'),
-                            "singular_name" => esc_html__("Project Category", 'softim-core'),
-                            "menu_name" => esc_html__("Project Category", 'softim-core'),
-                            "all_items" => esc_html__("All Project Category", 'softim-core'),
-                            "add_new_item" => esc_html__("Add New Project Category", 'softim-core')
-                        ),
-                        "public" => true,
-                        "hierarchical" => true,
-                        "show_ui" => true,
-                        "show_in_menu" => true,
-                        "show_in_nav_menus" => true,
-                        "query_var" => true,
-                        "show_admin_column" => true,
-                        "show_in_rest" => true,
-                        "show_in_quick_edit" => true,
-                    )
-                ),
-                array(
-                    'taxonomy' => 'team-cat',
-                    'object_type' => 'team',
-                    'args' => array(
-                        "labels" => array(
-                            "name" => esc_html__("Team Category", 'softim-core'),
-                            "singular_name" => esc_html__("Team Category", 'softim-core'),
-                            "menu_name" => esc_html__("Team Category", 'softim-core'),
-                            "all_items" => esc_html__("All Team Category", 'softim-core'),
-                            "add_new_item" => esc_html__("Add New Team Category", 'softim-core')
-                        ),
-                        "public" => true,
-                        "hierarchical" => true,
-                        "show_ui" => true,
-                        "show_in_menu" => true,
-                        "show_in_nav_menus" => true,
-                        "query_var" => true,
-                        "show_admin_column" => true,
-                        "show_in_rest" => true,
-                        "show_in_quick_edit" => true,
-                    )
-                )
+            $args = array(
+                'label' => __( 'service', 'softim' ),
+                'description' => __( 'Services ', 'softim' ),
+                'labels' => $labels,
+                'menu_icon' => '',
+                'supports' => array('title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'author', 'comments', 'page-attributes', 'post-formats'),
+                'taxonomies' => array(),
+                'public' => true,
+                'show_ui' => true,
+                'show_in_menu' => 'softim_theme_options',
+                'can_export' => true,
+                'has_archive' => true,
+                'hierarchical' => true,
+                'exclude_from_search' => false,
+                'show_in_rest' => true,
+                'publicly_queryable' => true,
+                'capability_type' => 'post',
             );
+            register_post_type( 'service', $args );
 
-            if (is_array($all_custom_taxonmy) && !empty($all_custom_taxonmy)) {
-                foreach ($all_custom_taxonmy as $taxonomy) {
-                    call_user_func_array('register_taxonomy', $taxonomy);
-                }
-            }
-
-            //flush_rewrite_rules();
         }
+        // Register Custom taxonomy Type service
+        public function create_service_taxonomy() {
+            $labels = array(
+                'name' => __('Category', 'softim'),
+                'singular_name' => __('Category', 'softim'),
+                'search_items' => __('Search categories', 'softim'),
+                'all_items' => __('Categories', 'softim'),
+                'parent_item' => __('Parent category', 'softim'),
+                'parent_item_colon' => __('Parent category:', 'softim'),
+                'edit_item' => __('Edit category', 'softim'),
+                'update_item' => __('Update category', 'softim'),
+                'add_new_item' => __('Add category', 'softim'),
+                'new_item_name' => __('New category', 'softim'),
+                'menu_name' => __('Category', 'softim'),
+            );
+            $args = array(
+                'labels' => $labels,
+                'hierarchical' => true,
+                "show_in_menu" => true,
+                "show_in_nav_menus" => true,
+                "query_var" => true,
+                "show_admin_column" => true,
+                'show_ui' => true,
+                'rewrite' => array('slug' => 'service-cat'),
+            );
+            register_taxonomy('service-cat', 'service', $args);
+        }
+        // Register Custom Post Type project
+        public function create_project_cpt() {
 
+            $labels = array(
+                'name' => _x( 'Projects', 'Post Type General Name', 'softim' ),
+                'singular_name' => _x( 'project', 'Post Type Singular Name', 'softim' ),
+                'menu_name' => _x( 'Projects', 'Admin Menu text', 'softim' ),
+                'name_admin_bar' => _x( 'project', 'Add New on Toolbar', 'softim' ),
+                'archives' => __( 'project Archives', 'softim' ),
+                'attributes' => __( 'project Attributes', 'softim' ),
+                'parent_item_colon' => __( 'Parent project:', 'softim' ),
+                'all_items' => __( 'All Projects', 'softim' ),
+                'add_new_item' => __( 'Add New project', 'softim' ),
+                'add_new' => __( 'Add New', 'softim' ),
+                'new_item' => __( 'New project', 'softim' ),
+                'edit_item' => __( 'Edit project', 'softim' ),
+                'update_item' => __( 'Update project', 'softim' ),
+                'view_item' => __( 'View project', 'softim' ),
+                'view_items' => __( 'View Projects', 'softim' ),
+                'search_items' => __( 'Search project', 'softim' ),
+                'not_found' => __( 'Not found', 'softim' ),
+                'not_found_in_trash' => __( 'Not found in Trash', 'softim' ),
+                'featured_image' => __( 'Featured Image', 'softim' ),
+                'set_featured_image' => __( 'Set featured image', 'softim' ),
+                'remove_featured_image' => __( 'Remove featured image', 'softim' ),
+                'use_featured_image' => __( 'Use as featured image', 'softim' ),
+                'insert_into_item' => __( 'Insert into project', 'softim' ),
+                'uploaded_to_this_item' => __( 'Uploaded to this project', 'softim' ),
+                'items_list' => __( 'Projects list', 'softim' ),
+                'items_list_navigation' => __( 'Projects list navigation', 'softim' ),
+                'filter_items_list' => __( 'Filter Projects list', 'softim' ),
+            );
+            $args = array(
+                'label' => __( 'project', 'softim' ),
+                'description' => __( 'Projects ', 'softim' ),
+                'labels' => $labels,
+                'menu_icon' => '',
+                'supports' => array('title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'author', 'comments', 'page-attributes', 'post-formats'),
+                'taxonomies' => array(),
+                'public' => true,
+                'show_ui' => true,
+                'show_in_menu' => 'softim_theme_options',
+                'can_export' => true,
+                'has_archive' => true,
+                'hierarchical' => true,
+                'exclude_from_search' => false,
+                'show_in_rest' => true,
+                'publicly_queryable' => true,
+                'capability_type' => 'post',
+            );
+            register_post_type( 'project', $args );
+
+        }
+        // Register Custom taxonomy Type project
+        public function create_project_taxonomy() {
+            $labels = array(
+                'name' => __('Category', 'softim'),
+                'singular_name' => __('Category', 'softim'),
+                'search_items' => __('Search categories', 'softim'),
+                'all_items' => __('Categories', 'softim'),
+                'parent_item' => __('Parent category', 'softim'),
+                'parent_item_colon' => __('Parent category:', 'softim'),
+                'edit_item' => __('Edit category', 'softim'),
+                'update_item' => __('Update category', 'softim'),
+                'add_new_item' => __('Add category', 'softim'),
+                'new_item_name' => __('New category', 'softim'),
+                'menu_name' => __('Category', 'softim'),
+            );
+            $args = array(
+                'labels' => $labels,
+                'hierarchical' => true,
+                "show_in_menu" => true,
+                "show_in_nav_menus" => true,
+                "query_var" => true,
+                "show_admin_column" => true,
+                'show_ui' => true,
+                'rewrite' => array('slug' => 'project-cat'),
+            );
+            register_taxonomy('project-cat', 'project', $args);
+        }
     }//end class
 
     if (class_exists('Softim_Custom_Post_Type')) {

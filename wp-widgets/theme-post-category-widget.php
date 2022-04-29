@@ -84,10 +84,9 @@ class Softim_Category_Widget extends WP_Widget {
         $orderby     = ! empty( $instance ) && $instance['orderby'] ? $instance['orderby'] : 'ID';
         $taxonomy = array(
             'category' => esc_html__('Blog Category', 'softim-core'),
-            'packages-cat' => esc_html__('Packages Category', 'softim-core'),
-            'deals-cat' => esc_html__('Deals Category', 'softim-core'),
-            'course-category' => esc_html__('Courses Category', 'softim-core'),
-            'service-cat' => esc_html__('Service Category', 'softim-core')
+            'service-cat' => esc_html__('Service Category', 'softim-core'),
+            'team-cat' => esc_html__('Team Category', 'softim-core'),
+            'project-cat' => esc_html__('Project Category', 'softim-core')
         );
         $order_arr   = array(
             'ASC'  => esc_html__( 'Acceding', 'softim-core' ),
