@@ -23,6 +23,8 @@ if (!class_exists('Softim_Custom_Post_Type')) {
             add_action( 'init', [$this, 'create_service_taxonomy'], 0 );
             add_action( 'init', [$this, 'create_project_cpt'], 0 );
             add_action( 'init', [$this, 'create_project_taxonomy'], 0 );
+            add_action( 'init', [$this, 'create_team_cpt'], 0 );
+            add_action( 'init', [$this, 'create_team_taxonomy'], 0 );
         }
 
         /**
@@ -197,6 +199,86 @@ if (!class_exists('Softim_Custom_Post_Type')) {
                 'rewrite' => array('slug' => 'project-cat'),
             );
             register_taxonomy('project-cat', 'project', $args);
+        }
+        // Register Custom Post Type team
+        public function create_team_cpt() {
+
+            $labels = array(
+                'name' => _x( 'Teams', 'Post Type General Name', 'softim' ),
+                'singular_name' => _x( 'team', 'Post Type Singular Name', 'softim' ),
+                'menu_name' => _x( 'Teams', 'Admin Menu text', 'softim' ),
+                'name_admin_bar' => _x( 'team', 'Add New on Toolbar', 'softim' ),
+                'archives' => __( 'team Archives', 'softim' ),
+                'attributes' => __( 'team Attributes', 'softim' ),
+                'parent_item_colon' => __( 'Parent team:', 'softim' ),
+                'all_items' => __( 'All Teams', 'softim' ),
+                'add_new_item' => __( 'Add New team', 'softim' ),
+                'add_new' => __( 'Add New', 'softim' ),
+                'new_item' => __( 'New team', 'softim' ),
+                'edit_item' => __( 'Edit team', 'softim' ),
+                'update_item' => __( 'Update team', 'softim' ),
+                'view_item' => __( 'View team', 'softim' ),
+                'view_items' => __( 'View Teams', 'softim' ),
+                'search_items' => __( 'Search team', 'softim' ),
+                'not_found' => __( 'Not found', 'softim' ),
+                'not_found_in_trash' => __( 'Not found in Trash', 'softim' ),
+                'featured_image' => __( 'Featured Image', 'softim' ),
+                'set_featured_image' => __( 'Set featured image', 'softim' ),
+                'remove_featured_image' => __( 'Remove featured image', 'softim' ),
+                'use_featured_image' => __( 'Use as featured image', 'softim' ),
+                'insert_into_item' => __( 'Insert into team', 'softim' ),
+                'uploaded_to_this_item' => __( 'Uploaded to this team', 'softim' ),
+                'items_list' => __( 'Teams list', 'softim' ),
+                'items_list_navigation' => __( 'Teams list navigation', 'softim' ),
+                'filter_items_list' => __( 'Filter Teams list', 'softim' ),
+            );
+            $args = array(
+                'label' => __( 'team', 'softim' ),
+                'description' => __( 'Teams ', 'softim' ),
+                'labels' => $labels,
+                'menu_icon' => '',
+                'supports' => array('title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'author', 'comments', 'page-attributes', 'post-formats'),
+                'taxonomies' => array(),
+                'public' => true,
+                'show_ui' => true,
+                'show_in_menu' => 'softim_theme_options',
+                'can_export' => true,
+                'has_archive' => true,
+                'hierarchical' => true,
+                'exclude_from_search' => false,
+                'show_in_rest' => true,
+                'publicly_queryable' => true,
+                'capability_type' => 'post',
+            );
+            register_post_type( 'team', $args );
+
+        }
+        // Register Custom taxonomy Type team
+        public function create_team_taxonomy() {
+            $labels = array(
+                'name' => __('Category', 'softim'),
+                'singular_name' => __('Category', 'softim'),
+                'search_items' => __('Search categories', 'softim'),
+                'all_items' => __('Categories', 'softim'),
+                'parent_item' => __('Parent category', 'softim'),
+                'parent_item_colon' => __('Parent category:', 'softim'),
+                'edit_item' => __('Edit category', 'softim'),
+                'update_item' => __('Update category', 'softim'),
+                'add_new_item' => __('Add category', 'softim'),
+                'new_item_name' => __('New category', 'softim'),
+                'menu_name' => __('Category', 'softim'),
+            );
+            $args = array(
+                'labels' => $labels,
+                'hierarchical' => true,
+                "show_in_menu" => true,
+                "show_in_nav_menus" => true,
+                "query_var" => true,
+                "show_admin_column" => true,
+                'show_ui' => true,
+                'rewrite' => array('slug' => 'team-cat'),
+            );
+            register_taxonomy('team-cat', 'team', $args);
         }
     }//end class
 
