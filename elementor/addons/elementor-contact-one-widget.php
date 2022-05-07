@@ -137,6 +137,13 @@ class Softim_Contact_One_Widget extends Widget_Base
             ]
         );
         $this->add_control(
+            'form', [
+                'label' => esc_html__('Form', 'softim-core'),
+                'type' => Controls_Manager::TEXTAREA,
+                'description' => esc_html__('enter form', 'softim-core'),
+            ]
+        );
+        $this->add_control(
             'svg_icon',
             [
                 'label' => esc_html__('Svg Icon', 'softim-core'),
@@ -413,40 +420,7 @@ class Softim_Contact_One_Widget extends Widget_Base
                                         </div>
                                     </div>
                                 </div>
-                                <form class="contact-form">
-                                    <div class="row justify-content-center mb-30-none">
-                                        <div class="col-xl-6 col-lg-6 form-group">
-                                            <input type="text" class="form--control" placeholder="Your Name">
-                                        </div>
-                                        <div class="col-xl-6 col-lg-6 form-group">
-                                            <input type="email" class="form--control" placeholder="Your Email">
-                                        </div>
-                                        <div class="col-xl-6 col-lg-6 form-group">
-                                            <input type="text" class="form--control" placeholder="Phone Number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
-                                        </div>
-                                        <div class="col-xl-6 col-lg-6 form-group">
-                                            <div class="contact-select">
-                                                <select class="form--control">
-                                                    <option value="1">Service Required</option>
-                                                    <option value="2">Web Design</option>
-                                                    <option value="3">Digital Marketing</option>
-                                                    <option value="4">Search SEO</option>
-                                                    <option value="5">Web Development</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-12 form-group">
-                                            <textarea class="form--control" placeholder="Write Message..."></textarea>
-                                        </div>
-                                        <div class="col-xl-12 form-group custom-form-group mt-20">
-                                            <div class="form-group custom-check-group">
-                                                <input type="checkbox" id="level-1">
-                                                <label for="level-1">I'm Agree With <a href="#0" class="text--base">Terms & Conditions</a></label>
-                                            </div>
-                                            <button type="submit" class="btn--base">Send Message</button>
-                                        </div>
-                                    </div>
-                                </form>
+                                <?php echo do_shortcode($settings['form']);?>
                             </div>
                         </div>
                     </div>
