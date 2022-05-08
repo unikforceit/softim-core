@@ -201,18 +201,6 @@ class Softim_About_Three_Widget extends Widget_Base
             ]
         );
         $this->add_control(
-            'svg_icon',
-            [
-                'label' => esc_html__('Svg Icon', 'softim-core'),
-                'type' => Controls_Manager::ICONS,
-                'description' => esc_html__('select SVG Icon.', 'softim-core'),
-                'default' => [
-                    'value' => 'fas fa-phone-alt',
-                    'library' => 'solid',
-                ],
-            ]
-        );
-        $this->add_control(
             'play_icon',
             [
                 'label' => esc_html__('Play Icon', 'softim-core'),
@@ -457,7 +445,18 @@ class Softim_About_Three_Widget extends Widget_Base
                             </div>
                             <div class="about-thumb-video">
                                 <div class="circle">
-                                    <?php \Elementor\Icons_Manager::render_icon( $settings['svg_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
+                                <defs>
+                                    <path id="circlePath" d=" M 150, 150 m -60, 0 a 60,60 0 0,1 120,0 a 60,60 0 0,1 -120,0 "/>
+                                </defs>
+                                        <circle cx="150" cy="100" r="75" fill="none"/>
+                                        <g>
+                                            <use xlink:href="#circlePath" fill="none"/>
+                                            <text fill="#ffffff">
+                                                <textPath xlink:href="#circlePath">Softim it solution Softim it solution Softim it solution Softim it solution</textPath>
+                                            </text>
+                                        </g>
+                            </svg>
                                 </div>
                                 <div class="video-main">
                                     <?php if ($settings['btn_status2'] == 'yes'): ?>
