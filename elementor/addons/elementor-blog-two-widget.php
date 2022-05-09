@@ -397,47 +397,48 @@ class Softim_Blog_Post_Two_Widget extends Widget_Base
 
         <section class="blog-section pb-120">
             <div class="blog-element">
-                <img src="<?php echo esc_url($settings['blog_graphic']['url']);?>" alt="element">
+                <img src="<?php echo esc_url($settings['blog_graphic']['url']); ?>" alt="element">
             </div>
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-xl-7 col-lg-8 text-center">
                         <div class="section-header">
-                            <h2 class="section-title"><?php echo esc_html($settings['title']);?></h2>
-                            <p><?php echo esc_html($settings['info']);?></p>
+                            <h2 class="section-title"><?php echo esc_html($settings['title']); ?></h2>
+                            <p><?php echo esc_html($settings['info']); ?></p>
                         </div>
                     </div>
                 </div>
                 <div class="row justify-content-center mb-30-none">
-        <?php if ($post_data->have_posts()) {
-        while ($post_data->have_posts()) {
-            $post_data->the_post();
-            ?>
-                    <div class="col-xl-<?php echo esc_attr($settings['column']);?> col-lg-<?php echo esc_attr($settings['column']);?> col-md-<?php echo esc_attr($settings['column']);?> col-sm-<?php echo esc_attr($settings['column']);?> mb-30">
-                        <div class="blog-item">
-                            <?php if (has_post_thumbnail()){?>
-                                <div class="blog-thumb">
-                                    <?php the_post_thumbnail('full');?>
-                                </div>
-                            <?php } ?>
+                    <?php if ($post_data->have_posts()) {
+                        while ($post_data->have_posts()) {
+                            $post_data->the_post();
+                            ?>
+                            <div class="col-xl-<?php echo esc_attr($settings['column']); ?> col-lg-<?php echo esc_attr($settings['column']); ?> col-md-<?php echo esc_attr($settings['column']); ?> col-sm-<?php echo esc_attr($settings['column']); ?> mb-30">
+                                <div class="blog-item">
+                                    <?php if (has_post_thumbnail()) { ?>
+                                        <div class="blog-thumb">
+                                            <?php the_post_thumbnail('full'); ?>
+                                        </div>
+                                    <?php } ?>
 
-                            <div class="blog-content">
-                                <div class="blog-category">
-                                    <span>Business</span>
-                                </div>
-                                <h3 class="title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h3>
-                                <p><?php echo wp_trim_words(get_the_excerpt(), $settings['excerpt_length'], '.');?></p>
-                                <div class="blog-post-meta two">
-                                    <span class="user"><?php echo esc_html('By :')?> <?php the_author();?></span>
-                                    <span class="date"><?php echo get_the_time('F j, Y');?></span>
+                                    <div class="blog-content">
+                                        <div class="blog-category">
+                                            <span><?php echo get_the_category()[0]->name; ?></span>
+                                        </div>
+                                        <h3 class="title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                                        </h3>
+                                        <p><?php echo wp_trim_words(get_the_excerpt(), $settings['excerpt_length'], '.'); ?></p>
+                                        <div class="blog-post-meta two">
+                                            <span class="user"><?php echo esc_html('By :') ?><?php the_author(); ?></span>
+                                            <span class="date"><?php echo get_the_time('F j, Y'); ?></span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-            <?php
-        }
-        }
-        ?>
+                            <?php
+                        }
+                    }
+                    ?>
                 </div>
             </div>
         </section>
