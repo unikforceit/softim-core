@@ -140,11 +140,11 @@ class Softim_Call_To_Action_One_Widget extends Widget_Base
             'subscribe_field_icon',
             [
                 'label' => esc_html__('Subscribe Field Icon', 'softim-core'),
-                'type' => Controls_Manager::ICONS,
+                'type' => Controls_Manager::MEDIA,
+                'show_label' => false,
                 'description' => esc_html__('select Icon.', 'softim-core'),
                 'default' => [
-                    'value' => 'fas fa-phone-alt',
-                    'library' => 'solid',
+                    'src' => Utils::get_placeholder_image_src()
                 ],
             ]
         );
@@ -383,7 +383,7 @@ class Softim_Call_To_Action_One_Widget extends Widget_Base
                                 <p><?php echo esc_html($settings['info']);?></p>
                                 <form class="subscribe-form">
                                     <label class="subscribe-icon">
-                                        <?php \Elementor\Icons_Manager::render_icon( $settings['subscribe_field_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                                        <img src="<?php echo esc_url($settings['subscribe_field_icon']['url']);?>" alt="icon">
                                     </label>
                                     <input type="text" class="form--control" placeholder="<?php echo esc_html($settings['subscribe_field_placeholder']);?>">
                                     <?php if ($settings['btn_status'] == 'yes'): ?>

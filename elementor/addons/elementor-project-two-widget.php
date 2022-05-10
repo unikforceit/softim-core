@@ -468,13 +468,12 @@ class Softim_Project_Two_Widget extends Widget_Base
                     <?php if ($post_data->have_posts()) {
                         while ($post_data->have_posts()) {
                             $post_data->the_post();
+                            $project_meta = get_post_meta(get_the_ID(), 'softim_project_options', true);
                             ?>
 
                             <div class="swiper-slide">
                                 <div class="project-thumb two">
-                                    <?php if (has_post_thumbnail()){?>
-                                        <?php the_post_thumbnail('full');?>
-                                    <?php } ?>
+                                    <?php echo wp_get_attachment_image($project_meta['image1']['id'], 'full'); ?>
                                     <div class="project-overlay">
                                         <div class="overlay-content">
                                             <h4 class="title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h4>

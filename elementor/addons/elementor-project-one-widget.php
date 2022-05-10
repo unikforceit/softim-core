@@ -412,6 +412,7 @@ class Softim_Project_One_Widget extends Widget_Base
             );
         }
         $post_data = new \WP_Query($args);
+
         ?>
         <section class="project-section pb-120">
             <?php
@@ -452,15 +453,16 @@ class Softim_Project_One_Widget extends Widget_Base
                     <?php if ($post_data->have_posts()) {
                         while ($post_data->have_posts()) {
                             $post_data->the_post();
+                            $project_meta = get_post_meta(get_the_ID(), 'softim_project_options', true);
+
                             ?>
 
                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-30">
                                 <div class="project-item">
-                                    <?php if (has_post_thumbnail()){?>
                                         <div class="project-thumb">
-                                            <?php the_post_thumbnail('full');?>
+                                            <?php echo wp_get_attachment_image($project_meta['post_image']['id'], 'full'); ?>
                                         </div>
-                                    <?php } ?>
+
                                     <div class="project-overlay">
                                         <div class="overlay-content">
                                             <h4 class="title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h4>
