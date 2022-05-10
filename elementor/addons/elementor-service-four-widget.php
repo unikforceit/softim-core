@@ -436,7 +436,7 @@ class Softim_Service_Four_Widget extends Widget_Base
                                         <p><?php echo wp_trim_words(get_the_excerpt(), $settings['excerpt_length'], '.'); ?></p>
                                         <div class="service-btn">
                                             <a href="<?php the_permalink(); ?>"
-                                               class="custom-btn"><?php echo esc_html('Learn More') ?> <i
+                                               class="custom-btn"><?php echo esc_html('Details') ?> <i
                                                         class="icon-Group-2361 ml-2"></i>
                                             </a>
                                         </div>

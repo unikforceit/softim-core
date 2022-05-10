@@ -472,7 +472,7 @@ class Softim_Service_One_Widget extends Widget_Base
                                         <h3 class="title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h3>
                                         <p><?php echo wp_trim_words(get_the_excerpt(), $settings['excerpt_length'], '.');?></p>
                                         <div class="service-btn">
-                                            <a href="<?php the_permalink();?>" class="custom-btn"><?php echo esc_html('Learn More')?> <i class="icon-Group-2361 ml-2"></i></a>
+                                            <a href="<?php the_permalink();?>" class="custom-btn"><?php echo esc_html('Details')?> <i class="icon-Group-2361 ml-2"></i></a>
                                         </div>
                                     </div>
                                 </div>
