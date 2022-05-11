@@ -460,7 +460,7 @@ class Softim_Project_One_Widget extends Widget_Base
                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-30">
                                 <div class="project-item">
                                         <div class="project-thumb">
-                                            <?php echo wp_get_attachment_image($project_meta['post_image']['id'], 'full'); ?>
+                                            <?php echo wp_get_attachment_image($project_meta['image1']['id'], 'full'); ?>
                                         </div>
 
                                     <div class="project-overlay">
