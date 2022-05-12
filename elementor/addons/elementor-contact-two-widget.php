@@ -323,29 +323,30 @@ class Softim_Contact_Two_Widget extends Widget_Base
 
         <section class="contact-item-section ptb-120">
             <div class="contact-item-element-one">
-                <img src="<?php echo esc_html($graphic1);?>" alt="element">
+                <img src="<?php echo esc_html($graphic1); ?>" alt="element">
             </div>
             <div class="contact-item-element-two">
-                <img src="<?php echo esc_html($graphic2);?>" alt="element">
+                <img src="<?php echo esc_html($graphic2); ?>" alt="element">
             </div>
             <div class="container">
                 <div class="row justify-content-center mb-30-none">
-        <?php if($settings['contact_list']){
-        foreach ($settings['contact_list'] as $cItem2) { ?>
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-30">
-                        <div class="contact-item text-center">
-                            <div class="contact-icon-area">
-                                <div class="contact-icon">
-                                    <?php \Elementor\Icons_Manager::render_icon( $cItem2['icon_image'], [ 'aria-hidden' => 'true' ] ); ?>
+                    <?php if ($settings['contact_list']) {
+                        foreach ($settings['contact_list'] as $cItem2) { ?>
+                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-30">
+                                <div class="contact-item text-center">
+                                    <div class="contact-icon-area">
+                                        <div class="contact-icon">
+                                            <?php \Elementor\Icons_Manager::render_icon($cItem2['icon_image'], ['aria-hidden' => 'true']); ?>
+                                        </div>
+                                    </div>
+                                    <div class="contact-content">
+                                        <h3 class="title"><?php echo esc_html($cItem2['title']); ?></h3>
+                                        <p><?php echo esc_html($cItem2['info']); ?></p>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="contact-content">
-                                <h3 class="title"><?php echo esc_html($cItem2['title']);?></h3>
-                                <p><?php echo esc_html($cItem2['info']);?></p>
-                            </div>
-                        </div>
-                    </div>
-        <?php } }?>
+                        <?php }
+                    } ?>
                 </div>
             </div>
         </section>

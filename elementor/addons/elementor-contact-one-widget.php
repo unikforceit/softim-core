@@ -395,7 +395,6 @@ class Softim_Contact_One_Widget extends Widget_Base
                             <div class="contact-form-area">
                                 <div class="contact-form-header">
                                     <div class="left">
-<!--                                        <h2 class="title">Get in Touch <span class="text--base">Let's Talk</span></h2>-->
                                         <h2 class="title"><?php echo esc_html($settings['title']);?></h2>
                                         <p><?php echo esc_html($settings['info']);?></p>
                                     </div>

@@ -104,6 +104,13 @@ class Softim_Call_To_Action_One_Widget extends Widget_Base
             ]
         );
         $this->add_control(
+            'form', [
+                'label' => esc_html__('Form', 'softim-core'),
+                'type' => Controls_Manager::TEXTAREA,
+                'description' => esc_html__('enter form', 'softim-core'),
+            ]
+        );
+        $this->add_control(
             'thumb_image', [
                 'label' => esc_html__('Thumb Image', 'softim-core'),
                 'type' => Controls_Manager::MEDIA,
@@ -381,18 +388,19 @@ class Softim_Call_To_Action_One_Widget extends Widget_Base
                             <div class="subscribe-content">
                                 <h2 class="title"><?php echo esc_html($settings['title']);?></h2>
                                 <p><?php echo esc_html($settings['info']);?></p>
-                                <form class="subscribe-form">
-                                    <label class="subscribe-icon">
-                                        <img src="<?php echo esc_url($settings['subscribe_field_icon']['url']);?>" alt="icon">
-                                    </label>
-                                    <input type="text" class="form--control" placeholder="<?php echo esc_html($settings['subscribe_field_placeholder']);?>">
-                                    <?php if ($settings['btn_status'] == 'yes'): ?>
-                                        <button type="submit" class="btn--base">
-                                            <?php echo esc_html($settings['btn_text']); ?>
-                                            <?php \Elementor\Icons_Manager::render_icon( $settings['subscribe_icon'], [ 'aria-hidden' => 'true' ] ); ?>
-                                        </button>
-                                    <?php endif; ?>
-                                </form>
+<!--                                <form class="subscribe-form">-->
+<!--                                    <label class="subscribe-icon">-->
+<!--                                        <img src="--><?php //echo esc_url($settings['subscribe_field_icon']['url']);?><!--" alt="icon">-->
+<!--                                    </label>-->
+<!--                                    <input type="text" class="form--control" placeholder="--><?php //echo esc_html($settings['subscribe_field_placeholder']);?><!--">-->
+<!--                                    --><?php //if ($settings['btn_status'] == 'yes'): ?>
+<!--                                        <button type="submit" class="btn--base">-->
+<!--                                            --><?php //echo esc_html($settings['btn_text']); ?>
+<!--                                            --><?php //\Elementor\Icons_Manager::render_icon( $settings['subscribe_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+<!--                                        </button>-->
+<!--                                    --><?php //endif; ?>
+<!--                                </form>-->
+                                <?php echo do_shortcode($settings['form']);?>
                             </div>
                         </div>
                     </div>
