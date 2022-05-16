@@ -250,6 +250,28 @@
         });
 
     };
+    var Odometer = function ($scope, $) {
+
+        $scope.find('.counter-single-items').each(function () {
+            var settings = $(this).data('softim');
+
+            // Js Start
+            if ($(".statistics-item,.icon-box-items,.counter-single-items").length) {
+                $(".statistics-item,.icon-box-items,.counter-single-items").each(function () {
+                    $(this).isInViewport(function (status) {
+                        if (status === "entered") {
+                            for (var i = 0; i < document.querySelectorAll(".odometer").length; i++) {
+                                var el = document.querySelectorAll('.odometer')[i];
+                                el.innerHTML = el.getAttribute("data-odometer-final");
+                            }
+                        }
+                    });
+                });
+            }
+            // Js End
+        });
+
+    };
 
 
     $(window).on('elementor/frontend/init', function () {
@@ -261,6 +283,7 @@
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-team-one-widget.default', Teamslider);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-team-two-widget.default', Teamslider);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-team-three-widget.default', Teamslider);
+            elementorFrontend.hooks.addAction('frontend/element_ready/softim-team-five-widget.default', Odometer);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-one-widget.default', Testislider1);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-two-widget.default', Testislider2);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-three-widget.default', Testislider3);
@@ -274,6 +297,7 @@
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-team-one-widget.default', Teamslider);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-team-two-widget.default', Teamslider);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-team-three-widget.default', Teamslider);
+            elementorFrontend.hooks.addAction('frontend/element_ready/softim-team-five-widget.default', Odometer);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-one-widget.default', Testislider1);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-two-widget.default', Testislider2);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-three-widget.default', Testislider3);

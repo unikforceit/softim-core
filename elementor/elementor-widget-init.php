@@ -101,6 +101,7 @@ if ( ! class_exists( 'Softim_Elementor_Widget_Init' ) ) {
                 'team-two',
                 'team-three',
                 'team-four',
+                'team-five',
 				'testimonial-one',
 				'testimonial-two',
 				'testimonial-three',

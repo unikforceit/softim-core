@@ -463,7 +463,8 @@ class Softim_Team_One_Widget extends Widget_Base
                                                                 if ($team_meta['social-icons']) {
                                                                     foreach ($team_meta['social-icons'] as $team_icon) {
                                                                         ?>
-                                                                        <li><a href="<?php echo esc_url($team_icon['url']); ?>"><i
+                                                                        <li>
+                                                                            <a href="<?php echo esc_url($team_icon['url']); ?>"><i
                                                                                         class="<?php echo esc_attr($team_icon['icon']); ?>"></i></a>
                                                                         </li>
                                                                     <?php }
@@ -475,7 +476,7 @@ class Softim_Team_One_Widget extends Widget_Base
                                                         <h3 class="title">
                                                             <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                                                         </h3>
-                                                        <span class="sub-title"><?php echo esc_html($team_meta['designation']);?></span>
+                                                        <span class="sub-title"><?php echo esc_html($team_meta['designation']); ?></span>
                                                     </div>
                                                 </div>
                                             </div>
