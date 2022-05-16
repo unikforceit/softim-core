@@ -600,7 +600,6 @@ class Softim_Choose_One_Widget extends Widget_Base
                                         <img src="<?php echo esc_attr($tab['tab_thumb_image']['url']);?>" alt="element">
                                     </div>
                                     <div class="choose-content">
-<!--                                        <h4 class="title"><span class="text--base">About Softim</span> Digital Agency</h4>-->
                                         <h4 class="title"><?php echo esc_html($tab['tab_details_title'])?></h4>
                                         <p class="info2"><?php echo esc_html($tab['tab_details_info'])?></p>
                                         <div class="choose-statistics-area">
