@@ -182,6 +182,48 @@
         });
 
     };
+    var Testislider3 = function ($scope, $) {
+
+        $scope.find('.client-slider-area').each(function () {
+            var settings = $(this).data('softim');
+
+            // Js Start
+            var swiper = new Swiper('.client-slider-two', {
+                slidesPerView: 2,
+                spaceBetween: 30,
+                loop: true,
+                pagination: {
+                    el: '.client-pagination',
+                    clickable: true,
+                    renderBullet: function (index, className) {
+                        return '<span class="' + className + '">' + (index + 1) + '</span>';
+                    },
+                },
+                navigation: {
+                    nextEl: '.slider-next',
+                    prevEl: '.slider-prev',
+                },
+                autoplay: {
+                    speeds: 2000,
+                    delay: 4000,
+                },
+                speed: 1000,
+                breakpoints: {
+                    991: {
+                        slidesPerView: 1,
+                    },
+                    767: {
+                        slidesPerView: 1,
+                    },
+                    575: {
+                        slidesPerView: 1,
+                    },
+                }
+            });
+            // Js End
+        });
+
+    };
     var Faq = function ($scope, $) {
 
         $scope.find('.faq-wrapper').each(function () {
@@ -221,6 +263,7 @@
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-team-three-widget.default', Teamslider);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-one-widget.default', Testislider1);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-two-widget.default', Testislider2);
+            elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-three-widget.default', Testislider3);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-faq-one-widget.default', Faq);
 
         } else {
@@ -233,6 +276,7 @@
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-team-three-widget.default', Teamslider);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-one-widget.default', Testislider1);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-two-widget.default', Testislider2);
+            elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-three-widget.default', Testislider3);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-faq-one-widget.default', Faq);
         }
     });
