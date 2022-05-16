@@ -76,6 +76,7 @@ if ( ! class_exists( 'Softim_Elementor_Widget_Init' ) ) {
 				'banner-two',
                 'blog-one',
                 'blog-two',
+                'blog-three',
 				'brand',
 				'brand-3',
 				'call-to-action-one',
@@ -102,6 +103,7 @@ if ( ! class_exists( 'Softim_Elementor_Widget_Init' ) ) {
                 'team-four',
 				'testimonial-one',
 				'testimonial-two',
+				'testimonial-three',
 			);
 
 			$elementor_widgets = apply_filters( 'softim_elementor_widget', $elementor_widgets );
