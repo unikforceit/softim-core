@@ -74,6 +74,7 @@ if ( ! class_exists( 'Softim_Elementor_Widget_Init' ) ) {
                 'about-three',
 				'banner-one',
 				'banner-two',
+				'banner-three',
                 'blog-one',
                 'blog-two',
                 'blog-three',
