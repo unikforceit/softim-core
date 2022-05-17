@@ -86,6 +86,7 @@ if ( ! class_exists( 'Softim_Elementor_Widget_Init' ) ) {
 				'contact-one',
 				'contact-two',
                 'counter-one',
+                'development-one',
                 'faq-one',
 				'overview-one',
 				'plan-process-one',
