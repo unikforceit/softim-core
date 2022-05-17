@@ -82,6 +82,7 @@ if ( ! class_exists( 'Softim_Elementor_Widget_Init' ) ) {
 				'brand-3',
 				'call-to-action-one',
 				'call-to-action-two',
+				'case-study',
 				'choose-one',
 				'contact-form',
 				'contact-one',
