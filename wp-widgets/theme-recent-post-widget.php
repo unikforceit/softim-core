@@ -56,36 +56,28 @@ class Softim_Recent_Post_Widget extends WP_Widget
 
         //have to write code for displing query data
 
-        if ($recent_articles->have_posts()) : ?>
-
-            <ul class="theme-recent-post-wrap">
-
-            <?php while ($recent_articles->have_posts()) : $recent_articles->the_post(); ?>
-                <li class="theme-recent-post-item">
-                    <?php if (has_post_thumbnail()) : ?>
-                        <div class="thumb">
-                            <a href="<?php the_permalink() ?>">
-                                <img src="<?php the_post_thumbnail_url('thumbnail') ?>" alt="<?php the_title() ?>">
-                            </a>
-                        </div>
-                    <?php endif; ?>
-                    <div class="content">
-                        <span class="time"><?php the_time('M j, Y') ?></span>
-                        <h4 class="title"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
+        if ($recent_articles->have_posts()) { ?>
+        <div class="popular-widget-box">
+            <?php while ($recent_articles->have_posts()) {
+                $recent_articles->the_post(); ?>
+                 <div class="single-popular-item d-flex flex-wrap align-items-center">
+                    <div class="popular-item-thumb">
+                        <?php the_post_thumbnail('full'); ?>
                     </div>
-                </li>
+                    <div class="popular-item-content">
+                        <span class="blog-date"><?php the_time('M j, Y'); ?></span>
+                        <h5 class="title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+                    </div>
+                </div>
+                <?php
+                }
+                wp_reset_query();
 
-            <?php
-            endwhile;
-            wp_reset_query();
-
-        else :
-            esc_html__(' Oops, there are no posts.', 'softim-core')
-            ?>
-        <?php endif; ?>
-        </ul>
+               } else {
+                    esc_html__(' Oops, there are no posts.', 'softim-core');
+                } ?>
+        </div>
         <?php
-
         echo wp_kses_post($args['after_widget']);
 
     }
@@ -110,10 +102,9 @@ class Softim_Recent_Post_Widget extends WP_Widget
 
         $post_type = array(
             'post' => esc_html__('Blog Post Type', 'softim-core'),
-            'packages' => esc_html__('Packages Post Type', 'softim-core'),
-            'deals' => esc_html__('Deals Post Type', 'softim-core'),
+            'project' => esc_html__('Project Post Type', 'softim-core'),
             'service' => esc_html__('Service Post Type', 'softim-core'),
-            'courses' => esc_html__('Courses Post Type', 'softim-core')
+            'team' => esc_html__('Team Post Type', 'softim-core')
         );
 
         $order_arr = array(
