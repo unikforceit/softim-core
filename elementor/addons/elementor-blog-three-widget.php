@@ -168,10 +168,28 @@ class Softim_Blog_Post_Three_Widget extends Widget_Base
         ]);
         $this->end_controls_section();
 
+//        Start Styling section
+
+        $this->start_controls_section(
+            'css_styles',
+            [
+                'label' => esc_html__('Blog Header Title', 'softim-core'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_control('blog_header_title_color', [
+            'label' => esc_html__('Blog Header Title Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .section-header .section-title" => "color: {{VALUE}}"
+            ]
+        ]);
+        $this->end_controls_section();
+// Left Blog
         $this->start_controls_section(
             'title_styling_settings_section',
             [
-                'label' => esc_html__('Styling Settings', 'softim-core'),
+                'label' => esc_html__('Left Blog Post', 'softim-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -185,39 +203,39 @@ class Softim_Blog_Post_Three_Widget extends Widget_Base
                 'label' => esc_html__('Normal', 'softim-core'),
             ]
         );
+        $this->add_control('normal_post_cat_color', [
+            'label' => esc_html__('Category Background Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .blog-single-item .content .event" => "background-color: {{VALUE}}"
+            ]
+        ]);
+        $this->add_control('normal_post_cat_color1', [
+            'label' => esc_html__('Category Text Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .blog-single-item .content .event" => "color: {{VALUE}}"
+            ]
+        ]);
         $this->add_control('normal_post_title_color', [
             'label' => esc_html__('Title Color', 'softim-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
-                "{{WRAPPER}} .blog-grid-item-01 .content .title" => "color: {{VALUE}}"
+                "{{WRAPPER}} .blog-single-item .content .title" => "color: {{VALUE}}"
             ]
         ]);
-        $this->add_control('normal_post_meta_color', [
-            'label' => esc_html__('Category Color', 'softim-core'),
+        $this->add_control('normal_post_user_color', [
+            'label' => esc_html__('Post User Color', 'softim-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
-                "{{WRAPPER}} .blog-grid-item-01 .content .post-meta li" => "color: {{VALUE}}"
+                "{{WRAPPER}} .blog-single-item .content .post-meta .user" => "color: {{VALUE}}"
             ]
         ]);
-        $this->add_control('normal_post_paragraph_color', [
-            'label' => esc_html__('Paragraph Color', 'softim-core'),
+        $this->add_control('normal_post_date_color', [
+            'label' => esc_html__('Post Date Color', 'softim-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
-                "{{WRAPPER}} .blog-grid-item-01 .content p" => "color: {{VALUE}}"
-            ]
-        ]);
-        $this->add_control('normal_background_color', [
-            'label' => esc_html__('Background Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .blog-grid-item-01" => "background-color: {{VALUE}}"
-            ]
-        ]);
-        $this->add_control('normal_post_button_color', [
-            'label' => esc_html__('Button Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .blog-grid-item-01 .content .read-btn" => "color: {{VALUE}}"
+                "{{WRAPPER}} .blog-single-item .content .post-meta .date" => "color: {{VALUE}}"
             ]
         ]);
         $this->end_controls_tab();
@@ -233,21 +251,7 @@ class Softim_Blog_Post_Three_Widget extends Widget_Base
             'label' => esc_html__('Title Color', 'softim-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
-                "{{WRAPPER}} .blog-grid-item-01 .content .title:hover" => "color: {{VALUE}}"
-            ]
-        ]);
-        $this->add_control('normal_hover_background_color', [
-            'label' => esc_html__('Background Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .blog-grid-item-01:hover" => "background-color: {{VALUE}}"
-            ]
-        ]);
-        $this->add_control('normal_post_hover_border_color', [
-            'label' => esc_html__('Button Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .blog-grid-item-01 .content .read-btn:hover" => "color: {{VALUE}}"
+                "{{WRAPPER}} .blog-single-item .content .title:hover" => "color: {{VALUE}}"
             ]
         ]);
         $this->end_controls_tab();
@@ -255,65 +259,66 @@ class Softim_Blog_Post_Three_Widget extends Widget_Base
         $this->end_controls_tabs();
 
         $this->end_controls_section();
-
-
+// Right blog
         $this->start_controls_section(
-            'slider_navigation_styling_settings_section',
+            'title_styling_settings_section2',
             [
-                'label' => esc_html__('Slider Nav Styling Settings', 'softim-core'),
+                'label' => esc_html__('Right Blog Post', 'softim-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->start_controls_tabs(
-            'slider_nav_style_tabs'
+            'title_style_tabs2'
         );
 
         $this->start_controls_tab(
-            'slider_navigation_style_normal_tab',
+            'title_style_normal_tab2',
             [
                 'label' => esc_html__('Normal', 'softim-core'),
             ]
         );
-        $this->add_control('normal_nav_color', [
-            'label' => esc_html__('Color', 'softim-core'),
+        $this->add_control('normal_post_title_color2', [
+            'label' => esc_html__('Title Color', 'softim-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
-                "{{WRAPPER}} .blog-slider-controls .slider-nav div" => "color: {{VALUE}}"
+                "{{WRAPPER}} .blog-single-item-02 .content .title" => "color: {{VALUE}}"
             ]
         ]);
-        $this->add_group_control(Group_Control_Background::get_type(), [
-            'label' => esc_html__('Background', 'softim-core'),
-            'name' => 'nav_background',
-            'selector' => "{{WRAPPER}} .blog-slider-controls .slider-nav div"
+        $this->add_control('normal_post_user_color2', [
+            'label' => esc_html__('Post User Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .blog-single-item-02 .content .post-meta .user" => "color: {{VALUE}}"
+            ]
         ]);
-
+        $this->add_control('normal_post_date_color2', [
+            'label' => esc_html__('Post Date Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .blog-single-item-02 .content .post-meta .date" => "color: {{VALUE}}"
+            ]
+        ]);
         $this->end_controls_tab();
 
         $this->start_controls_tab(
-            'slider_navigation_style_hover_tab',
+            'title_style_hover_tab2',
             [
                 'label' => esc_html__('Hover', 'softim-core'),
             ]
         );
-        $this->add_control('hover_nav_color', [
-            'label' => esc_html__('Color', 'softim-core'),
+
+        $this->add_control('hover_post_title_color2', [
+            'label' => esc_html__('Title Color', 'softim-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
-                "{{WRAPPER}} .blog-slider-controls .slider-nav div:hover" => "color: {{VALUE}}"
+                "{{WRAPPER}} .blog-single-item-02 .content .title:hover" => "color: {{VALUE}}"
             ]
         ]);
-        $this->add_group_control(Group_Control_Background::get_type(), [
-            'label' => esc_html__('Background', 'softim-core'),
-            'name' => 'nav_hover_background',
-            'selector' => "{{WRAPPER}} .blog-slider-controls .slider-nav div:hover"
-        ]);
-
         $this->end_controls_tab();
 
         $this->end_controls_tabs();
 
         $this->end_controls_section();
-
 
         $this->start_controls_section(
             'typography_settings_section',
@@ -323,17 +328,52 @@ class Softim_Blog_Post_Three_Widget extends Widget_Base
             ]
         );
         $this->add_group_control(Group_Control_Typography::get_type(), [
-            'label' => esc_html__('Title Typography', 'softim-core'),
-            'name' => 'post_meta_typography',
-            'description' => esc_html__('select title typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .blog-grid-item-01 .content .title"
+            'label' => esc_html__('Section Header Text', 'softim-core'),
+            'name' => 'section_header_title',
+            'description' => esc_html__('select section header typography', 'softim-core'),
+            'selector' => "{{WRAPPER}} .section-header .section-title"
         ]);
-
         $this->add_group_control(Group_Control_Typography::get_type(), [
-            'label' => esc_html__('Category Typography', 'softim-core'),
-            'name' => 'category_typography',
-            'description' => esc_html__('select category typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .blog-grid-item-01 .content .post-categories li"
+            'label' => esc_html__('Post Left Category Text', 'softim-core'),
+            'name' => 'left_post_cat',
+            'description' => esc_html__('select left post category typography', 'softim-core'),
+            'selector' => "{{WRAPPER}} .blog-single-item .content .event"
+        ]);
+        $this->add_group_control(Group_Control_Typography::get_type(), [
+            'label' => esc_html__('Post Left Title Text', 'softim-core'),
+            'name' => 'left_post_title',
+            'description' => esc_html__('select left post title typography', 'softim-core'),
+            'selector' => "{{WRAPPER}} .blog-single-item .content .title"
+        ]);
+        $this->add_group_control(Group_Control_Typography::get_type(), [
+            'label' => esc_html__('Post Left User Text', 'softim-core'),
+            'name' => 'left_post_user',
+            'description' => esc_html__('select left post user typography', 'softim-core'),
+            'selector' => "{{WRAPPER}} .blog-single-item .content .post-meta .user"
+        ]);
+        $this->add_group_control(Group_Control_Typography::get_type(), [
+            'label' => esc_html__('Post Left Date Text', 'softim-core'),
+            'name' => 'left_post_date',
+            'description' => esc_html__('select left post date typography', 'softim-core'),
+            'selector' => "{{WRAPPER}} .blog-single-item .content .post-meta .date"
+        ]);
+        $this->add_group_control(Group_Control_Typography::get_type(), [
+            'label' => esc_html__('Post Right Title Text', 'softim-core'),
+            'name' => 'right_post_title',
+            'description' => esc_html__('select right post title typography', 'softim-core'),
+            'selector' => "{{WRAPPER}} .blog-single-item-02 .content .title"
+        ]);
+        $this->add_group_control(Group_Control_Typography::get_type(), [
+            'label' => esc_html__('Post Right User Text', 'softim-core'),
+            'name' => 'right_post_user',
+            'description' => esc_html__('select right post user typography', 'softim-core'),
+            'selector' => "{{WRAPPER}} .blog-single-item-02 .content .post-meta .user"
+        ]);
+        $this->add_group_control(Group_Control_Typography::get_type(), [
+            'label' => esc_html__('Post Right Date Text', 'softim-core'),
+            'name' => 'right_post_date',
+            'description' => esc_html__('select right post date typography', 'softim-core'),
+            'selector' => "{{WRAPPER}} .blog-single-item-02 .content .post-meta .date"
         ]);
         $this->end_controls_section();
 

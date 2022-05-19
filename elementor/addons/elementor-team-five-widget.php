@@ -203,151 +203,52 @@ class Softim_Team_Five_Widget extends Widget_Base
             'fields' => $repeater->get_controls(),
         ]);
         $this->end_controls_section();
+//        Start Styling section
 
         $this->start_controls_section(
-            'title_styling_settings_section',
+            'css_styles',
             [
-                'label' => esc_html__('Styling Settings', 'softim-core'),
+                'label' => esc_html__('Team Header Title', 'softim-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
-        $this->start_controls_tabs(
-            'title_style_tabs'
-        );
-
-        $this->start_controls_tab(
-            'title_style_normal_tab',
-            [
-                'label' => esc_html__('Normal', 'softim-core'),
-            ]
-        );
-        $this->add_control('normal_post_title_color', [
-            'label' => esc_html__('Title Color', 'softim-core'),
+        $this->add_control('blog_header_title_color', [
+            'label' => esc_html__('Team Header Title Color', 'softim-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
-                "{{WRAPPER}} .blog-grid-item-01 .content .title" => "color: {{VALUE}}"
+                "{{WRAPPER}} .team-hero-section .hero-single-item .content .title-main" => "color: {{VALUE}}"
             ]
         ]);
-        $this->add_control('normal_post_meta_color', [
-            'label' => esc_html__('Category Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .blog-grid-item-01 .content .post-meta li" => "color: {{VALUE}}"
-            ]
-        ]);
-        $this->add_control('normal_post_paragraph_color', [
-            'label' => esc_html__('Paragraph Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .blog-grid-item-01 .content p" => "color: {{VALUE}}"
-            ]
-        ]);
-        $this->add_control('normal_background_color', [
-            'label' => esc_html__('Background Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .blog-grid-item-01" => "background-color: {{VALUE}}"
-            ]
-        ]);
-        $this->add_control('normal_post_button_color', [
-            'label' => esc_html__('Button Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .blog-grid-item-01 .content .read-btn" => "color: {{VALUE}}"
-            ]
-        ]);
-        $this->end_controls_tab();
-
-        $this->start_controls_tab(
-            'title_style_hover_tab',
-            [
-                'label' => esc_html__('Hover', 'softim-core'),
-            ]
-        );
-
-        $this->add_control('hover_post_title_color', [
-            'label' => esc_html__('Title Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .blog-grid-item-01 .content .title:hover" => "color: {{VALUE}}"
-            ]
-        ]);
-        $this->add_control('normal_hover_background_color', [
-            'label' => esc_html__('Background Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .blog-grid-item-01:hover" => "background-color: {{VALUE}}"
-            ]
-        ]);
-        $this->add_control('normal_post_hover_border_color', [
-            'label' => esc_html__('Button Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .blog-grid-item-01 .content .read-btn:hover" => "color: {{VALUE}}"
-            ]
-        ]);
-        $this->end_controls_tab();
-
-        $this->end_controls_tabs();
-
         $this->end_controls_section();
 
-
         $this->start_controls_section(
-            'slider_navigation_styling_settings_section',
+            'counter_section1',
             [
-                'label' => esc_html__('Slider Nav Styling Settings', 'softim-core'),
+                'label' => esc_html__('Counter Section Style', 'softim-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
-        $this->start_controls_tabs(
-            'slider_nav_style_tabs'
-        );
-
-        $this->start_controls_tab(
-            'slider_navigation_style_normal_tab',
-            [
-                'label' => esc_html__('Normal', 'softim-core'),
-            ]
-        );
-        $this->add_control('normal_nav_color', [
-            'label' => esc_html__('Color', 'softim-core'),
+        $this->add_control('counter_number', [
+            'label' => esc_html__('Counter Number', 'softim-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
-                "{{WRAPPER}} .blog-slider-controls .slider-nav div" => "color: {{VALUE}}"
+                "{{WRAPPER}} .counter-single-items .content .odo-area .odo-title" => "color: {{VALUE}}"
             ]
         ]);
-        $this->add_group_control(Group_Control_Background::get_type(), [
-            'label' => esc_html__('Background', 'softim-core'),
-            'name' => 'nav_background',
-            'selector' => "{{WRAPPER}} .blog-slider-controls .slider-nav div"
-        ]);
-
-        $this->end_controls_tab();
-
-        $this->start_controls_tab(
-            'slider_navigation_style_hover_tab',
-            [
-                'label' => esc_html__('Hover', 'softim-core'),
-            ]
-        );
-        $this->add_control('hover_nav_color', [
-            'label' => esc_html__('Color', 'softim-core'),
+        $this->add_control('counter_subtitle', [
+            'label' => esc_html__('Counter Subtitle', 'softim-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
-                "{{WRAPPER}} .blog-slider-controls .slider-nav div:hover" => "color: {{VALUE}}"
+                "{{WRAPPER}} .counter-single-items .content .title" => "color: {{VALUE}}"
             ]
         ]);
-        $this->add_group_control(Group_Control_Background::get_type(), [
-            'label' => esc_html__('Background', 'softim-core'),
-            'name' => 'nav_hover_background',
-            'selector' => "{{WRAPPER}} .blog-slider-controls .slider-nav div:hover"
+        $this->add_control('counter_title', [
+            'label' => esc_html__('Counter Title', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .counter-single-items .content p" => "color: {{VALUE}}"
+            ]
         ]);
-
-        $this->end_controls_tab();
-
-        $this->end_controls_tabs();
-
         $this->end_controls_section();
 
 
@@ -359,17 +260,28 @@ class Softim_Team_Five_Widget extends Widget_Base
             ]
         );
         $this->add_group_control(Group_Control_Typography::get_type(), [
-            'label' => esc_html__('Title Typography', 'softim-core'),
-            'name' => 'post_meta_typography',
-            'description' => esc_html__('select title typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .blog-grid-item-01 .content .title"
+            'label' => esc_html__('Section Header Text', 'softim-core'),
+            'name' => 'section_header',
+            'description' => esc_html__('Section Header Text', 'softim-core'),
+            'selector' => "{{WRAPPER}} .team-hero-section .hero-single-item .content .title-main"
         ]);
-
         $this->add_group_control(Group_Control_Typography::get_type(), [
-            'label' => esc_html__('Category Typography', 'softim-core'),
-            'name' => 'category_typography',
-            'description' => esc_html__('select category typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .blog-grid-item-01 .content .post-categories li"
+            'label' => esc_html__('Counter Number Text', 'softim-core'),
+            'name' => 'counter_number_typography',
+            'description' => esc_html__('Counter Number Text', 'softim-core'),
+            'selector' => "{{WRAPPER}} .counter-single-items .content .odo-area .odo-title"
+        ]);
+        $this->add_group_control(Group_Control_Typography::get_type(), [
+            'label' => esc_html__('Counter Sub Title Text', 'softim-core'),
+            'name' => 'counter_subtitle_typography',
+            'description' => esc_html__('Counter Sub Title Text', 'softim-core'),
+            'selector' => "{{WRAPPER}} .counter-single-items .content .title"
+        ]);
+        $this->add_group_control(Group_Control_Typography::get_type(), [
+            'label' => esc_html__('Counter Title Text', 'softim-core'),
+            'name' => 'counter_title_typography',
+            'description' => esc_html__('Counter Title Text', 'softim-core'),
+            'selector' => "{{WRAPPER}} .counter-single-items .content p"
         ]);
         $this->end_controls_section();
 

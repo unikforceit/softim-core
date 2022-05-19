@@ -147,127 +147,82 @@ class Softim_Testimonial_Three_Widget extends Widget_Base
         ]);
         $this->end_controls_section();
 
+//        Start Styling section
+
         $this->start_controls_section(
             'css_styles',
             [
-                'label' => esc_html__('Styling Banner Content', 'softim-core'),
+                'label' => esc_html__('Testimonial Header Title', 'softim-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
-        $this->add_control('about_title_1_color', [
-            'label' => esc_html__('About Title 1 Color', 'softim-core'),
+        $this->add_control('blog_header_title_color', [
+            'label' => esc_html__('Blog Header Title Color', 'softim-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
-                "{{WRAPPER}} .about-content .title" => "color: {{VALUE}}"
-            ]
-        ]);
-        $this->add_control('about_title_2_color', [
-            'label' => esc_html__('About Title 2 Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .about-content .title span.text--base" => "color: {{VALUE}} !important"
-            ]
-        ]);
-        $this->add_control('about_subtitle_color', [
-            'label' => esc_html__('About Sub Title Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .about-content p.para" => "color: {{VALUE}}"
-            ]
-        ]);
-        $this->add_control('about_info_color', [
-            'label' => esc_html__('About Info Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .about-content p.info" => "color: {{VALUE}}"
+                "{{WRAPPER}} .section-header .section-title" => "color: {{VALUE}}"
             ]
         ]);
         $this->end_controls_section();
 
-        /* button styling */
+
         $this->start_controls_section(
-            'banner_button_section',
+            'testimonial_item_section',
             [
-                'label' => esc_html__('Button Settings', 'softim-core'),
-                'tab' => Controls_Manager::TAB_STYLE
+                'label' => esc_html__('Testimonial Item', 'softim-core'),
+                'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
-
-        $this->start_controls_tabs('button_styling');
-        $this->start_controls_tab('normal_style', [
-            'label' => esc_html__('Button Normal', "softim-core")
-        ]);
-        $this->add_control('button_normal_color', [
-            'label' => esc_html__('Button Text Color', 'softim-core'),
+        $this->add_control('testi_item_icon_color', [
+            'label' => esc_html__('Icon Color', 'softim-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
-                "{{WRAPPER}} .btn--base" => "color: {{VALUE}}"
+                "{{WRAPPER}} .client-single-item .content .icon i" => "color: {{VALUE}}"
             ]
         ]);
-        $this->add_control('divider_01', [
-            'type' => Controls_Manager::DIVIDER
-        ]);
-        $this->add_group_control(Group_Control_Background::get_type(), [
-            'name' => 'button_background',
-            'label' => esc_html__('Button Background ', 'softim-core'),
-            'selector' => "{{WRAPPER}} .btn--base"
-        ]);
-        $this->add_control('divider_02', [
-            'type' => Controls_Manager::DIVIDER
-        ]);
-        $this->add_group_control(Group_Control_Border::get_type(), [
-            'name' => 'header_button_border',
-            'label' => esc_html__('Border', 'softim-core'),
-            'selector' => "{{WRAPPER}} .btn--base"
-        ]);
-        $this->end_controls_tab();
-
-        $this->start_controls_tab('hover_style', [
-            'label' => esc_html__('Button Hover', "softim-core")
-        ]);
-        $this->add_control('button_hover_normal_color', [
-            'label' => esc_html__('Button Color', 'softim-core'),
+        $this->add_control('testi_item_icon_border_color', [
+            'label' => esc_html__('Icon Border Color', 'softim-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
-                "{{WRAPPER}} .btn--base:hover" => "color: {{VALUE}}"
+                "{{WRAPPER}} .client-single-item .content .icon i" => "border-color: {{VALUE}}"
             ]
         ]);
-        $this->add_control('divider_03', [
-            'type' => Controls_Manager::DIVIDER
-        ]);
-        $this->add_group_control(Group_Control_Background::get_type(), [
-            'name' => 'button_hover_background',
-            'label' => esc_html__('Button Background ', 'softim-core'),
-            'selector' => "{{WRAPPER}} .btn--base:hover"
-        ]);
-        $this->add_control('divider_04', [
-            'type' => Controls_Manager::DIVIDER
-        ]);
-        $this->add_group_control(Group_Control_Border::get_type(), [
-            'name' => 'header_hover_button_border',
-            'label' => esc_html__('Border', 'softim-core'),
-            'selector' => "{{WRAPPER}} .btn--base:hover"
-        ]);
-        $this->end_controls_tab();
-
-        $this->end_controls_tabs();
-
-        $this->add_control('divider_05', [
-            'type' => Controls_Manager::DIVIDER
-        ]);
-        $this->add_control(
-            'button_border_radius',
-            [
-                'label' => esc_html__('Border Radius', 'softim-core'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%'],
-                'selectors' => [
-                    '{{WRAPPER}} .btn--base' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
+        $this->add_control('testi_item_title_color', [
+            'label' => esc_html__('Title Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .client-single-item .content .icon .title" => "color: {{VALUE}}"
             ]
-        );
+        ]);
+        $this->add_control('testi_item_info_color', [
+            'label' => esc_html__('Customer says Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .client-single-item .content p" => "color: {{VALUE}}"
+            ]
+        ]);
+        $this->add_control('testi_item_author_color', [
+            'label' => esc_html__('Author Text Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .client-single-item .content .designation-wrap .designation .name" => "color: {{VALUE}}"
+            ]
+        ]);
+        $this->add_control('testi_item_author_p_color', [
+            'label' => esc_html__('Author Position Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .client-single-item .content .designation-wrap .designation .position" => "color: {{VALUE}}"
+            ]
+        ]);
+        $this->add_control('testi_item_author_r_color', [
+            'label' => esc_html__('Author Rating Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .client-single-item .content .designation-wrap .ratings i" => "color: {{VALUE}}"
+            ]
+        ]);
         $this->end_controls_section();
-        /* button styling end */
 
         /* typography settings start */
         $this->start_controls_section('typography_settings', [
@@ -275,29 +230,34 @@ class Softim_Testimonial_Three_Widget extends Widget_Base
             'tab' => Controls_Manager::TAB_STYLE
         ]);
         $this->add_group_control(Group_Control_Typography::get_type(), [
-            'name' => 'title_1_typography',
-            'label' => esc_html__('Title 1 Typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .about-content .title"
+            'name' => 'section_header_typography',
+            'label' => esc_html__('Testimonial Header Title', 'softim-core'),
+            'selector' => "{{WRAPPER}} .section-header .section-title"
         ]);
         $this->add_group_control(Group_Control_Typography::get_type(), [
-            'name' => 'title_2_typography',
-            'label' => esc_html__('Title 2 Typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .about-content .title span.text--base"
+            'name' => 'testi_item_icon_typography',
+            'label' => esc_html__('Testi Item Icon', 'softim-core'),
+            'selector' => "{{WRAPPER}} .client-single-item .content .icon i"
         ]);
         $this->add_group_control(Group_Control_Typography::get_type(), [
-            'name' => 'subtitle_typography',
-            'label' => esc_html__('Sub Title Typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .about-content p.para"
+            'name' => 'testi_item_title_typography',
+            'label' => esc_html__('Testi Item Title', 'softim-core'),
+            'selector' => "{{WRAPPER}} .client-single-item .content .icon .title"
         ]);
         $this->add_group_control(Group_Control_Typography::get_type(), [
-            'name' => 'info_typography',
-            'label' => esc_html__('Info Typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .about-content p.info"
+            'name' => 'testi_item_info_typography',
+            'label' => esc_html__('Customer says text', 'softim-core'),
+            'selector' => "{{WRAPPER}} .client-single-item .content p"
         ]);
         $this->add_group_control(Group_Control_Typography::get_type(), [
-            'name' => 'button_typography',
-            'label' => esc_html__('Button Typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .btn--base"
+            'name' => 'testi_item_author_typography',
+            'label' => esc_html__('Author text', 'softim-core'),
+            'selector' => "{{WRAPPER}} .client-single-item .content .designation-wrap .designation .name"
+        ]);
+        $this->add_group_control(Group_Control_Typography::get_type(), [
+            'name' => 'testi_item_author_p_typography',
+            'label' => esc_html__('Author Position text', 'softim-core'),
+            'selector' => "{{WRAPPER}} .client-single-item .content .designation-wrap .designation .position"
         ]);
         $this->end_controls_section();
         /* typography settings end */
