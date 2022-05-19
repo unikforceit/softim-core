@@ -277,16 +277,16 @@ class Softim_Case_Study_Widget extends Widget_Base
         ]);
         $this->end_controls_section();
 
-
+// Start style
         $this->start_controls_section(
             'css_styles',
             [
-                'label' => esc_html__('Styling Banner Content', 'softim-core'),
+                'label' => esc_html__('Case Study Header', 'softim-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control('title_color', [
-            'label' => esc_html__('Title Color', 'softim-core'),
+            'label' => esc_html__('Header Color', 'softim-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
                 "{{WRAPPER}} .section-header .section-title" => "color: {{VALUE}}"
@@ -296,147 +296,10 @@ class Softim_Case_Study_Widget extends Widget_Base
             'label' => esc_html__('Info Color', 'softim-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
-                "{{WRAPPER}} .section-header p.info" => "color: {{VALUE}}"
+                "{{WRAPPER}} .section-header p" => "color: {{VALUE}}"
             ]
         ]);
         $this->end_controls_section();
-
-
-        $this->start_controls_section(
-            'css_styles_2',
-            [
-                'label' => esc_html__('Styling Tab Content', 'softim-core'),
-                'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        );
-        $this->add_control('title_1_color_active', [
-            'label' => esc_html__('Active Tab Title Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .choose-tab .nav-tabs .nav-link.active" => "color: {{VALUE}}"
-            ]
-        ]);
-        $this->add_control('title_1_color', [
-            'label' => esc_html__('Inactive Tab Title Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .choose-tab .nav-tabs .nav-link" => "color: {{VALUE}}"
-            ]
-        ]);
-        $this->add_control('title_2_color', [
-            'label' => esc_html__('Tab Details Title Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .choose-content h4.title" => "color: {{VALUE}}"
-            ]
-        ]);
-        $this->add_control('info_2_color', [
-            'label' => esc_html__('Tab Info Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .choose-content p.info2" => "color: {{VALUE}}"
-            ]
-        ]);
-        $this->add_control('tab_number_color1', [
-            'label' => esc_html__('Work Color 1', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .odometer-inside .odometer-digit" => "color: {{VALUE}}"
-            ]
-        ]);
-        $this->add_control('tab_numberDec_color1', [
-            'label' => esc_html__('Work Dec Color 1', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .statistics-content p" => "color: {{VALUE}}"
-            ]
-        ]);
-        $this->end_controls_section();
-
-        /* button styling */
-        $this->start_controls_section(
-            'banner_button_section',
-            [
-                'label' => esc_html__('Button Settings', 'softim-core'),
-                'tab' => Controls_Manager::TAB_STYLE
-            ]
-        );
-
-        $this->start_controls_tabs('button_styling');
-        $this->start_controls_tab('normal_style', [
-            'label' => esc_html__('Button Normal', "softim-core")
-        ]);
-        $this->add_control('button_normal_color', [
-            'label' => esc_html__('Button Text Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .btn--base" => "color: {{VALUE}}"
-            ]
-        ]);
-        $this->add_control('divider_01', [
-            'type' => Controls_Manager::DIVIDER
-        ]);
-        $this->add_group_control(Group_Control_Background::get_type(), [
-            'name' => 'button_background',
-            'label' => esc_html__('Button Background ', 'softim-core'),
-            'selector' => "{{WRAPPER}} .btn--base"
-        ]);
-        $this->add_control('divider_02', [
-            'type' => Controls_Manager::DIVIDER
-        ]);
-        $this->add_group_control(Group_Control_Border::get_type(), [
-            'name' => 'header_button_border',
-            'label' => esc_html__('Border', 'softim-core'),
-            'selector' => "{{WRAPPER}} .btn--base"
-        ]);
-        $this->end_controls_tab();
-
-        $this->start_controls_tab('hover_style', [
-            'label' => esc_html__('Button Hover', "softim-core")
-        ]);
-        $this->add_control('button_hover_normal_color', [
-            'label' => esc_html__('Button Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .btn--base:hover" => "color: {{VALUE}}"
-            ]
-        ]);
-        $this->add_control('divider_03', [
-            'type' => Controls_Manager::DIVIDER
-        ]);
-        $this->add_group_control(Group_Control_Background::get_type(), [
-            'name' => 'button_hover_background',
-            'label' => esc_html__('Button Background ', 'softim-core'),
-            'selector' => "{{WRAPPER}} .btn--base:hover::before"
-        ]);
-        $this->add_control('divider_04', [
-            'type' => Controls_Manager::DIVIDER
-        ]);
-        $this->add_group_control(Group_Control_Border::get_type(), [
-            'name' => 'header_hover_button_border',
-            'label' => esc_html__('Border', 'softim-core'),
-            'selector' => "{{WRAPPER}} .btn--base:hover"
-        ]);
-        $this->end_controls_tab();
-
-        $this->end_controls_tabs();
-
-        $this->add_control('divider_05', [
-            'type' => Controls_Manager::DIVIDER
-        ]);
-        $this->add_control(
-            'button_border_radius',
-            [
-                'label' => esc_html__('Border Radius', 'softim-core'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%'],
-                'selectors' => [
-                    '{{WRAPPER}} .btn--base' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-        $this->end_controls_section();
-        /* button styling end */
 
         /* typography settings start */
         $this->start_controls_section('typography_settings', [
@@ -445,43 +308,13 @@ class Softim_Case_Study_Widget extends Widget_Base
         ]);
         $this->add_group_control(Group_Control_Typography::get_type(), [
             'name' => 'title_typography',
-            'label' => esc_html__('Title 1 Typography', 'softim-core'),
+            'label' => esc_html__('Title Typography', 'softim-core'),
             'selector' => "{{WRAPPER}} .section-header .section-title"
         ]);
         $this->add_group_control(Group_Control_Typography::get_type(), [
             'name' => 'info_typography',
             'label' => esc_html__('Info Typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .section-header p.info"
-        ]);
-        $this->add_group_control(Group_Control_Typography::get_type(), [
-            'name' => 'title_2_typography',
-            'label' => esc_html__('Tab Title Typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .choose-tab .nav-tabs .nav-link"
-        ]);
-        $this->add_group_control(Group_Control_Typography::get_type(), [
-            'name' => 'title_2_tab_typography',
-            'label' => esc_html__('Tab Details Title Typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .choose-content h4.title"
-        ]);
-        $this->add_group_control(Group_Control_Typography::get_type(), [
-            'name' => 'title_2_tab_details_typography',
-            'label' => esc_html__('Tab Details Info Typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .choose-content p.info2"
-        ]);
-        $this->add_group_control(Group_Control_Typography::get_type(), [
-            'name' => 'title_2_odoNumber_typography',
-            'label' => esc_html__('Work Number Typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .odometer-inside .odometer-digit"
-        ]);
-        $this->add_group_control(Group_Control_Typography::get_type(), [
-            'name' => 'title_2_odoTitle_typography',
-            'label' => esc_html__('Work Title Typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .statistics-content p"
-        ]);
-        $this->add_group_control(Group_Control_Typography::get_type(), [
-            'name' => 'button_typography',
-            'label' => esc_html__('Button Typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .btn--base"
+            'selector' => "{{WRAPPER}} .section-header p"
         ]);
         $this->end_controls_section();
         /* typography settings end */
@@ -509,14 +342,16 @@ class Softim_Case_Study_Widget extends Widget_Base
                         <div class="section-header-wrapper">
                             <div class="section-header">
                                 <h2 class="section-title">Our Recent Case Study</h2>
-                                <p>Credibly grow premier ideas rather than bricks-and-clicks strategic theme areas distributed for stand-alone web-readiness.</p>
+                                <p>Credibly grow premier ideas rather than bricks-and-clicks strategic theme areas
+                                    distributed for stand-alone web-readiness.</p>
                             </div>
                             <ul class="nav nav-pills mb-3">
                                 <li class="nav-item">
                                     <a class="nav-link" data-toggle="pill" href="#all">All</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active"data-toggle="pill" href="#cloud-services">Cloud Services</a>
+                                    <a class="nav-link active" data-toggle="pill" href="#cloud-services">Cloud
+                                        Services</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" data-toggle="pill" href="#cyber-security">Cyber Security</a>
@@ -544,7 +379,8 @@ class Softim_Case_Study_Widget extends Widget_Base
                                                     </div>
                                                     <div class="content">
                                                         <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers result-driven solutions to build.</p>
+                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers
+                                                            result-driven solutions to build.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -555,7 +391,8 @@ class Softim_Case_Study_Widget extends Widget_Base
                                                     </div>
                                                     <div class="content">
                                                         <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers result-driven solutions to build.</p>
+                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers
+                                                            result-driven solutions to build.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -566,7 +403,8 @@ class Softim_Case_Study_Widget extends Widget_Base
                                                     </div>
                                                     <div class="content">
                                                         <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers result-driven solutions to build.</p>
+                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers
+                                                            result-driven solutions to build.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -594,7 +432,8 @@ class Softim_Case_Study_Widget extends Widget_Base
                                                     </div>
                                                     <div class="content">
                                                         <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers result-driven solutions to build.</p>
+                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers
+                                                            result-driven solutions to build.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -605,7 +444,8 @@ class Softim_Case_Study_Widget extends Widget_Base
                                                     </div>
                                                     <div class="content">
                                                         <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers result-driven solutions to build.</p>
+                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers
+                                                            result-driven solutions to build.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -616,7 +456,8 @@ class Softim_Case_Study_Widget extends Widget_Base
                                                     </div>
                                                     <div class="content">
                                                         <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers result-driven solutions to build.</p>
+                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers
+                                                            result-driven solutions to build.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -644,7 +485,8 @@ class Softim_Case_Study_Widget extends Widget_Base
                                                     </div>
                                                     <div class="content">
                                                         <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers result-driven solutions to build.</p>
+                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers
+                                                            result-driven solutions to build.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -655,7 +497,8 @@ class Softim_Case_Study_Widget extends Widget_Base
                                                     </div>
                                                     <div class="content">
                                                         <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers result-driven solutions to build.</p>
+                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers
+                                                            result-driven solutions to build.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -666,7 +509,8 @@ class Softim_Case_Study_Widget extends Widget_Base
                                                     </div>
                                                     <div class="content">
                                                         <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers result-driven solutions to build.</p>
+                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers
+                                                            result-driven solutions to build.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -694,7 +538,8 @@ class Softim_Case_Study_Widget extends Widget_Base
                                                     </div>
                                                     <div class="content">
                                                         <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers result-driven solutions to build.</p>
+                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers
+                                                            result-driven solutions to build.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -705,7 +550,8 @@ class Softim_Case_Study_Widget extends Widget_Base
                                                     </div>
                                                     <div class="content">
                                                         <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers result-driven solutions to build.</p>
+                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers
+                                                            result-driven solutions to build.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -716,7 +562,8 @@ class Softim_Case_Study_Widget extends Widget_Base
                                                     </div>
                                                     <div class="content">
                                                         <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers result-driven solutions to build.</p>
+                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers
+                                                            result-driven solutions to build.</p>
                                                     </div>
                                                 </div>
                                             </div>

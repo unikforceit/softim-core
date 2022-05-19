@@ -168,152 +168,80 @@ class Softim_Service_Five_Widget extends Widget_Base
         ]);
         $this->end_controls_section();
 
+//  Start style
         $this->start_controls_section(
-            'title_styling_settings_section',
+            'css_styles',
             [
-                'label' => esc_html__('Styling Settings', 'softim-core'),
+                'label' => esc_html__('Header Title', 'softim-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
-        $this->start_controls_tabs(
-            'title_style_tabs'
-        );
-
-        $this->start_controls_tab(
-            'title_style_normal_tab',
-            [
-                'label' => esc_html__('Normal', 'softim-core'),
-            ]
-        );
-        $this->add_control('normal_post_title_color', [
-            'label' => esc_html__('Title Color', 'softim-core'),
+        $this->add_control('blog_header_title_color', [
+            'label' => esc_html__('Header Title Color', 'softim-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
-                "{{WRAPPER}} .blog-grid-item-01 .content .title" => "color: {{VALUE}}"
+                "{{WRAPPER}} .section-header .section-title" => "color: {{VALUE}}"
             ]
         ]);
-        $this->add_control('normal_post_meta_color', [
-            'label' => esc_html__('Category Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .blog-grid-item-01 .content .post-meta li" => "color: {{VALUE}}"
-            ]
-        ]);
-        $this->add_control('normal_post_paragraph_color', [
-            'label' => esc_html__('Paragraph Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .blog-grid-item-01 .content p" => "color: {{VALUE}}"
-            ]
-        ]);
-        $this->add_control('normal_background_color', [
-            'label' => esc_html__('Background Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .blog-grid-item-01" => "background-color: {{VALUE}}"
-            ]
-        ]);
-        $this->add_control('normal_post_button_color', [
-            'label' => esc_html__('Button Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .blog-grid-item-01 .content .read-btn" => "color: {{VALUE}}"
-            ]
-        ]);
-        $this->end_controls_tab();
-
-        $this->start_controls_tab(
-            'title_style_hover_tab',
-            [
-                'label' => esc_html__('Hover', 'softim-core'),
-            ]
-        );
-
-        $this->add_control('hover_post_title_color', [
-            'label' => esc_html__('Title Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .blog-grid-item-01 .content .title:hover" => "color: {{VALUE}}"
-            ]
-        ]);
-        $this->add_control('normal_hover_background_color', [
-            'label' => esc_html__('Background Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .blog-grid-item-01:hover" => "background-color: {{VALUE}}"
-            ]
-        ]);
-        $this->add_control('normal_post_hover_border_color', [
-            'label' => esc_html__('Button Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .blog-grid-item-01 .content .read-btn:hover" => "color: {{VALUE}}"
-            ]
-        ]);
-        $this->end_controls_tab();
-
-        $this->end_controls_tabs();
-
         $this->end_controls_section();
 
-
         $this->start_controls_section(
-            'slider_navigation_styling_settings_section',
+            'customer_services2',
             [
-                'label' => esc_html__('Slider Nav Styling Settings', 'softim-core'),
+                'label' => esc_html__('Service Items', 'softim-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
-        $this->start_controls_tabs(
-            'slider_nav_style_tabs'
-        );
-
-        $this->start_controls_tab(
-            'slider_navigation_style_normal_tab',
-            [
-                'label' => esc_html__('Normal', 'softim-core'),
-            ]
-        );
-        $this->add_control('normal_nav_color', [
-            'label' => esc_html__('Color', 'softim-core'),
+        $this->add_control('service_items_bg', [
+            'label' => esc_html__('Item Background', 'softim-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
-                "{{WRAPPER}} .blog-slider-controls .slider-nav div" => "color: {{VALUE}}"
+                "{{WRAPPER}} .service-single-item" => "background-color: {{VALUE}}"
             ]
         ]);
-        $this->add_group_control(Group_Control_Background::get_type(), [
-            'label' => esc_html__('Background', 'softim-core'),
-            'name' => 'nav_background',
-            'selector' => "{{WRAPPER}} .blog-slider-controls .slider-nav div"
-        ]);
-
-        $this->end_controls_tab();
-
-        $this->start_controls_tab(
-            'slider_navigation_style_hover_tab',
-            [
-                'label' => esc_html__('Hover', 'softim-core'),
-            ]
-        );
-        $this->add_control('hover_nav_color', [
-            'label' => esc_html__('Color', 'softim-core'),
+        $this->add_control('service_items_icon_bg', [
+            'label' => esc_html__('Item Icon Background', 'softim-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
-                "{{WRAPPER}} .blog-slider-controls .slider-nav div:hover" => "color: {{VALUE}}"
+                "{{WRAPPER}} .service-single-item .icon" => "background-color: {{VALUE}}"
             ]
         ]);
-        $this->add_group_control(Group_Control_Background::get_type(), [
-            'label' => esc_html__('Background', 'softim-core'),
-            'name' => 'nav_hover_background',
-            'selector' => "{{WRAPPER}} .blog-slider-controls .slider-nav div:hover"
+        $this->add_control('service_items_title', [
+            'label' => esc_html__('Item Title', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .service-single-item .content .title" => "color: {{VALUE}}"
+            ]
         ]);
-
-        $this->end_controls_tab();
-
-        $this->end_controls_tabs();
-
+        $this->add_control('service_items_info', [
+            'label' => esc_html__('Item Info', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .service-single-item .content p" => "color: {{VALUE}}"
+            ]
+        ]);
+        $this->add_control('service_items_btn', [
+            'label' => esc_html__('Item btn Background', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .service-single-item .content .more-btn span" => "color: {{VALUE}}"
+            ]
+        ]);
+        $this->add_control('service_items_btn_icon_bg', [
+            'label' => esc_html__('Item btn Background', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .service-single-item .content .more-btn .icons" => "background-color: {{VALUE}}"
+            ]
+        ]);
+        $this->add_control('service_items_btn_icon_color', [
+            'label' => esc_html__('Item btn Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .service-single-item .content .more-btn .icons i" => "color: {{VALUE}}"
+            ]
+        ]);
         $this->end_controls_section();
-
 
         $this->start_controls_section(
             'typography_settings_section',
@@ -326,14 +254,25 @@ class Softim_Service_Five_Widget extends Widget_Base
             'label' => esc_html__('Title Typography', 'softim-core'),
             'name' => 'post_meta_typography',
             'description' => esc_html__('select title typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .blog-grid-item-01 .content .title"
+            'selector' => "{{WRAPPER}} .section-header .section-title"
         ]);
-
         $this->add_group_control(Group_Control_Typography::get_type(), [
-            'label' => esc_html__('Category Typography', 'softim-core'),
-            'name' => 'category_typography',
-            'description' => esc_html__('select category typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .blog-grid-item-01 .content .post-categories li"
+            'label' => esc_html__('Title Typography', 'softim-core'),
+            'name' => 'item_title_typography',
+            'description' => esc_html__('select title typography', 'softim-core'),
+            'selector' => "{{WRAPPER}} .service-single-item .content .title"
+        ]);
+        $this->add_group_control(Group_Control_Typography::get_type(), [
+            'label' => esc_html__('info Typography', 'softim-core'),
+            'name' => 'item_info_typography',
+            'description' => esc_html__('select title typography', 'softim-core'),
+            'selector' => "{{WRAPPER}} .service-single-item .content p"
+        ]);
+        $this->add_group_control(Group_Control_Typography::get_type(), [
+            'label' => esc_html__('Button Typography', 'softim-core'),
+            'name' => 'item_button_typography',
+            'description' => esc_html__('select button text typography', 'softim-core'),
+            'selector' => "{{WRAPPER}} .service-single-item .content .more-btn span"
         ]);
         $this->end_controls_section();
 
