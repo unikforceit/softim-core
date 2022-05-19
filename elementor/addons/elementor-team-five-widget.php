@@ -162,8 +162,8 @@ class Softim_Team_Five_Widget extends Widget_Base
             ]
         );
 
-        $repeater2 = new Repeater();
-        $repeater2->add_control(
+        $repeater = new Repeater();
+        $repeater->add_control(
             'team_no', [
                 'label' => esc_html__('Team Work Number', 'softim-core'),
                 'type' => Controls_Manager::TEXTAREA,
@@ -171,8 +171,25 @@ class Softim_Team_Five_Widget extends Widget_Base
                 'description' => esc_html__('enter team work number', 'softim-core')
             ]
         );
-        $repeater2->add_control(
+        $repeater->add_control(
+            'switcher',
+            [
+                'label' => esc_html__('Sub-title switcher', 'softim-core'),
+                'type' => Controls_Manager::SWITCHER,
+                'description' => esc_html__('you can set yes to show sub-title.', 'softim-core'),
+                'default' => 'no'
+            ]
+        );
+        $repeater->add_control(
             'team_title', [
+                'label' => esc_html__('Team Work Sub-title', 'softim-core'),
+                'type' => Controls_Manager::TEXTAREA,
+                'default' => esc_html__("+", 'softim-core'),
+                'description' => esc_html__('enter team sub-title', 'softim-core')
+            ]
+        );
+        $repeater->add_control(
+            'team_title2', [
                 'label' => esc_html__('Team Work Title', 'softim-core'),
                 'type' => Controls_Manager::TEXTAREA,
                 'default' => esc_html__("Founded", 'softim-core'),
@@ -183,7 +200,7 @@ class Softim_Team_Five_Widget extends Widget_Base
         $this->add_control('team_list', [
             'label' => esc_html__('Take 4 Team Work', 'softim-core'),
             'type' => Controls_Manager::REPEATER,
-            'fields' => $repeater2->get_controls(),
+            'fields' => $repeater->get_controls(),
         ]);
         $this->end_controls_section();
 
@@ -388,11 +405,12 @@ class Softim_Team_Five_Widget extends Widget_Base
                                                 <div class="col-lg-6 col-md-6 col-6 mb-30">
                                                     <div class="content">
                                                         <div class="odo-area">
-                                                            <h3 class="odo-title odometer"
-                                                                data-odometer-final="<?php echo esc_attr($team['team_no']); ?>">
-                                                                0</h3>
+                                                            <h3 class="odo-title odometer" data-odometer-final="<?php echo esc_attr($team['team_no']); ?>">0</h3>
+                                                            <?php if ($team['switcher'] == 'yes') {?>
+                                                            <h3 class="title"><?php echo esc_html($team['team_title']);?></h3>
+                                                    <?php }?>
                                                         </div>
-                                                        <p><?php echo esc_html($team['team_title']); ?></p>
+                                                        <p><?php echo esc_html($team['team_title2']); ?></p>
                                                     </div>
                                                 </div>
                                             <?php }

@@ -388,7 +388,7 @@ class Softim_Service_Three_Widget extends Widget_Base
         if (!empty($category)) {
             $args['tax_query'] = array(
                 array(
-                    'taxonomy' => 'service',
+                    'taxonomy' => 'service-cat',
                     'field' => 'term_id',
                     'terms' => $category
                 )

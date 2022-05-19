@@ -398,11 +398,11 @@ class Softim_Blog_Post_Three_Widget extends Widget_Base
                                         </div>
                                     <?php } ?>
                                     <div class="content">
-                                        <a href="blog-classic.html"><span class="event">Event</span></a>
+                                        <a href=""><span class="event"><?php echo get_the_category()[0]->name; ?></span></a>
                                         <a href="<?php the_permalink(); ?>"><h4 class="title"><?php the_title(); ?></h4>
                                         </a>
                                         <div class="post-meta">
-                                            <span class="user"><?php echo esc_html('By :') ?><?php the_author(); ?></span>
+                                            <span class="user"><?php echo esc_html('By : ') ?><?php the_author(); ?></span>
                                             <span class="date"><?php echo get_the_time('F j, Y'); ?></span>
                                         </div>
                                     </div>
@@ -422,7 +422,7 @@ class Softim_Blog_Post_Three_Widget extends Widget_Base
                                         <a href="<?php the_permalink(); ?>"><h4 class="title"><?php the_title(); ?></h4>
                                         </a>
                                         <div class="post-meta">
-                                            <span class="user"><?php echo esc_html('By :') ?><?php the_author(); ?></span>
+                                            <span class="user"><?php echo esc_html('By : ') ?><?php the_author(); ?></span>
                                             <span class="date"><?php echo get_the_time('F j, Y'); ?></span>
                                         </div>
                                     </div>
