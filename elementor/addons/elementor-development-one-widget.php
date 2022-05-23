@@ -88,6 +88,17 @@ class Softim_Development_One_Widget extends Widget_Base
             ]
         );
         $this->add_control(
+            'bg_image', [
+                'label' => esc_html__('Background Image', 'softim-core'),
+                'type' => Controls_Manager::MEDIA,
+                'show_label' => false,
+                'description' => esc_html__('background image', 'softim-core'),
+                'default' => [
+                    'src' => Utils::get_placeholder_image_src()
+                ],
+            ]
+        );
+        $this->add_control(
             'image1', [
                 'label' => esc_html__('Move Grid Image 1', 'softim-core'),
                 'type' => Controls_Manager::MEDIA,
@@ -373,31 +384,38 @@ class Softim_Development_One_Widget extends Widget_Base
         $settings = $this->get_settings_for_display();
 
         ?>
-        <section class="development-section" style="background-image: url(assets/images/home-three/dev-bg.png);">
+        <section class="development-section" style="background-image: url(<?php echo esc_url($settings['bg_image']['url']); ?>);">
             <div class="container">
-                <img src="<?php echo esc_url($settings['image1']['url']);?>" alt="element" class="shape-01">
-                <img src="<?php echo esc_url($settings['image2']['url']);?>" alt="element" class="shape-02">
+                <img src="<?php echo esc_url($settings['image1']['url']); ?>" alt="element" class="shape-01">
+                <img src="<?php echo esc_url($settings['image2']['url']); ?>" alt="element" class="shape-02">
                 <div class="row">
                     <div class="col-xl-6 col-lg-6 mb-30">
                         <div class="thumbnail">
-                            <img src="<?php echo esc_url($settings['image3']['url']);?>" alt="element">
+                            <img src="<?php echo esc_url($settings['image3']['url']); ?>" alt="element">
                             <div class="about-thumb-video">
                                 <div class="circle">
-                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
+                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="300px"
+                                         height="300px" viewBox="0 0 300 300" enable-background="new 0 0 300 300"
+                                         xml:space="preserve">
                                 <defs>
-                                    <path id="circlePath" d=" M 150, 150 m -60, 0 a 60,60 0 0,1 120,0 a 60,60 0 0,1 -120,0 "></path>
+                                    <path id="circlePath"
+                                          d=" M 150, 150 m -60, 0 a 60,60 0 0,1 120,0 a 60,60 0 0,1 -120,0 "></path>
                                 </defs>
                                         <circle cx="150" cy="100" r="75" fill="none"></circle>
                                         <g>
                                             <use xlink:href="#circlePath" fill="none"></use>
                                             <text fill="#606F92">
-                                                <textPath xlink:href="#circlePath">Softim it solution Softim it solution Softim it solution Softim it solution</textPath>
+                                                <textPath xlink:href="#circlePath">Softim it solution Softim it solution
+                                                    Softim it solution Softim it solution
+                                                </textPath>
                                             </text>
                                         </g>
                             </svg>
                                 </div>
                                 <div class="video-main">
-                                    <a class="video-icon video" data-rel="lightcase:myCollection" href="https://www.youtube.com/embed/LRhrNC-OC0Y">
+                                    <a class="video-icon video" data-rel="lightcase:myCollection"
+                                       href="https://www.youtube.com/embed/LRhrNC-OC0Y">
                                         <i class="fas fa-play"></i>
                                     </a>
                                 </div>
@@ -406,15 +424,16 @@ class Softim_Development_One_Widget extends Widget_Base
                     </div>
                     <div class="col-xl-6 col-lg-6 mb-30">
                         <div class="content">
-                            <div class="title"><?php echo esc_html($settings['title']);?></div>
-                            <p><?php echo esc_html($settings['info']);?></p>
+                            <div class="title"><?php echo esc_html($settings['title']); ?></div>
+                            <p><?php echo esc_html($settings['info']); ?></p>
                             <ul class="plan-list">
                                 <?php
-                                if ($settings['develop_list']){
-                                    foreach ($settings['develop_list'] as $items){
-                                ?>
-                                <li><?php echo esc_html($items['list_item']);?></li>
-                                    <?php } } ?>
+                                if ($settings['develop_list']) {
+                                    foreach ($settings['develop_list'] as $items) {
+                                        ?>
+                                        <li><?php echo esc_html($items['list_item']); ?></li>
+                                    <?php }
+                                } ?>
                             </ul>
                             <div class="more-btn">
                                 <?php if ($settings['btn_status'] == 'yes'): ?>
