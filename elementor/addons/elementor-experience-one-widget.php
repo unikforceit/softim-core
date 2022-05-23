@@ -89,10 +89,18 @@ class Softim_Experience_One_Widget extends Widget_Base
         );
         $this->add_control(
             'info', [
-                'label' => esc_html__('Info', 'softim-core'),
+                'label' => esc_html__('Info Left', 'softim-core'),
                 'type' => Controls_Manager::TEXTAREA,
                 'default' => esc_html__('We are progressive and dynamic IT service company that has creatively operated within the international market of Web & Mobile development since 2011', 'softim-core'),
-                'description' => esc_html__('enter info', 'softim-core'),
+                'description' => esc_html__('enter left info', 'softim-core'),
+            ]
+        );
+        $this->add_control(
+            'info2', [
+                'label' => esc_html__('Info Right', 'softim-core'),
+                'type' => Controls_Manager::TEXTAREA,
+                'default' => esc_html__('Softim Software, a leading provider of web development services, helps you to build customized, enterprise-grade and result-driven web solutions for your business.', 'softim-core'),
+                'description' => esc_html__('enter right info', 'softim-core'),
             ]
         );
 
@@ -347,44 +355,51 @@ class Softim_Experience_One_Widget extends Widget_Base
         $settings = $this->get_settings_for_display();
 
         ?>
+
         <section class="experience-secction">
-            <div class="container">
+            <div class="container custom-container-four">
                 <div class="row">
                     <div class="col-xl-6 col-lg-6 mb-30">
                         <div class="experience-content">
-                            <h4 class="title"><?php echo esc_html($settings['info']);?></h4>
+                            <h4 class="title"><?php echo esc_html($settings['info']); ?></h4>
                             <ul class="plan-list">
                                 <?php
-                                if ($settings['exp_list']){
-                                    foreach ($settings['exp_list'] as $items){
+                                if ($settings['exp_list']) {
+                                    foreach ($settings['exp_list'] as $items) {
                                         ?>
-                                        <li><?php echo esc_html($items['list_item']);?></li>
-                                    <?php } } ?>
+                                        <li><?php echo esc_html($items['list_item']); ?></li>
+                                    <?php }
+                                } ?>
                             </ul>
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 mb-30">
                         <div class="statistics-item-area">
+                            <p><?php echo esc_html($settings['info2']); ?></p>
                             <div class="row mb-30-none">
                                 <?php
-                                if ($settings['exp_list2']){
-                                    foreach ($settings['exp_list2'] as $items2){
+                                if ($settings['exp_list2']) {
+                                    foreach ($settings['exp_list2'] as $items2) {
                                         ?>
-                                <div class="col-xl-6 col-lg-6 col-md-6 mb-30">
-                                    <div class="icon-box-items">
-                                        <div class="icon">
-                                            <img src="<?php echo esc_url($items2['image']['url']);?>" alt="icon">
-                                        </div>
-                                        <div class="content">
-                                            <div class="odo-area">
-                                                <h3 class="odo-title odometer" data-odometer-final="<?php echo esc_attr($items2['exp_time_no']);?>">0</h3>
-                                                <h3 class="title"><?php echo esc_html($items2['exp_time_title']);?></h3>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 mb-30">
+                                            <div class="icon-box-items">
+                                                <div class="content">
+                                                    <div class="odo-area">
+                                                        <h3 class="odo-title odometer"
+                                                            data-odometer-final="<?php echo esc_attr($items2['exp_time_no']); ?>">
+                                                            0</h3>
+                                                        <h3 class="title"><?php echo esc_html($items2['exp_time_title']); ?></h3>
+                                                    </div>
+                                                    <p><?php echo esc_html($items2['exp_time_title2']); ?></p>
+                                                </div>
+                                                <div class="icon">
+                                                    <img src="<?php echo esc_url($items2['image']['url']); ?>"
+                                                         alt="icon">
+                                                </div>
                                             </div>
-                                            <p><?php echo esc_html($items2['exp_time_title2']);?></p>
                                         </div>
-                                    </div>
-                                </div>
-    <?php } } ?>
+                                    <?php }
+                                } ?>
                             </div>
                         </div>
                     </div>
