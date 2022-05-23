@@ -153,7 +153,7 @@ class Softim_About_Three_Widget extends Widget_Base
                 'type' => Controls_Manager::TEXT,
                 'default' => esc_html__('+110 2659 3268 003', 'softim-core'),
                 'description' => esc_html__('enter button text', 'softim-core'),
-                'condition' => ['btn_status' => 'yes']
+                'condition' => ['btn_status2' => 'yes']
             ]
         );
         $this->add_control(
@@ -164,7 +164,7 @@ class Softim_About_Three_Widget extends Widget_Base
                     'url' => '#'
                 ],
                 'description' => esc_html__('enter button url', 'softim-core'),
-                'condition' => ['btn_status' => 'yes']
+                'condition' => ['btn_status2' => 'yes']
             ]
         );
         $this->add_control(
@@ -210,6 +210,25 @@ class Softim_About_Three_Widget extends Widget_Base
                     'value' => 'fas fa-phone-alt',
                     'library' => 'solid',
                 ],
+            ]
+        );
+        $this->add_control(
+            'btn_status3', [
+                'label' => esc_html__('Play Btn Show/Hide', 'softim-core'),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => 'yes',
+                'description' => esc_html__('show/hide button', 'softim-core')
+            ]
+        );
+        $this->add_control(
+            'btn_link3', [
+                'label' => esc_html__('Video URL', 'softim-core'),
+                'type' => Controls_Manager::URL,
+                'default' => [
+                    'url' => '#'
+                ],
+                'description' => esc_html__('enter button url', 'softim-core'),
+                'condition' => ['btn_status3' => 'yes']
             ]
         );
         $this->add_control(
@@ -459,8 +478,8 @@ class Softim_About_Three_Widget extends Widget_Base
                             </svg>
                                 </div>
                                 <div class="video-main">
-                                    <?php if ($settings['btn_status2'] == 'yes'): ?>
-                                        <a href="<?php echo esc_url($settings['btn_link2']['url']); ?>" data-rel="lightcase:myCollection"
+                                    <?php if ($settings['btn_status3'] == 'yes'): ?>
+                                        <a href="<?php echo esc_url($settings['btn_link3']['url']); ?>" data-rel="lightcase:myCollection"
                                            class="video-icon video">
                                             <?php \Elementor\Icons_Manager::render_icon( $settings['play_icon'], [ 'aria-hidden' => 'true' ] ); ?>
                                         </a>

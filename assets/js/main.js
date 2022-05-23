@@ -241,10 +241,10 @@
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
                 },
-                // autoplay: {
-                //   speeds: 2000,
-                //   delay: 4000,
-                // },
+                autoplay: {
+                  speeds: 2000,
+                  delay: 4000,
+                },
                 speed: 1500,
                 breakpoints: {
                     1300: {
@@ -350,7 +350,7 @@
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-one-widget.default', Testislider1);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-two-widget.default', Testislider2);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-three-widget.default', Testislider3);
-            elementorFrontend.hooks.addAction('frontend/element_ready/softim-banner-three-widget.default', Testislider3);
+            elementorFrontend.hooks.addAction('frontend/element_ready/softim-banner-three-widget.default', Testislider4);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-faq-one-widget.default', Faq);
         }
     });

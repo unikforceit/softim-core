@@ -423,8 +423,8 @@ class Softim_Team_Two_Widget extends Widget_Base
                     <div class="col-xl-12">
                         <div class="section-header-wrapper">
                             <div class="section-header">
-                                <h2 class="section-title"><?php echo esc_html($settings['title']) ?></h2>
-                                <p><?php echo esc_html($settings['info']) ?></p>
+                                <h2 class="section-title"><?php echo esc_html($settings['title']); ?></h2>
+                                <p><?php echo esc_html($settings['info']); ?></p>
                             </div>
                             <?php if ($settings['arrow_switch'] == 'yes') { ?>
                                 <div class="slider-nav-area">
@@ -464,8 +464,9 @@ class Softim_Team_Two_Widget extends Widget_Base
                                                                     foreach ($team_meta['social-icons'] as $team_icon) {
                                                                         ?>
                                                                         <li>
-                                                                            <a href="<?php echo esc_url($team_icon['url']); ?>"><i
-                                                                                        class="<?php echo esc_attr($team_icon['icon']); ?>"></i></a>
+                                                                            <a href="<?php echo esc_url($team_icon['url']); ?>">
+                                                                                <i class="<?php echo esc_attr($team_icon['icon']); ?>"></i>
+                                                                            </a>
                                                                         </li>
                                                                     <?php }
                                                                 } ?>
@@ -473,8 +474,8 @@ class Softim_Team_Two_Widget extends Widget_Base
                                                         </div>
                                                     </div>
                                                     <div class="team-content">
-                                                        <h3 class="title"><a
-                                                                    href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                                                        <h3 class="title">
+                                                            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                                                         </h3>
                                                         <span class="sub-title"><?php echo esc_html($team_meta['designation']);?></span>
                                                     </div>

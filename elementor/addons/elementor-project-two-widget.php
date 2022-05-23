@@ -451,7 +451,9 @@ class Softim_Project_Two_Widget extends Widget_Base
                                 <h2 class="title"><?php echo esc_html($settings['title']);?></h2>
                                 <p><?php echo esc_html($settings['info']);?></p>
                                 <div class="project-left-btn">
-                                    <a href="<?php echo get_post_type_archive_link('project-cat');?>" class="btn--base active"><?php echo esc_html('View All Projects');?></a>
+                                    <a href="<?php echo get_post_type_archive_link('project-cat');?>" class="btn--base active">
+                                        <?php echo esc_html('View All Projects');?>
+                                    </a>
                                 </div>
                             </div>
                         </div>

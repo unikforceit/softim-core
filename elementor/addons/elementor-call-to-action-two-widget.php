@@ -139,6 +139,18 @@ class Softim_Call_To_Action_Two_Widget extends Widget_Base
                 'condition' => ['btn_status' => 'yes']
             ]
         );
+
+        $this->add_control(
+            'btn_link', [
+                'label' => esc_html__('Button URL', 'softim-core'),
+                'type' => Controls_Manager::URL,
+                'default' => [
+                    'url' => '#'
+                ],
+                'description' => esc_html__('enter button url', 'softim-core'),
+                'condition' => ['btn_status' => 'yes']
+            ]
+        );
         $this->end_controls_section();
 
 
