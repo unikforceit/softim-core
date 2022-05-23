@@ -238,13 +238,17 @@
                 loop: true,
                 effect: "fade",
                 navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
+                    nextEl: '.next-text',
+                    prevEl: '.prev-text',
                 },
-                autoplay: {
-                  speeds: 2000,
-                  delay: 4000,
+                pagination: {
+                    el: '.custom-pagination',
+                    type: 'progressbar',
                 },
+                // autoplay: {
+                //   speeds: 2000,
+                //   delay: 4000,
+                // },
                 speed: 1500,
                 breakpoints: {
                     1300: {

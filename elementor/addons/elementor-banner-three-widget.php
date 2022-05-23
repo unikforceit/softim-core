@@ -359,33 +359,37 @@ class Softim_Banner_Three_Widget extends Widget_Base
             <div class="banner-three-slider">
                 <div class="swiper-wrapper">
                     <?php
-        if ($settings['banner_list']){
-            foreach ($settings['banner_list'] as $item){
-        ?>
-                    <div class="swiper-slide">
-                        <div class="container custom-container-three">
-                            <div class="home-three-banner">
-                                <img src="<?php echo esc_url($item['banner_shape_image']['url']);?>" class="banner-shape" alt="">
-                                <div class="row align-items-end mb-30-none">
-                                    <div class="col-xl-6 col-lg-6">
-                                        <div class="banner-content-two" data-aos="fade-right" data-aos-duration="1800">
-                                            <h1 class="title"><?php echo esc_html($item['banner_title']);?></h1>
-                                            <span></span>
-                                            <p><?php echo wp_kses($item['banner_text'], softim()->kses_allowed_html('br'));?></p>
+                    if ($settings['banner_list']) {
+                        foreach ($settings['banner_list'] as $item) {
+                            ?>
+                            <div class="swiper-slide">
+                                <div class="container custom-container-three">
+                                    <div class="home-three-banner">
+                                        <img src="<?php echo esc_url($item['banner_shape_image']['url']); ?>" class="banner-shape" alt="">
+                                        <div class="row align-items-end mb-30-none">
+                                            <div class="col-xl-5 col-lg-6">
+                                                <div class="banner-content-two" data-aos="fade-right"
+                                                     data-aos-duration="1800">
+                                                    <h1 class="title"><?php echo esc_html($item['banner_title']); ?></h1>
+                                                    <span></span>
+                                                    <p><?php echo wp_kses($item['banner_text'], softim()->kses_allowed_html('br')); ?></p>
+                                                </div>
+                                            </div>
+                                            <div class="banner-image">
+                                                <img src="<?php echo esc_url($item['banner_image']['url']); ?>" alt="">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="banner-image">
-                                        <img src="<?php echo esc_url($item['banner_image']['url']);?>" alt="">
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <?php } } ?>
+                        <?php }
+                    } ?>
                 </div>
+                <div class="custom-navigation next-text">NEXT</div>
+                <div class="custom-navigation prev-text">PREV</div>
+                <div class="custom-pagination"></div>
             </div>
         </section>
-
 
         <?php
     }
