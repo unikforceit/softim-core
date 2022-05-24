@@ -59,6 +59,42 @@
         });
 
     };
+    var Bannerslider2 = function ($scope, $) {
+
+        $scope.find('.banner-slider-home-04').each(function () {
+            var settings = $(this).data('softim');
+
+            // Js Start
+            var swiper = new Swiper('.banner-slider', {
+                slidesPerView: 2,
+                spaceBetween: 30,
+                centeredSlides: true,
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                autoplay: {
+                    speeds: 2000,
+                    delay: 4000,
+                },
+                speed: 1000,
+                breakpoints: {
+                    991: {
+                        slidesPerView: 2,
+                    },
+                    767: {
+                        slidesPerView: 2,
+                    },
+                    575: {
+                        slidesPerView: 2,
+                    },
+                }
+            });
+            // Js End
+        });
+
+    };
     var Teamslider = function ($scope, $) {
 
         $scope.find('.team-slider-area').each(function () {
@@ -331,6 +367,7 @@
             console.log('Elementor editor mod loaded');
             elementorFrontend.hooks.addAction('frontend/element_ready/global', AgelandGlobal);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-brand-widget.default', Bannerslider);
+            elementorFrontend.hooks.addAction('frontend/element_ready/softim-banner-four-widget.default', Bannerslider2);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-brand-3-widget.default', Bannerslider);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-team-one-widget.default', Teamslider);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-team-two-widget.default', Teamslider);
@@ -346,6 +383,7 @@
             console.log('Elementor frontend mod loaded');
             elementorFrontend.hooks.addAction('frontend/element_ready/global', AgelandGlobal);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-brand-widget.default', Bannerslider);
+            elementorFrontend.hooks.addAction('frontend/element_ready/softim-banner-four-widget.default', Bannerslider2);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-brand-3-widget.default', Bannerslider);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-team-one-widget.default', Teamslider);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-team-two-widget.default', Teamslider);
