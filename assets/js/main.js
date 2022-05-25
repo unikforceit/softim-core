@@ -352,6 +352,46 @@
         });
 
     };
+    var ClientSlider = function ($scope, $) {
+
+        $scope.find('.clientSlider').each(function () {
+            var settings = $(this).data('softim');
+
+            // Js Start
+
+            // Banner Three Slider
+            var swiper = new Swiper('.service-slider-two', {
+                slidesPerView: 5,
+                spaceBetween: 30,
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                autoplay: {
+                    speeds: 2000,
+                    delay: 4000,
+                },
+                speed: 1000,
+                breakpoints: {
+                    1590: {
+                        slidesPerView: 3,
+                    },
+                    991: {
+                        slidesPerView: 2,
+                    },
+                    767: {
+                        slidesPerView: 2,
+                    },
+                    575: {
+                        slidesPerView: 1,
+                    },
+                }
+            });
+            // Js End
+        });
+
+    };
     var Faq = function ($scope, $) {
 
         $scope.find('.faq-wrapper').each(function () {
@@ -418,6 +458,7 @@
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-three-widget.default', Testislider3);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-banner-three-widget.default', Testislider4);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-choose-three-widget.default', ChooseSlider1);
+            elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-four-widget.default', ClientSlider);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-faq-one-widget.default', Faq);
 
         } else {
@@ -435,6 +476,7 @@
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-three-widget.default', Testislider3);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-banner-three-widget.default', Testislider4);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-choose-three-widget.default', ChooseSlider1);
+            elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-four-widget.default', ClientSlider);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-faq-one-widget.default', Faq);
         }
     });
