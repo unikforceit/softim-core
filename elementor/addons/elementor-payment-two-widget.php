@@ -6,7 +6,7 @@
  */
 
 namespace Elementor;
-class Softim_Payment_One_Widget extends Widget_Base
+class Softim_Payment_Two_Widget extends Widget_Base
 {
 
     /**
@@ -21,7 +21,7 @@ class Softim_Payment_One_Widget extends Widget_Base
      */
     public function get_name()
     {
-        return 'softim-payment-one-widget';
+        return 'softim-payment-two-widget';
     }
 
     /**
@@ -36,7 +36,7 @@ class Softim_Payment_One_Widget extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Payment : 01', 'softim-core');
+        return esc_html__('Payment : 02', 'softim-core');
     }
 
     /**
@@ -88,11 +88,11 @@ class Softim_Payment_One_Widget extends Widget_Base
             ]
         );
         $this->add_control(
-            'right_image', [
-                'label' => esc_html__('Right Thumb Image', 'softim-core'),
+            'left_image', [
+                'label' => esc_html__('Left Thumb Image', 'softim-core'),
                 'type' => Controls_Manager::MEDIA,
                 'show_label' => false,
-                'description' => esc_html__('upload right thumb image', 'softim-core'),
+                'description' => esc_html__('upload left thumb image', 'softim-core'),
                 'default' => [
                     'src' => Utils::get_placeholder_image_src()
                 ],
@@ -110,7 +110,7 @@ class Softim_Payment_One_Widget extends Widget_Base
             'title', [
                 'label' => esc_html__('Title', 'softim-core'),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__("Managing money became more easier", 'softim-core'),
+                'default' => esc_html__("A digital wallet from the future", 'softim-core'),
                 'description' => esc_html__('enter title', 'softim-core')
             ]
         );
@@ -118,7 +118,7 @@ class Softim_Payment_One_Widget extends Widget_Base
             'info', [
                 'label' => esc_html__('Info', 'softim-core'),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__('Get the heavy metal debit card that saves and invests for you every time.', 'softim-core'),
+                'default' => esc_html__('Get the heavy metal debit card that saves and invests for you every time. We rank among the best in Argentina and Get the heavy metal debit card that saves and invests. card that saves and invests for you every time. We rank among the best in Argentina', 'softim-core'),
                 'description' => esc_html__('enter info', 'softim-core'),
             ]
         );
@@ -219,29 +219,10 @@ class Softim_Payment_One_Widget extends Widget_Base
 
         $repeater = new Repeater();
         $repeater->add_control(
-            'payment_icon', [
-                'label' => esc_html__('Payment Image', 'softim-core'),
-                'type' => Controls_Manager::MEDIA,
-                'show_label' => false,
-                'description' => esc_html__('upload payment image', 'softim-core'),
-                'default' => [
-                    'src' => Utils::get_placeholder_image_src()
-                ],
-            ]
-        );
-        $repeater->add_control(
-            'payment_title', [
-                'label' => esc_html__('Payment Title', 'softim-core'),
-                'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__('Built-in digital wallet', 'softim-core'),
-                'description' => esc_html__('enter payment title', 'softim-core'),
-            ]
-        );
-        $repeater->add_control(
             'payment_info', [
                 'label' => esc_html__('Payment Info', 'softim-core'),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__('Lorem ipsum dummy text dolor best amet console procedez now!', 'softim-core'),
+                'default' => esc_html__('Lowest fees in market', 'softim-core'),
                 'description' => esc_html__('enter payment info', 'softim-core'),
             ]
         );
@@ -477,30 +458,26 @@ class Softim_Payment_One_Widget extends Widget_Base
         $settings = $this->get_settings_for_display();
         ?>
 
-        <section class="payment-section ptb-120">
+        <section class="payment-section ptb-120 bg--gray">
             <div class="container">
                 <div class="row justify-content-center mb-30-none">
+                    <div class="col-xl-6 col-lg-6 mb-30">
+                        <div class="payment-thumb">
+                            <img src="<?php echo esc_url($settings['left_image']['url']); ?>" alt="element">
+                        </div>
+                    </div>
                     <div class="col-xl-6 col-lg-6 mb-30">
                         <div class="payment-content">
                             <span class="sub-title"><?php echo esc_html($settings['subtitle']); ?></span>
                             <h1 class="title"><?php echo esc_html($settings['title']); ?></h1>
                             <p><?php echo esc_html($settings['info']); ?></p>
-                            <ul class="payment-list two">
+                            <ul class="payment-list">
                                 <?php
                                 if ($settings['payment_list']) {
                                     foreach ($settings['payment_list'] as $item) {
                                         ?>
                                         <li>
-                                            <div class="payment-list-item">
-                                                <div class="thumb">
-                                                    <img src="<?php echo esc_url($item['payment_icon']['url']); ?>"
-                                                         alt="icon">
-                                                </div>
-                                                <div class="content">
-                                                    <h3 class="title"><?php echo esc_html($item['payment_title']); ?></h3>
-                                                    <p><?php echo esc_html($item['payment_info']); ?></p>
-                                                </div>
-                                            </div>
+                                            <?php echo esc_html($item['payment_info']); ?>
                                         </li>
                                     <?php }
                                 } ?>
@@ -521,11 +498,6 @@ class Softim_Payment_One_Widget extends Widget_Base
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-6 col-lg-6 mb-30">
-                        <div class="payment-thumb two">
-                            <img src="<?php echo esc_url($settings['right_image']['url']); ?>" alt="element">
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -533,4 +505,4 @@ class Softim_Payment_One_Widget extends Widget_Base
     }
 }
 
-Plugin::instance()->widgets_manager->register(new Softim_Payment_One_Widget());
+Plugin::instance()->widgets_manager->register(new Softim_Payment_Two_Widget());

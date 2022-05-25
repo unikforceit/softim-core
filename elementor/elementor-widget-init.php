@@ -97,6 +97,7 @@ if ( ! class_exists( 'Softim_Elementor_Widget_Init' ) ) {
                 'faq-one',
 				'overview-one',
 				'payment-one',
+				'payment-two',
 				'plan-process-one',
 				'price-one',
 				'price-two',
