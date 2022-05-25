@@ -579,7 +579,7 @@ class Softim_Choose_One_Widget extends Widget_Base
                                             $btn_true = 'false';
                                         }
                                         ?>
-                                <button class="nav-link <?php echo esc_attr($btn_act);?>" id="<?php echo esc_attr($tab['_id']);?>-tab" data-toggle="tab" data-target="#choose<?php echo esc_attr($tab['_id']);?>" type="button" role="tab" aria-controls="<?php echo esc_attr($tab['_id']);?>" aria-selected="<?php echo esc_attr($btn_true);?>"><?php echo esc_html($tab['tab_title']);?></button>
+                                    <button class="nav-link <?php echo esc_attr($btn_act);?>" id="<?php echo esc_attr($tab['_id']);?>-tab" data-toggle="tab" data-target="#choose<?php echo esc_attr($tab['_id']);?>" type="button" role="tab" aria-controls="<?php echo esc_attr($tab['_id']);?>" aria-selected="<?php echo esc_attr($btn_true);?>"><?php echo esc_html($tab['tab_title']);?></button>
                             <?php } }?>
                             </div>
                         </nav>
