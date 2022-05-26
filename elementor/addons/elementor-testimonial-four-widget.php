@@ -352,12 +352,10 @@ class Softim_Testimonial_Four_Widget extends Widget_Base
                                 <h1 class="title"><?php echo esc_html($settings['title']); ?></h1>
                                 <p><?php echo esc_html($settings['info']); ?></p>
                                 <?php if ($settings['btn_status'] == 'yes'): ?>
-                                    <a href="<?php echo esc_url($settings['btn_link1']['url']); ?>" class="btn--base">
-                                        <div class="client-left-btn">
-                                            <a href="<?php echo esc_url($settings['btn_link']['url']); ?>"
-                                               class="btn--base active"><?php echo esc_html($settings['btn_text']); ?></a>
-                                        </div>
-                                    </a>
+                                    <div class="client-left-btn">
+                                        <a href="<?php echo esc_url($settings['btn_link']['url']); ?>"
+                                           class="btn--base active"><?php echo esc_html($settings['btn_text']); ?></a>
+                                    </div>
                                 <?php endif; ?>
                             </div>
                         </div>
