@@ -21,10 +21,10 @@ if (!class_exists('softim_Post_Column_Customize')){
             //service category icon
             add_filter("manage_edit-service-cat_columns", array($this, "edit_service_cat_columns") );
             add_filter('manage_service-cat_custom_column', array($this, 'add_service_category_columns'), 13, 3);
-            //packages admin add table value hook
+            //project admin add table value hook
             add_filter("manage_edit-project_columns", array($this, "edit_project_columns") );
             add_action('manage_project_posts_custom_column', array($this, 'add_project_thumbnail_columns'), 10,2);
-            //packages category icon
+            //project category icon
             add_filter("manage_edit-project-cat_columns", array($this, "edit_project_cat_columns") );
             add_filter('manage_project-cat_custom_column', array($this, 'add_project_category_columns'), 13, 3);
             //team admin add table value hook
@@ -104,7 +104,7 @@ if (!class_exists('softim_Post_Column_Customize')){
         }
 
         /**
-         * Edit packages
+         * Edit project
          * @since 1.0.0
          */
         public function edit_project_columns($columns){
@@ -115,13 +115,13 @@ if (!class_exists('softim_Post_Column_Customize')){
             $columns['cb'] = '<input type="checkbox" />';
             $columns['title'] = esc_html__('Title','softim-core');
             $columns['thumbnail'] = '<a href="edit.php?post_type=project&orderby=title&order='.urlencode($order).'">'.esc_html__('Thumbnail','softim-core').'</a>';
-            $columns['taxonomy-packages-cat'] = '<a href="edit.php?post_type=project&orderby=taxonomy&order='.urlencode($order).'">'.$cat_title.'<span class="sorting-indicator"></span></a>';
+            $columns['taxonomy-project-cat'] = '<a href="edit.php?post_type=project&orderby=taxonomy&order='.urlencode($order).'">'.$cat_title.'<span class="sorting-indicator"></span></a>';
             $columns['date'] = esc_html__('Date','softim-core');
             return $columns;
         }
 
         /**
-         * Add packages thumbnail
+         * Add project thumbnail
          * @since 1.0.0
          */
         public function add_project_thumbnail_columns($column,$post_id) {
@@ -135,7 +135,7 @@ if (!class_exists('softim_Post_Column_Customize')){
         }
 
         /**
-         * Packages category column customize
+         * Project category column customize
          * @since 1.0.0
          */
         public function edit_project_cat_columns($columns){
@@ -144,7 +144,7 @@ if (!class_exists('softim_Post_Column_Customize')){
         }
 
         /**
-         * Packages Category column add
+         * Project Category column add
          * @since 1.0.0
          */
         public function add_project_category_columns($string,$columns,$post_id){

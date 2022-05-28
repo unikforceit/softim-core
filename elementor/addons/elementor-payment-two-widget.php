@@ -490,7 +490,7 @@ class Softim_Payment_Two_Widget extends Widget_Base
                                     </a>
                                 <?php endif; ?>
                                 <?php if ($settings['btn_status2'] == 'yes'): ?>
-                                    <a href="<?php echo esc_url($settings['btn_link2']['url']); ?>" class="btn--base">
+                                    <a href="<?php echo esc_url($settings['btn_link2']['url']); ?>" class="btn--base two">
                                         <?php echo esc_html($settings['btn_text2']); ?>
                                         <?php \Elementor\Icons_Manager::render_icon($settings['btn_icon2'], ['aria-hidden' => 'true'], ['class' => 'ml-2']); ?>
                                     </a>
