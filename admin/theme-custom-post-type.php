@@ -238,7 +238,7 @@ if (!class_exists('Softim_Custom_Post_Type')) {
                 'labels' => $labels,
                 'menu_icon' => '',
                 'supports' => array('title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'author', 'comments', 'page-attributes', 'post-formats'),
-                'taxonomies' => array(),
+                'taxonomies' => array('team-cat'),
                 'public' => true,
                 'show_ui' => true,
                 'show_in_menu' => 'softim_theme_options',

@@ -93,46 +93,10 @@ if (!class_exists('Softim_Core_Init')) {
 					'file-name' => 'elementor-widget-init',
 					'folder-name' => SOFTIM_CORE_ELEMENTOR
 				),
-                array(
-                    'file-name' => 'theme-social-share-widget',
-                    'folder-name' => SOFTIM_CORE_WP_WIDGETS
-                ),
-                array(
-                    'file-name' => 'theme-about-me-widget',
-                    'folder-name' => SOFTIM_CORE_WP_WIDGETS
-                ),
-                array(
-                    'file-name' => 'theme-about-us-widget',
-                    'folder-name' => SOFTIM_CORE_WP_WIDGETS
-                ),
-                array(
-                    'file-name' => 'theme-post-search-widget',
-                    'folder-name' => SOFTIM_CORE_WP_WIDGETS
-                ),
-                array(
-                    'file-name' => 'theme-post-tags-menu',
-                    'folder-name' => SOFTIM_CORE_WP_WIDGETS
-                ),
 				array(
 					'file-name' => 'theme-recent-post-widget',
 					'folder-name' => SOFTIM_CORE_WP_WIDGETS
 				),
-				array(
-					'file-name' => 'theme-contact-info-widget',
-					'folder-name' => SOFTIM_CORE_WP_WIDGETS
-				),
-                array(
-                    'file-name' => 'theme-service-category-widget',
-                    'folder-name' => SOFTIM_CORE_WP_WIDGETS
-                ),
-                array(
-                    'file-name' => 'theme-request-form-widget',
-                    'folder-name' => SOFTIM_CORE_WP_WIDGETS
-                ),
-                array(
-                    'file-name' => 'theme-post-category-widget',
-                    'folder-name' => SOFTIM_CORE_WP_WIDGETS
-                ),
 				array(
 					'file-name' => 'theme-demo-data-import',
 					'folder-name' => SOFTIM_CORE_DEMO_IMPORT
