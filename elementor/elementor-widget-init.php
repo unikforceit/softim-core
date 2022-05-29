@@ -84,6 +84,7 @@ if ( ! class_exists( 'Softim_Elementor_Widget_Init' ) ) {
 				'call-to-action-one',
 				'call-to-action-two',
 				'call-to-action-three',
+				'call-to-action-four',
 				'case-study',
 				'case-study-one',
 				'choose-one',
