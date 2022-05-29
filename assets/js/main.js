@@ -359,14 +359,13 @@
 
             // Js Start
 
-            // Banner Three Slider
-            var swiper = new Swiper('.service-slider-two', {
-                slidesPerView: 5,
+            var swiper = new Swiper('.client-slider-three', {
+                slidesPerView: 1,
                 spaceBetween: 30,
                 loop: true,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
+                navigation: {
+                    nextEl: '.slider-next',
+                    prevEl: '.slider-prev',
                 },
                 autoplay: {
                     speeds: 2000,
@@ -374,14 +373,11 @@
                 },
                 speed: 1000,
                 breakpoints: {
-                    1590: {
-                        slidesPerView: 3,
-                    },
                     991: {
-                        slidesPerView: 2,
+                        slidesPerView: 1,
                     },
                     767: {
-                        slidesPerView: 2,
+                        slidesPerView: 1,
                     },
                     575: {
                         slidesPerView: 1,
