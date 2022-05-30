@@ -141,95 +141,6 @@ class Softim_Service_Feature_One_Widget extends Widget_Base
         );
         $this->end_controls_section();
 
-//      Start Project
-        $this->start_controls_section(
-            'project_section',
-            [
-                'label' => esc_html__('Project Contents', 'softim-core'),
-                'tab' => Controls_Manager::TAB_CONTENT,
-            ]
-        );
-
-
-        $this->add_control(
-            'project1_text', [
-                'label' => esc_html__('Project 1 Text', 'softim-core'),
-                'type' => Controls_Manager::TEXT,
-                'default' => esc_html__('Physical &amp; Virtual Cards', 'softim-core'),
-                'description' => esc_html__('enter project 1 text', 'softim-core'),
-            ]
-        );
-        $this->add_control(
-            'project1_link', [
-                'label' => esc_html__('Project 1 Link', 'softim-core'),
-                'type' => Controls_Manager::URL,
-                'default' => [
-                    'url' => '#'
-                ],
-                'description' => esc_html__('enter project 1 link', 'softim-core'),
-            ]
-        );
-        $this->add_control(
-            'project1_info', [
-                'label' => esc_html__('Project 1 Info', 'softim-core'),
-                'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__('Easily integrate with all your favorite tools. APIs including automatic integrations. Share content and learn.', 'softim-core'),
-                'description' => esc_html__('enter project 1 info', 'softim-core'),
-            ]
-        );
-        $this->add_control(
-            'project1_image', [
-                'label' => esc_html__('Project 1 Image', 'softim-core'),
-                'type' => Controls_Manager::MEDIA,
-                'show_label' => false,
-                'description' => esc_html__('upload project 1 image', 'softim-core'),
-                'default' => [
-                    'src' => Utils::get_placeholder_image_src()
-                ],
-            ]
-        );
-
-
-        $this->add_control(
-            'project2_image', [
-                'label' => esc_html__('Project 2 Image', 'softim-core'),
-                'type' => Controls_Manager::MEDIA,
-                'show_label' => false,
-                'description' => esc_html__('upload project 2 image', 'softim-core'),
-                'default' => [
-                    'src' => Utils::get_placeholder_image_src()
-                ],
-            ]
-        );
-        $this->add_control(
-            'project2_text', [
-                'label' => esc_html__('Project 2 Text', 'softim-core'),
-                'type' => Controls_Manager::TEXT,
-                'default' => esc_html__('Effortless integration', 'softim-core'),
-                'description' => esc_html__('enter project 2 text', 'softim-core'),
-            ]
-        );
-        $this->add_control(
-            'project2_link', [
-                'label' => esc_html__('Project 2 Link', 'softim-core'),
-                'type' => Controls_Manager::URL,
-                'default' => [
-                    'url' => '#'
-                ],
-                'description' => esc_html__('enter project 2 link', 'softim-core'),
-            ]
-        );
-        $this->add_control(
-            'project2_info', [
-                'label' => esc_html__('Project 2 Info', 'softim-core'),
-                'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__('Easily integrate with all your favorite tools. APIs including automatic integrations.', 'softim-core'),
-                'description' => esc_html__('enter project 2 info', 'softim-core'),
-            ]
-        );
-        $this->end_controls_section();
-
-
 //      Services Loop
         $this->start_controls_section(
             'service_section',
@@ -272,6 +183,23 @@ class Softim_Service_Feature_One_Widget extends Widget_Base
             'label' => esc_html__('Take 3 Service Item', 'softim-core'),
             'type' => Controls_Manager::REPEATER,
             'fields' => $repeater->get_controls(),
+            'default' => [
+                [
+                    'service_icon' => [
+                        'src' => Utils::get_placeholder_image_src()
+                    ],
+                ],
+                [
+                    'service_icon' => [
+                        'src' => Utils::get_placeholder_image_src()
+                    ],
+                ],
+                [
+                    'service_icon' => [
+                        'src' => Utils::get_placeholder_image_src()
+                    ],
+                ],
+            ],
         ]);
         $this->end_controls_section();
 
@@ -283,11 +211,18 @@ class Softim_Service_Feature_One_Widget extends Widget_Base
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
+        $this->add_control('subtitle_color', [
+            'label' => esc_html__('Sub Title Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .sub-title" => "color: {{VALUE}}"
+            ]
+        ]);
         $this->add_control('title_color', [
             'label' => esc_html__('Title Color', 'softim-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
-                "{{WRAPPER}} .section-header .section-title" => "color: {{VALUE}}"
+                "{{WRAPPER}} .section-header .section-title.two" => "color: {{VALUE}}"
             ]
         ]);
         $this->add_control('info_color', [
@@ -303,50 +238,29 @@ class Softim_Service_Feature_One_Widget extends Widget_Base
         $this->start_controls_section(
             'css_styles_2',
             [
-                'label' => esc_html__('Styling Tab Content', 'softim-core'),
+                'label' => esc_html__('Service Styling Tab', 'softim-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
-        $this->add_control('title_1_color_active', [
-            'label' => esc_html__('Active Tab Title Color', 'softim-core'),
+        $this->add_control('service_bg_color', [
+            'label' => esc_html__('Service Item Background Color', 'softim-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
-                "{{WRAPPER}} .choose-tab .nav-tabs .nav-link.active" => "color: {{VALUE}}"
+                "{{WRAPPER}} .service-section.five .service-item" => "background: {{VALUE}}"
+            ]
+        ]);
+        $this->add_control('title_1_color_active', [
+            'label' => esc_html__('Service Title Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .service-content .title" => "color: {{VALUE}}"
             ]
         ]);
         $this->add_control('title_1_color', [
-            'label' => esc_html__('Inactive Tab Title Color', 'softim-core'),
+            'label' => esc_html__('Service Info Color', 'softim-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
-                "{{WRAPPER}} .choose-tab .nav-tabs .nav-link" => "color: {{VALUE}}"
-            ]
-        ]);
-        $this->add_control('title_2_color', [
-            'label' => esc_html__('Tab Details Title Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .choose-content h4.title" => "color: {{VALUE}}"
-            ]
-        ]);
-        $this->add_control('info_2_color', [
-            'label' => esc_html__('Tab Info Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .choose-content p.info2" => "color: {{VALUE}}"
-            ]
-        ]);
-        $this->add_control('tab_number_color1', [
-            'label' => esc_html__('Work Color 1', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .odometer-inside .odometer-digit" => "color: {{VALUE}}"
-            ]
-        ]);
-        $this->add_control('tab_numberDec_color1', [
-            'label' => esc_html__('Work Dec Color 1', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .statistics-content p" => "color: {{VALUE}}"
+                "{{WRAPPER}} .service-content p" => "color: {{VALUE}}"
             ]
         ]);
         $this->end_controls_section();
@@ -442,9 +356,14 @@ class Softim_Service_Feature_One_Widget extends Widget_Base
             'tab' => Controls_Manager::TAB_STYLE
         ]);
         $this->add_group_control(Group_Control_Typography::get_type(), [
+            'name' => 'subtitle_typography',
+            'label' => esc_html__('Sub Title Typography', 'softim-core'),
+            'selector' => "{{WRAPPER}} .sub-title"
+        ]);
+        $this->add_group_control(Group_Control_Typography::get_type(), [
             'name' => 'title_typography',
-            'label' => esc_html__('Title 1 Typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .section-header .section-title"
+            'label' => esc_html__('Title Typography', 'softim-core'),
+            'selector' => "{{WRAPPER}} .section-header .section-title.two"
         ]);
         $this->add_group_control(Group_Control_Typography::get_type(), [
             'name' => 'info_typography',
@@ -453,33 +372,23 @@ class Softim_Service_Feature_One_Widget extends Widget_Base
         ]);
         $this->add_group_control(Group_Control_Typography::get_type(), [
             'name' => 'title_2_typography',
-            'label' => esc_html__('Tab Title Typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .choose-tab .nav-tabs .nav-link"
+            'label' => esc_html__('Service Item Title Typography', 'softim-core'),
+            'selector' => "{{WRAPPER}} .service-content .title"
         ]);
         $this->add_group_control(Group_Control_Typography::get_type(), [
             'name' => 'title_2_tab_typography',
-            'label' => esc_html__('Tab Details Title Typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .choose-content h4.title"
-        ]);
-        $this->add_group_control(Group_Control_Typography::get_type(), [
-            'name' => 'title_2_tab_details_typography',
-            'label' => esc_html__('Tab Details Info Typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .choose-content p.info2"
-        ]);
-        $this->add_group_control(Group_Control_Typography::get_type(), [
-            'name' => 'title_2_odoNumber_typography',
-            'label' => esc_html__('Work Number Typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .odometer-inside .odometer-digit"
-        ]);
-        $this->add_group_control(Group_Control_Typography::get_type(), [
-            'name' => 'title_2_odoTitle_typography',
-            'label' => esc_html__('Work Title Typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .statistics-content p"
+            'label' => esc_html__('Service Item Info Typography', 'softim-core'),
+            'selector' => "{{WRAPPER}} .service-content p"
         ]);
         $this->add_group_control(Group_Control_Typography::get_type(), [
             'name' => 'button_typography',
             'label' => esc_html__('Button Typography', 'softim-core'),
             'selector' => "{{WRAPPER}} .btn--base"
+        ]);
+        $this->add_group_control(Group_Control_Typography::get_type(), [
+            'name' => 'buttonHover_typography',
+            'label' => esc_html__('Button Hover Typography', 'softim-core'),
+            'selector' => "{{WRAPPER}} .btn--base:hover"
         ]);
         $this->end_controls_section();
         /* typography settings end */
@@ -507,7 +416,7 @@ class Softim_Service_Feature_One_Widget extends Widget_Base
                             <div class="section-header">
                                 <span class="sub-title"><?php echo esc_html($settings['subtitle']); ?></span>
                                 <h1 class="section-title two"><?php echo esc_html($settings['title']); ?></h1>
-                                <p><?php echo esc_html($settings['info']); ?></p>
+                                <p class="info"><?php echo esc_html($settings['info']); ?></p>
                             </div>
                             <div class="section-header-btn">
                                 <?php if ($settings['btn_status'] == 'yes'): ?>
@@ -519,20 +428,22 @@ class Softim_Service_Feature_One_Widget extends Widget_Base
                     </div>
                 </div>
                 <div class="row justify-content-center mb-30-none">
-
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-30">
-                        <div class="service-item two five">
-                            <div class="service-icon">
-                                <img src="assets/images/icon/icon-40.png" alt="icon">
+                    <?php if ($settings['service_list']) {
+                        foreach ($settings['service_list'] as $service) {
+                            ?>
+                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-30">
+                                <div class="service-item two five">
+                                    <div class="service-icon">
+                                        <img src="<?php echo esc_url($service['service_icon']['url']); ?>" alt="icon">
+                                    </div>
+                                    <div class="service-content">
+                                        <h3 class="title"><?php echo esc_html($service['service_title']); ?></h3>
+                                        <p><?php echo esc_html($service['service_info']); ?></p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="service-content">
-                                <h3 class="title">Easy setup process</h3>
-                                <p>We rank among the best in Argentina,
-                                    and Ukraine Our apps get</p>
-                            </div>
-                        </div>
-                    </div>
-
+                        <?php }
+                    } ?>
                 </div>
             </div>
         </section>
