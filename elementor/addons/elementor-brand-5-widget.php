@@ -6,7 +6,7 @@
  */
 
 namespace Elementor;
-class Softim_Brand_3_Widget extends Widget_Base
+class Softim_Brand_5_Widget extends Widget_Base
 {
 
     /**
@@ -21,7 +21,7 @@ class Softim_Brand_3_Widget extends Widget_Base
      */
     public function get_name()
     {
-        return 'softim-brand-3-widget';
+        return 'softim-brand-5-widget';
     }
 
     /**
@@ -36,7 +36,7 @@ class Softim_Brand_3_Widget extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Brand 03', 'softim-core');
+        return esc_html__('Brand :05', 'softim-core');
     }
 
     /**
@@ -127,6 +127,11 @@ class Softim_Brand_3_Widget extends Widget_Base
                             'src' => Utils::get_placeholder_image_src()
                         ],
                     ],
+                    [
+                        'brand_image' => [
+                            'src' => Utils::get_placeholder_image_src()
+                        ],
+                    ],
                 ],
 
             ]
@@ -170,16 +175,69 @@ class Softim_Brand_3_Widget extends Widget_Base
         $this->start_controls_tab('normal_style', [
             'label' => esc_html__('Border Normal', "softim-core")
         ]);
+//        $this->add_control('button_normal_color', [
+//            'label' => esc_html__('Button Text Color', 'softim-core'),
+//            'type' => Controls_Manager::COLOR,
+//            'selectors' => [
+//                "{{WRAPPER}} .btn--base" => "color: {{VALUE}}"
+//            ]
+//        ]);
+//        $this->add_control('divider_01', [
+//            'type' => Controls_Manager::DIVIDER
+//        ]);
+//        $this->add_group_control(Group_Control_Background::get_type(), [
+//            'name' => 'button_background',
+//            'label' => esc_html__('Button Background ', 'softim-core'),
+//            'selector' => "{{WRAPPER}} .btn--base"
+//        ]);
+//        $this->add_control('divider_02', [
+//            'type' => Controls_Manager::DIVIDER
+//        ]);
         $this->add_group_control(Group_Control_Border::get_type(), [
             'name' => 'brand_border',
             'label' => esc_html__('Border', 'softim-core'),
             'selector' => "{{WRAPPER}} .brand-item"
         ]);
+//        $this->add_control('divider_060', [
+//            'type' => Controls_Manager::DIVIDER
+//        ]);
+//        $this->add_control('info_button_normal_color', [
+//            'label' => esc_html__('Info Button Text Color', 'softim-core'),
+//            'type' => Controls_Manager::COLOR,
+//            'selectors' => [
+//                "{{WRAPPER}} .banner-area .header-buttom-content p" => "color: {{VALUE}}"
+//            ]
+//        ]);
+//        $this->add_control('info_number_button_normal_color', [
+//            'label' => esc_html__('Info Button Number Color', 'softim-core'),
+//            'type' => Controls_Manager::COLOR,
+//            'selectors' => [
+//                "{{WRAPPER}} .banner-area .header-buttom-content span" => "color: {{VALUE}}"
+//            ]
+//        ]);
         $this->end_controls_tab();
 
         $this->start_controls_tab('hover_style', [
             'label' => esc_html__('Boder Hover', "softim-core")
         ]);
+//        $this->add_control('button_hover_normal_color', [
+//            'label' => esc_html__('Boder Color', 'softim-core'),
+//            'type' => Controls_Manager::COLOR,
+//            'selectors' => [
+//                "{{WRAPPER}} .btn--base:hover" => "color: {{VALUE}}"
+//            ]
+//        ]);
+//        $this->add_control('divider_03', [
+//            'type' => Controls_Manager::DIVIDER
+//        ]);
+//        $this->add_group_control(Group_Control_Background::get_type(), [
+//            'name' => 'button_hover_background',
+//            'label' => esc_html__('Button Background ', 'softim-core'),
+//            'selector' => "{{WRAPPER}} .btn--base:hover"
+//        ]);
+//        $this->add_control('divider_04', [
+//            'type' => Controls_Manager::DIVIDER
+//        ]);
         $this->add_group_control(Group_Control_Border::get_type(), [
             'name' => 'brand_hover_border',
             'label' => esc_html__('Border', 'softim-core'),
@@ -220,24 +278,24 @@ class Softim_Brand_3_Widget extends Widget_Base
         $settings = $this->get_settings_for_display();
 
         ?>
-        <div class="brand-section oh ptb-120">
+
+        <div class="brand-section five ptb-120 brandFiveSwiper">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-xl-12">
-                        <div class="brand-slider-area">
-                            <div class="brand-slider">
-                                <div class="swiper-wrapper">
-                                    <?php if ($settings['brand_list']) {
-                                        foreach ($settings['brand_list'] as $brand) { ?>
-                                            <div class="swiper-slide">
-                                                <div class="brand-item style-01">
-                                                    <img src="<?php echo esc_url($brand['brand_image']['url']); ?>"
-                                                         alt="brand">
-                                                </div>
+                    <div class="col-xl-12 text-center">
+                        <div class="brand-slider-two">
+                            <div class="swiper-wrapper">
+                                <?php if ($settings['brand_list']) {
+                                    foreach ($settings['brand_list'] as $brand) {
+                                        ?>
+                                        <div class="swiper-slide">
+                                            <div class="brand-item-two">
+                                                <img src="<?php echo esc_url($brand['brand_image']['url']); ?>"
+                                                     alt="brand">
                                             </div>
-                                        <?php }
-                                    } ?>
-                                </div>
+                                        </div>
+                                    <?php }
+                                } ?>
                             </div>
                         </div>
                     </div>
@@ -248,4 +306,4 @@ class Softim_Brand_3_Widget extends Widget_Base
     }
 }
 
-Plugin::instance()->widgets_manager->register(new Softim_Brand_3_Widget());
+Plugin::instance()->widgets_manager->register(new Softim_Brand_5_Widget());

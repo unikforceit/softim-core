@@ -285,7 +285,7 @@ class Softim_Brand_Widget extends Widget_Base
                                         foreach ($settings['brand_list'] as $brand) {?>
                                             <div class="swiper-slide">
                                                 <div class="brand-item">
-                                                    <img src="<?php echo esc_html($brand['brand_image']['url']);?>" alt="brand">
+                                                    <img src="<?php echo esc_url($brand['brand_image']['url']);?>" alt="brand">
                                                 </div>
                                             </div>
                                         <?php } }?>
