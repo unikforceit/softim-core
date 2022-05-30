@@ -146,121 +146,20 @@ class Softim_Brand_5_Widget extends Widget_Base
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
-        $this->add_control('brand_bg_color', [
-            'label' => esc_html__('Brand Item Background', 'softim-core'),
+        $this->add_control('brand_section_bg_color', [
+            'label' => esc_html__('Brand Section Background', 'softim-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
-                "{{WRAPPER}} .brand-item" => "background: {{VALUE}}"
+                "{{WRAPPER}} .brand-section.five" => "background: {{VALUE}}"
             ]
         ]);
-        $this->add_control('brand_bg_hover_color', [
-            'label' => esc_html__('Brand Item Hover Background', 'softim-core'),
+        $this->add_control('brand_item_divider_color', [
+            'label' => esc_html__('Brand Item Divider Background', 'softim-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
-                "{{WRAPPER}} .brand-item:hover" => "background: {{VALUE}}"
+                "{{WRAPPER}} .brand-item-two::after" => "background-color: {{VALUE}}"
             ]
         ]);
-        $this->end_controls_section();
-
-        /* button styling */
-        $this->start_controls_section(
-            'border_section',
-            [
-                'label' => esc_html__('Border Settings', 'softim-core'),
-                'tab' => Controls_Manager::TAB_STYLE
-            ]
-        );
-
-        $this->start_controls_tabs('border_styling');
-        $this->start_controls_tab('normal_style', [
-            'label' => esc_html__('Border Normal', "softim-core")
-        ]);
-//        $this->add_control('button_normal_color', [
-//            'label' => esc_html__('Button Text Color', 'softim-core'),
-//            'type' => Controls_Manager::COLOR,
-//            'selectors' => [
-//                "{{WRAPPER}} .btn--base" => "color: {{VALUE}}"
-//            ]
-//        ]);
-//        $this->add_control('divider_01', [
-//            'type' => Controls_Manager::DIVIDER
-//        ]);
-//        $this->add_group_control(Group_Control_Background::get_type(), [
-//            'name' => 'button_background',
-//            'label' => esc_html__('Button Background ', 'softim-core'),
-//            'selector' => "{{WRAPPER}} .btn--base"
-//        ]);
-//        $this->add_control('divider_02', [
-//            'type' => Controls_Manager::DIVIDER
-//        ]);
-        $this->add_group_control(Group_Control_Border::get_type(), [
-            'name' => 'brand_border',
-            'label' => esc_html__('Border', 'softim-core'),
-            'selector' => "{{WRAPPER}} .brand-item"
-        ]);
-//        $this->add_control('divider_060', [
-//            'type' => Controls_Manager::DIVIDER
-//        ]);
-//        $this->add_control('info_button_normal_color', [
-//            'label' => esc_html__('Info Button Text Color', 'softim-core'),
-//            'type' => Controls_Manager::COLOR,
-//            'selectors' => [
-//                "{{WRAPPER}} .banner-area .header-buttom-content p" => "color: {{VALUE}}"
-//            ]
-//        ]);
-//        $this->add_control('info_number_button_normal_color', [
-//            'label' => esc_html__('Info Button Number Color', 'softim-core'),
-//            'type' => Controls_Manager::COLOR,
-//            'selectors' => [
-//                "{{WRAPPER}} .banner-area .header-buttom-content span" => "color: {{VALUE}}"
-//            ]
-//        ]);
-        $this->end_controls_tab();
-
-        $this->start_controls_tab('hover_style', [
-            'label' => esc_html__('Boder Hover', "softim-core")
-        ]);
-//        $this->add_control('button_hover_normal_color', [
-//            'label' => esc_html__('Boder Color', 'softim-core'),
-//            'type' => Controls_Manager::COLOR,
-//            'selectors' => [
-//                "{{WRAPPER}} .btn--base:hover" => "color: {{VALUE}}"
-//            ]
-//        ]);
-//        $this->add_control('divider_03', [
-//            'type' => Controls_Manager::DIVIDER
-//        ]);
-//        $this->add_group_control(Group_Control_Background::get_type(), [
-//            'name' => 'button_hover_background',
-//            'label' => esc_html__('Button Background ', 'softim-core'),
-//            'selector' => "{{WRAPPER}} .btn--base:hover"
-//        ]);
-//        $this->add_control('divider_04', [
-//            'type' => Controls_Manager::DIVIDER
-//        ]);
-        $this->add_group_control(Group_Control_Border::get_type(), [
-            'name' => 'brand_hover_border',
-            'label' => esc_html__('Border', 'softim-core'),
-            'selector' => "{{WRAPPER}} .brand-item:hover"
-        ]);
-        $this->end_controls_tab();
-
-        $this->end_controls_tabs();
-
-        $this->add_control('divider_05', [
-            'type' => Controls_Manager::DIVIDER
-        ]);
-        $this->add_control(
-            'brand_border_radius',
-            [
-                'label' => esc_html__('Border Radius', 'softim-core'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%'],
-                'selectors' => [
-                    '{{WRAPPER}} .brand-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
         $this->end_controls_section();
 
     }
