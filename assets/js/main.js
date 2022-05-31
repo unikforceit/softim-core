@@ -491,6 +491,7 @@
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-choose-three-widget.default', ChooseSlider1);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-four-widget.default', ClientSlider);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-faq-one-widget.default', Faq);
+            elementorFrontend.hooks.addAction('frontend/element_ready/softim-service-core-widget.default', Faq);
 
         } else {
             console.log('Elementor frontend mod loaded');
@@ -510,6 +511,7 @@
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-choose-three-widget.default', ChooseSlider1);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-four-widget.default', ClientSlider);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-faq-one-widget.default', Faq);
+            elementorFrontend.hooks.addAction('frontend/element_ready/softim-service-core-widget.default', Faq);
         }
     });
     console.log('addon js loaded');

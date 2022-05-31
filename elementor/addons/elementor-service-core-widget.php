@@ -256,42 +256,21 @@ class Softim_Service_Core_Widget extends Widget_Base
             'label' => esc_html__('Title Color', 'softim-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
-                "{{WRAPPER}} .media-content .media-header .title" => "color: {{VALUE}}"
+                "{{WRAPPER}} .section-header .section-title" => "color: {{VALUE}}"
+            ]
+        ]);
+        $this->add_control('banner_title_span_color', [
+            'label' => esc_html__('Title Inner Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .section-header .section-title span" => "color: {{VALUE}}"
             ]
         ]);
         $this->add_control('banner_info1_color', [
-            'label' => esc_html__('Info 1 Color', 'softim-core'),
+            'label' => esc_html__('Info Color', 'softim-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
-                "{{WRAPPER}} .media-header p.info1" => "color: {{VALUE}}"
-            ]
-        ]);
-        $this->add_control('media_list_icon_color', [
-            'label' => esc_html__('Media List Icon Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .media-content .media-list li::before" => "color: {{VALUE}}"
-            ]
-        ]);
-        $this->add_control('media_list_icon_bg_color', [
-            'label' => esc_html__('Media List Icon Background Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .media-content .media-list li::before" => "background: {{VALUE}}"
-            ]
-        ]);
-        $this->add_control('media_list_color', [
-            'label' => esc_html__('Media List Text Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .media-content .media-list li" => "color: {{VALUE}}"
-            ]
-        ]);
-        $this->add_control('banner_info2_color', [
-            'label' => esc_html__('Info 2 Color', 'softim-core'),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                "{{WRAPPER}} .media-content .media-footer p" => "color: {{VALUE}}"
+                "{{WRAPPER}} .section-header p.info1" => "color: {{VALUE}}"
             ]
         ]);
         $this->end_controls_section();
@@ -394,27 +373,17 @@ class Softim_Service_Core_Widget extends Widget_Base
         $this->add_group_control(Group_Control_Typography::get_type(), [
             'name' => 'title_typography',
             'label' => esc_html__('Title Typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .media-content .media-header .title"
+            'selector' => "{{WRAPPER}} .section-header .section-title"
         ]);
         $this->add_group_control(Group_Control_Typography::get_type(), [
             'name' => 'info1_typography',
             'label' => esc_html__('Info 1 Typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .media-header p.info1"
-        ]);
-        $this->add_group_control(Group_Control_Typography::get_type(), [
-            'name' => 'mediaList_typography',
-            'label' => esc_html__('Media List Typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .media-content .media-list li"
+            'selector' => "{{WRAPPER}} .section-header p.info1"
         ]);
         $this->add_group_control(Group_Control_Typography::get_type(), [
             'name' => 'buttonOne_typography',
             'label' => esc_html__('Button Typography', 'softim-core'),
             'selector' => "{{WRAPPER}} .btn--base"
-        ]);
-        $this->add_group_control(Group_Control_Typography::get_type(), [
-            'name' => 'info2_typography',
-            'label' => esc_html__('Info 2 Typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .media-content .media-footer p"
         ]);
         $this->end_controls_section();
         /* typography settings end */
@@ -445,7 +414,7 @@ class Softim_Service_Core_Widget extends Widget_Base
                         <div class="section-header">
                             <span class="sub-title"><?php echo esc_html($settings['subtitle']); ?></span>
                             <h1 class="section-title two"><?php echo wp_kses_post($settings['title']); ?></h1>
-                            <p><?php echo esc_html($settings['info']); ?></p>
+                            <p class="info1"><?php echo esc_html($settings['info']); ?></p>
                         </div>
                     </div>
                 </div>
@@ -454,10 +423,10 @@ class Softim_Service_Core_Widget extends Widget_Base
                         <div class="faq-wrapper two">
                             <?php
                             if ($settings['faq_list']) {
-                                $x = 0;
+                                $loop = 0;
                                 foreach ($settings['faq_list'] as $faq) {
-                                    $y++;
-                                    if ($y == 1) {
+                                    $loop++;
+                                    if ($loop == 1) {
                                         $active = 'active';
                                         $open = 'open';
                                     } else {
@@ -465,13 +434,13 @@ class Softim_Service_Core_Widget extends Widget_Base
                                         $open = '';
                                     }
                                     ?>
-                                    <div class="faq-item <?php echo esc_attr($active) ?> <?php echo esc_attr($open) ?>">
+                                    <div class="faq-item <?php echo esc_attr($active); ?> <?php echo esc_attr($open); ?>">
                                         <h3 class="faq-title">
                                             <span class="title"><?php echo esc_html($faq['faq_title']); ?></span>
                                             <span class="right-icon"></span>
                                         </h3>
                                         <div class="faq-content">
-                                            <p><?php echo esc_html($faq['faq_info']);?></p>
+                                            <p><?php echo esc_html($faq['faq_info']); ?></p>
                                             <div class="faq-btn">
                                                 <?php if ($faq['btn_status'] == 'yes'): ?>
                                                     <a href="<?php echo esc_url($faq['btn_link']['url']); ?>"
