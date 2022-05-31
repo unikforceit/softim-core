@@ -80,6 +80,7 @@ if ( ! class_exists( 'Softim_Elementor_Widget_Init' ) ) {
                 'blog-one',
                 'blog-two',
                 'blog-three',
+                'blog-five',
 				'brand',
 				'brand-3',
 				'brand-5',
