@@ -485,6 +485,7 @@
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-team-three-widget.default', Teamslider);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-team-five-widget.default', Odometer);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-one-widget.default', Testislider1);
+            elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-five-widget.default', Testislider1);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-two-widget.default', Testislider2);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-three-widget.default', Testislider3);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-banner-three-widget.default', Testislider4);
@@ -505,6 +506,7 @@
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-team-three-widget.default', Teamslider);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-team-five-widget.default', Odometer);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-one-widget.default', Testislider1);
+            elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-five-widget.default', Testislider1);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-two-widget.default', Testislider2);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-three-widget.default', Testislider3);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-banner-three-widget.default', Testislider4);
