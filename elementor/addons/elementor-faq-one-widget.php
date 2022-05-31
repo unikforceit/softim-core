@@ -91,17 +91,17 @@ class Softim_Faq_One_Widget extends Widget_Base
         $repeater->add_control(
             'title',
             [
-                'label' => __( 'Title', 'softim-core' ),
+                'label' => __('Title', 'softim-core'),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => __( "I'm 16 years old, can I get my Driver License in NYC?", 'softim-core' ),
+                'default' => __("I'm 16 years old, can I get my Driver License in NYC?", 'softim-core'),
             ]
         );
         $repeater->add_control(
             'info',
             [
-                'label' => __( 'Info', 'softim-core' ),
+                'label' => __('Info', 'softim-core'),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => __( 'Driving is a skill many of us desire but do not possess. The good news here is that anyone who wants to learn driving can do so with the right training. Driving is a skill many of us desire but do not possess. The good news here is that anyone who wants to learn driving can do so with the right training.', 'softim-core' ),
+                'default' => __('Driving is a skill many of us desire but do not possess. The good news here is that anyone who wants to learn driving can do so with the right training. Driving is a skill many of us desire but do not possess. The good news here is that anyone who wants to learn driving can do so with the right training.', 'softim-core'),
             ]
         );
         $repeater->add_control(
@@ -118,12 +118,12 @@ class Softim_Faq_One_Widget extends Widget_Base
         $this->add_control(
             'faq_list',
             [
-                'label' => __( 'FAQ List', 'softim-core' ),
+                'label' => __('FAQ List', 'softim-core'),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
                     [
-                        'title' => __( 'FAQ list item', 'softim-core' ),
+                        'title' => __('FAQ list item', 'softim-core'),
                     ],
                 ],
                 'title_field' => '{{{ title }}}',
@@ -308,30 +308,34 @@ class Softim_Faq_One_Widget extends Widget_Base
                 <div class="row justify-content-center">
                     <div class="col-xl-8 col-lg-12">
                         <div class="faq-wrapper">
-        <?php if ($settings['faq_list']){
-        $loop = 0;
-        foreach ($settings['faq_list'] as $faq) {
-            $loop++;
-            if ($loop == 1){
-                $active = 'active';
-                $open = 'open';
-            }else{
-                $active = '';
-                $open = '';
-            }
-            ?>
-                            <div class="faq-item <?php echo esc_attr($active);?> <?echo esc_attr($open);?>">
-                                <h3 class="faq-title"><span class="title"><?php echo esc_html($faq['title']);?></span><span class="right-icon"></span></h3>
-                                <div class="faq-content">
-                                    <p><?php echo esc_html($faq['info']);?></p>
-                                    <div class="faq-inner-thumb-area">
-                                        <div class="faq-inner-thumb">
-                                            <img src="<?php echo esc_url($faq['faq_image']['url']);?>" alt="faq">
+                            <?php if ($settings['faq_list']) {
+                                $loop = 0;
+                                foreach ($settings['faq_list'] as $faq) {
+                                    $loop++;
+                                    if ($loop == 1) {
+                                        $active = 'active';
+                                        $open = 'open';
+                                    } else {
+                                        $active = '';
+                                        $open = '';
+                                    }
+                                    ?>
+                                    <div class="faq-item <?php echo esc_attr($active); ?> <?php echo esc_attr($open); ?>">
+                                        <h3 class="faq-title"><span
+                                                    class="title"><?php echo esc_html($faq['title']); ?></span><span
+                                                    class="right-icon"></span></h3>
+                                        <div class="faq-content">
+                                            <p><?php echo esc_html($faq['info']); ?></p>
+                                            <div class="faq-inner-thumb-area">
+                                                <div class="faq-inner-thumb">
+                                                    <img src="<?php echo esc_url($faq['faq_image']['url']); ?>"
+                                                         alt="faq">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-        <?php } }?>
+                                <?php }
+                            } ?>
                         </div>
                     </div>
                 </div>

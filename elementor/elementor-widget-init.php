@@ -109,6 +109,7 @@ if ( ! class_exists( 'Softim_Elementor_Widget_Init' ) ) {
 				'price-three',
                 'project-one',
                 'project-two',
+                'segment-one',
                 'service-core',
                 'service-feature-one',
                 'service-one',
