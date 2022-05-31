@@ -117,6 +117,7 @@ if ( ! class_exists( 'Softim_Elementor_Widget_Init' ) ) {
                 'service-three',
                 'service-four',
                 'service-five',
+                'setup-process-one',
                 'statistics',
                 'team-one',
                 'team-two',
