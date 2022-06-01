@@ -372,7 +372,7 @@ class Softim_Banner_Three_Widget extends Widget_Base
                                                      data-aos-duration="1800">
                                                     <h1 class="title"><?php echo esc_html($item['banner_title']); ?></h1>
                                                     <span></span>
-                                                    <p><?php echo wp_kses($item['banner_text'], softim()->kses_allowed_html('br')); ?></p>
+                                                    <p><?php echo wp_kses_post($item['banner_text']); ?></p>
                                                 </div>
                                             </div>
                                             <div class="banner-image">
