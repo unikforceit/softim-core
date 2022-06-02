@@ -172,16 +172,16 @@ class Softim_Price_Two_Widget extends Widget_Base
             ]
         );
         $repeater2->add_control(
-        'mbtn_link', [
-            'label' => esc_html__('Button URL', 'softim-core'),
-            'type' => Controls_Manager::URL,
-            'default' => [
-                'url' => '#'
-            ],
-            'description' => esc_html__('enter button url', 'softim-core'),
-            'condition' => ['mbtn_status' => 'yes']
-        ]
-    );
+            'mbtn_link', [
+                'label' => esc_html__('Button URL', 'softim-core'),
+                'type' => Controls_Manager::URL,
+                'default' => [
+                    'url' => '#'
+                ],
+                'description' => esc_html__('enter button url', 'softim-core'),
+                'condition' => ['mbtn_status' => 'yes']
+            ]
+        );
 
         $this->add_control('mPrice_list', [
             'label' => esc_html__('Take 3 Price Item', 'softim-core'),
@@ -189,13 +189,13 @@ class Softim_Price_Two_Widget extends Widget_Base
             'fields' => $repeater2->get_controls(),
             'default' => [
                 [
-                    'mPrice_title' => esc_html__( 'Title #1', 'plugin-name' ),
+                    'mPrice_title' => esc_html__('Title #1', 'plugin-name'),
                 ],
                 [
-                    'mPrice_title' => esc_html__( 'Title #1', 'plugin-name' ),
+                    'mPrice_title' => esc_html__('Title #1', 'plugin-name'),
                 ],
                 [
-                    'mPrice_title' => esc_html__( 'Title #1', 'plugin-name' ),
+                    'mPrice_title' => esc_html__('Title #1', 'plugin-name'),
                 ],
             ],
             'title_field' => '{{{ mPrice_title }}}',
@@ -277,7 +277,7 @@ class Softim_Price_Two_Widget extends Widget_Base
             ]
         );
         $repeater2->add_control(
-        'ybtn_link', [
+            'ybtn_link', [
             'label' => esc_html__('Button URL', 'softim-core'),
             'type' => Controls_Manager::URL,
             'default' => [
@@ -293,13 +293,13 @@ class Softim_Price_Two_Widget extends Widget_Base
             'fields' => $repeater2->get_controls(),
             'default' => [
                 [
-                    'yPrice_title' => esc_html__( 'Title #1', 'plugin-name' ),
+                    'yPrice_title' => esc_html__('Title #1', 'plugin-name'),
                 ],
                 [
-                    'yPrice_title' => esc_html__( 'Title #1', 'plugin-name' ),
+                    'yPrice_title' => esc_html__('Title #1', 'plugin-name'),
                 ],
                 [
-                    'yPrice_title' => esc_html__( 'Title #1', 'plugin-name' ),
+                    'yPrice_title' => esc_html__('Title #1', 'plugin-name'),
                 ],
             ],
             'title_field' => '{{{ yPrice_title }}}',
@@ -545,90 +545,101 @@ class Softim_Price_Two_Widget extends Widget_Base
                 <div class="row justify-content-center">
                     <div class="col-xl-7 col-lg-8 text-center">
                         <div class="section-header">
-                            <h2 class="section-title mb-0"><?php echo esc_html($title);?></h2>
+                            <h2 class="section-title mb-0"><?php echo esc_html($title); ?></h2>
                         </div>
                     </div>
                 </div>
                 <div class="plan-tab">
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <button class="nav-link active" id="monthly-tab" data-toggle="tab" data-target="#monthly" type="button" role="tab" aria-controls="monthly" aria-selected="true">Monthly</button>
-                            <button class="nav-link" id="yearly-tab" data-toggle="tab" data-target="#yearly" type="button" role="tab" aria-controls="yearly" aria-selected="false">Yearly</button>
+                            <button class="nav-link active" id="monthly-tab" data-toggle="tab" data-target="#monthly"
+                                    type="button" role="tab" aria-controls="monthly" aria-selected="true">Monthly
+                            </button>
+                            <button class="nav-link" id="yearly-tab" data-toggle="tab" data-target="#yearly"
+                                    type="button" role="tab" aria-controls="yearly" aria-selected="false">Yearly
+                            </button>
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
-                        <div class="tab-pane fade show active" id="monthly" role="tabpanel" aria-labelledby="monthly-tab">
+                        <div class="tab-pane fade show active" id="monthly" role="tabpanel"
+                             aria-labelledby="monthly-tab">
                             <div class="row justify-content-center mb-30-none">
-        <?php
-        if ($settings['mPrice_list']){
-            foreach ($settings['mPrice_list'] as $mList){
-                ?>
-                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-10 mb-30">
-                                    <div class="plan-item">
-                                        <div class="plan-header">
-                                            <h3 class="title"><?php echo esc_html($mList['mPrice_title'])?></h3>
-                                            <?php if ($mList['mPackage_btn_status'] == 'yes'): ?>
-                                                <div class="plan-badge-area">
-                                                    <span class="plan-badge"><?php echo esc_html($mList['mPackage_btn_text']); ?></span>
+                                <?php
+                                if ($settings['mPrice_list']) {
+                                    foreach ($settings['mPrice_list'] as $mList) {
+                                        ?>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-10 mb-30">
+                                            <div class="plan-item">
+                                                <div class="plan-header">
+                                                    <h3 class="title"><?php echo esc_html($mList['mPrice_title']) ?></h3>
+                                                    <?php if ($mList['mPackage_btn_status'] == 'yes'): ?>
+                                                        <div class="plan-badge-area">
+                                                            <span class="plan-badge"><?php echo esc_html($mList['mPackage_btn_text']); ?></span>
+                                                        </div>
+                                                    <?php endif; ?>
                                                 </div>
-                                            <?php endif; ?>
-                                        </div>
-                                        <div class="plan-body">
-                                            <div class="plan-price-area">
-                                                <h2 class="price-title"><?php echo esc_html($mList['mPackage_price'])?><sub><?php echo esc_html($mList['mPackage_price_duration'])?></sub></h2>
+                                                <div class="plan-body">
+                                                    <div class="plan-price-area">
+                                                        <h2 class="price-title"><?php echo esc_html($mList['mPackage_price']) ?>
+                                                            <sub><?php echo esc_html($mList['mPackage_price_duration']) ?></sub>
+                                                        </h2>
+                                                    </div>
+                                                    <ul class="plan-list">
+                                                        <?php echo wp_kses_post($mList['mPackage_offer']); ?>
+                                                    </ul>
+                                                </div>
+                                                <div class="plan-footer">
+                                                    <div class="plan-btn">
+                                                        <?php if ($mList['mbtn_status'] == 'yes'): ?>
+                                                            <a href="<?php echo esc_url($mList['mbtn_link']['url']); ?>"
+                                                               class="btn--base active w-100"><?php echo esc_html($mList['mbtn_text']); ?></a>
+                                                        <?php endif; ?>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <ul class="plan-list">
-                                                <?php echo wp_kses_post($mList['mPackage_offer']);?>
-                                            </ul>
                                         </div>
-                                        <div class="plan-footer">
-                                            <div class="plan-btn">
-                                                <?php if ($mList['mbtn_status'] == 'yes'): ?>
-                                                    <a href="<?php echo esc_url($mList['mbtn_link']['url']); ?>"
-                                                       class="btn--base active w-100"><?php echo esc_html($mList['mbtn_text']); ?></a>
-                                                <?php endif; ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-            <?php } } ?>
+                                    <?php }
+                                } ?>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="yearly" role="tabpanel" aria-labelledby="yearly-tab">
                             <div class="row justify-content-center mb-30-none">
                                 <?php
-                                    if ($settings['yPrice_list']){
-                                        foreach ($settings['yPrice_list'] as $yList){
-                                ?>
-                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-10 mb-30">
-                                    <div class="plan-item">
-                                        <div class="plan-header">
-                                            <h3 class="title"><?php echo esc_html($yList['yPrice_title'])?></h3>
-                                            <?php if ($yList['yPackage_btn_status'] == 'yes'): ?>
-                                                <div class="plan-badge-area">
-                                                    <span class="plan-badge"><?php echo esc_html($yList['yPackage_btn_text']); ?></span>
+                                if ($settings['yPrice_list']) {
+                                    foreach ($settings['yPrice_list'] as $yList) {
+                                        ?>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-10 mb-30">
+                                            <div class="plan-item">
+                                                <div class="plan-header">
+                                                    <h3 class="title"><?php echo esc_html($yList['yPrice_title']) ?></h3>
+                                                    <?php if ($yList['yPackage_btn_status'] == 'yes'): ?>
+                                                        <div class="plan-badge-area">
+                                                            <span class="plan-badge"><?php echo esc_html($yList['yPackage_btn_text']); ?></span>
+                                                        </div>
+                                                    <?php endif; ?>
                                                 </div>
-                                            <?php endif; ?>
-                                        </div>
-                                        <div class="plan-body">
-                                            <div class="plan-price-area">
-                                                <h2 class="price-title"><?php echo esc_html($yList['yPackage_price'])?><sub><?php echo esc_html($yList['yPackage_price_duration'])?></sub></h2>
+                                                <div class="plan-body">
+                                                    <div class="plan-price-area">
+                                                        <h2 class="price-title"><?php echo esc_html($yList['yPackage_price']) ?>
+                                                            <sub><?php echo esc_html($yList['yPackage_price_duration']) ?></sub>
+                                                        </h2>
+                                                    </div>
+                                                    <ul class="plan-list">
+                                                        <?php echo wp_kses_post($yList['yPackage_offer']); ?>
+                                                    </ul>
+                                                </div>
+                                                <div class="plan-footer">
+                                                    <div class="plan-btn">
+                                                        <?php if ($mList['ybtn_status'] == 'yes'): ?>
+                                                            <a href="<?php echo esc_url($mList['ybtn_link']['url']); ?>"
+                                                               class="btn--base active w-100"><?php echo esc_html($mList['ybtn_text']); ?></a>
+                                                        <?php endif; ?>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <ul class="plan-list">
-                                                <?php echo wp_kses_post($yList['yPackage_offer']);?>
-                                            </ul>
                                         </div>
-                                        <div class="plan-footer">
-                                            <div class="plan-btn">
-                                                <?php if ($mList['ybtn_status'] == 'yes'): ?>
-                                                    <a href="<?php echo esc_url($mList['ybtn_link']['url']); ?>"
-                                                       class="btn--base active w-100"><?php echo esc_html($mList['ybtn_text']); ?></a>
-                                                <?php endif; ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                        <?php } }?>
+                                    <?php }
+                                } ?>
                             </div>
                         </div>
                     </div>
