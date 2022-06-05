@@ -98,12 +98,12 @@ if (!class_exists('Softim_Core_Admin_Menu')) {
                 'project' => array(
                     array(
                         'link' => 'edit.php?post_type=project',
-                        'name' => sprintf(esc_html__('%s', 'softim-core'), 'Packages'),
+                        'name' => sprintf(esc_html__('%s', 'softim-core'), 'Project'),
                         'id' => 'edit-project'
                     ),
                     array(
                         'link' => 'edit-tags.php?taxonomy=project-cat&post_type=project',
-                        'name' => sprintf(esc_html__('%s Categories', 'softim-core'), 'Packages'),
+                        'name' => sprintf(esc_html__('%s Categories', 'softim-core'), 'Project'),
                         'id' => 'edit-project-cat'
                     )
                 ),

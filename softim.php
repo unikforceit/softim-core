@@ -71,7 +71,6 @@ if ( !softim_core()->is_softim_active()) {
 }
 
 
-
 /**
  * Core Plugin Init
  * @package softim
