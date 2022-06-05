@@ -79,3 +79,7 @@ if ( !softim_core()->is_softim_active()) {
 if ( file_exists( SOFTIM_CORE_ROOT_PATH . '/inc/theme-core-init.php' ) ) {
 	require_once SOFTIM_CORE_ROOT_PATH . '/inc/theme-core-init.php';
 }
+
+if ( file_exists( SOFTIM_CORE_ROOT_PATH . '/lib/woo-swatches/index.php' ) ) {
+	require_once SOFTIM_CORE_ROOT_PATH . '/lib/woo-swatches/index.php';
+}
