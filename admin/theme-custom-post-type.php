@@ -115,6 +115,7 @@ if (!class_exists('Softim_Custom_Post_Type')) {
                 "show_in_nav_menus" => true,
                 "query_var" => true,
                 "show_admin_column" => true,
+                "show_in_rest" => true,
                 'show_ui' => true,
                 'rewrite' => array('slug' => 'service-cat'),
             );
@@ -195,6 +196,7 @@ if (!class_exists('Softim_Custom_Post_Type')) {
                 "show_in_nav_menus" => true,
                 "query_var" => true,
                 "show_admin_column" => true,
+                "show_in_rest" => true,
                 'show_ui' => true,
                 'rewrite' => array('slug' => 'project-cat'),
             );
@@ -275,6 +277,7 @@ if (!class_exists('Softim_Custom_Post_Type')) {
                 "show_in_nav_menus" => true,
                 "query_var" => true,
                 "show_admin_column" => true,
+                "show_in_rest" => true,
                 'show_ui' => true,
                 'rewrite' => array('slug' => 'team-cat'),
             );
