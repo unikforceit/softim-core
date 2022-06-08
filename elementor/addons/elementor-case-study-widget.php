@@ -83,240 +83,297 @@ class Softim_Case_Study_Widget extends Widget_Base
         $this->start_controls_section(
             'settings_section',
             [
-                'label' => esc_html__('Section Contents', 'softim-core'),
+                'label' => esc_html__('General Settings', 'softim-core'),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
         $this->add_control(
             'title', [
-                'label' => esc_html__('Title 1', 'softim-core'),
+                'label' => esc_html__('Title', 'softim-core'),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__("Why Choose Softim?", 'softim-core'),
-                'description' => esc_html__('enter title', 'softim-core')
+                'default' => esc_html__('Our Awesome Services', 'softim-core'),
+                'description' => esc_html__('enter title', 'softim-core'),
             ]
         );
         $this->add_control(
             'info', [
                 'label' => esc_html__('Info', 'softim-core'),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__('We rank among the best in the US, Argentina, and Ukraine. Our apps get featured as best in class, and our clients love our work.', 'softim-core'),
+                'default' => esc_html__('Credibly grow premier ideas rather than bricks-and-clicks strategic theme areas distributed for stand-alone web-readiness.', 'softim-core'),
                 'description' => esc_html__('enter info', 'softim-core'),
             ]
         );
+        $this->add_control(
+            'column',
+            [
+                'label' => esc_html__('Column', 'softim-core'),
+                'type' => Controls_Manager::SELECT,
+                'options' => array(
+                    '6' => esc_html__('02 Column', 'softim-core'),
+                    '3' => esc_html__('04 Column', 'softim-core'),
+                    '4' => esc_html__('03 Column', 'softim-core'),
+                    '2' => esc_html__('06 Column', 'softim-core')
+                ),
+                'description' => esc_html__('select grid column', 'softim-core'),
+                'default' => '6'
+            ]
+        );
+        $this->add_control('total', [
+            'label' => esc_html__('Total Posts', 'softim-core'),
+            'type' => Controls_Manager::TEXT,
+            'default' => '-1',
+            'description' => esc_html__('enter how many post you want in masonry , enter -1 for unlimited post.')
+        ]);
+        $this->add_control('category', [
+            'label' => esc_html__('Category', 'softim-core'),
+            'type' => Controls_Manager::SELECT2,
+            'multiple' => true,
+            'options' => softim_core()->get_terms_names('project-cat', 'id'),
+            'description' => esc_html__('select category as you want, leave it blank for all category', 'softim-core'),
+        ]);
+        $this->add_control('order', [
+            'label' => esc_html__('Order', 'softim-core'),
+            'type' => Controls_Manager::SELECT,
+            'options' => array(
+                'ASC' => esc_html__('Ascending', 'softim-core'),
+                'DESC' => esc_html__('Descending', 'softim-core'),
+            ),
+            'default' => 'ASC',
+            'description' => esc_html__('select order', 'softim-core')
+        ]);
+        $this->add_control('orderby', [
+            'label' => esc_html__('OrderBy', 'softim-core'),
+            'type' => Controls_Manager::SELECT,
+            'options' => array(
+                'ID' => esc_html__('ID', 'softim-core'),
+                'title' => esc_html__('Title', 'softim-core'),
+                'date' => esc_html__('Date', 'softim-core'),
+                'rand' => esc_html__('Random', 'softim-core'),
+                'comment_count' => esc_html__('Most Comments', 'softim-core'),
+            ),
+            'default' => 'ID',
+            'description' => esc_html__('select order', 'softim-core')
+        ]);
+        $this->add_control(
+            'excerpt_switch',
+            [
+                'label' => esc_html__('Excerpt Switch', 'softim-core'),
+                'type' => Controls_Manager::SWITCHER,
+                'description' => esc_html__('you can set yes to show excerpt.', 'softim-core'),
+                'default' => 'no'
+            ]
+        );
+        $this->add_control('excerpt_length', [
+            'label' => esc_html__('Excerpt Length', 'softim-core'),
+            'type' => Controls_Manager::SELECT,
+            'options' => array(
+                18 => esc_html__('Short', 'softim-core'),
+                55 => esc_html__('Regular', 'softim-core'),
+                100 => esc_html__('Long', 'softim-core'),
+            ),
+            'default' => 18,
+            'description' => esc_html__('select excerpt length', 'softim-core')
+        ]);
         $this->end_controls_section();
 
-//      Tab Loop
+//      Service Graphic Loop
         $this->start_controls_section(
-            'case_study_section',
+            'about_graphic_section',
             [
-                'label' => esc_html__('Tab Section', 'softim-core'),
+                'label' => esc_html__('Service Graphic', 'softim-core'),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
 
-        $repeater2 = new Repeater();
-        $repeater2->add_control(
-            'tab_title', [
-                'label' => esc_html__('Tab Title', 'softim-core'),
-                'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__("All", 'softim-core'),
-                'description' => esc_html__('enter tab title', 'softim-core')
-            ]
-        );
-        $repeater2->add_control(
-            'tab_thumb_image', [
-                'label' => esc_html__('Tab Thumb Image', 'softim-core'),
+        $repeater = new Repeater();
+        $repeater->add_control(
+            'about_graphic_image', [
+                'label' => esc_html__('Graphic Image', 'softim-core'),
                 'type' => Controls_Manager::MEDIA,
                 'show_label' => false,
-                'description' => esc_html__('upload tab thumb image', 'softim-core'),
+                'description' => esc_html__('upload graphic image', 'softim-core'),
                 'default' => [
                     'src' => Utils::get_placeholder_image_src()
                 ],
             ]
         );
-        $repeater2->add_control(
-            'tab_details_title', [
-                'label' => esc_html__('Tab Details Title', 'softim-core'),
-                'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__("Top Software Developer", 'softim-core'),
-                'description' => esc_html__('enter tab details title', 'softim-core')
-            ]
-        );
-        $repeater2->add_control(
-            'tab_details_info', [
-                'label' => esc_html__('Tab Details Info', 'softim-core'),
-                'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__("Welcome To Softim, a software development company, helps to digitize businesses by focusing on client’s business challenges, needs, pain points and providing business-goals-oriented software solutions. We value close transparent cooperation and encourage our clients to participate actively in the project development life cycle.", 'softim-core'),
-                'description' => esc_html__('enter tab details info', 'softim-core')
-            ]
-        );
-        $repeater2->add_control(
-            'work_1_status', [
-                'label' => esc_html__('Work 1 Show/Hide', 'softim-core'),
-                'type' => Controls_Manager::SWITCHER,
-                'default' => 'yes',
-                'description' => esc_html__('show/hide work 1', 'softim-core')
-            ]
-        );
-        $repeater2->add_control(
-            'tab_details_no1', [
-                'label' => esc_html__('Tab Work Number 1', 'softim-core'),
-                'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__("150", 'softim-core'),
-                'description' => esc_html__('enter tab work number', 'softim-core')
-            ]
-        );
-        $repeater2->add_control(
-            'tab_details_no1_dec', [
-                'label' => esc_html__('Work 1 Title', 'softim-core'),
-                'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__("Awesome Solutions", 'softim-core'),
-                'description' => esc_html__('enter work title', 'softim-core')
-            ]
-        );
-        $repeater2->add_control(
-            'work_2_status', [
-                'label' => esc_html__('Work 2 Show/Hide', 'softim-core'),
-                'type' => Controls_Manager::SWITCHER,
-                'default' => 'yes',
-                'description' => esc_html__('show/hide work 2', 'softim-core')
-            ]
-        );
-        $repeater2->add_control(
-            'tab_details_no2', [
-                'label' => esc_html__('Tab Work Number 2', 'softim-core'),
-                'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__("350", 'softim-core'),
-                'description' => esc_html__('enter tab work number', 'softim-core')
-            ]
-        );
-        $repeater2->add_control(
-            'tab_details_no2_dec', [
-                'label' => esc_html__('Work 2 Title', 'softim-core'),
-                'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__("Trusted Clients", 'softim-core'),
-                'description' => esc_html__('enter work title', 'softim-core')
-            ]
-        );
-        $repeater2->add_control(
-            'work_3_status', [
-                'label' => esc_html__('Work 3 Show/Hide', 'softim-core'),
-                'type' => Controls_Manager::SWITCHER,
-                'default' => 'yes',
-                'description' => esc_html__('show/hide work 3', 'softim-core')
-            ]
-        );
-        $repeater2->add_control(
-            'tab_details_no3', [
-                'label' => esc_html__('Tab Work Number 3', 'softim-core'),
-                'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__("25", 'softim-core'),
-                'description' => esc_html__('enter tab work number', 'softim-core')
-            ]
-        );
-        $repeater2->add_control(
-            'tab_details_no3_dec', [
-                'label' => esc_html__('Work 3 Title', 'softim-core'),
-                'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__("Served Countries", 'softim-core'),
-                'description' => esc_html__('enter work title', 'softim-core')
-            ]
-        );
-        $repeater2->add_control(
-            'btn_status', [
-                'label' => esc_html__('Button Show/Hide', 'softim-core'),
-                'type' => Controls_Manager::SWITCHER,
-                'default' => 'yes',
-                'description' => esc_html__('show/hide button', 'softim-core')
-            ]
-        );
-        $repeater2->add_control(
-            'btn_text', [
-                'label' => esc_html__('Button Text', 'softim-core'),
-                'type' => Controls_Manager::TEXT,
-                'default' => esc_html__('Contact us', 'softim-core'),
-                'description' => esc_html__('enter button text', 'softim-core'),
-                'condition' => ['btn_status' => 'yes']
-            ]
-        );
-        $repeater2->add_control(
-            'btn_link', [
-                'label' => esc_html__('Button URL', 'softim-core'),
-                'type' => Controls_Manager::URL,
-                'default' => [
-                    'url' => '#'
-                ],
-                'description' => esc_html__('enter button url', 'softim-core'),
-                'condition' => ['btn_status' => 'yes']
-            ]
-        );
-        $repeater2->add_control(
-            'btn_video_status', [
-                'label' => esc_html__('Video Button Show/Hide', 'softim-core'),
-                'type' => Controls_Manager::SWITCHER,
-                'default' => 'yes',
-                'description' => esc_html__('show/hide video button', 'softim-core')
-            ]
-        );
-        $repeater2->add_control(
-            'btn_video_link', [
-                'label' => esc_html__('Button URL', 'softim-core'),
-                'type' => Controls_Manager::URL,
-                'default' => [
-                    'url' => '#'
-                ],
-                'description' => esc_html__('enter video button url', 'softim-core'),
-                'condition' => ['btn_status' => 'yes']
-            ]
-        );
 
-        $this->add_control('tab_list', [
-            'label' => esc_html__('Take 3 Tab Item', 'softim-core'),
+        $this->add_control('about_graphic_list', [
+            'label' => esc_html__('Take 5 About Graphic Item', 'softim-core'),
             'type' => Controls_Manager::REPEATER,
-            'fields' => $repeater2->get_controls(),
+            'fields' => $repeater->get_controls(),
         ]);
         $this->end_controls_section();
 
-// Start style
         $this->start_controls_section(
-            'css_styles',
+            'title_styling_settings_section',
             [
-                'label' => esc_html__('Case Study Header', 'softim-core'),
+                'label' => esc_html__('Styling Settings', 'softim-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
-        $this->add_control('title_color', [
-            'label' => esc_html__('Header Color', 'softim-core'),
+        $this->start_controls_tabs(
+            'title_style_tabs'
+        );
+
+        $this->start_controls_tab(
+            'title_style_normal_tab',
+            [
+                'label' => esc_html__('Normal', 'softim-core'),
+            ]
+        );
+        $this->add_control('normal_post_title_color', [
+            'label' => esc_html__('Title Color', 'softim-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
-                "{{WRAPPER}} .section-header .section-title" => "color: {{VALUE}}"
+                "{{WRAPPER}} .blog-grid-item-01 .content .title" => "color: {{VALUE}}"
             ]
         ]);
-        $this->add_control('info_color', [
-            'label' => esc_html__('Info Color', 'softim-core'),
+        $this->add_control('normal_post_meta_color', [
+            'label' => esc_html__('Category Color', 'softim-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
-                "{{WRAPPER}} .section-header p" => "color: {{VALUE}}"
+                "{{WRAPPER}} .blog-grid-item-01 .content .post-meta li" => "color: {{VALUE}}"
             ]
+        ]);
+        $this->add_control('normal_post_paragraph_color', [
+            'label' => esc_html__('Paragraph Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .blog-grid-item-01 .content p" => "color: {{VALUE}}"
+            ]
+        ]);
+        $this->add_control('normal_background_color', [
+            'label' => esc_html__('Background Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .blog-grid-item-01" => "background-color: {{VALUE}}"
+            ]
+        ]);
+        $this->add_control('normal_post_button_color', [
+            'label' => esc_html__('Button Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .blog-grid-item-01 .content .read-btn" => "color: {{VALUE}}"
+            ]
+        ]);
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'title_style_hover_tab',
+            [
+                'label' => esc_html__('Hover', 'softim-core'),
+            ]
+        );
+
+        $this->add_control('hover_post_title_color', [
+            'label' => esc_html__('Title Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .blog-grid-item-01 .content .title:hover" => "color: {{VALUE}}"
+            ]
+        ]);
+        $this->add_control('normal_hover_background_color', [
+            'label' => esc_html__('Background Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .blog-grid-item-01:hover" => "background-color: {{VALUE}}"
+            ]
+        ]);
+        $this->add_control('normal_post_hover_border_color', [
+            'label' => esc_html__('Button Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .blog-grid-item-01 .content .read-btn:hover" => "color: {{VALUE}}"
+            ]
+        ]);
+        $this->end_controls_tab();
+
+        $this->end_controls_tabs();
+
+        $this->end_controls_section();
+
+
+        $this->start_controls_section(
+            'slider_navigation_styling_settings_section',
+            [
+                'label' => esc_html__('Slider Nav Styling Settings', 'softim-core'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->start_controls_tabs(
+            'slider_nav_style_tabs'
+        );
+
+        $this->start_controls_tab(
+            'slider_navigation_style_normal_tab',
+            [
+                'label' => esc_html__('Normal', 'softim-core'),
+            ]
+        );
+        $this->add_control('normal_nav_color', [
+            'label' => esc_html__('Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .blog-slider-controls .slider-nav div" => "color: {{VALUE}}"
+            ]
+        ]);
+        $this->add_group_control(Group_Control_Background::get_type(), [
+            'label' => esc_html__('Background', 'softim-core'),
+            'name' => 'nav_background',
+            'selector' => "{{WRAPPER}} .blog-slider-controls .slider-nav div"
+        ]);
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'slider_navigation_style_hover_tab',
+            [
+                'label' => esc_html__('Hover', 'softim-core'),
+            ]
+        );
+        $this->add_control('hover_nav_color', [
+            'label' => esc_html__('Color', 'softim-core'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                "{{WRAPPER}} .blog-slider-controls .slider-nav div:hover" => "color: {{VALUE}}"
+            ]
+        ]);
+        $this->add_group_control(Group_Control_Background::get_type(), [
+            'label' => esc_html__('Background', 'softim-core'),
+            'name' => 'nav_hover_background',
+            'selector' => "{{WRAPPER}} .blog-slider-controls .slider-nav div:hover"
+        ]);
+
+        $this->end_controls_tab();
+
+        $this->end_controls_tabs();
+
+        $this->end_controls_section();
+
+
+        $this->start_controls_section(
+            'typography_settings_section',
+            [
+                'label' => esc_html__('Typography Settings', 'softim-core'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_group_control(Group_Control_Typography::get_type(), [
+            'label' => esc_html__('Title Typography', 'softim-core'),
+            'name' => 'post_meta_typography',
+            'description' => esc_html__('select title typography', 'softim-core'),
+            'selector' => "{{WRAPPER}} .blog-grid-item-01 .content .title"
+        ]);
+
+        $this->add_group_control(Group_Control_Typography::get_type(), [
+            'label' => esc_html__('Category Typography', 'softim-core'),
+            'name' => 'category_typography',
+            'description' => esc_html__('select category typography', 'softim-core'),
+            'selector' => "{{WRAPPER}} .blog-grid-item-01 .content .post-categories li"
         ]);
         $this->end_controls_section();
 
-        /* typography settings start */
-        $this->start_controls_section('typography_settings', [
-            'label' => esc_html__('Typography Settings', 'softim-core'),
-            'tab' => Controls_Manager::TAB_STYLE
-        ]);
-        $this->add_group_control(Group_Control_Typography::get_type(), [
-            'name' => 'title_typography',
-            'label' => esc_html__('Title Typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .section-header .section-title"
-        ]);
-        $this->add_group_control(Group_Control_Typography::get_type(), [
-            'name' => 'info_typography',
-            'label' => esc_html__('Info Typography', 'softim-core'),
-            'selector' => "{{WRAPPER}} .section-header p"
-        ]);
-        $this->end_controls_section();
         /* typography settings end */
 
     }
@@ -332,7 +389,36 @@ class Softim_Case_Study_Widget extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
+        //query settings
+        $total_posts = $settings['total'];
+        $category = $settings['category'];
+        $order = $settings['order'];
+        $orderby = $settings['orderby'];
+        $tax_args = array(
+            'taxonomy' => 'project-cat',
+            'number' => 4,
+        );
+        $cats = get_terms($tax_args);
+        //setup query
+        $args = array(
+            'post_type' => 'project',
+            'posts_per_page' => $total_posts,
+            'order' => $order,
+            'orderby' => $orderby,
+            'post_status' => 'publish',
+            'ignore_sticky_posts' => 1,
+        );
 
+        if (!empty($category)) {
+            $args['tax_query'] = array(
+                array(
+                    'taxonomy' => 'project-cat',
+                    'field' => 'term_id',
+                    'terms' => $category
+                )
+            );
+        }
+        $post_data = new \WP_Query($args);
         ?>
 
         <section class="case-study-section">
@@ -346,10 +432,10 @@ class Softim_Case_Study_Widget extends Widget_Base
                                     distributed for stand-alone web-readiness.</p>
                             </div>
                             <ul class="nav nav-pills mb-3">
-                                <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#all">All</a></li>
-                                <li class="nav-item"><a class="nav-link active" data-toggle="pill" href="#cloud-services">Cloud Services</a></li>
-                                <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#cyber-security">Cyber Security</a></li>
-                                <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#it-security">IT Security</a></li>
+                                <?php if ($cats){
+                                    foreach ($cats as $cat){?>
+                                    <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#all">All</a></li>
+                                <?php } }?>
                             </ul>
                         </div>
                     </div>
@@ -363,6 +449,7 @@ class Softim_Case_Study_Widget extends Widget_Base
                                 <div class="case-study-slider-wrapper">
                                     <div class="case-study-slider oh">
                                         <div class="swiper-wrapper">
+
                                             <div class="swiper-slide">
                                                 <div class="case-study-single-item">
                                                     <div class="thumbnail">
@@ -375,30 +462,7 @@ class Softim_Case_Study_Widget extends Widget_Base
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="swiper-slide">
-                                                <div class="case-study-single-item">
-                                                    <div class="thumbnail">
-                                                        <img src="assets/images/home-three/case-02.png" alt="">
-                                                    </div>
-                                                    <div class="content">
-                                                        <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers
-                                                            result-driven solutions to build.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <div class="case-study-single-item">
-                                                    <div class="thumbnail">
-                                                        <img src="assets/images/home-three/case-03.png" alt="">
-                                                    </div>
-                                                    <div class="content">
-                                                        <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers
-                                                            result-driven solutions to build.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
+
                                         </div>
                                         <div class="next-text">Next</div>
                                         <div class="prev-text">Prev</div>
@@ -416,6 +480,7 @@ class Softim_Case_Study_Widget extends Widget_Base
                                 <div class="case-study-slider-wrapper">
                                     <div class="case-study-slider oh">
                                         <div class="swiper-wrapper">
+
                                             <div class="swiper-slide">
                                                 <div class="case-study-single-item">
                                                     <div class="thumbnail">
@@ -428,136 +493,7 @@ class Softim_Case_Study_Widget extends Widget_Base
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="swiper-slide">
-                                                <div class="case-study-single-item">
-                                                    <div class="thumbnail">
-                                                        <img src="assets/images/home-three/case-02.png" alt="">
-                                                    </div>
-                                                    <div class="content">
-                                                        <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers
-                                                            result-driven solutions to build.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <div class="case-study-single-item">
-                                                    <div class="thumbnail">
-                                                        <img src="assets/images/home-three/case-03.png" alt="">
-                                                    </div>
-                                                    <div class="content">
-                                                        <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers
-                                                            result-driven solutions to build.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="next-text">Next</div>
-                                        <div class="prev-text">Prev</div>
-                                        <div class="swiper-pagination"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="cyber-security">
-                    <div class="container-fluid">
-                        <div class="row mb-10-none">
-                            <div class="col-xl-10 offset-xl-2">
-                                <div class="case-study-slider-wrapper">
-                                    <div class="case-study-slider oh">
-                                        <div class="swiper-wrapper">
-                                            <div class="swiper-slide">
-                                                <div class="case-study-single-item">
-                                                    <div class="thumbnail">
-                                                        <img src="assets/images/home-three/case-01.png" alt="">
-                                                    </div>
-                                                    <div class="content">
-                                                        <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers
-                                                            result-driven solutions to build.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <div class="case-study-single-item">
-                                                    <div class="thumbnail">
-                                                        <img src="assets/images/home-three/case-02.png" alt="">
-                                                    </div>
-                                                    <div class="content">
-                                                        <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers
-                                                            result-driven solutions to build.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <div class="case-study-single-item">
-                                                    <div class="thumbnail">
-                                                        <img src="assets/images/home-three/case-03.png" alt="">
-                                                    </div>
-                                                    <div class="content">
-                                                        <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers
-                                                            result-driven solutions to build.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="next-text">Next</div>
-                                        <div class="prev-text">Prev</div>
-                                        <div class="swiper-pagination"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="it-security">
-                    <div class="container-fluid">
-                        <div class="row mb-10-none">
-                            <div class="col-xl-10 offset-xl-2">
-                                <div class="case-study-slider-wrapper">
-                                    <div class="case-study-slider oh">
-                                        <div class="swiper-wrapper">
-                                            <div class="swiper-slide">
-                                                <div class="case-study-single-item">
-                                                    <div class="thumbnail">
-                                                        <img src="assets/images/home-three/case-01.png" alt="">
-                                                    </div>
-                                                    <div class="content">
-                                                        <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers
-                                                            result-driven solutions to build.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <div class="case-study-single-item">
-                                                    <div class="thumbnail">
-                                                        <img src="assets/images/home-three/case-02.png" alt="">
-                                                    </div>
-                                                    <div class="content">
-                                                        <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers
-                                                            result-driven solutions to build.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <div class="case-study-single-item">
-                                                    <div class="thumbnail">
-                                                        <img src="assets/images/home-three/case-03.png" alt="">
-                                                    </div>
-                                                    <div class="content">
-                                                        <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers
-                                                            result-driven solutions to build.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
+
                                         </div>
                                         <div class="next-text">Next</div>
                                         <div class="prev-text">Prev</div>
