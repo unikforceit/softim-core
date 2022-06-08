@@ -426,33 +426,35 @@ class Softim_Project_Two_Widget extends Widget_Base
         ?>
         <section class="project-section two">
             <?php
-            if ($settings['about_graphic_list']){
+            if ($settings['about_graphic_list']) {
                 $y = 0;
-                foreach ($settings['about_graphic_list'] as $items){
+                foreach ($settings['about_graphic_list'] as $items) {
                     $y++;
-                    if ($y == 1){
+                    if ($y == 1) {
                         $group = 'one';
-                    }else {
+                    } else {
                         $group = 'two';
                     }
                     ?>
-                    <div class="project-element-<?php echo esc_attr($group)?> two">
-                        <img src="<?php echo esc_url($items['about_graphic_image']['url']);?>" alt="element">
+                    <div class="project-element-<?php echo esc_attr($group) ?> two">
+                        <img src="<?php echo esc_url($items['about_graphic_image']['url']); ?>" alt="element">
                     </div>
-                <?php } } ?>
+                <?php }
+            } ?>
             <div class="container-fluid p-0">
                 <div class="project-area">
                     <div class="row justify-content-center mb-30-none">
                         <div class="col-xl-2 offset-xl-2 col-md-12 col-lg-4 mb-30">
                             <div class="project-left-content">
                                 <div class="logo-icon">
-                                    <img src="<?php echo esc_url($settings['service_icon']['url']);?>" alt="favicon">
+                                    <img src="<?php echo esc_url($settings['service_icon']['url']); ?>" alt="favicon">
                                 </div>
-                                <h2 class="title"><?php echo esc_html($settings['title']);?></h2>
-                                <p><?php echo esc_html($settings['info']);?></p>
+                                <h2 class="title"><?php echo esc_html($settings['title']); ?></h2>
+                                <p><?php echo esc_html($settings['info']); ?></p>
                                 <div class="project-left-btn">
-                                    <a href="<?php echo get_post_type_archive_link('project-cat');?>" class="btn--base active">
-                                        <?php echo esc_html('View All Projects');?>
+                                    <a href="<?php echo get_post_type_archive_link('project-cat'); ?>"
+                                       class="btn--base active">
+                                        <?php echo esc_html('View All Projects'); ?>
                                     </a>
                                 </div>
                             </div>
@@ -467,27 +469,32 @@ class Softim_Project_Two_Widget extends Widget_Base
                                 </div>
                                 <div class="project-slider">
                                     <div class="swiper-wrapper">
-                    <?php if ($post_data->have_posts()) {
-                        while ($post_data->have_posts()) {
-                            $post_data->the_post();
-                            $project_meta = get_post_meta(get_the_ID(), 'softim_project_options', true);
-                            ?>
+                                        <?php if ($post_data->have_posts()) {
+                                            while ($post_data->have_posts()) {
+                                                $post_data->the_post();
+                                                $project_meta = get_post_meta(get_the_ID(), 'softim_project_options', true);
+                                                $project_image = isset($project_meta['image1']['id']) ? $project_meta['image1']['id'] : '';
+                                                ?>
 
-                            <div class="swiper-slide">
-                                <div class="project-thumb two">
-                                    <?php echo wp_get_attachment_image($project_meta['image1']['id'], 'full'); ?>
-                                    <div class="project-overlay">
-                                        <div class="overlay-content">
-                                            <h4 class="title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                                <div class="swiper-slide">
+                                                    <div class="project-thumb two">
+                                                        <?php echo wp_get_attachment_image($project_image, 'full'); ?>
+                                                        <div class="project-overlay">
+                                                            <div class="overlay-content">
+                                                                <h4 class="title">
+                                                                    <a href="<?php the_permalink(); ?>">
+                                                                        <?php the_title(); ?>
+                                                                    </a>
+                                                                </h4>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
-                            <?php
-                        }
-                    }
-                    ?>
+                                                <?php
+                                            }
+                                        }
+                                        ?>
                                     </div>
                                 </div>
                             </div>

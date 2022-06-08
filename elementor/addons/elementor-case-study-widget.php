@@ -346,19 +346,10 @@ class Softim_Case_Study_Widget extends Widget_Base
                                     distributed for stand-alone web-readiness.</p>
                             </div>
                             <ul class="nav nav-pills mb-3">
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="pill" href="#all">All</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" data-toggle="pill" href="#cloud-services">Cloud
-                                        Services</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="pill" href="#cyber-security">Cyber Security</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="pill" href="#it-security">IT Security</a>
-                                </li>
+                                <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#all">All</a></li>
+                                <li class="nav-item"><a class="nav-link active" data-toggle="pill" href="#cloud-services">Cloud Services</a></li>
+                                <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#cyber-security">Cyber Security</a></li>
+                                <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#it-security">IT Security</a></li>
                             </ul>
                         </div>
                     </div>
