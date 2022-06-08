@@ -432,8 +432,7 @@ class Softim_Blog_Post_Five_Widget extends Widget_Base
                                     <div class="blog-content">
                                         <div class="blog-post-meta">
                                     <span class="user">
-                                        <img class="mr-1" src="<?php echo get_avatar(get_the_author_meta('ID')); ?>"
-                                             alt="icon">
+                                        <?php echo get_avatar(get_the_author_meta('ID'), 25); ?>
                                         <?php the_author(); ?>
                                     </span>
                                             <span class="date"><?php echo get_the_time('j F, Y'); ?></span>
