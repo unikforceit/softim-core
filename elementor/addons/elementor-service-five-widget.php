@@ -320,7 +320,7 @@ class Softim_Service_Five_Widget extends Widget_Base
                 <div class="row justify-content-center">
                     <div class="col-xl-7 col-lg-8 text-center">
                         <div class="section-header">
-                            <h2 class="section-title"><?php echo esc_html($settings['title']);?></h2>
+                            <h2 class="section-title"><?php echo esc_html($settings['title']); ?></h2>
                         </div>
                     </div>
                 </div>
@@ -330,83 +330,84 @@ class Softim_Service_Five_Widget extends Widget_Base
                             $post_data->the_post();
                             $service_meta = get_post_meta(get_the_ID(), 'softim_service_options', true);
                             ?>
-                    <div class="col-xl-4 col-lg-4 mb-30">
-                        <div class="service-single-item">
-                            <?php if (!empty($service_meta['image']['id'])){?>
-                                <div class="icon">
-                                    <?php echo wp_get_attachment_image($service_meta['image']['id'], 'full'); ?>
-                                </div>
-                            <?php } ?>
-                            <div class="content">
-                                <a href="<?php the_permalink();?>"><h6 class="title"><?php the_title();?></h6></a>
-                                <p><?php echo wp_trim_words(get_the_excerpt(), $settings['excerpt_length'], '.');?></p>
-                                <div class="more-btn">
-                                    <a href="<?php the_permalink();?>"><span><?php echo esc_html('Service Details');?></span></a>
-                                    <div class="icons">
-                                        <i class="las la-arrow-right"></i>
+                            <div class="col-xl-4 col-lg-4 mb-30">
+                                <div class="service-single-item">
+                                    <?php if (!empty($service_meta['image']['id'])) { ?>
+                                        <div class="icon">
+                                            <?php echo wp_get_attachment_image($service_meta['image']['id'], 'full'); ?>
+                                        </div>
+                                    <?php } ?>
+                                    <div class="content">
+                                        <a href="<?php the_permalink(); ?>"><h6 class="title"><?php the_title(); ?></h6>
+                                        </a>
+                                        <p><?php echo wp_trim_words(get_the_excerpt(), $settings['excerpt_length'], '.'); ?></p>
+                                        <div class="more-btn">
+                                            <a href="<?php the_permalink(); ?>"><span><?php echo esc_html('Service Details'); ?></span></a>
+                                            <div class="icons">
+                                                <i class="las la-arrow-right"></i>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-        <?php
-    }
-}
-?>
+                            <?php
+                        }
+                    }
+                    ?>
                 </div>
-<!--                <div class="row rmt-60">-->
-<!--                    <div class="col-xl-4 col-lg-4 mb-30">-->
-<!--                        <div class="service-single-item">-->
-<!--                            <div class="icon">-->
-<!--                                <img src="assets/images/home-three/apps.png" alt="">-->
-<!--                            </div>-->
-<!--                            <div class="content">-->
-<!--                                <a href="service-details.html"><h6 class="title">Apps Development</h6></a>-->
-<!--                                <p>Trusted by popular platforms like Shopify, ARN Tech offers result-driven solutions to build.</p>-->
-<!--                                <div class="more-btn">-->
-<!--                                    <a href="service-details.html"><span>Service Details</span></a>-->
-<!--                                    <div class="icons">-->
-<!--                                        <i class="las la-arrow-right"></i>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="col-xl-4 col-lg-4 mb-30">-->
-<!--                        <div class="service-single-item">-->
-<!--                            <div class="icon">-->
-<!--                                <img src="assets/images/home-three/megaphone.png" alt="">-->
-<!--                            </div>-->
-<!--                            <div class="content">-->
-<!--                                <a href="service-details.html"><h6 class="title">Digital Marketing</h6></a>-->
-<!--                                <p>Trusted by popular platforms like Shopify, ARN Tech offers result-driven solutions to build.</p>-->
-<!--                                <div class="more-btn">-->
-<!--                                    <a href="service-details.html"><span>Service Details</span></a>-->
-<!--                                    <div class="icons">-->
-<!--                                        <i class="las la-arrow-right"></i>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="col-xl-4 col-lg-4 mb-30">-->
-<!--                        <div class="service-single-item">-->
-<!--                            <div class="icon">-->
-<!--                                <img src="assets/images/home-three/blog.png" alt="">-->
-<!--                            </div>-->
-<!--                            <div class="content">-->
-<!--                                <a href="service-details.html"><h6 class="title">Content Marketing</h6></a>-->
-<!--                                <p>Trusted by popular platforms like Shopify, ARN Tech offers result-driven solutions to build.</p>-->
-<!--                                <div class="more-btn">-->
-<!--                                    <a href="service-details.html"><span>Service Details</span></a>-->
-<!--                                    <div class="icons">-->
-<!--                                        <i class="las la-arrow-right"></i>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
+                <!--                <div class="row rmt-60">-->
+                <!--                    <div class="col-xl-4 col-lg-4 mb-30">-->
+                <!--                        <div class="service-single-item">-->
+                <!--                            <div class="icon">-->
+                <!--                                <img src="assets/images/home-three/apps.png" alt="">-->
+                <!--                            </div>-->
+                <!--                            <div class="content">-->
+                <!--                                <a href="service-details.html"><h6 class="title">Apps Development</h6></a>-->
+                <!--                                <p>Trusted by popular platforms like Shopify, ARN Tech offers result-driven solutions to build.</p>-->
+                <!--                                <div class="more-btn">-->
+                <!--                                    <a href="service-details.html"><span>Service Details</span></a>-->
+                <!--                                    <div class="icons">-->
+                <!--                                        <i class="las la-arrow-right"></i>-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                    <div class="col-xl-4 col-lg-4 mb-30">-->
+                <!--                        <div class="service-single-item">-->
+                <!--                            <div class="icon">-->
+                <!--                                <img src="assets/images/home-three/megaphone.png" alt="">-->
+                <!--                            </div>-->
+                <!--                            <div class="content">-->
+                <!--                                <a href="service-details.html"><h6 class="title">Digital Marketing</h6></a>-->
+                <!--                                <p>Trusted by popular platforms like Shopify, ARN Tech offers result-driven solutions to build.</p>-->
+                <!--                                <div class="more-btn">-->
+                <!--                                    <a href="service-details.html"><span>Service Details</span></a>-->
+                <!--                                    <div class="icons">-->
+                <!--                                        <i class="las la-arrow-right"></i>-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                    <div class="col-xl-4 col-lg-4 mb-30">-->
+                <!--                        <div class="service-single-item">-->
+                <!--                            <div class="icon">-->
+                <!--                                <img src="assets/images/home-three/blog.png" alt="">-->
+                <!--                            </div>-->
+                <!--                            <div class="content">-->
+                <!--                                <a href="service-details.html"><h6 class="title">Content Marketing</h6></a>-->
+                <!--                                <p>Trusted by popular platforms like Shopify, ARN Tech offers result-driven solutions to build.</p>-->
+                <!--                                <div class="more-btn">-->
+                <!--                                    <a href="service-details.html"><span>Service Details</span></a>-->
+                <!--                                    <div class="icons">-->
+                <!--                                        <i class="las la-arrow-right"></i>-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
             </div>
         </section>
 
