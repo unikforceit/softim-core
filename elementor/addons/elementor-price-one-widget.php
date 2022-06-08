@@ -643,9 +643,9 @@ class Softim_Price_One_Widget extends Widget_Base
                                                 </div>
                                                 <div class="plan-footer">
                                                     <div class="plan-btn">
-                                                        <?php if ($mList['ybtn_status'] == 'yes'): ?>
-                                                            <a href="<?php echo esc_url($mList['ybtn_link']['url']); ?>"
-                                                               class="btn--base active w-100"><?php echo esc_html($mList['ybtn_text']); ?></a>
+                                                        <?php if ($yList['ybtn_status'] == 'yes'): ?>
+                                                            <a href="<?php echo esc_url($yList['ybtn_link']['url']); ?>"
+                                                               class="btn--base active w-100"><?php echo esc_html($yList['ybtn_text']); ?></a>
                                                         <?php endif; ?>
                                                     </div>
                                                 </div>
