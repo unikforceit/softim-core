@@ -115,6 +115,34 @@ class Softim_Project_Two_Widget extends Widget_Base
             ]
         );
         $this->add_control(
+            'btn_status', [
+                'label' => esc_html__('Button Show/Hide', 'softim-core'),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => 'yes',
+                'description' => esc_html__('show/hide button', 'softim-core')
+            ]
+        );
+        $this->add_control(
+            'btn_text', [
+                'label' => esc_html__('Button Text', 'softim-core'),
+                'type' => Controls_Manager::TEXT,
+                'default' => esc_html__('View All Projects', 'softim-core'),
+                'description' => esc_html__('enter button text', 'softim-core'),
+                'condition' => ['btn_status' => 'yes']
+            ]
+        );
+        $this->add_control(
+            'btn_link', [
+                'label' => esc_html__('Button URL', 'softim-core'),
+                'type' => Controls_Manager::URL,
+                'default' => [
+                    'url' => '#'
+                ],
+                'description' => esc_html__('enter button url', 'softim-core'),
+                'condition' => ['btn_status' => 'yes']
+            ]
+        );
+        $this->add_control(
             'column',
             [
                 'label' => esc_html__('Column', 'softim-core'),
@@ -452,10 +480,10 @@ class Softim_Project_Two_Widget extends Widget_Base
                                 <h2 class="title"><?php echo esc_html($settings['title']); ?></h2>
                                 <p><?php echo esc_html($settings['info']); ?></p>
                                 <div class="project-left-btn">
-                                    <a href="<?php echo get_post_type_archive_link('project-cat'); ?>"
-                                       class="btn--base active">
-                                        <?php echo esc_html('View All Projects'); ?>
-                                    </a>
+                                    <?php if ($settings['btn_status'] == 'yes'): ?>
+                                        <a href="<?php echo esc_url($settings['btn_link']['url']); ?>"
+                                           class="btn--base active"><?php echo esc_html($settings['btn_text']); ?></a>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>

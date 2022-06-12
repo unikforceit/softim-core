@@ -569,8 +569,8 @@ class Softim_Price_Three_Widget extends Widget_Base
     {
         $settings = $this->get_settings_for_display();
 
-        $title = $settings['subtitle'];
-        $subtitle = $settings['title'];
+        $subtitle = $settings['subtitle'];
+        $title = $settings['title'];
         $info = $settings['info'];
 
         ?>

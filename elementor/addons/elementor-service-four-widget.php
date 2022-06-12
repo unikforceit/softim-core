@@ -112,7 +112,7 @@ class Softim_Service_Four_Widget extends Widget_Base
             'label' => esc_html__('Category', 'softim-core'),
             'type' => Controls_Manager::SELECT2,
             'multiple' => true,
-            'options' => softim_core()->get_terms_names('category', 'id'),
+            'options' => softim_core()->get_terms_names('service-cat', 'id'),
             'description' => esc_html__('select category as you want, leave it blank for all category', 'softim-core'),
         ]);
         $this->add_control('order', [
@@ -426,13 +426,14 @@ class Softim_Service_Four_Widget extends Widget_Base
                             ?>
                             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-30">
                                 <div class="service-item three">
-                                    <?php if (!empty($service_meta['image']['id'])){?>
+                                    <?php if (!empty($service_meta['image']['id'])) { ?>
                                         <div class="service-icon">
                                             <?php echo wp_get_attachment_image($service_meta['image']['id'], 'full'); ?>
                                         </div>
                                     <?php } ?>
                                     <div class="service-content">
-                                        <h3 class="title"><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h3>
+                                        <h3 class="title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                                        </h3>
                                         <p><?php echo wp_trim_words(get_the_excerpt(), $settings['excerpt_length'], '.'); ?></p>
                                         <div class="service-btn">
                                             <a href="<?php the_permalink(); ?>"
