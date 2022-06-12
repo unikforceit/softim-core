@@ -6,7 +6,7 @@
  */
 
 namespace Elementor;
-class Softim_Blog_Post_Five_Widget extends Widget_Base
+class Softim_Gallery_Widget extends Widget_Base
 {
 
     /**
@@ -21,7 +21,7 @@ class Softim_Blog_Post_Five_Widget extends Widget_Base
      */
     public function get_name()
     {
-        return 'softim-blog-five-widget';
+        return 'softim-gallery-widget';
     }
 
     /**
@@ -36,7 +36,7 @@ class Softim_Blog_Post_Five_Widget extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Blog: 05', 'softim-core');
+        return esc_html__('Gallery', 'softim-core');
     }
 
     /**
@@ -51,7 +51,7 @@ class Softim_Blog_Post_Five_Widget extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-slider-album';
+        return 'eicon-archive-title';
     }
 
     /**
@@ -88,29 +88,10 @@ class Softim_Blog_Post_Five_Widget extends Widget_Base
             ]
         );
         $this->add_control(
-            'blog_graphic', [
-                'label' => esc_html__('Blog Graphic Image', 'softim-core'),
-                'type' => Controls_Manager::MEDIA,
-                'show_label' => false,
-                'description' => esc_html__('blog graphic image', 'softim-core'),
-                'default' => [
-                    'src' => Utils::get_placeholder_image_src()
-                ],
-            ]
-        );
-        $this->add_control(
-            'subtitle', [
-                'label' => esc_html__('Sub Title', 'softim-core'),
-                'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__('BLOG POSTS', 'softim-core'),
-                'description' => esc_html__('enter title', 'softim-core'),
-            ]
-        );
-        $this->add_control(
             'title', [
                 'label' => esc_html__('Title', 'softim-core'),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__('Read latest blog', 'softim-core'),
+                'default' => esc_html__('Our Awesome Services', 'softim-core'),
                 'description' => esc_html__('enter title', 'softim-core'),
             ]
         );
@@ -118,7 +99,7 @@ class Softim_Blog_Post_Five_Widget extends Widget_Base
             'info', [
                 'label' => esc_html__('Info', 'softim-core'),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__('Softim keeps your team’s work on-brand, on message, and on time Innovative.', 'softim-core'),
+                'default' => esc_html__('Credibly grow premier ideas rather than bricks-and-clicks strategic theme areas distributed for stand-alone web-readiness.', 'softim-core'),
                 'description' => esc_html__('enter info', 'softim-core'),
             ]
         );
@@ -147,7 +128,7 @@ class Softim_Blog_Post_Five_Widget extends Widget_Base
             'label' => esc_html__('Category', 'softim-core'),
             'type' => Controls_Manager::SELECT2,
             'multiple' => true,
-            'options' => softim_core()->get_terms_names('category', 'id'),
+            'options' => softim_core()->get_terms_names('project-cat', 'id'),
             'description' => esc_html__('select category as you want, leave it blank for all category', 'softim-core'),
         ]);
         $this->add_control('order', [
@@ -192,6 +173,35 @@ class Softim_Blog_Post_Five_Widget extends Widget_Base
             ),
             'default' => 18,
             'description' => esc_html__('select excerpt length', 'softim-core')
+        ]);
+        $this->end_controls_section();
+
+//      Service Graphic Loop
+        $this->start_controls_section(
+            'about_graphic_section',
+            [
+                'label' => esc_html__('Service Graphic', 'softim-core'),
+                'tab' => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $repeater = new Repeater();
+        $repeater->add_control(
+            'about_graphic_image', [
+                'label' => esc_html__('Graphic Image', 'softim-core'),
+                'type' => Controls_Manager::MEDIA,
+                'show_label' => false,
+                'description' => esc_html__('upload graphic image', 'softim-core'),
+                'default' => [
+                    'src' => Utils::get_placeholder_image_src()
+                ],
+            ]
+        );
+
+        $this->add_control('about_graphic_list', [
+            'label' => esc_html__('Take 5 About Graphic Item', 'softim-core'),
+            'type' => Controls_Manager::REPEATER,
+            'fields' => $repeater->get_controls(),
         ]);
         $this->end_controls_section();
 
@@ -364,10 +374,13 @@ class Softim_Blog_Post_Five_Widget extends Widget_Base
         ]);
         $this->end_controls_section();
 
+        /* typography settings end */
+
     }
 
     /**
      * Render Elementor widget output on the frontend.
+     *
      * Written in PHP and used to generate the final HTML.
      *
      * @since 1.0.0
@@ -381,9 +394,14 @@ class Softim_Blog_Post_Five_Widget extends Widget_Base
         $category = $settings['category'];
         $order = $settings['order'];
         $orderby = $settings['orderby'];
+        $tax_args = array(
+            'taxonomy' => 'project-cat',
+            'number' => 4,
+        );
+        $cats = get_terms($tax_args);
         //setup query
         $args = array(
-            'post_type' => 'post',
+            'post_type' => 'project',
             'posts_per_page' => $total_posts,
             'order' => $order,
             'orderby' => $orderby,
@@ -394,7 +412,7 @@ class Softim_Blog_Post_Five_Widget extends Widget_Base
         if (!empty($category)) {
             $args['tax_query'] = array(
                 array(
-                    'taxonomy' => 'category',
+                    'taxonomy' => 'project-cat',
                     'field' => 'term_id',
                     'terms' => $category
                 )
@@ -402,56 +420,56 @@ class Softim_Blog_Post_Five_Widget extends Widget_Base
         }
         $post_data = new \WP_Query($args);
         ?>
-
-        <section class="blog-section-five pt-120">
-            <div class="blog-element-two">
-                <img src="<?php echo esc_url($settings['blog_graphic']['url']); ?>" alt="element">
-            </div>
+        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            Start Gallery
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+        <div class="gallery-section ptb-120">
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-7 col-lg-8 text-center">
-                        <div class="section-header">
-                            <span class="sub-title"><?php echo esc_html($settings['subtitle']); ?></span>
-                            <h1 class="section-title two"><?php echo esc_html($settings['title']); ?></h1>
-                            <p><?php echo esc_html($settings['info']); ?></p>
-                        </div>
+                <div class="gallery-filter-wrapper">
+                    <div class="button-group filter-btn-group">
+                        <button class="active" data-filter="*">All</button>
+                        <?php foreach ($cats as $cat) { ?>
+                            <button data-filter=".<?php echo esc_attr($cat->slug); ?>"><?php echo esc_html($cat->name); ?></button>
+                        <?php } ?>
                     </div>
-                </div>
-                <div class="row justify-content-center mb-40-none">
-                    <?php if ($post_data->have_posts()) {
-                        while ($post_data->have_posts()) {
-                            $post_data->the_post();
-                            ?>
-                            <div class="col-xl-<?php echo esc_attr($settings['column']); ?> col-lg-<?php echo esc_attr($settings['column']); ?> col-md-<?php echo esc_attr($settings['column']); ?> col-sm-<?php echo esc_attr($settings['column']); ?> mb-30">
-                                <div class="blog-item five">
-                                    <?php if (has_post_thumbnail()) { ?>
-                                        <div class="blog-thumb">
-                                            <?php the_post_thumbnail('full'); ?>
+                    <div class="grid">
+                    <?php
+                    if ($post_data->have_posts()){
+                    while ($post_data->have_posts()){
+                        $post_data->the_post();
+
+                        $cate = get_the_terms(get_the_ID(), 'project-cat');
+                        $item = [];
+                        if ($cate) {
+                            foreach ($cate as $ca) {
+                                $item[$ca->term_id] = $ca->slug;
+                            }
+                        }
+                        $c = implode( ' ', $item);
+                    ?>
+                        <div class="grid-item <?php echo esc_attr($c);?>">
+                            <div class="gallery-item">
+                                <div class="gallery-thumb">
+                                   <?php the_post_thumbnail('full');?>
+                                    <div class="gallery-thumb-overlay">
+                                        <div class="gallery-icon">
+                                            <a href="<?php the_post_thumbnail_url();?>"><?php echo wp_get_attachment_image(softim_get_post_meta('softim_project_options', 'icon_image'))?></a>
                                         </div>
-                                    <?php } ?>
-                                    <div class="blog-content">
-                                        <div class="blog-post-meta">
-                                    <span class="user">
-                                        <?php echo get_avatar(get_the_author_meta('ID'), 25); ?>
-                                        <?php the_author(); ?>
-                                    </span>
-                                            <span class="date"><?php echo get_the_time('j F, Y'); ?></span>
-                                        </div>
-                                        <h3 class="title"><a
-                                                    href="<?php the_permalink(); ?>"><?php echo wp_trim_words(get_the_title(), 6); ?></a>
-                                        </h3>
                                     </div>
                                 </div>
                             </div>
-                            <?php
-                        }
-                    }
-                    ?>
+                        </div>
+                       <?php } }?>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            End Gallery
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
         <?php
     }
 }
 
-Plugin::instance()->widgets_manager->register(new Softim_Blog_Post_Five_Widget());
+Plugin::instance()->widgets_manager->register(new Softim_Gallery_Widget());
