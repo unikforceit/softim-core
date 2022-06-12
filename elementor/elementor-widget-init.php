@@ -131,6 +131,7 @@ if ( ! class_exists( 'Softim_Elementor_Widget_Init' ) ) {
 				'testimonial-three',
 				'testimonial-four',
 				'testimonial-five',
+				'gallery',
 			);
 
 			$elementor_widgets = apply_filters( 'softim_elementor_widget', $elementor_widgets );

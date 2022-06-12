@@ -472,6 +472,17 @@
 
     };
 
+    var Masonary = function ($scope, $) {
+
+        $scope.find('.gallery-section').each(function () {
+            var settings = $(this).data('softim');
+            // init Isotope
+
+            // Js End
+        });
+
+    };
+
 
     $(window).on('elementor/frontend/init', function () {
         if (elementorFrontend.isEditMode()) {
@@ -494,6 +505,7 @@
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-four-widget.default', ClientSlider);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-faq-one-widget.default', Faq);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-service-core-widget.default', Faq);
+            elementorFrontend.hooks.addAction('frontend/element_ready/softim-gallery-widget.default', Masonary);
 
         } else {
             console.log('Elementor frontend mod loaded');
@@ -515,6 +527,7 @@
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-testimonial-four-widget.default', ClientSlider);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-faq-one-widget.default', Faq);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-service-core-widget.default', Faq);
+            elementorFrontend.hooks.addAction('frontend/element_ready/softim-gallery-widget.default', Masonary);
         }
     });
     console.log('addon js loaded');
