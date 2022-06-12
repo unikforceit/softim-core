@@ -419,8 +419,43 @@ class Softim_Case_Study_Widget extends Widget_Base
             );
         }
         $post_data = new \WP_Query($args);
-        ?>
 
+        var_dump($category);
+        ?>
+        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            Start Gallery
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+        <div class="gallery-section ptb-120">
+            <div class="container">
+                <div class="gallery-filter-wrapper">
+                    <div class="button-group filter-btn-group">
+                        <button class="active" data-filter="*">All</button>
+                        <?php foreach ($cats as $cat) { ?>
+                            <button data-filter=".<?php echo esc_attr($cat->slug); ?>"><?php echo esc_html($cat->name); ?></button>
+                        <?php } ?>
+                    </div>
+                    <div class="grid">
+
+                        <div class="grid-item design marketing">
+                            <div class="gallery-item">
+                                <div class="gallery-thumb">
+                                    <img src="assets/images/gallery/gallery-1.png" alt="gallery">
+                                    <div class="gallery-thumb-overlay">
+                                        <div class="gallery-icon">
+                                            <a class="img-popup" data-rel="lightcase:myCollection" href="assets/images/gallery/gallery-1.png"><img src="assets/images/icon/icon-21.png" alt="icon"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            End Gallery
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
         <?php
     }
