@@ -109,6 +109,13 @@ class Softim_Contact_Form_Widget extends Widget_Base
                 ],
             ]
         );
+        $this->add_control(
+            'form', [
+                'label' => esc_html__('Form', 'softim-core'),
+                'type' => Controls_Manager::TEXTAREA,
+                'description' => esc_html__('enter form', 'softim-core'),
+            ]
+        );
         $this->end_controls_section();
 
 
@@ -283,40 +290,7 @@ class Softim_Contact_Form_Widget extends Widget_Base
                 <img src="<?php echo esc_html($graphic2);?>" alt="element">
             </div>
             <div class="container">
-                <form class="contact-form">
-                    <div class="row justify-content-center mb-25-none">
-                        <div class="col-xl-6 col-lg-6 form-group">
-                            <label>Enter Name</label>
-                            <input type="text" name="name" class="form--control" placeholder="Jhon david smith">
-                        </div>
-                        <div class="col-xl-6 col-lg-6 form-group">
-                            <label>Email Address</label>
-                            <input type="email" name="email" class="form--control" placeholder="jhonsmith@gmail.com">
-                        </div>
-                        <div class="col-xl-6 col-lg-6 form-group">
-                            <label>Your Phone</label>
-                            <input type="text" name="number" class="form--control" placeholder="+1 (900) 696 3600" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
-                        </div>
-                        <div class="col-xl-6 col-lg-6 form-group">
-                            <label>Select Subject</label>
-                            <div class="contact-select">
-                                <select class="form--control">
-                                    <option value="1">Web Development</option>
-                                    <option value="2">Web Design</option>
-                                    <option value="3">Digital Marketing</option>
-                                    <option value="4">Search SEO</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-xl-12 col-lg-12 form-group">
-                            <label>Write Message</label>
-                            <textarea name="message" class="form--control" placeholder="Write Here ..."></textarea>
-                        </div>
-                        <div class="col-xl-12 col-lg-12 form-group text-center">
-                            <button type="submit" class="btn--base mt-20">Send Now <i class="fas fa-arrow-right ml-2"></i></button>
-                        </div>
-                    </div>
-                </form>
+                <?php echo do_shortcode($settings['form']);?>
             </div>
         </section>
         <?php
