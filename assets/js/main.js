@@ -476,7 +476,60 @@
 
         $scope.find('.gallery-section').each(function () {
             var settings = $(this).data('softim');
+
             // init Isotope
+            var $grid = $('.grid').isotope({
+                // options
+                itemSelector: '.grid-item',
+                // percentPosition: true,
+                masonry: {
+                    columnWidth: '.grid-item'
+                }
+            });
+            var $gallery = $(".grid").isotope({
+
+            });
+// filter items on button click
+            $('.filter-btn-group').on( 'click', 'button', function() {
+                var filterValue = $(this).attr('data-filter');
+                $grid.isotope({ filter: filterValue });
+            });
+            $('.filter-btn-group').on( 'click', 'button', function() {
+                $(this).addClass('active').siblings().removeClass('active');
+            });
+
+            $(window).on('load', function() {
+                galleryMasonaryTwo();
+            })
+
+            function galleryMasonaryTwo(){
+                // filter functions
+                var $grid = $(".grid");
+                var filterFns = {};
+                $grid.isotope({
+                    itemSelector: '.grid-item',
+                    masonry: {
+                        columnWidth: 0,
+                    }
+                });
+                // bind filter button click
+                $('ul.filter').on('click', 'li', function () {
+                    var filterValue = $(this).attr('data-filter');
+                    // use filterFn if matches value
+                    filterValue = filterFns[filterValue] || filterValue;
+                    $grid.isotope({
+                        filter: filterValue
+                    });
+                });
+                // change is-checked class on buttons
+                $('ul.filter').each(function (i, buttonGroup) {
+                    var $buttonGroup = $(buttonGroup);
+                    $buttonGroup.on('click', 'li', function () {
+                        $buttonGroup.find('.active').removeClass('active');
+                        $(this).addClass('active');
+                    });
+                });
+            }
 
             // Js End
         });
