@@ -74,20 +74,20 @@
                     delay: 4000,
                 },
                 speed: 1000,
-                // breakpoints: {
-                //     991: {
-                //         slidesPerView: 3,
-                //     },
-                //     767: {
-                //         slidesPerView: 2,
-                //     },
-                //     575: {
-                //         slidesPerView: 2,
-                //     },
-                //     420: {
-                //         slidesPerView: 1,
-                //     },
-                // }
+                breakpoints: {
+                    991: {
+                        slidesPerView: 3,
+                    },
+                    767: {
+                        slidesPerView: 2,
+                    },
+                    575: {
+                        slidesPerView: 2,
+                    },
+                    420: {
+                        slidesPerView: 1,
+                    },
+                }
             });
             // Js End
         });

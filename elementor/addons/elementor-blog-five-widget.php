@@ -122,21 +122,6 @@ class Softim_Blog_Post_Five_Widget extends Widget_Base
                 'description' => esc_html__('enter info', 'softim-core'),
             ]
         );
-        $this->add_control(
-            'column',
-            [
-                'label' => esc_html__('Column', 'softim-core'),
-                'type' => Controls_Manager::SELECT,
-                'options' => array(
-                    '6' => esc_html__('02 Column', 'softim-core'),
-                    '3' => esc_html__('04 Column', 'softim-core'),
-                    '4' => esc_html__('03 Column', 'softim-core'),
-                    '2' => esc_html__('06 Column', 'softim-core')
-                ),
-                'description' => esc_html__('select grid column', 'softim-core'),
-                'default' => '6'
-            ]
-        );
         $this->add_control('total', [
             'label' => esc_html__('Total Posts', 'softim-core'),
             'type' => Controls_Manager::TEXT,
@@ -422,7 +407,7 @@ class Softim_Blog_Post_Five_Widget extends Widget_Base
                         while ($post_data->have_posts()) {
                             $post_data->the_post();
                             ?>
-                            <div class="col-xl-<?php echo esc_attr($settings['column']); ?> col-lg-<?php echo esc_attr($settings['column']); ?> col-md-<?php echo esc_attr($settings['column']); ?> col-sm-<?php echo esc_attr($settings['column']); ?> mb-30">
+                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-30">
                                 <div class="blog-item five">
                                     <?php if (has_post_thumbnail()) { ?>
                                         <div class="blog-thumb">
