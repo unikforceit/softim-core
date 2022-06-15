@@ -396,7 +396,7 @@ class Softim_Case_Study_Widget extends Widget_Base
         $orderby = $settings['orderby'];
         $tax_args = array(
             'taxonomy' => 'project-cat',
-            'number' => 4,
+            'number' => 3,
         );
         $cats = get_terms($tax_args);
         //setup query
@@ -434,64 +434,60 @@ class Softim_Case_Study_Widget extends Widget_Base
                                 <p>Credibly grow premier ideas rather than bricks-and-clicks strategic theme areas distributed for stand-alone web-readiness.</p>
                             </div>
                             <ul class="nav nav-pills mb-3">
+
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="pill" href="#all">All</a>
+                                    <a class="nav-link active" data-toggle="pill" href="#all">All</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active"data-toggle="pill" href="#cloud-services">Cloud Services</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="pill" href="#cyber-security">Cyber Security</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="pill" href="#it-security">IT Security</a>
-                                </li>
+                                <?php if ($cats){
+                                foreach ($cats as $cat) { ?>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="pill" href="#<?php echo esc_attr($cat->slug);?>"><?php echo esc_html($cat->name)?></a>
+                                    </li>
+                                <?php } } ?>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade" id="all">
+        <?php if ($cats){
+            $index = 0;
+        foreach ($cats as $cat) {
+            $index++;
+
+            if ($index == 1){
+                $act = ' show active';
+            }else{
+                $act = '';
+            }
+            ?>
+                <div class="tab-pane fade<?php echo esc_attr($act);?>" id="<?php echo esc_attr($cat->slug);?>">
                     <div class="container-fluid">
                         <div class="row mb-10-none">
                             <div class="col-xl-10 offset-xl-2">
                                 <div class="case-study-slider-wrapper">
                                     <div class="case-study-slider oh">
                                         <div class="swiper-wrapper">
-                                            <div class="swiper-slide">
-                                                <div class="case-study-single-item">
-                                                    <div class="thumbnail">
-                                                        <img src="assets/images/home-three/case-01.png" alt="">
-                                                    </div>
-                                                    <div class="content">
-                                                        <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers result-driven solutions to build.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <div class="case-study-single-item">
-                                                    <div class="thumbnail">
-                                                        <img src="assets/images/home-three/case-02.png" alt="">
-                                                    </div>
-                                                    <div class="content">
-                                                        <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers result-driven solutions to build.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <div class="case-study-single-item">
-                                                    <div class="thumbnail">
-                                                        <img src="assets/images/home-three/case-03.png" alt="">
-                                                    </div>
-                                                    <div class="content">
-                                                        <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers result-driven solutions to build.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <?php
+                                            if ($post_data->have_posts()) {
+                                                while ($post_data->have_posts()) {
+                                                    $post_data->the_post(); ?>
+                                                        <div class="swiper-slide">
+                                                            <div class="case-study-single-item">
+                                                                <div class="thumbnail">
+                                                                    <?php the_post_thumbnail('full');?>
+                                                                </div>
+                                                                <div class="content">
+                                                                    <h5 class="title"><?php the_title();?></h5>
+                                                                    <p><?php echo wp_trim_words(get_the_excerpt(), 15);?></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                <?php
+                                            }
+                                            wp_reset_postdata();
+                                        }
+                                        ?>
                                         </div>
                                         <div class="next-text">Next</div>
                                         <div class="prev-text">Prev</div>
@@ -502,156 +498,7 @@ class Softim_Case_Study_Widget extends Widget_Base
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade show active" id="cloud-services">
-                    <div class="container-fluid">
-                        <div class="row mb-10-none">
-                            <div class="col-xl-10 offset-xl-2">
-                                <div class="case-study-slider-wrapper">
-                                    <div class="case-study-slider oh">
-                                        <div class="swiper-wrapper">
-                                            <div class="swiper-slide">
-                                                <div class="case-study-single-item">
-                                                    <div class="thumbnail">
-                                                        <img src="assets/images/home-three/case-01.png" alt="">
-                                                    </div>
-                                                    <div class="content">
-                                                        <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers result-driven solutions to build.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <div class="case-study-single-item">
-                                                    <div class="thumbnail">
-                                                        <img src="assets/images/home-three/case-02.png" alt="">
-                                                    </div>
-                                                    <div class="content">
-                                                        <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers result-driven solutions to build.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <div class="case-study-single-item">
-                                                    <div class="thumbnail">
-                                                        <img src="assets/images/home-three/case-03.png" alt="">
-                                                    </div>
-                                                    <div class="content">
-                                                        <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers result-driven solutions to build.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="next-text">Next</div>
-                                        <div class="prev-text">Prev</div>
-                                        <div class="swiper-pagination"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="cyber-security">
-                    <div class="container-fluid">
-                        <div class="row mb-10-none">
-                            <div class="col-xl-10 offset-xl-2">
-                                <div class="case-study-slider-wrapper">
-                                    <div class="case-study-slider oh">
-                                        <div class="swiper-wrapper">
-                                            <div class="swiper-slide">
-                                                <div class="case-study-single-item">
-                                                    <div class="thumbnail">
-                                                        <img src="assets/images/home-three/case-01.png" alt="">
-                                                    </div>
-                                                    <div class="content">
-                                                        <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers result-driven solutions to build.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <div class="case-study-single-item">
-                                                    <div class="thumbnail">
-                                                        <img src="assets/images/home-three/case-02.png" alt="">
-                                                    </div>
-                                                    <div class="content">
-                                                        <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers result-driven solutions to build.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <div class="case-study-single-item">
-                                                    <div class="thumbnail">
-                                                        <img src="assets/images/home-three/case-03.png" alt="">
-                                                    </div>
-                                                    <div class="content">
-                                                        <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers result-driven solutions to build.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="next-text">Next</div>
-                                        <div class="prev-text">Prev</div>
-                                        <div class="swiper-pagination"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="it-security">
-                    <div class="container-fluid">
-                        <div class="row mb-10-none">
-                            <div class="col-xl-10 offset-xl-2">
-                                <div class="case-study-slider-wrapper">
-                                    <div class="case-study-slider oh">
-                                        <div class="swiper-wrapper">
-                                            <div class="swiper-slide">
-                                                <div class="case-study-single-item">
-                                                    <div class="thumbnail">
-                                                        <img src="assets/images/home-three/case-01.png" alt="">
-                                                    </div>
-                                                    <div class="content">
-                                                        <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers result-driven solutions to build.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <div class="case-study-single-item">
-                                                    <div class="thumbnail">
-                                                        <img src="assets/images/home-three/case-02.png" alt="">
-                                                    </div>
-                                                    <div class="content">
-                                                        <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers result-driven solutions to build.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <div class="case-study-single-item">
-                                                    <div class="thumbnail">
-                                                        <img src="assets/images/home-three/case-03.png" alt="">
-                                                    </div>
-                                                    <div class="content">
-                                                        <h5 class="title">Product Engineering</h5>
-                                                        <p>Trusted by popular platforms like Shopify, ARN Tech offers result-driven solutions to build.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="next-text">Next</div>
-                                        <div class="prev-text">Prev</div>
-                                        <div class="swiper-pagination"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <?php } } ?>
             </div>
         </section>
         <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

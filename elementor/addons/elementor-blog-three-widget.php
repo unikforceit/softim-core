@@ -457,6 +457,7 @@ class Softim_Blog_Post_Three_Widget extends Widget_Base
                             <?php if ($post_data->have_posts()) {
                                 while ($post_data->have_posts()) {
                                     $post_data->the_post();
+                                    $post_data->set( 'posts_per_page',  2);
                                     ?>
                                     <div class="content">
                                         <a href="<?php the_permalink(); ?>"><h4 class="title"><?php the_title(); ?></h4>

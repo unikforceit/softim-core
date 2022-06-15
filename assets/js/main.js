@@ -536,6 +536,62 @@
 
     };
 
+    var CaseStudy = function ($scope, $) {
+
+        $scope.find('.case-study-section').each(function () {
+            var settings = $(this).data('softim');
+
+            // init Isotope
+            // Case Study Slider
+            var swiper = new Swiper('.case-study-slider', {
+                slidesPerView: 3,
+                spaceBetween: 30,
+                centeredSlides: true,
+                loop: true,
+                observer: true,
+                observeParents: true,
+                pagination: {
+                    el: ".swiper-pagination",
+                    type: "progressbar",
+                },
+                autoplay: {
+                    speeds: 2000,
+                    delay: 4000,
+                },
+                navigation: {
+                    nextEl: '.next-text',
+                    prevEl: '.prev-text',
+                },
+                speed: 1000,
+                breakpoints: {
+                    1300: {
+                        slidesPerView: 2,
+                        centeredSlides: false,
+                    },
+                    1199: {
+                        slidesPerView: 2,
+                        centeredSlides: false,
+                    },
+                    991: {
+                        slidesPerView: 2,
+                        centeredSlides: false,
+                    },
+                    767: {
+                        slidesPerView: 1,
+                        centeredSlides: false,
+                    },
+                    575: {
+                        slidesPerView: 1,
+                        centeredSlides: false,
+                    },
+                }
+            });
+
+            // Js End
+        });
+
+    };
+
 
     $(window).on('elementor/frontend/init', function () {
         if (elementorFrontend.isEditMode()) {
@@ -559,6 +615,7 @@
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-faq-one-widget.default', Faq);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-service-core-widget.default', Faq);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-gallery-widget.default', Masonary);
+            elementorFrontend.hooks.addAction('frontend/element_ready/softim-case-study-widget.default', CaseStudy);
 
         } else {
             console.log('Elementor frontend mod loaded');
@@ -581,6 +638,7 @@
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-faq-one-widget.default', Faq);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-service-core-widget.default', Faq);
             elementorFrontend.hooks.addAction('frontend/element_ready/softim-gallery-widget.default', Masonary);
+            elementorFrontend.hooks.addAction('frontend/element_ready/softim-case-study-widget.default', CaseStudy);
         }
     });
     console.log('addon js loaded');

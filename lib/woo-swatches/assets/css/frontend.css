@@ -129,10 +129,13 @@
 	text-indent: initial;
 	font-size: 14px;
 	font-weight: 500;
+	height: 28px;
 	line-height: 1.25;
+	width: 73px;
+	top: -17px;
 	position: absolute;
 	bottom: 100%;
-	left: 50%;
+	left: 41%;
 	background: #333;
 	z-index: 2;
 	color: #fff;
