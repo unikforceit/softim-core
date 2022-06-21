@@ -66,7 +66,7 @@ class Softim_Recent_Post_Widget extends WP_Widget
                     </div>
                     <div class="popular-item-content">
                         <span class="blog-date"><?php the_time('M j, Y'); ?></span>
-                        <h5 class="title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+                        <h5 class="title"><a href="<?php the_permalink(); ?>"><?php echo wp_trim_words(get_the_title(), 5); ?></a></h5>
                     </div>
                 </div>
                 <?php
