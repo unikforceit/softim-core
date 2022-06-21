@@ -438,10 +438,12 @@ class Softim_Case_Study_Widget extends Widget_Base
                                 <li class="nav-item">
                                     <a class="nav-link active" data-toggle="pill" href="#all">All</a>
                                 </li>
-                                <?php if ($cats){
-                                foreach ($cats as $cat) { ?>
+                                <?php if ($category){
+                                foreach ($category as $cat) {
+                                    $terms = get_term_by('id', $cat, 'project-cat');
+                                    ?>
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="pill" href="#<?php echo esc_attr($cat->slug);?>"><?php echo esc_html($cat->name)?></a>
+                                        <a class="nav-link" data-toggle="pill" href="#<?php echo esc_attr($terms->slug);?>"><?php echo esc_html($terms->name)?></a>
                                     </li>
                                 <?php } } ?>
                             </ul>
@@ -450,9 +452,10 @@ class Softim_Case_Study_Widget extends Widget_Base
                 </div>
             </div>
             <div class="tab-content" id="pills-tabContent">
-        <?php if ($cats){
+        <?php if ($category){
             $index = 0;
-        foreach ($cats as $cat) {
+        foreach ($category as $cat) {
+            $terms = get_term_by('id', $cat, 'project-cat');
             $index++;
 
             if ($index == 1){
@@ -461,7 +464,7 @@ class Softim_Case_Study_Widget extends Widget_Base
                 $act = '';
             }
             ?>
-                <div class="tab-pane fade<?php echo esc_attr($act);?>" id="<?php echo esc_attr($cat->slug);?>">
+                <div class="tab-pane fade <?php echo esc_attr($act);?>" id="<?php echo esc_attr($terms->slug);?>">
                     <div class="container-fluid">
                         <div class="row mb-10-none">
                             <div class="col-xl-10 offset-xl-2">
@@ -475,7 +478,7 @@ class Softim_Case_Study_Widget extends Widget_Base
                                                         <div class="swiper-slide">
                                                             <div class="case-study-single-item">
                                                                 <div class="thumbnail">
-                                                                    <?php the_post_thumbnail('full');?>
+                                                                    <?php the_post_thumbnail('softim_project');?>
                                                                 </div>
                                                                 <div class="content">
                                                                     <h5 class="title"><?php the_title();?></h5>

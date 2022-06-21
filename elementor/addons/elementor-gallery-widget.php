@@ -428,9 +428,13 @@ class Softim_Gallery_Widget extends Widget_Base
                 <div class="gallery-filter-wrapper">
                     <div class="button-group filter-btn-group">
                         <button class="active" data-filter="*">All</button>
-                        <?php foreach ($cats as $cat) { ?>
-                            <button data-filter=".<?php echo esc_attr($cat->slug); ?>"><?php echo esc_html($cat->name); ?></button>
-                        <?php } ?>
+                        <?php
+                        if ($category){
+                        foreach ($category as $cat) {
+                            $terms = get_term_by('id', $cat, 'project-cat');
+                            ?>
+                            <button data-filter=".<?php echo esc_attr($terms->slug); ?>"><?php echo esc_html($terms->name); ?></button>
+                        <?php } } ?>
                     </div>
                     <div class="grid">
                     <?php
