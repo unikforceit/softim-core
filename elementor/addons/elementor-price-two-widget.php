@@ -88,11 +88,20 @@ class Softim_Price_Two_Widget extends Widget_Base
             ]
         );
         $this->add_control(
+            'title_status', [
+                'label' => esc_html__('Title Show/Hide', 'softim-core'),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => 'yes',
+                'description' => esc_html__('show/hide title', 'softim-core')
+            ]
+        );
+        $this->add_control(
             'title', [
                 'label' => esc_html__('Title', 'softim-core'),
                 'type' => Controls_Manager::TEXTAREA,
                 'default' => esc_html__("Our Digital Pricing Plan", 'softim-core'),
-                'description' => esc_html__('enter title', 'softim-core')
+                'description' => esc_html__('enter title', 'softim-core'),
+                'condition' => ['title_status' => 'yes']
             ]
         );
         $this->end_controls_section();
@@ -545,7 +554,9 @@ class Softim_Price_Two_Widget extends Widget_Base
                 <div class="row justify-content-center">
                     <div class="col-xl-7 col-lg-8 text-center">
                         <div class="section-header">
-                            <h2 class="section-title mb-0"><?php echo esc_html($title); ?></h2>
+                            <?php if ($settings['title_status'] == 'yes'): ?>
+                                <h2 class="section-title mb-0"><?php echo esc_html($title); ?></h2>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
