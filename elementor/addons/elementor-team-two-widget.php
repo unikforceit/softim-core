@@ -464,7 +464,7 @@ class Softim_Team_Two_Widget extends Widget_Base
                                                                     foreach ($team_meta['social-icons'] as $team_icon) {
                                                                         ?>
                                                                         <li>
-                                                                            <a href="<?php echo esc_url($team_icon['url']); ?>">
+                                                                            <a href="<?php echo esc_url($team_icon['url']['url']); ?>">
                                                                                 <i class="<?php echo esc_attr($team_icon['icon']); ?>"></i>
                                                                             </a>
                                                                         </li>

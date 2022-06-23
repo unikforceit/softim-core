@@ -588,7 +588,7 @@ class Softim_Price_Three_Widget extends Widget_Base
                             <img src="<?php echo esc_url($settings['thumb_image']['url']); ?>" alt="icon">
                         </div>
                         <nav>
-                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <div class="nav nav-tabs" id="nav-tabPlan" role="tablist">
                                 <button class="nav-link active" id="monthly-tab" data-toggle="tab"
                                         data-target="#monthly" type="button" role="tab" aria-controls="monthly"
                                         aria-selected="true">Monthly Plan
@@ -600,7 +600,7 @@ class Softim_Price_Three_Widget extends Widget_Base
                             </div>
                         </nav>
                     </div>
-                    <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-content" id="nav-tabContentPlan">
                         <div class="tab-pane fade show active" id="monthly" role="tabpanel"
                              aria-labelledby="monthly-tab">
                             <div class="row justify-content-center mb-30-none">
