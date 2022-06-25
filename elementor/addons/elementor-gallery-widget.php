@@ -439,9 +439,10 @@ class Softim_Gallery_Widget extends Widget_Base
                     <div class="grid">
                     <?php
                     if ($post_data->have_posts()){
+                        $loop = 0;
                     while ($post_data->have_posts()){
                         $post_data->the_post();
-
+                        $loop++;
                         $cate = get_the_terms(get_the_ID(), 'project-cat');
                         $item = [];
                         if ($cate) {
@@ -450,11 +451,21 @@ class Softim_Gallery_Widget extends Widget_Base
                             }
                         }
                         $c = implode( ' ', $item);
+
+                        if ($loop == 1){
+                            $image_size = 'softim_project_max_height';
+                        }elseif ($loop == 8){
+                            $image_size = 'softim_project_max_height';
+                        }elseif ($loop == 9){
+                            $image_size = 'softim_project_max_width';
+                        }else{
+                            $image_size = 'softim_project';
+                        }
                     ?>
                         <div class="grid-item <?php echo esc_attr($c);?>">
                             <div class="gallery-item">
                                 <div class="gallery-thumb">
-                                   <?php the_post_thumbnail('full');?>
+                                   <?php the_post_thumbnail($image_size);?>
                                     <div class="gallery-thumb-overlay">
                                         <div class="gallery-icon">
                                             <a href="<?php the_post_thumbnail_url();?>"><?php echo wp_get_attachment_image(softim_get_post_meta('softim_project_options', 'icon_image'))?></a>
