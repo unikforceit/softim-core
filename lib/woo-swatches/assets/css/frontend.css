@@ -26,11 +26,11 @@
 
 }
 .softim-variation-swatches--button .softim-variation-swatches__item {
-        border: 1px solid #f5f5f5;
-    font-size: 16px;
-   
+	border: 1px solid #DEDEDE;
+	font-size: 16px;
+	height: 20px;
+	line-height: 20px;
 }
-
 .softim-variation-swatches__name {
 	text-indent: -9999em;
 	display: block;
