@@ -43,7 +43,7 @@ class Swatches {
 	 * Enqueue scripts and stylesheets
 	 */
 	public function enqueue_scripts() {
-		wp_enqueue_style( 'softim-variation-swatches', plugins_url( 'assets/css/frontend.css', SOFTIM_VARIATION_SWATCHES_FILE ), [], '20210628' );
+		wp_enqueue_style( 'softim-variation-swatches', plugins_url( 'assets/css/frontend.css', SOFTIM_VARIATION_SWATCHES_FILE ), [], '1.0.0' );
 		wp_add_inline_style( 'softim-variation-swatches', $this->inline_style() );
 
 		wp_enqueue_script( 'softim-variation-swatches', plugins_url( 'assets/js/frontend.js', SOFTIM_VARIATION_SWATCHES_FILE ), [ 'jquery' ], '20210908', true );

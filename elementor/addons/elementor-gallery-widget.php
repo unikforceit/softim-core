@@ -458,11 +458,13 @@ class Softim_Gallery_Widget extends Widget_Base
                             $image_size = 'softim_project_max_height';
                         }elseif ($loop == 9){
                             $image_size = 'softim_project_max_width';
+                            $class = 'width';
                         }else{
                             $image_size = 'softim_project';
+                            $class = '';
                         }
                     ?>
-                        <div class="grid-item <?php echo esc_attr($c);?>">
+                        <div class="grid-item <?php echo esc_attr($class);?> <?php echo esc_attr($c);?>">
                             <div class="gallery-item">
                                 <div class="gallery-thumb">
                                    <?php the_post_thumbnail($image_size);?>

@@ -125,7 +125,7 @@ if (!class_exists('Softim_Core_Init')) {
 		public function plugin_assets()
 		{
 			self::load_plugin_css_files();
-			self::load_plugin_js_files();
+			//self::load_plugin_js_files();
 		}
 
 		/**

@@ -75,13 +75,14 @@
 }
 
 .softim-variation-swatches--button .softim-variation-swatches__item {
-	width: auto !important;
-	padding: 0 0.5em;
+	width: 20px;
+	padding: 0;
 }
 
 .softim-variation-swatches--label .softim-variation-swatches__name,
 .softim-variation-swatches--button .softim-variation-swatches__name {
 	text-indent: 0;
+	font-size: 12px;
 }
 
 .softim-variation-swatches--image .softim-variation-swatches__name {
@@ -109,8 +110,8 @@
 
 .softim-variation-swatches--round.softim-variation-swatches--button .softim-variation-swatches__item {
 	border-radius: 15px;
-	padding-left: 15px;
-	padding-right: 15px;
+	padding-left: 0;
+	padding-right: 0;
 }
 
 .softim-variation-swatches--rounded .softim-variation-swatches__item,

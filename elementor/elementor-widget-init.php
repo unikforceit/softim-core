@@ -30,7 +30,10 @@ if ( ! class_exists( 'Softim_Elementor_Widget_Init' ) ) {
 			add_action( 'elementor/widgets/widgets_registered', array( $this, '_widget_registered' ) );
 			// elementor editor css
 			add_action( 'elementor/editor/after_enqueue_scripts', array( $this, 'load_assets_for_elementor' ) );
-			//add icon to elementor new icons fileds
+
+            add_action('elementor/frontend/after_register_scripts', array($this, 'load_assets_js_for_elementor'), 10);
+
+            //add icon to elementor new icons fileds
 			add_filter( 'elementor/icons_manager/native', array( $this, 'add_custom_icon_to_elementor_icons' ) );
 		}
 
@@ -175,6 +178,10 @@ if ( ! class_exists( 'Softim_Elementor_Widget_Init' ) ) {
 		public function load_assets_for_elementor() {
 			wp_enqueue_style( 'flaticon', SOFTIM_CORE_CSS . '/flaticon.css' );
 			wp_enqueue_style( 'softim-core-elementor-style', SOFTIM_CORE_ADMIN_ASSETS . '/css/elementor-editor.css' );
+		}
+
+        public function load_assets_js_for_elementor() {
+			wp_enqueue_script( 'softim-core-elementor', SOFTIM_CORE_JS . '/main.js', ['jquery'], '1.0.0', true );
 		}
 	}
 
